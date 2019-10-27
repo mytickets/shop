@@ -115,7 +115,7 @@
 
         <!-- Main Footer -->
         <footer class="main-footer" style="max-height: 100px;text-align: center">
-            <strong>Copyright © 2019 <a href="#">Company</a>.</strong> All rights reserved.
+            <strong>Copyright © 2019 <a href="#">ADMIN</a>.</strong> Все права соблюденены.
         </footer>
 
     </div>
@@ -181,6 +181,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    
+
 </body>
 </html>

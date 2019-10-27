@@ -1,0 +1,1 @@
+<th>{{ __('$FIELD_NAME_TITLE$') }}</th>
