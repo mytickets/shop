@@ -36,4 +36,15 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    // public function showLoginForm()
+    // {
+    //     return 'Успех! Сработал мой кастомный обработчик маршрута http://site.com/login';
+    // }
+
+    public function username()
+    {
+        return 'email';
+    }
+
 }
