@@ -16,13 +16,11 @@ Route::get('/', function () {
 });
 
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 /**
  * Роуты аутентификации...
  */
 // https://laravel.com/docs/6.x/authentication
-Auth::routes();
  
 //отображение формы аутентификации
 // Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -52,3 +50,7 @@ Auth::routes();
 // Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 // //POST запрос для сброса старого и установки нового пароля
 // Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
