@@ -74,3 +74,21 @@ Route::post(
     'generator_builder/generate-from-file',
     '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
 )->name('io_generator_builder_generate_from_file');
+
+
+// https://harish81.github.io/infyom-schema-generator/
+
+Route::get('/schema_builder', function () {
+    return view('schema_builder');
+});
+
+// Route::get('/schema_builder', function () {
+    // return view('schema_builder');
+// });
+
+Route::get('/chartjs', function () {
+    return view('lte.charts.chartjs');
+
+});
+
+

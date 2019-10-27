@@ -170,7 +170,7 @@ return [
 
             'enabled'       => true,
 
-            'menu_file'     => 'layouts/admin_menu.blade.php',
+            'menu_file'     => 'layouts/admin_menu_tables.blade.php',
         ],
     ],
 

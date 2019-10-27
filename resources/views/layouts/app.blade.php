@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
 
-    @yield('css')
 
     <!-- jQuery 3.1.1 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -42,6 +41,7 @@
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 
 
+    @yield('css')
 </head>
 
 <body class="skin-blue sidebar-mini">
@@ -52,7 +52,11 @@
 
             <!-- Logo -->
             <a href="#" class="logo">
-                <b>Админка</b>
+              <!-- mini logo for sidebar mini 50x50 pixels -->
+              <span class="logo-mini"><b>A</b>LT</span>
+              <!-- logo for regular state and mobile devices -->
+              <span class="logo-lg"><b>Admin</b>LTE</span>
+
             </a>
 
             <!-- Header Navbar -->
@@ -69,7 +73,9 @@
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+
+                                {{-- <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg" --}}
+                                <img src="/lte1/dist/img/user2-160x160.jpg"
                                      class="user-image" alt="User Image"/>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs">{!! Auth::user()->name !!}</span>
@@ -77,7 +83,7 @@
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                    <img src="/lte1/dist/img/user2-160x160.jpg"
                                          class="img-circle" alt="User Image"/>
                                     <p>
                                         {!! Auth::user()->name !!}
@@ -87,7 +93,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="#" class="btn btn-default btn-flat">Профиль</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="{!! url('/logout') !!}" class="btn btn-default btn-flat"
@@ -176,10 +182,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
 
+    <!-- FastClick -->
+    <script src="/lte1/bower_components/fastclick/lib/fastclick.js"></script>
+
+    <!-- AdminLTE for demo purposes -->
+    <script src="/lte1/dist/js/demo.js"></script>
+
     @yield('scripts')
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 
 
 </body>
