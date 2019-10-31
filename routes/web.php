@@ -142,6 +142,28 @@ Route::get('/migrate', function () {
     Artisan::call('migrate');
 });
 
+Route::get('/schemaView', function (Request $request) {
+    Artisan::call('make:view '.$request->all()['viewName'].' --extends='.$request->all()['layoutName'].' --section=content');
+    // generator_builder
+    return redirect('/generator_builder');
+});
+// Route::post('/schemaView', function (Request $request) {
+//     return Artisan::call('make:view '.$request->all()['viewName'].' --extends='.$request->all()['layoutName'].' --section=content');
+// });
+
+
+// Route::post('/scrapView', function (Request $request) {
+//     return Artisan::call('scrap:view '.pathinfo($request->all()['viewName'])['filename']);
+// });
+Route::get('/scrapView', function (Request $request) {
+    Artisan::call('scrap:view '.pathinfo($request->all()['viewName'])['filename'].' --force');
+    // return Artisan::call('scrap:view '.pathinfo($request->all()['viewName'])['filename'].' --force');
+    return redirect('/generator_builder');
+});
+
+
+
+// Route::get('/cats', 'CatController@index');
 
 // v1/ redirect
 Route::get('/api/v1/{model}', function ($model) {

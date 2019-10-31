@@ -1,7 +1,8 @@
 
         <li class="header">Навигация</li>
 {{-- http://127.0.0.1:8000/manager --}}
-        <li class="active treeview menu-open">
+        {{-- <li class="active treeview menu-open"> --}}
+        <li class="treeview">
           <a href="/lte1/#">
             <i class="fa fa-dashboard"></i> <span>Пространства</span>
             <span class="pull-right-container">
@@ -9,26 +10,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/administrator"><i class="fa fa-circle-o"></i> Администратор </a></li>
             <li><a href="/manager"><i class="fa fa-circle-o"></i> Менджер </a></li>
+            <li><a href="/administrator"><i class="fa fa-circle-o"></i> Администратор </a></li>
             {{-- <li><a href="/mind_map"><i class="fa fa-circle-o"></i> Карта </a></li> --}}
-          </ul>
-        </li>
-
-        <li class="active treeview">
-          <a href="/lte1/#">
-            <i class="fa fa-dashboard"></i> <span>Разработка</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-
-            <li><a href="/generator_builder"><i class="fa fa-circle-o"></i> Generator </a></li>
-            <li><a href="/schema_builder"><i class="fa fa-circle-o"></i> Schema builder </a></li>
-
-            {{-- <li><a href="/mind_map"><i class="fa fa-circle-o"></i> Карта </a></li> --}}
-
           </ul>
         </li>
 
@@ -52,10 +36,12 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
+
+
           <ul class="treeview-menu">
             {{-- <li><a href="/lte1/#"><i class="fa fa-circle-o"></i> Level One</a></li> --}}
             <li class="treeview">
-              <a href="/lte1/#"><i class="fa fa-circle-o"></i> Visual
+              <a href="/lte1/#"><i class="fa fa-circle-o text-blue"></i> Visual
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -99,15 +85,19 @@
             </li>
 
             <li class="treeview">
-              <a href="/lte1/#"><i class="fa fa-circle-o"></i> Addons
+              <a href="/lte1/#"><i class="fa fa-circle-o  text-green"></i> Разработка
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
+                        {{-- <li class="active treeview menu-open"> --}}
+
               <ul class="treeview-menu">
+                <li><a href="/generator_builder"><i class="fa fa-circle-o text-orange"></i> Генераторы </a></li>
 
                 <li class="treeview">
-                  <a href="#"><i class="fa fa-pie-circle-o"></i> Debug
+                  {{-- <a href="#"><i class="fa fa-pie-circle-o"></i> Debug --}}
+                  <a href="/lte1/#"><i class="fa fa-circle-o  text-red"></i> Отладка
                     <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -127,7 +117,7 @@
         </li>
 
         <li class="header">ССЫЛКИ</li>
-        <li><a href="/docs"><i class="fa fa-book"></i> <span>Документация</span></a></li>
-        <li><a href="/direct"><i class="fa fa-circle-o text-red"></i> <span>Реклама</span></a></li>
-        <li><a href="/anal"><i class="fa fa-circle-o text-yellow"></i> <span>Аналитика</span></a></li>
-        <li><a href="/site"><i class="fa fa-circle-o text-aqua"></i> <span>Сайт</span></a></li>
+        <li><a href="/api/docs"  target="_blank"><i class="fa fa-book"></i> <span>Документация</span></a></li>
+        {{-- <li><a href="/direct"><i class="fa fa-circle-o text-red"></i> <span>Реклама</span></a></li> --}}
+        {{-- <li><a href="/anal"><i class="fa fa-circle-o text-yellow"></i> <span>Аналитика</span></a></li> --}}
+        <li><a href="/" target="_blank"><i class="fa fa-circle-o text-aqua"></i> <span>Сайт</span></a></li>

@@ -42,6 +42,8 @@
     <div class="row justify-content-center">
         {{-- <div class="col-md-12"> --}}
         <div class="col-10">
+
+            <div id="schemaInfo" style="display: none"></div>
             
           <!-- Custom Tabs -->
           <div class="nav-tabs-custom">
@@ -49,10 +51,182 @@
               <li class="active"><a href="#tab_1" data-toggle="tab">Generator</a></li>
               <li><a href="#tab_3" data-toggle="tab">Rollback</a></li>
               <li><a href="#tab_from" data-toggle="tab">From</a></li>
+              <li><a href="#tab_Views" data-toggle="tab">Views</a></li>
             </ul>
             <div class="tab-content">
+
+              <div class="tab-pane" id="tab_Views">
+
+                    <div class="col-md-12">
+                        <section class="content">
+                            
+                            <div class="box box-primary col-lg-12">
+                                <div class="box-header" style="margin-top: 10px">
+                                    <h1 class="box-title" style="font-size: 30px">Generate Views</h1>
+                                </div>
+                                <div class="box-body">
+                                    <form method="get" id="schemaView2" action="/schemaView">
+                                        <input type="hidden" name="_token" id="smToken" value="{!! csrf_token() !!}"/>
+                                        <div class="form-group col-md-4">
+                                            <label for="txtSmModelName">View Name<span class="required">*</span></label>
+                                            <input type="text" name="viewName" class="form-control" id="txtSmModelName" placeholder="Enter View Name">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="drdSmCommandType">Layouts</label>
+                                            <select name="layoutName" id="drdSmCommandType" class="form-control" style="width: 100%">
+
+                                                @foreach(glob("../resources/views/layouts/*") as $filename)
+                                                    @if (is_dir($filename))
+                                                    @else
+                                                    <option value="{{ pathinfo($filename)['filename'] }}">{{ pathinfo($filename)['filename'] }}</option>
+                                                    @endif
+                                                @endforeach
+
+                                            </select>
+                                        </div>
+                                        <div class="form-inline col-md-12" style="padding:15px 15px;text-align: right">
+                                            <div class="form-group" style="border-color: transparent;padding-left: 10px">
+                                                <button type="submit" class="btn btn-flat btn-primary btn-blue" id="btnSmGenerate">Generate
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="box box-primary col-lg-12">
+                                <div class="box-header" style="margin-top: 10px">
+                                    <h1 class="box-title" style="font-size: 30px">Scrap View</h1>
+                                </div>
+                                <div class="box-body">
+                                    <form method="get" id="scrapView2" action="/scrapView">
+                                        <input type="hidden" name="_token" id="smToken" value="{!! csrf_token() !!}"/>
+                                        <div class="form-group col-md-4">
+                                            <label for="drdSmCommandType">Views</label>
+                                            <select name="viewName" id="drdSmCommandType" class="form-control" style="width: 100%">
+
+                                                @foreach(glob("../resources/views/*.blade.php") as $filename)
+                                                    @if (is_dir($filename))
+                                                    @else
+                                                    <option value="{{ pathinfo($filename)['filename'] }}">{{ pathinfo($filename)['filename'] }}</option>
+                                                    @endif
+                                                @endforeach
+
+                                            </select>
+                                        </div>
+                                        <div class="form-inline col-md-12" style="padding:15px 15px;text-align: right">
+                                            <div class="form-group" style="border-color: transparent;padding-left: 10px">
+                                                <button type="submit" class="btn btn-flat btn-danger " id="btnSmGenerate">Remove
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        <div class="box box-primary col-lg-12">
+
+                            <div class="col-md-4">
+                                            <h3>Tables</h3>
+                                            <ul>
+                                                @foreach($dbs as $db)
+                                                  <li>{{ $db }}</li>
+                                                @endforeach
+                                            </ul>
+                            </div>
+                            
+                            <div class="col-md-4">
+
+                                
+                                            <h3>Models</h3>
+                                            <ul>
+                                                @foreach(glob("../app/models/*.php") as $filename)
+                                                    <li>
+
+                                        @if (is_dir($filename))
+                                            Dir: {{ pathinfo($filename)['filename'] }}
+                                        @else
+                                            File: {{ pathinfo($filename)['filename'] }}
+                                        @endif
+
+                                                    {{-- {{ var_dump(pathinfo($filename)) }} --}}
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+
+                                            <h3>DB migrations</h3>
+                                            <ul>
+                                                @foreach(glob("../database/migrations/*.php") as $filename)
+                                                    <li>
+                                                        @if (is_dir($filename))
+                                                            {{-- Dir: {{ pathinfo($filename)['filename'] }} --}}
+                                                        @else
+                                                            File: {{ pathinfo($filename)['filename'] }}
+                                                        @endif
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+
+                                            <h3>Controlers</h3>
+                                            <ul>
+                                                @foreach(glob("../app/Http/Controllers/*.php") as $filename)
+                                                  <li>
+                                                    {{ pathinfo($filename)['filename'] }}
+                                                  </li>
+                                                @endforeach
+                                            </ul>
+
+                            </div>
+
+                            <div class="col-md-4">
+
+                                    <h3>Layouts</h3>
+                                    <ul>
+                                    @foreach(glob("../resources/views/layouts/*") as $filename)
+                                        <li>
+                                        @if (is_dir($filename))
+                                            Dir: {{ pathinfo($filename)['filename'] }}
+                                        @else
+                                            File: {{ pathinfo($filename)['filename'] }}
+                                        @endif
+                                        </li>
+                                    @endforeach
+                                    </ul>
+
+                                    <h3>Views dir</h3>
+                                    <ul>
+                                    @foreach(glob("../resources/views/*") as $filename)
+                                        @if (is_dir($filename))
+                                            <li>
+                                                resources/views/{{ pathinfo($filename)['filename'] }}/
+                                            </li>
+                                        @else
+                                        @endif
+                                    @endforeach
+                                    @foreach(glob("../resources/views/*") as $filename)
+                                        @if (is_dir($filename))
+                                        @else
+                                            <li>
+                                                {{ pathinfo($filename)['filename'] }}
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                    </ul>
+
+
+                            </div>
+
+                        </div>
+
+
+                        </section>
+                    </div>
+
+              </div>
+
+
               <div class="tab-pane active" id="tab_1">
-                <ul>
                     <div class="col-md-12">
                         <section class="content">
                             <div id="info" style="display: none"></div>
@@ -348,14 +522,12 @@
 
                         </section>
                     </div>
-                </ul>
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="tab_from">
 
                     <div class="col-md-12">
                         <section class="content">
-                            <div id="schemaInfo" style="display: none"></div>
                             <div class="box box-primary col-lg-12">
                                 <div class="box-header" style="margin-top: 10px">
                                     <h1 class="box-title" style="font-size: 30px">Generate CRUD From Schema</h1>
@@ -831,6 +1003,94 @@
 
                             $.ajax({
                                 url: '{{ route('io_generator_builder_generate_from_file') }}',
+                                type: 'POST',
+                                data: new FormData($(this)[0]),
+                                processData: false,
+                                contentType: false,
+                                success: function (result) {
+                                    var result = JSON.parse(JSON.stringify(result));
+
+                                    $("#schemaInfo").html("");
+                                    $("#schemaInfo").append('<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>' + result.message + '</strong></div>');
+                                    $("#schemaInfo").show();
+                                    var $container = $("html,body");
+                                    var $scrollTo = $('#schemaInfo');
+                                    $container.animate({
+                                        scrollTop: $scrollTo.offset().top - $container.offset().top,
+                                        scrollLeft: 0
+                                    }, 300);
+                                    setTimeout(function () {
+                                        $('#schemaInfo').fadeOut('fast');
+                                    }, 3000);
+                                    location.reload();
+                                },
+                                error: function (result) {
+                                    var result = JSON.parse(JSON.stringify(result));
+                                    var errorMessage = '';
+                                    if (result.hasOwnProperty('responseJSON') && result.responseJSON.hasOwnProperty('message')) {
+                                        errorMessage = result.responseJSON.message;
+                                    }
+
+                                    $("#schemaInfo").html("");
+                                    $("#schemaInfo").append('<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Fail! </strong>' + errorMessage + '</div>');
+                                    $("#schemaInfo").show();
+                                    setTimeout(function () {
+                                        $('#schemaInfo').fadeOut('fast');
+                                    }, 3000);
+                                }
+                            });
+                        });
+
+
+
+                        $('#scrapView').on("submit", function (e) {
+                            e.preventDefault();
+
+                            $.ajax({
+                                url: '/scrapView',
+                                type: 'POST',
+                                data: new FormData($(this)[0]),
+                                processData: false,
+                                contentType: false,
+                                success: function (result) {
+                                    var result = JSON.parse(JSON.stringify(result));
+
+                                    $("#schemaInfo").html("");
+                                    $("#schemaInfo").append('<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>' + result.message + '</strong></div>');
+                                    $("#schemaInfo").show();
+                                    var $container = $("html,body");
+                                    var $scrollTo = $('#schemaInfo');
+                                    $container.animate({
+                                        scrollTop: $scrollTo.offset().top - $container.offset().top,
+                                        scrollLeft: 0
+                                    }, 300);
+                                    setTimeout(function () {
+                                        $('#schemaInfo').fadeOut('fast');
+                                    }, 3000);
+                                    location.reload();
+                                },
+                                error: function (result) {
+                                    var result = JSON.parse(JSON.stringify(result));
+                                    var errorMessage = '';
+                                    if (result.hasOwnProperty('responseJSON') && result.responseJSON.hasOwnProperty('message')) {
+                                        errorMessage = result.responseJSON.message;
+                                    }
+
+                                    $("#schemaInfo").html("");
+                                    $("#schemaInfo").append('<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Fail! </strong>' + errorMessage + '</div>');
+                                    $("#schemaInfo").show();
+                                    setTimeout(function () {
+                                        $('#schemaInfo').fadeOut('fast');
+                                    }, 3000);
+                                }
+                            });
+                        });
+
+                        $('#schemaView').on("submit", function (e) {
+                            e.preventDefault();
+
+                            $.ajax({
+                                url: '/schemaView',
                                 type: 'POST',
                                 data: new FormData($(this)[0]),
                                 processData: false,

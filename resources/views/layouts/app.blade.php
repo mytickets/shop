@@ -88,6 +88,7 @@
                                     <p>
                                         {!! Auth::user()->name !!}
                                         <small>Участник с  {!! Auth::user()->created_at->format('M. Y') !!}</small>
+                                        {{-- <small>{{ $session_id ?? '$session_id' }}</small> --}}
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
