@@ -30,7 +30,7 @@
                         </span>
                     </div>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                    <div class="wrap-input100">
 
                                 <input id="password" type="password" class="input100 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
@@ -47,21 +47,41 @@
                         </span>
                     </div>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                    <div class="wrap-input100"  style="padding-top: 1em;">
+
+
+                        <div class="custom-control custom-checkbox mb-3" style="text-align: center;">
+                            {{-- <input type="checkbox" class="custom-control-input" id="customCheck" name="example1"> --}}
+                            <input class="custom-control-input input100" type="checkbox" name="remember" id="remember" checked={{ old('remember') ? 'checked' : '' }}>
+                            <label class="custom-control-label" for="remember">
+                                {{ __('Remember Me') }}
+                            </label>
+                        </div>
+
+{{--                         <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+ --}}
+                        {{-- <input class="form-check-input" id="checkbox3" type="checkbox"> --}}
+
+                        {{-- <label class="form-check-label" for="checkbox3"> --}}
+                            {{-- {{ __('Remember Me') }} --}}
+                        {{-- </label> --}}
 
                                 {{-- <input id="password" type="password" class="input100 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"> --}}
-    
-
-                                <label class="input100" for="remember" style="padding-top: 1em;">
-                                    {{ __('Remember Me') }}
-                                </label>
+{{--                     <div class="form-check abc-checkbox abc-checkbox-success">
+                    </div>    
+ --}}
+                                {{-- <label class="form-check-label" for="remember" style="padding-top: 1em;"> --}}
+                                    {{-- {{ __('Remember Me') }} --}}
+                                {{-- </label> --}}
 
                         {{-- <input class="input100" type="password" name="pass" placeholder="Password"> --}}
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                                <input class="" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                        {{-- <span class="focus-input100"></span> --}}
+                        {{-- <span class="symbol-input100"> --}}
                             {{-- <i class="fa fa-lock" aria-hidden="true"></i> --}}
-                        </span>
+                        {{-- </span> --}}
                     </div>
 
 

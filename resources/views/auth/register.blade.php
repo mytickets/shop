@@ -26,7 +26,7 @@
                             {{-- <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label> --}}
 
                             <div class="col">
-                                <input id="name" type="text" class="@error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus  placeholder="{{ __('Name') }}">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus  placeholder="{{ __('Name') }}">
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">

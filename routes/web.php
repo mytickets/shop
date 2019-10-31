@@ -1,5 +1,30 @@
 <?php
 
+use Illuminate\Http\Request;
+
+// Route::get($uri, $callback);
+// Route::post($uri, $callback);
+// Route::put($uri, $callback);
+// Route::patch($uri, $callback);
+// Route::delete($uri, $callback);
+// Route::options($uri, $callback);
+
+
+
+
+// Route::get('user/{name}', function ($name) {
+//     //
+// })->where('name', '[A-Za-z]+');
+
+// Route::get('user/{id}', function ($id) {
+//     //
+// })->where('id', '[0-9]+');
+
+// Route::get('user/{id}/{name}', function ($id, $name) {
+//     //
+// })->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +39,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('hello', function () {
+    return response('Hello World', 200)
+                  ->header('Content-Type', 'text/plain');
+});
 
 
 /**
@@ -88,7 +116,107 @@ Route::get('/schema_builder', function () {
 
 Route::get('/chartjs', function () {
     return view('lte.charts.chartjs');
+});
+Route::get('/flot', function () {
+    return view('lte.charts.flot');
+});
+Route::get('/widgets', function () {
+    return view('lte.widgets');
+});
 
+Route::get('/face_builder', function () {
+    return view('addons.face_builder');
+});
+
+Route::get('/phpinfo', function () {
+    return view('addons.info.phpinfo');
+});
+
+Route::get('/session', function (Request $request) {
+    return $request->session()->getId();
 });
 
 
+Route::get('/migrate', function () {
+    // return view('welcome');
+    Artisan::call('migrate');
+});
+
+
+// v1/ redirect
+Route::get('/api/v1/{model}', function ($model) {
+    return redirect('/api/'.$model);
+});
+
+Route::post('/api/v1/{model}', function ($model) {
+    return redirect('/api/'.$model);
+});
+
+
+
+Route::get('/api/v1/{model}/{id}', function ($model, $id) {
+    return redirect('/api/'.$model.'/'.$id);
+});
+
+Route::post('/api/v1/{model}/{id}', function ($model, $id) {
+    return redirect('/api/'.$model.'/'.$id);
+});
+
+
+Route::resource('users', 'UserController');
+// Route::get('user/{name?}', function ($name = 'John') {
+//     return $name;
+// });
+// Route::resource('users', 'UserController', ['only' => [
+//     'index', 'show'
+// ]]);
+
+Route::resource('roles', 'RoleController');
+Route::resource('permissions', 'PermissionController');
+
+Route::resource('menus', 'MenuController');
+
+
+// Route::get('/cats', 'CatController@index');
+// Route::get('/cat/{id}', 'CatController@show');
+// Route::get('/cats_left', 'CatController@cats_left');
+// Route::get('/cats_left/{id}', 'CatController@cats_left');
+
+// Route::get('/products', 'ProductController@index');
+// Route::get('/product/{id}', 'ProductController@show');
+// Route::get('/product/{id}/to_cart/{qty}', 'ProductController@to_cart');
+// Route::get('/product/{id}/remote_images', 'ProductController@remote_images');
+// Route::get('/product/{product}/set_main_image/{img_id}', 'ProductController@set_main_image');
+// Route::get('/product/{id}/remote_images/{img_id}/remove_image', 'ProductController@remove_image');
+
+// // http://localhost:8000/product/1000072/remote_images
+
+// // Route::get('/product/{id}/remote_images', 'ProductController@set_main_image');
+// // $product, $img_url
+
+
+// 
+Route::get('/manager', 'ManagerController@index');
+// Route::get('/manager', function () {
+    // return view('manager');
+// });
+
+Route::get('/administrator', function () {
+    return view('administrator');
+});
+
+
+Route::get('/generator', function () {
+    return view('generator');
+});
+
+
+Route::get('/show_session', 'AppBaseController@show_session');
+// Route::get('/line_item_remove/{id}', 'LineItemController@remove');
+// Route::get('/total_cart/{id}', 'CartController@total_cart');
+// 
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
+    Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
+    // list all lfm routes here...
+});

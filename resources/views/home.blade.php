@@ -15,6 +15,7 @@
                     @endif
 
                     Вы вошли в домашнюю!
+                    {{ $session_id ?? "" }}
                 </div>
             </div>
         </div>

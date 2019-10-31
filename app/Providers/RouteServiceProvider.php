@@ -21,6 +21,10 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
+
+    // use Illuminate\Contracts\Routing\ResponseFactory;
+    // public function boot(ResponseFactory $response)    
     public function boot()
     {
         //

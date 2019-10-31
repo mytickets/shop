@@ -29,286 +29,545 @@
         .btn-blue {
             background-color: #2489C5 !important;
         }
+
+.select2-container--default .select2-selection--single {
+    height: 34px;
+}
     </style>
 
 @endsection
 @section('content')
 
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
         {{-- <div class="col-md-12"> --}}
-
-            <div class="col-md-12">
-                <section class="content">
-                    <div id="info" style="display: none"></div>
-                    <div class="box box-primary col-lg-12">
-                        <div class="box-header" style="margin-top: 10px">
-                            <h1 class="box-title" style="font-size: 30px">Generator Builder</h1>
-                        </div>
-                        <div class="box-body">
-                            <form id="form">
-                                <input type="hidden" name="_token" id="token" value="{!! csrf_token() !!}"/>
-
-                                <div class="form-group col-md-4">
-                                    <label for="txtModelName">Model Name<span class="required">*</span></label>
-                                    <input type="text" class="form-control" required id="txtModelName" placeholder="Enter name">
+        <div class="col-10">
+            
+          <!-- Custom Tabs -->
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#tab_1" data-toggle="tab">Generator</a></li>
+              <li><a href="#tab_3" data-toggle="tab">Rollback</a></li>
+              <li><a href="#tab_from" data-toggle="tab">From</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab_1">
+                <ul>
+                    <div class="col-md-12">
+                        <section class="content">
+                            <div id="info" style="display: none"></div>
+                            <div class="box box-primary col-lg-12">
+                                <div class="box-header" style="margin-top: 10px">
+                                    <h1 class="box-title" style="font-size: 30px">Generator Builder</h1>
+                                    <a href="/" class="btn btn-flat btn-default">Back</a>
+                                    <a href="/migrate" class="btn btn-flat btn-default">migrate</a>                            
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="drdCommandType">Command Type</label>
-                                    <select id="drdCommandType" class="form-control" style="width: 100%">
-                                        <option value="infyom:api_scaffold">API Scaffold Generator</option>
-                                        <option value="infyom:api">API Generator</option>
-                                        <option value="infyom:scaffold">Scaffold Generator</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="txtCustomTblName">Custom Table Name</label>
-                                    <input type="text" class="form-control" id="txtCustomTblName" placeholder="Enter table name">
-                                </div>
-                                <div class="form-group col-md-8">
-                                    <label for="txtModelName">Options</label>
+                                <div class="box-body">
+                                    <form id="form">
+                                        <input type="hidden" name="_token" id="token" value="{!! csrf_token() !!}"/>
 
-                                    <div class="form-inline form-group" style="border-color: transparent">
-                                        <div class="checkbox chk-align">
-                                            <label>
-                                                <input type="checkbox" class="flat-red" id="chkDelete"><span
-                                                        class="chk-label-margin"> Soft Delete </span>
-                                            </label>
+                                        <div class="form-group col-md-4">
+                                            <label for="txtModelName">Model Name<span class="required">*</span></label>
+                                            <input type="text" class="form-control" required id="txtModelName" placeholder="Enter name">
                                         </div>
-                                        <div class="checkbox chk-align">
-                                            <label>
-                                                <input type="checkbox" class="flat-red" id="chkSave"> <span
-                                                        class="chk-label-margin">Save Schema</span>
-                                            </label>
+                                        <div class="form-group col-md-4">
+                                            <label for="drdCommandType">Command Type</label>
+                                            <select id="drdCommandType" class="form-control" style="width: 100%">
+                                                <option value="infyom:api_scaffold">API Scaffold Generator</option>
+                                                <option value="infyom:api">API Generator</option>
+                                                <option value="infyom:scaffold">Scaffold Generator</option>
+                                            </select>
                                         </div>
-                                        <div class="checkbox chk-align" id="chSwag">
-                                            <label>
-                                                <input type="checkbox" class="flat-red" id="chkSwagger"> <span
-                                                        class="chk-label-margin">Swagger</span>
-                                            </label>
+                                        <div class="form-group col-md-4">
+                                            <label for="txtCustomTblName">Custom Table Name</label>
+                                            <input type="text" class="form-control" id="txtCustomTblName" placeholder="Enter table name">
                                         </div>
-                                        <div class="checkbox chk-align" id="chTest">
-                                            <label>
-                                                <input type="checkbox" class="flat-red" id="chkTestCases"> <span
-                                                        class="chk-label-margin">Test Cases</span>
-                                            </label>
-                                        </div>
-                                        <div class="checkbox chk-align" id="chDataTable">
-                                            <label>
-                                                <input type="checkbox" class="flat-red" id="chkDataTable"> <span
-                                                        class="chk-label-margin">Datatables</span>
-                                            </label>
-                                        </div>
-                                        <div class="checkbox chk-align" id="chMigrate">
-                                            <label>
-                                                <input type="checkbox" class="flat-red" id="chkMigrate"> <span
-                                                        class="chk-label-margin">Migrate</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
+                                        <div class="form-group col-md-8">
+                                            <label for="txtModelName">Options</label>
 
-                                <div class="form-group col-md-3">
-                                    <label for="txtPrefix">Prefix</label>
-                                    <input type="text" class="form-control" id="txtPrefix" placeholder="Enter prefix">
-                                </div>
-
-                                <div class="form-group col-md-1">
-                                    <label for="txtPaginate">Paginate</label>
-                                    <input type="number" class="form-control" value="10" id="txtPaginate" placeholder="">
-                                </div>
-
-                                <div class="form-group col-md-12" style="margin-top: 7px">
-                                    <div class="form-control" style="border-color: transparent;padding-left: 0px">
-                                        <label style="font-size: 18px">Fields</label>
-                                    </div>
-                                </div>
-
-                                <div class="table-responsive col-md-12">
-                                    <table class="table table-striped table-bordered" id="table">
-                                        <thead class="no-border">
-                                        <tr>
-                                            <th>Field Name</th>
-                                            <th>DB Type</th>
-                                            <th>Validations</th>
-                                            <th>Html Type</th>
-                                            <th style="width: 68px">Primary</th>
-                                            <th style="width: 80px">Is Foreign</th>
-                                            <th style="width: 87px">Searchable</th>
-                                            <th style="width: 63px">Fillable</th>
-                                            <th style="width: 65px">In Form</th>
-                                            <th style="width: 67px">In Index</th>
-                                            <th></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="container" class="no-border-x no-border-y ui-sortable">
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div class="form-inline col-md-12" style="padding-top: 10px">
-                                    <div class="form-group chk-align" style="border-color: transparent;">
-                                        <button type="button" class="btn btn-success btn-flat btn-green" id="btnAdd"> Add Field
-                                        </button>
-                                    </div>
-                                    <div class="form-group chk-align" style="border-color: transparent;">
-                                        <button type="button" class="btn btn-success btn-flat btn-green" id="btnPrimary"> Add
-                                            Primary
-                                        </button>
-                                    </div>
-                                    <div class="form-group chk-align" style="border-color: transparent;">
-                                        <button type="button" class="btn btn-success btn-flat btn-green" id="btnTimeStamps"> Add
-                                            Timestamps
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="table-responsive col-md-12" id="relationShip" style="margin-top:35px;display: none">
-                                    <table class="table table-striped table-bordered" id="table">
-                                        <thead class="no-border">
-                                        <tr>
-                                            <th>Relation Type</th>
-                                            <th>Foreign Model<span class="required">*</span></th>
-                                            <th>Foreign Key</th>
-                                            <th>Local Key</th>
-                                            <th></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="rsContainer" class="no-border-x no-border-y ui-sortable">
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="form-inline col-md-12" style="padding-top: 10px">
-                                    <div class="form-group" style="border-color: transparent;">
-                                        <button type="button" class="btn btn-success btn-flat btn-green" id="btnRelationShip"> Add
-                                            RelationShip
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="form-inline col-md-12" style="padding:15px 15px;text-align: right">
-                                    <div class="form-group" style="border-color: transparent;padding-left: 10px">
-                                        <button type="submit" class="btn btn-flat btn-primary btn-blue" id="btnGenerate">Generate
-                                        </button>
-                                    </div>
-                                    <div class="form-group" style="border-color: transparent;padding-left: 10px">
-                                        <button type="button" class="btn btn-default btn-flat" id="btnReset" data-toggle="modal"
-                                                data-target="#confirm-delete"> Reset
-                                        </button>
-                                    </div>
-                                </div>
-
-
-                                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog"
-                                     aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-hidden="true">&times;</button>
-                                                <h4 class="modal-title" id="myModalLabel">Confirm Reset</h4>
+                                            <div class="form-inline form-group" style="border-color: transparent">
+                                                <div class="checkbox chk-align">
+                                                    <label>
+                                                        <input type="checkbox" class="flat-red" id="chkDelete"><span
+                                                                class="chk-label-margin"> Soft Delete </span>
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox chk-align">
+                                                    <label>
+                                                        <input type="checkbox" class="flat-red" id="chkSave"> <span
+                                                                class="chk-label-margin">Save Schema</span>
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox chk-align" id="chSwag">
+                                                    <label>
+                                                        <input type="checkbox" class="flat-red" id="chkSwagger"> <span
+                                                                class="chk-label-margin">Swagger</span>
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox chk-align" id="chTest">
+                                                    <label>
+                                                        <input type="checkbox" class="flat-red" id="chkTestCases"> <span
+                                                                class="chk-label-margin">Test Cases</span>
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox chk-align" id="chDataTable">
+                                                    <label>
+                                                        <input type="checkbox" class="flat-red" id="chkDataTable"> <span
+                                                                class="chk-label-margin">Datatables</span>
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox chk-align" id="chMigrate">
+                                                    <label>
+                                                        <input type="checkbox" class="flat-red" id="chkMigrate"> <span
+                                                                class="chk-label-margin">Migrate</span>
+                                                    </label>
+                                                </div>
                                             </div>
+                                        </div>
 
-                                            <div class="modal-body">
-                                                <p style="font-size: 16px">This will reset all of your fields. Do you want to
-                                                    proceed?</p>
+                                        <div class="form-group col-md-3">
+                                            <label for="txtPrefix">Prefix</label>
+                                            <input type="text" class="form-control" id="txtPrefix" placeholder="Enter prefix">
+                                        </div>
 
-                                                <p class="debug-url"></p>
+                                        <div class="form-group col-md-1">
+                                            <label for="txtPaginate">Paginate</label>
+                                            <input type="number" class="form-control" value="10" id="txtPaginate" placeholder="">
+                                        </div>
+
+                                        <div class="form-group col-md-12" style="margin-top: 7px">
+                                            <div class="form-control" style="border-color: transparent;padding-left: 0px">
+                                                <label style="font-size: 18px">Fields</label>
                                             </div>
+                                        </div>
 
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-flat btn-default" data-dismiss="modal">No
+                                        <div class="table-responsive col-md-12">
+                                            <table class="table table-striped table-bordered" id="table">
+                                                <thead class="no-border">
+                                                <tr>
+                                                    <th>Field Name</th>
+                                                    <th>DB Type</th>
+                                                    <th>Validations</th>
+                                                    <th>Html Type</th>
+                                                    <th style="width: 68px">Primary</th>
+                                                    <th style="width: 80px">Is Foreign</th>
+                                                    <th style="width: 87px">Searchable</th>
+                                                    <th style="width: 63px">Fillable</th>
+                                                    <th style="width: 65px">In Form</th>
+                                                    <th style="width: 67px">In Index</th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="container" class="no-border-x no-border-y ui-sortable">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="form-inline col-md-12" style="padding-top: 10px">
+                                            <div class="form-group chk-align" style="border-color: transparent;">
+                                                <button type="button" class="btn btn-success btn-flat btn-green" id="btnAdd"> Add Field
                                                 </button>
-                                                <a id="btnModelReset" class="btn btn-flat btn-danger btn-ok" data-dismiss="modal">Yes</a>
+                                            </div>
+                                            <div class="form-group chk-align" style="border-color: transparent;">
+                                                <button type="button" class="btn btn-success btn-flat btn-green" id="btnPrimary"> Add
+                                                    Primary
+                                                </button>
+                                            </div>
+                                            <div class="form-group chk-align" style="border-color: transparent;">
+                                                <button type="button" class="btn btn-success btn-flat btn-green" id="btnTimeStamps"> Add
+                                                    Timestamps
+                                                </button>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
 
-                            </form>
+                                        <div class="table-responsive col-md-12" id="relationShip" style="margin-top:35px;display: none">
+                                            <table class="table table-striped table-bordered" id="table">
+                                                <thead class="no-border">
+                                                <tr>
+                                                    <th>Relation Type</th>
+                                                    <th>Foreign Model<span class="required">*</span></th>
+                                                    <th>Foreign Key</th>
+                                                    <th>Local Key</th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="rsContainer" class="no-border-x no-border-y ui-sortable">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="form-inline col-md-12" style="padding-top: 10px">
+                                            <div class="form-group" style="border-color: transparent;">
+                                                <button type="button" class="btn btn-success btn-flat btn-green" id="btnRelationShip"> Add
+                                                    RelationShip
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-inline col-md-12" style="padding:15px 15px;text-align: right">
+                                            <div class="form-group" style="border-color: transparent;padding-left: 10px">
+                                                <button type="submit" class="btn btn-flat btn-primary btn-blue" id="btnGenerate">Generate
+                                                </button>
+                                            </div>
+                                            <div class="form-group" style="border-color: transparent;padding-left: 10px">
+                                                <button type="button" class="btn btn-default btn-flat" id="btnReset" data-toggle="modal"
+                                                        data-target="#confirm-delete"> Reset
+                                                </button>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog"
+                                             aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-hidden="true">&times;</button>
+                                                        <h4 class="modal-title" id="myModalLabel">Confirm Reset</h4>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <p style="font-size: 16px">This will reset all of your fields. Do you want to
+                                                            proceed?</p>
+
+                                                        <p class="debug-url"></p>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-flat btn-default" data-dismiss="modal">No
+                                                        </button>
+                                                        <a id="btnModelReset" class="btn btn-flat btn-danger btn-ok" data-dismiss="modal">Yes</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                            </div>
+
+
+                        <div class="box box-primary col-lg-12">
+
+                            <div class="col-md-4">
+                                            <h3>Tables</h3>
+                                            <ul>
+                                                @foreach($dbs as $db)
+                                                  <li>{{ $db }}</li>
+                                                @endforeach
+                                            </ul>
+                            </div>
+                            
+                            <div class="col-md-4">
+
+                                
+                                            <h3>Models</h3>
+                                            <ul>
+                                                @foreach(glob("../app/models/*.php") as $filename)
+                                                    <li>
+
+                                        @if (is_dir($filename))
+                                            Dir: {{ pathinfo($filename)['filename'] }}
+                                        @else
+                                            File: {{ pathinfo($filename)['filename'] }}
+                                        @endif
+
+                                                    {{-- {{ var_dump(pathinfo($filename)) }} --}}
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+
+                                            <h3>DB migrations</h3>
+                                            <ul>
+                                                @foreach(glob("../database/migrations/*.php") as $filename)
+                                                    <li>
+                                                        @if (is_dir($filename))
+                                                            {{-- Dir: {{ pathinfo($filename)['filename'] }} --}}
+                                                        @else
+                                                            File: {{ pathinfo($filename)['filename'] }}
+                                                        @endif
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+
+                                            <h3>Controlers</h3>
+                                            <ul>
+                                                @foreach(glob("../app/Http/Controllers/*.php") as $filename)
+                                                  <li>
+                                                    {{ pathinfo($filename)['filename'] }}
+                                                  </li>
+                                                @endforeach
+                                            </ul>
+
+                            </div>
+
+                            <div class="col-md-4">
+
+                                    <h3>Layouts</h3>
+                                    <ul>
+                                    @foreach(glob("../resources/views/layouts/*") as $filename)
+                                        <li>
+                                        @if (is_dir($filename))
+                                            Dir: {{ pathinfo($filename)['filename'] }}
+                                        @else
+                                            File: {{ pathinfo($filename)['filename'] }}
+                                        @endif
+                                        </li>
+                                    @endforeach
+                                    </ul>
+
+                                    <h3>Views dir</h3>
+                                    <ul>
+                                    @foreach(glob("../resources/views/*") as $filename)
+                                        @if (is_dir($filename))
+                                            <li>
+                                                resources/views/{{ pathinfo($filename)['filename'] }}/
+                                            </li>
+                                        @else
+                                        @endif
+                                    @endforeach
+                                    @foreach(glob("../resources/views/*") as $filename)
+                                        @if (is_dir($filename))
+                                        @else
+                                            <li>
+                                                {{ pathinfo($filename)['filename'] }}
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                    </ul>
+
+
+                            </div>
 
                         </div>
-                    </div>
-                </section>
-            </div>
-            <div class="col-md-12">
-                <section class="content">
-                    <div id="rollbackInfo" style="display: none"></div>
-                    <div class="box box-primary col-lg-12">
-                        <div class="box-header" style="margin-top: 10px">
-                            <h1 class="box-title" style="font-size: 30px">Rollback</h1>
-                        </div>
-                        <div class="box-body">
-                            <form id="rollbackForm">
-                                <input type="hidden" name="_token" id="rbToken" value="{!! csrf_token() !!}"/>
 
-                                <div class="form-group col-md-4">
-                                    <label for="txtRBModelName">Model Name<span class="required">*</span></label>
-                                    <input type="text" class="form-control" required id="txtRBModelName" placeholder="Enter name">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="drdRBCommandType">Command Type</label>
-                                    <select id="drdRBCommandType" class="form-control" style="width: 100%">
-                                        <option value="api_scaffold">API Scaffold Generator</option>
-                                        <option value="api">API Generator</option>
-                                        <option value="scaffold">Scaffold Generator</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="txtRBPrefix">Prefix</label>
-                                    <input type="text" class="form-control" id="txtRBPrefix" placeholder="Enter prefix">
-                                </div>
-                                <div class="form-inline col-md-12" style="padding:15px 15px;text-align: right">
-                                    <div class="form-group" style="border-color: transparent;padding-left: 10px">
-                                        <button type="submit" class="btn btn-flat btn-primary btn-blue" id="btnRollback">Rollback
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+
+                        </section>
                     </div>
-                </section>
-            </div>
-            <div class="col-md-12">
-                <section class="content">
-                    <div id="schemaInfo" style="display: none"></div>
-                    <div class="box box-primary col-lg-12">
-                        <div class="box-header" style="margin-top: 10px">
-                            <h1 class="box-title" style="font-size: 30px">Generate CRUD From Schema</h1>
-                        </div>
-                        <div class="box-body">
-                            <form method="post" id="schemaForm" enctype="multipart/form-data">
-                                <input type="hidden" name="_token" id="smToken" value="{!! csrf_token() !!}"/>
-                                <div class="form-group col-md-4">
-                                    <label for="txtSmModelName">Model Name<span class="required">*</span></label>
-                                    <input type="text" name="modelName" class="form-control" id="txtSmModelName" placeholder="Enter Model Name">
+                </ul>
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_from">
+
+                    <div class="col-md-12">
+                        <section class="content">
+                            <div id="schemaInfo" style="display: none"></div>
+                            <div class="box box-primary col-lg-12">
+                                <div class="box-header" style="margin-top: 10px">
+                                    <h1 class="box-title" style="font-size: 30px">Generate CRUD From Schema</h1>
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="schemaFile">Schema File<span class="required">*</span></label>
-                                    <input type="file" name="schemaFile" class="form-control" required id="schemaFile">
+                                <div class="box-body">
+                                    <form method="post" id="schemaForm" enctype="multipart/form-data">
+                                        <input type="hidden" name="_token" id="smToken" value="{!! csrf_token() !!}"/>
+                                        <div class="form-group col-md-4">
+                                            <label for="txtSmModelName">Model Name<span class="required">*</span></label>
+                                            <input type="text" name="modelName" class="form-control" id="txtSmModelName" placeholder="Enter Model Name">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="schemaFile">Schema File<span class="required">*</span></label>
+                                            <input type="file" name="schemaFile" class="form-control" required id="schemaFile">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="drdSmCommandType">Command Type</label>
+                                            <select name="commandType" id="drdSmCommandType" class="form-control" style="width: 100%">
+                                                <option value="infyom:api_scaffold">API Scaffold Generator</option>
+                                                <option value="infyom:api">API Generator</option>
+                                                <option value="infyom:scaffold">Scaffold Generator</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-inline col-md-12" style="padding:15px 15px;text-align: right">
+                                            <div class="form-group" style="border-color: transparent;padding-left: 10px">
+                                                <button type="submit" class="btn btn-flat btn-primary btn-blue" id="btnSmGenerate">Generate
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="drdSmCommandType">Command Type</label>
-                                    <select name="commandType" id="drdSmCommandType" class="form-control" style="width: 100%">
-                                        <option value="infyom:api_scaffold">API Scaffold Generator</option>
-                                        <option value="infyom:api">API Generator</option>
-                                        <option value="infyom:scaffold">Scaffold Generator</option>
-                                    </select>
-                                </div>
-                                <div class="form-inline col-md-12" style="padding:15px 15px;text-align: right">
-                                    <div class="form-group" style="border-color: transparent;padding-left: 10px">
-                                        <button type="submit" class="btn btn-flat btn-primary btn-blue" id="btnSmGenerate">Generate
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+
+                            <div class="box box-primary col-md-4">
+                            <h3>model_schemas</h3>
+                            <ul>
+                                @foreach(glob("../resources/model_schemas/*") as $filename)
+                                    <li>
+                                        <a href="#">
+                                            {{ pathinfo($filename)['filename'] }}.{{ pathinfo($filename)['extension'] }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                            </div>
+                            <div class="box box-primary col-md-4">
+                            <h3>models</h3>
+                            <ul>
+                                @foreach(glob("../app/models/*.php") as $filename)
+                                    <li>
+                                        {{ pathinfo($filename)['filename'] }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                            </div>
+
+
+                        </section>
                     </div>
-                </section>
+
+              </div>
+
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_3">
+                <div class="col-md-12">
+                    <section class="content">
+                        <div id="rollbackInfo" style="display: none"></div>
+                        <div class="box box-primary col-lg-12">
+                            <div class="box-header" style="margin-top: 10px">
+                                <h1 class="box-title" style="font-size: 30px">Rollback</h1>
+                            </div>
+                            <div class="box-body">
+                                <form id="rollbackForm">
+                                    <input type="hidden" name="_token" id="rbToken" value="{!! csrf_token() !!}"/>
+
+                                    <div class="form-group col-md-4">
+                                        <label for="txtRBModelName">Model Name<span class="required">*</span></label>
+                                        <input type="text" class="form-control" required id="txtRBModelName" placeholder="Enter name">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="drdRBCommandType">Command Type</label>
+                                        <select id="drdRBCommandType" class="form-control" style="width: 100%">
+                                            <option value="api_scaffold">API Scaffold Generator</option>
+                                            <option value="api">API Generator</option>
+                                            <option value="scaffold">Scaffold Generator</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="txtRBPrefix">Prefix</label>
+                                        <input type="text" class="form-control" id="txtRBPrefix" placeholder="Enter prefix">
+                                    </div>
+                                    <div class="form-inline col-md-12" style="padding:15px 15px;text-align: right">
+                                        <div class="form-group" style="border-color: transparent;padding-left: 10px">
+                                            <button type="submit" class="btn btn-flat btn-primary btn-blue" id="btnRollback">Rollback
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <hr>
+
+                            </div>
+                        </div>
+
+
+                        <div class="box box-primary col-lg-12">
+
+                            <div class="col-md-4">
+                                            <h3>Tables</h3>
+                                            <ul>
+                                                @foreach($dbs as $db)
+                                                  <li>{{ $db }}</li>
+                                                @endforeach
+                                            </ul>
+                            </div>
+                            
+                            <div class="col-md-4">
+
+                                
+                                            <h3>Models</h3>
+                                            <ul>
+                                                @foreach(glob("../app/models/*.php") as $filename)
+                                                    <li>
+
+                                        @if (is_dir($filename))
+                                            Dir: {{ pathinfo($filename)['filename'] }}
+                                        @else
+                                            File: {{ pathinfo($filename)['filename'] }}
+                                        @endif
+
+                                                    {{-- {{ var_dump(pathinfo($filename)) }} --}}
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+
+                                            <h3>DB migrations</h3>
+                                            <ul>
+                                                @foreach(glob("../database/migrations/*.php") as $filename)
+                                                    <li>
+                                                        @if (is_dir($filename))
+                                                            {{-- Dir: {{ pathinfo($filename)['filename'] }} --}}
+                                                        @else
+                                                            File: {{ pathinfo($filename)['filename'] }}
+                                                        @endif
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+
+                                            <h3>Controlers</h3>
+                                            <ul>
+                                                @foreach(glob("../app/Http/Controllers/*.php") as $filename)
+                                                  <li>
+                                                    {{ pathinfo($filename)['filename'] }}
+                                                  </li>
+                                                @endforeach
+                                            </ul>
+
+                            </div>
+
+                            <div class="col-md-4">
+
+                                    <h3>Layouts</h3>
+                                    <ul>
+                                    @foreach(glob("../resources/views/layouts/*") as $filename)
+                                        <li>
+                                        @if (is_dir($filename))
+                                            Dir: {{ pathinfo($filename)['filename'] }}
+                                        @else
+                                            File: {{ pathinfo($filename)['filename'] }}
+                                        @endif
+                                        </li>
+                                    @endforeach
+                                    </ul>
+
+                                    <h3>Views dir</h3>
+                                    <ul>
+                                    @foreach(glob("../resources/views/*") as $filename)
+                                        @if (is_dir($filename))
+                                            <li>
+                                                resources/views/{{ pathinfo($filename)['filename'] }}/
+                                            </li>
+                                        @else
+                                        @endif
+                                    @endforeach
+                                    @foreach(glob("../resources/views/*") as $filename)
+                                        @if (is_dir($filename))
+                                        @else
+                                            <li>
+                                                {{ pathinfo($filename)['filename'] }}
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                    </ul>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </section>
+
+                </div>
+                <div class="tab-pane" id="tab_4">
+                </div>
+              </div>
+              <!-- /.tab-pane -->
             </div>
+            <!-- /.tab-content -->
+          </div>
+          <!-- nav-tabs-custom -->
+
+        </div>
 
 
         {{-- </div> --}}

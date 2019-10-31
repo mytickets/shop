@@ -6,8 +6,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+// laravel-permission
+use Spatie\Permission\Traits\HasRoles;
+
 class User extends Authenticatable
 {
+    // laravel-permission
+    use HasRoles;
     use Notifiable;
 
     /**

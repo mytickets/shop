@@ -2,6 +2,9 @@
 
 namespace App\Http;
 
+// HTTP-ядро наследует класс Illuminate\Foundation\Http\Kernel, который определяет массив загрузчиков bootstrappers,
+// которые будут запущены перед выполнением запроса. Эти загрузчики настраивают обработку ошибок, ведение журналов,
+// определяют среду приложения и выполняют другие задачи, которые надо выполнить перед самой обработкой запроса.
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel

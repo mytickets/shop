@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://127.0.0.1:8000'),
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -132,6 +132,10 @@ return [
     | request to your application. Feel free to add your own services to
     | this array to grant expanded functionality to your applications.
     |
+        Сервис-провайдеры
+        Все сервис-провайдеры настраиваются в конфиге config/app.php массива providers.
+        Сначала будет вызван метод register для всех сервис-провайдеров,
+        а когда все они будут зарегистрированы, будет вызван метод boot.    
     */
 
     'providers' => [
@@ -173,10 +177,23 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
         \InfyOm\GeneratorBuilder\GeneratorBuilderServiceProvider::class, 
 
+        // composer require spatie/laravel-permission
+        Spatie\Permission\PermissionServiceProvider::class,
+
+        // infyomlabs
+        Collective\Html\HtmlServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        \InfyOm\Generator\InfyOmGeneratorServiceProvider::class,
+        \InfyOm\AdminLTETemplates\AdminLTETemplatesServiceProvider::class, 
+
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*
@@ -232,6 +249,8 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Flash'     => Laracasts\Flash\Flash::class,
+
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 
