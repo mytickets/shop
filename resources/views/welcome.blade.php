@@ -109,12 +109,12 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Домой</a>
+                        <a href="{{ url('/home') }}"  style="color: white;">Домой</a>
                     @else
-                        <a href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a style="color: white;" href="{{ route('login') }}">{{ __('Login') }}</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a style="color: white;" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     @endauth
                 </div>
@@ -122,7 +122,9 @@
 
 
       </section>
-      <section id="french"><span>Bonjour</span></section>
+      <section id="french">
+        <span style="font-size: 1em;">{{ $session_id ?? "" }} {{ $session_id2 ?? "" }}</span> 
+      </section>
       <section id="spanish"><span>Hola</span></section>
       <section id="hindi"><span>Namaste</span></section>
       <section id="mandarin"><span>你好</span></section>

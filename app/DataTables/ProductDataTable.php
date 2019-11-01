@@ -65,14 +65,10 @@ class ProductDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'ident',
             'name',
             'desc',
-            'image',
-            'xml_name',
             'xml_cat',
             'cat_id',
-            'remote_images',
             'price_amount'
         ];
     }

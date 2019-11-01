@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
+use Illuminate\Http\UploadedFile;
+// model_controller.stub
+
 class $MODEL_NAME$Controller extends AppBaseController
 {
     /**
@@ -48,11 +53,16 @@ class $MODEL_NAME$Controller extends AppBaseController
     public function store(Create$MODEL_NAME$Request $request)
     {
         $input = $request->all();
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/$MODEL_NAME_PLURAL_SNAKE$');
+            $publicPath = \Storage::url( $path );
+            $input['image'] = $publicPath;
+        }
 
         /** @var $MODEL_NAME$ $$MODEL_NAME_CAMEL$ */
         $$MODEL_NAME_CAMEL$ = $MODEL_NAME$::create($input);
 
-        Flash::success('$MODEL_NAME_HUMAN$ saved successfully.');
+        Flash::success('$MODEL_NAME_HUMAN$ успешно сохранен.');
 
         return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
     }
@@ -118,7 +128,14 @@ class $MODEL_NAME$Controller extends AppBaseController
             return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
         }
 
-        $$MODEL_NAME_CAMEL$->fill($request->all());
+        $input = $request->all();
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/$MODEL_NAME_PLURAL_SNAKE$');
+            $publicPath = \Storage::url( $path );
+            $input['image'] = $publicPath;
+        }
+
+        $$MODEL_NAME_CAMEL$->fill($input);
         $$MODEL_NAME_CAMEL$->save();
 
         Flash::success('$MODEL_NAME_HUMAN$ updated successfully.');
@@ -145,6 +162,9 @@ class $MODEL_NAME$Controller extends AppBaseController
 
             return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
         }
+
+        // TODO Удаляем файл
+        unlink( getcwd().$$MODEL_NAME_CAMEL$['image'] );
 
         $$MODEL_NAME_CAMEL$->delete();
 

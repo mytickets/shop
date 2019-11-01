@@ -20,7 +20,7 @@ class ImportCat extends Command {
         // exec('wget --secure-protocol=TLSv1 --no-check-certificate --header="Content-Type: text/xml" --http-user=18 --http-password=18 --post-file=post_cats.xml -O public\storage\data_cats.xml -q https://46.39.29.2:2244/rk7api/v0/xmlinterface.xml');
 
         echo "Import Cats: ";
-        // Cat::truncate();
+        Cat::truncate();
 
         $data_cats = Storage::get('public\data_cats.xml');
         $data_cats_json1 = json_encode(  simplexml_load_string($data_cats) );
@@ -48,7 +48,7 @@ class ImportCat extends Command {
                     $row->update(array('ident' => $item['@attributes']['Ident'], 'xml_name' => $item['@attributes']['Name'], "parent_id" => (int) $item['@attributes']['MainParentIdent'] ));
                     echo "~";
                 } else {
-                    Cat::create(array('id' => $item['@attributes']['Ident'], 'name' => $item['@attributes']['Name'], 'ident' => $item['@attributes']['Ident'], 'image'=> $arrXX[$randIndex2[0]], 'xml_name' => $item['@attributes']['Name'], "parent_id" => (int) $item['@attributes']['MainParentIdent'] ));
+                    Cat::create(array('id' => $item['@attributes']['Ident'], 'name' => $item['@attributes']['Name'], 'ident' => $item['@attributes']['Ident'], 'image'=> '/'.$arrXX[$randIndex2[0]], 'xml_name' => $item['@attributes']['Name'], "parent_id" => (int) $item['@attributes']['MainParentIdent'] ));
                     echo "+";
                     // echo "=";
                 }

@@ -46,7 +46,7 @@ class ImportPrice extends Command {
 
                                 // echo $p->name;
 
-                                $p->price = $itemp['@attributes']['Value'];
+                                // $p->price = $itemp['@attributes']['Value'];
                                 $p->price_amount = $itemp['@attributes']['Value']/100;
 
                                 // echo $itemp['@attributes']['Value'];

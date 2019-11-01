@@ -16,13 +16,21 @@
 
 
 
+
+
+
+
+
+
+
 <li class="{{ Request::is('cats*') ? 'active' : '' }}">
     <a href="{!! route('cats.index') !!}"><i class="fa fa-edit"></i><span>Cats</span></a>
 </li>
 
+
+
+
 <li class="{{ Request::is('products*') ? 'active' : '' }}">
     <a href="{!! route('products.index') !!}"><i class="fa fa-edit"></i><span>Products</span></a>
 </li>
-
-
 

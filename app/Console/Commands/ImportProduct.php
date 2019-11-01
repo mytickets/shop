@@ -19,7 +19,7 @@ class ImportProduct extends Command {
         $data_items = Storage::get('public\data_items.xml');
 // Items
         echo "Import Items: ";
-        // Product::truncate();
+        Product::truncate();
 
         $xml3 = simplexml_load_string($data_items);
         $json3 = json_encode($xml3);
@@ -35,14 +35,30 @@ class ImportProduct extends Command {
             $arrX = array("/uploads/product-chicken-wings.jpg", "/uploads/product-burger.jpg", "/uploads/product-chicken-burger.jpg", "/uploads/product-sushi.jpg", "/uploads/product-pizza.jpg" );
             $randIndex = array_rand($arrX, 2);
 //     // FIND
-            $row = Product::where('ident' , '=', $item['@attributes']['Ident'])->first();
-            if ($row) {
-                $row->update( array('ident' => $item['@attributes']['Ident'], 'xml_name' => $item['@attributes']['Name'], "cat_id" => (int) $item['@attributes']['MainParentIdent'], 'xml_cat' => $item['@attributes']['CategPath'] ) );
-                echo "~";
-            } else {
-                $row = Product::create( array('id' => $item['@attributes']['Ident'], 'name' => $item['@attributes']['Name'], 'ident' => $item['@attributes']['Ident'], 'xml_name' => $item['@attributes']['Name'], "cat_id" => (int) $item['@attributes']['MainParentIdent'], 'xml_cat' => $item['@attributes']['CategPath'], 'image'=> $arrX[$randIndex[0]] ) );
-                echo "+";
-            }
+
+
+
+            $row = Product::create( array('id' => $item['@attributes']['Ident'], 'name' => $item['@attributes']['Name'], 'ident' => $item['@attributes']['Ident'], 'xml_name' => $item['@attributes']['Name'], "cat_id" => (int) $item['@attributes']['MainParentIdent'], 'xml_cat' => $item['@attributes']['CategPath'], 'image'=> $arrX[$randIndex[0]] ) );
+            echo "+";
+
+
+            // $row = Product::where('ident' , '=', $item['@attributes']['Ident'])->first();
+            // if ($row) {
+            //     $row->update( array('ident' => $item['@attributes']['Ident'], 'xml_name' => $item['@attributes']['Name'], "cat_id" => (int) $item['@attributes']['MainParentIdent'], 'xml_cat' => $item['@attributes']['CategPath'] ) );
+            //     echo "~";
+            // } else {
+            //     $row = Product::create( array('id' => $item['@attributes']['Ident'], 'name' => $item['@attributes']['Name'], 'ident' => $item['@attributes']['Ident'], 'xml_name' => $item['@attributes']['Name'], "cat_id" => (int) $item['@attributes']['MainParentIdent'], 'xml_cat' => $item['@attributes']['CategPath'], 'image'=> $arrX[$randIndex[0]] ) );
+            //     echo "+";
+            // }
+
+
+
+
+
+
+
+
+
             // $row->save();
 //             unset($row);
 //             // echo $arrX[$randIndex[0]];

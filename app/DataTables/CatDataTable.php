@@ -65,13 +65,12 @@ class CatDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            'ident',
             'name',
-            'desc',
             'image',
             'xml_name',
-            'menu',
             'parent_id',
-            'ident'
+            'menu'
         ];
     }
 

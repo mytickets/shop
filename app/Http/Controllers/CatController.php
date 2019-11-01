@@ -11,6 +11,11 @@ use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
 
+use Illuminate\Support\Facades\Storage;
+
+use Illuminate\Http\File;
+use Illuminate\Http\UploadedFile;
+
 class CatController extends AppBaseController
 {
     /** @var  CatRepository */
@@ -52,10 +57,15 @@ class CatController extends AppBaseController
     public function store(CreateCatRequest $request)
     {
         $input = $request->all();
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/cats');
+            $publicPath = \Storage::url( $path );
+            $input['image'] = $publicPath;
+        }
 
         $cat = $this->catRepository->create($input);
 
-        Flash::success('Cat saved successfully.');
+        Flash::success('Cat успешно сохранен.');
 
         return redirect(route('cats.index'));
     }
@@ -118,7 +128,14 @@ class CatController extends AppBaseController
             return redirect(route('cats.index'));
         }
 
-        $cat = $this->catRepository->update($request->all(), $id);
+        $input = $request->all();
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/cats');
+            $publicPath = \Storage::url( $path );
+            $input['image'] = $publicPath;
+        }
+
+        $cat = $this->catRepository->update($input, $id);
 
         Flash::success('Cat updated successfully.');
 
@@ -141,6 +158,8 @@ class CatController extends AppBaseController
 
             return redirect(route('cats.index'));
         }
+
+        unlink( getcwd().$cat['image'] );
 
         $this->catRepository->delete($id);
 

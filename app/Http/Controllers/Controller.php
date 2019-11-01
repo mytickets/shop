@@ -13,14 +13,4 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-	public function boot(Request $request)
-	{
-
-	    // $this->middleware(function ($request, $next) {
-	    //     return $next($request);
-	    // });
-
-	}
-
-
 }

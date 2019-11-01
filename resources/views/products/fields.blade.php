@@ -4,12 +4,6 @@
     <a href="{!! route('products.index') !!}" class="btn btn-default">Отмена</a>
 </div>
 
-<!-- Ident Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('ident', 'Ident:') !!}
-    {!! Form::text('ident', null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Name Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('name', 'Name:') !!}
@@ -25,8 +19,9 @@
 <!-- Image Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('image', 'Image:') !!}
-    {!! Form::text('image', null, ['class' => 'form-control']) !!}
+    {!! Form::file('image') !!}
 </div>
+<div class="clearfix"></div>
 
 <!-- Xml Name Field -->
 <div class="form-group col-sm-6">
@@ -43,7 +38,7 @@
 <!-- Cat Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('cat_id', 'Cat Id:') !!}
-    {!! Form::number('cat_id', null, ['class' => 'form-control']) !!}
+    {!! Form::text('cat_id', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Remote Images Field -->

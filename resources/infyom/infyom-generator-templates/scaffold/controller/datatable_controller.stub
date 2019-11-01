@@ -11,6 +11,11 @@ use Flash;
 use $NAMESPACE_APP$\Http\Controllers\AppBaseController;
 use Response;
 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
+use Illuminate\Http\UploadedFile;
+// datatable_controller.stub
+
 class $MODEL_NAME$Controller extends AppBaseController
 {
     /** @var  $MODEL_NAME$Repository */
@@ -52,10 +57,15 @@ class $MODEL_NAME$Controller extends AppBaseController
     public function store(Create$MODEL_NAME$Request $request)
     {
         $input = $request->all();
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/$MODEL_NAME_PLURAL_SNAKE$');
+            $publicPath = \Storage::url( $path );
+            $input['image'] = $publicPath;
+        }
 
         $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->create($input);
 
-        Flash::success('$MODEL_NAME_HUMAN$ saved successfully.');
+        Flash::success('$MODEL_NAME_HUMAN$ успешно сохранен.');
 
         return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
     }
@@ -118,7 +128,14 @@ class $MODEL_NAME$Controller extends AppBaseController
             return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
         }
 
-        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->update($request->all(), $id);
+        $input = $request->all();
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/$MODEL_NAME_PLURAL_SNAKE$');
+            $publicPath = \Storage::url( $path );
+            $input['image'] = $publicPath;
+        }
+
+        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->update($input, $id);
 
         Flash::success('$MODEL_NAME_HUMAN$ updated successfully.');
 
@@ -141,6 +158,9 @@ class $MODEL_NAME$Controller extends AppBaseController
 
             return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
         }
+
+        // TODO Удаляем файл
+        unlink( getcwd().$$MODEL_NAME_CAMEL$['image'] );
 
         $this->$MODEL_NAME_CAMEL$Repository->delete($id);
 

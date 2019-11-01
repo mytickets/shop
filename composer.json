@@ -21,7 +21,7 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^6.0",
         "prettus/l5-repository": "^2.6",
-        "protoqol/prequel": "^1.22",
+        "protoqol/prequel": "v1.22.1",
         "pusher/pusher-php-server": "~4.0",
         "spatie/laravel-permission": "^3.2",
         "unisharp/laravel-filemanager": "dev-master",

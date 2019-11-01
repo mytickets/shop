@@ -36,9 +36,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('hello', function () {
     return response('Hello World', 200)
                   ->header('Content-Type', 'text/plain');
@@ -83,90 +83,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/clear-cache', function() {
-    Artisan::call('cache:clear');
-    return "Cache is cleared";
-});
-
-Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
-
-Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate')->name('io_field_template');
-
-Route::get('relation_field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@relationFieldTemplate')->name('io_relation_field_template');
-
-Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate')->name('io_generator_builder_generate');
-
-Route::post('generator_builder/rollback', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@rollback')->name('io_generator_builder_rollback');
-
-Route::post(
-    'generator_builder/generate-from-file',
-    '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
-)->name('io_generator_builder_generate_from_file');
-
-
-// https://harish81.github.io/infyom-schema-generator/
-
-Route::get('/schema_builder', function () {
-    return view('schema_builder');
-});
-
-// Route::get('/schema_builder', function () {
-    // return view('schema_builder');
-// });
-
-Route::get('/chartjs', function () {
-    return view('lte.charts.chartjs');
-});
-Route::get('/flot', function () {
-    return view('lte.charts.flot');
-});
-Route::get('/widgets', function () {
-    return view('lte.widgets');
-});
-
-Route::get('/face_builder', function () {
-    return view('addons.face_builder');
-});
-
-Route::get('/phpinfo', function () {
-    return view('addons.info.phpinfo');
-});
 
 Route::get('/session', function (Request $request) {
     return $request->session()->getId();
-});
-
-
-Route::get('/migrate', function () {
-    Artisan::call('migrate');
-});
-
-
-
-Route::get('/import', function (Request $request) {
-    return view('import');
-    // Artisan::call('make:view '.$request->all()['viewName'].' --extends='.$request->all()['layoutName'].' --section=content');
-    // return redirect('/manager');
-});
-Route::get('/import_run', function (Request $request) {
-    return Artisan::call('import:cat');
-
-    // php artisan make:command ImportCat --command=import:cat
-    // php artisan make:command ImportProduct --command=import:product
-    // php artisan make:command ImportPrice --command=import:price
-
-    // return view('import');
-    // Artisan::call('make:view '.$request->all()['viewName'].' --extends='.$request->all()['layoutName'].' --section=content');
-    // return redirect('/manager');
-});
-Route::get('/schemaView', function (Request $request) {
-    Artisan::call('make:view '.$request->all()['viewName'].' --extends=layouts.'.pathinfo($request->all()['viewName'])['filename'].' --section=content');
-    return redirect('/generator_builder');
-});
-Route::get('/scrapView', function (Request $request) {
-    Artisan::call('scrap:view '.pathinfo($request->all()['viewName'])['filename'].' --force');
-    // return Artisan::call('scrap:view '.pathinfo($request->all()['viewName'])['filename'].' --force');
-    return redirect('/generator_builder');
 });
 
 
@@ -183,7 +102,6 @@ Route::post('/api/v1/{model}', function ($model) {
 });
 
 
-
 Route::get('/api/v1/{model}/{id}', function ($model, $id) {
     return redirect('/api/'.$model.'/'.$id);
 });
@@ -193,7 +111,6 @@ Route::post('/api/v1/{model}/{id}', function ($model, $id) {
 });
 
 
-Route::resource('users', 'UserController');
 // Route::get('user/{name?}', function ($name = 'John') {
 //     return $name;
 // });
@@ -201,10 +118,6 @@ Route::resource('users', 'UserController');
 //     'index', 'show'
 // ]]);
 
-Route::resource('roles', 'RoleController');
-Route::resource('permissions', 'PermissionController');
-
-Route::resource('menus', 'MenuController');
 
 
 // Route::get('/cats', 'CatController@index');
@@ -225,24 +138,6 @@ Route::resource('menus', 'MenuController');
 // // $product, $img_url
 
 
-// 
-Route::get('/manager', 'ManagerController@index');
-// Route::get('/manager', function () {
-    // return view('manager');
-// });
-
-Route::get('/administrator', function () {
-    return view('administrator');
-});
-
-
-Route::get('/generator', function () {
-    return view('generator');
-});
-Route::get('/file_manager1', function () {
-    return view('file_manager1');
-});
-// 
 
 
 Route::get('/show_session', 'AppBaseController@show_session');
@@ -253,12 +148,148 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
     Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
     // list all lfm routes here...
+
+    
+
+    // 
+    Route::get('/manager', 'ManagerController@index');
+    // Route::get('/manager', function () {
+        // return view('manager');
+    // });
+
+    Route::get('/administrator', function () {
+        return view('administrator');
+    });
+
+
+    Route::get('/generator', function () {
+        return view('generator');
+    });
+    Route::get('/file_manager1', function () {
+        return view('file_manager1');
+    });
+    // 
+
+    Route::resource('users', 'UserController');
+    Route::resource('roles', 'RoleController');
+    Route::resource('permissions', 'PermissionController');
+    Route::resource('menus', 'MenuController');
+
+    Route::get('/clear-cache', function() {
+        Artisan::call('cache:clear');
+        return "Cache is cleared";
+    });
+
+    Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
+
+    Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate')->name('io_field_template');
+
+    Route::get('relation_field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@relationFieldTemplate')->name('io_relation_field_template');
+
+    Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate')->name('io_generator_builder_generate');
+
+    Route::post('generator_builder/rollback', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@rollback')->name('io_generator_builder_rollback');
+
+    Route::post(
+        'generator_builder/generate-from-file',
+        '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
+    )->name('io_generator_builder_generate_from_file');
+
+
+    // https://harish81.github.io/infyom-schema-generator/
+
+    Route::get('/schema_builder', function () {
+        return view('schema_builder');
+    });
+
+    // Route::get('/schema_builder', function () {
+        // return view('schema_builder');
+    // });
+
+    Route::get('/chartjs', function () {
+        return view('lte.charts.chartjs');
+    });
+    Route::get('/flot', function () {
+        return view('lte.charts.flot');
+    });
+    Route::get('/widgets', function () {
+        return view('lte.widgets');
+    });
+
+    Route::get('/face_builder', function () {
+        return view('addons.face_builder');
+    });
+
+    Route::get('/phpinfo', function () {
+        return view('addons.info.phpinfo');
+    });
+    Route::get('/migrate', function () {
+        Artisan::call('migrate');
+    });
+
+
+
+    Route::get('/import', function (Request $request) {
+        return view('import');
+        // Artisan::call('make:view '.$request->all()['viewName'].' --extends='.$request->all()['layoutName'].' --section=content');
+        // return redirect('/manager');
+    });
+    Route::get('/import_run', function (Request $request) {
+        return Artisan::call('import:cat');
+        // php artisan make:command ImportCat --command=import:cat
+        // php artisan make:command ImportProduct --command=import:product
+        // php artisan make:command ImportPrice --command=import:price
+
+        // return view('import');
+        // Artisan::call('make:view '.$request->all()['viewName'].' --extends='.$request->all()['layoutName'].' --section=content');
+        // return redirect('/manager');
+    });
+    Route::get('/schemaView', function (Request $request) {
+        Artisan::call('make:view '.$request->all()['viewName'].' --extends=layouts.'.pathinfo($request->all()['viewName'])['filename'].' --section=content');
+        return redirect('/generator_builder');
+    });
+    Route::get('/scrapView', function (Request $request) {
+        Artisan::call('scrap:view '.pathinfo($request->all()['viewName'])['filename'].' --force');
+        // return Artisan::call('scrap:view '.pathinfo($request->all()['viewName'])['filename'].' --force');
+        return redirect('/generator_builder');
+    });
+
+
+    Route::resource('cats', 'CatController');
+    Route::resource('products', 'ProductController');
+
 });
 
+// MENU
+Route::get('/menu', 'MenuController@index');
 
-Route::resource('cats', 'CatController');
-Route::resource('products', 'ProductController');
+Route::get('/', function () {
+    return view('index_site');
+});
+Route::get('/contact', function () {
+    return view('contact1');
+});
 
+Route::get('/reservation', function () {
+    return view('reservation');
+});
 
+Route::get('/about', function () {
+    return view('about');
+});
+Route::get('/about2', function () {
+    return view('about2');
+});
+// rs-fullwidth-wrap
 
+Route::get('/cart', function () {
+    return view('cart');
+});
 
+Route::get('/admin2_start', function () {
+    return view('admin2_start');
+});
+
+Route::get('/admin2_mindmap', function () {
+    return view('admin2_mindmap');
+});

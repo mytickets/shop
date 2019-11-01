@@ -11,6 +11,11 @@ use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
+use Illuminate\Http\UploadedFile;
+// datatable_controller.stub
+
 class ProductController extends AppBaseController
 {
     /** @var  ProductRepository */
@@ -52,10 +57,15 @@ class ProductController extends AppBaseController
     public function store(CreateProductRequest $request)
     {
         $input = $request->all();
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/products');
+            $publicPath = \Storage::url( $path );
+            $input['image'] = $publicPath;
+        }
 
         $product = $this->productRepository->create($input);
 
-        Flash::success('Product saved successfully.');
+        Flash::success('Product успешно сохранен.');
 
         return redirect(route('products.index'));
     }
@@ -118,7 +128,14 @@ class ProductController extends AppBaseController
             return redirect(route('products.index'));
         }
 
-        $product = $this->productRepository->update($request->all(), $id);
+        $input = $request->all();
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/products');
+            $publicPath = \Storage::url( $path );
+            $input['image'] = $publicPath;
+        }
+
+        $product = $this->productRepository->update($input, $id);
 
         Flash::success('Product updated successfully.');
 
@@ -141,6 +158,9 @@ class ProductController extends AppBaseController
 
             return redirect(route('products.index'));
         }
+
+        // TODO Удаляем файл
+        unlink( getcwd().$product['image'] );
 
         $this->productRepository->delete($id);
 

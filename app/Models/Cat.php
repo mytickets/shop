@@ -27,6 +27,12 @@ use Eloquent as Model;
  *          format="date-time"
  *      ),
  *      @SWG\Property(
+ *          property="ident",
+ *          description="ident",
+ *          type="integer",
+ *          format="int32"
+ *      ),
+ *      @SWG\Property(
  *          property="name",
  *          description="name",
  *          type="string"
@@ -47,21 +53,15 @@ use Eloquent as Model;
  *          type="string"
  *      ),
  *      @SWG\Property(
- *          property="menu",
- *          description="menu",
- *          type="boolean"
- *      ),
- *      @SWG\Property(
  *          property="parent_id",
  *          description="parent_id",
  *          type="integer",
  *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="ident",
- *          description="ident",
- *          type="integer",
- *          format="int32"
+ *          property="menu",
+ *          description="menu",
+ *          type="boolean"
  *      )
  * )
  */
@@ -70,18 +70,17 @@ class Cat extends Model
 
     public $table = 'cats';
     
-    protected $primaryKey = 'ident'; // or null
-    public $incrementing = false;
+
 
 
     public $fillable = [
+        'ident',
         'name',
         'desc',
         'image',
         'xml_name',
-        'menu',
         'parent_id',
-        'ident'
+        'menu'
     ];
 
     /**
@@ -91,12 +90,12 @@ class Cat extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'ident' => 'integer',
         'name' => 'string',
         'image' => 'string',
         'xml_name' => 'string',
-        'menu' => 'boolean',
         'parent_id' => 'integer',
-        'ident' => 'integer'
+        'menu' => 'boolean'
     ];
 
     /**

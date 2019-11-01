@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class CatRepository
  * @package App\Repositories
- * @version November 1, 2019, 1:06 am UTC
+ * @version November 1, 2019, 1:18 pm UTC
 */
 
 class CatRepository extends BaseRepository
@@ -17,13 +17,13 @@ class CatRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
+        'ident',
         'name',
         'desc',
         'image',
         'xml_name',
-        'menu',
         'parent_id',
-        'ident'
+        'menu'
     ];
 
     /**

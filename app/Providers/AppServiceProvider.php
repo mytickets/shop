@@ -31,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment() !== 'production') {
             $this->app->register(\Sven\ArtisanView\ServiceProvider::class);
         }    
+
     }    
 
     /**
@@ -49,8 +50,26 @@ class AppServiceProvider extends ServiceProvider
         // dd($dbs);
         view()->share('dbs', $dbs);
 
-        $session_id = Session::getId();
-        view()->share('session_id', $session_id);
+        // TODO Fuck_UP SHARE SESSION_ID
+        view()->composer('*', function ($view) 
+        {
+            $view->with('session_id', \Session::getId() );    
+            // $view->with('session_id', \Session::get('session_id') );    
+        });
+        
+        // dd( $request );
+        // dd( Session::all() );
+        // $session_id = $request->cookie('_session');
+        // $_session = $request->session()->get('_session');
+        // session(['_session' => $session_id ]);
+
+        // $session_id = $request->cookie('_session');
+        // $session_id = Session::getId();
+        // view()->share('session_id', $session_id);
+
+        // dd($request);
+        // $session_id2 = $request->session()->getId();
+        // view()->share('session_id2', $session_id2);
 
         // $cart = Cart::firstOrCreate(['session_id' => $session_id]);
         // view()->share('cart', $cart);

@@ -31,7 +31,7 @@ class CatAPIController extends AppBaseController
      *
      * @SWG\Get(
      *      path="/cats",
-     *      summary="Возвращает список всехз категорий.",
+     *      summary="Get a listing of the Cats.",
      *      tags={"Cat"},
      *      description="Get all Cats",
      *      produces={"application/json"},
@@ -112,7 +112,7 @@ class CatAPIController extends AppBaseController
 
         $cat = $this->catRepository->create($input);
 
-        return $this->sendResponse($cat->toArray(), 'Cat saved successfully');
+        return $this->sendResponse($cat->toArray(), 'Cat успешно сохранен');
     }
 
     /**

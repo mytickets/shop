@@ -1,3 +1,7 @@
+https://github.com/barryvdh/laravel-elfinder
+
+https://github.com/Krato/Laravel-5-File-Manager
+
 https://github.com/UniSharp/cart
 https://github.com/UniSharp/helpers.js
 https://github.com/UniSharp/doc-us
