@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 
+use App\Models\Cat;
+
 // Route::get($uri, $callback);
 // Route::post($uri, $callback);
 // Route::put($uri, $callback);
@@ -263,33 +265,44 @@ Route::group(['middleware' => 'auth'], function () {
 // MENU
 Route::get('/menu', 'MenuController@index');
 
+
+        // // $flights = App\Flight::all();
+
+        // return view('menu3')
+        //     ->with('cats', $cats);      
+Route::get('/menu', function () {
+    $cats = Cat::all();
+    return view('menu3.index_site')->with('cats', $cats);
+});
+
+
 Route::get('/', function () {
-    return view('index_site');
+    return view('menu3.index_site');
 });
 Route::get('/contact', function () {
-    return view('contact1');
+    return view('menu3.contact1');
 });
 
 Route::get('/reservation', function () {
-    return view('reservation');
+    return view('menu3.reservation');
 });
 
 Route::get('/about', function () {
-    return view('about');
+    return view('menu3.about');
 });
 Route::get('/about2', function () {
-    return view('about2');
+    return view('menu3.about2');
 });
 // rs-fullwidth-wrap
 
 Route::get('/cart', function () {
-    return view('cart');
+    return view('menu3.cart');
 });
 
 Route::get('/admin2_start', function () {
-    return view('admin2_start');
+    return view('menu3.admin2_start');
 });
 
 Route::get('/admin2_mindmap', function () {
-    return view('admin2_mindmap');
+    return view('menu3.admin2_mindmap');
 });

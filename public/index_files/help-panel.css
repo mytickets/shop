@@ -1,0 +1,129 @@
+/**
+ * Help Panel
+ */
+
+
+
+/* Help Buttons */
+.help_buttons{
+	display: none;
+	width: 50px;
+    padding: 0;
+    position: fixed;
+    z-index: 10001;
+    top: 50%;
+    right: 0;
+    box-shadow: -8px 8px 30px rgba(0, 0, 0, 0.07);
+    transform: translateY(-50%);
+}
+.help_buttons a{
+	display: block;
+	height: 50px;
+	font-family: "Oswald", sans-serif;
+    line-height: 50px;
+    text-align: center;
+    position: relative;
+    background-color: #ffffff;
+    cursor: pointer;
+    border-bottom: 1px solid #dedede;
+}
+.help_buttons a:last-child{
+	border-bottom: 0;
+}
+.help_buttons.demo_sites a.docs_btn{
+	border-top-left-radius: 5px;
+}
+.help_buttons a.buy_btn{
+	height: 67px;
+	margin-bottom: 1px;
+	text-align: center;
+	border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+	border-bottom: 0;
+    background-color: #81b441;
+}
+.help_buttons a.buy_btn path{
+	fill: #fff !important;
+}
+.help_buttons a.buy_btn i{
+	display: block;
+	margin: -8px -5px 0 0;
+	text-transform: uppercase;
+	font-weight: 500;
+	font-style: normal;
+	line-height: 12px;
+	font-size: 11px;
+	color: #fff;
+	letter-spacing: 1px;
+}
+.help_buttons a.support_btn span{
+	width: 125px;
+}
+.help_buttons a.help_btn{
+	border-top-left-radius: 5px;
+}
+.help_buttons a.help_btn span{
+	width: 110px;
+}
+.help_buttons a.more_btn{
+	border-bottom-left-radius: 5px;
+}
+.help_buttons a.more_btn span{
+	width: 105px;
+}
+.help_buttons svg{
+	display: inline-block;
+	vertical-align: top;
+	margin: 15px 0 0;
+	width: 22px;
+	height: 22px;
+}
+.help_buttons path,
+.help_buttons rect{
+	fill: #bababa;
+	transition: fill 0.2s ease-in-out;
+}
+.help_buttons a:hover path,
+.help_buttons a:hover rect{
+	fill: #333;
+}
+.help_buttons span{
+	position: absolute;
+    font-size: 11px;
+    color: #333;
+    background: #fff;
+    box-shadow: -10px 2px 30px rgba(0, 0, 0, 0.07);
+    height: 37px;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 37px;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    top: 8px;
+    right: 37px;
+    transition: all .2s ease;
+    border-radius: 5px;
+    padding: 0 15px;
+    letter-spacing: 1px;
+}
+.help_buttons span:after{
+	content: "";
+	position: absolute;
+	top: 15px;
+	right: -4px;
+	width: 0;
+	height: 0;
+	border-top: 4px solid transparent;
+	border-left: 4px solid #fff;
+	border-bottom: 4px solid transparent;
+}
+.help_buttons a.buy_btn span:after{
+	border-left: 4px solid #81b441;
+}
+.help_buttons a:hover span{
+	visibility: visible;
+    opacity: 1;
+    right: 55px;
+
+}
