@@ -263,16 +263,11 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 // MENU
-Route::get('/menu', 'MenuController@index');
+// Route::get('/menu', 'MenuController@index');
 
-
-        // // $flights = App\Flight::all();
-
-        // return view('menu3')
-        //     ->with('cats', $cats);      
 Route::get('/menu', function () {
     $cats = Cat::all();
-    return view('menu3.index_site')->with('cats', $cats);
+    return view('menu3.menu3')->with('cats', $cats);
 });
 
 
