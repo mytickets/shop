@@ -28,7 +28,6 @@
             <div id="default_page">
                <div class="container">
                   <div class="contentarea clearfix">
-
                      @foreach ($cats as $cat)
                         @if ( $cat->menu == 1)
 
@@ -72,7 +71,7 @@
                                                 <div class="col-lg-4 mb30">
                                                    <div class="menu_img_wrap" style="text-align: center;" ><img src="{{ $product->image }}" alt="{{ $product->name }}">
                                                     <br>
-                                                    <a href="#" data-id="{{ $product->id }}" class="btn to_cart" style="width: 100%;">
+                                                    <a href="#" data-ident="{{ $product->id }}" class="btn to_cart" style="width: 100%;">
                                                       В корзину
                                                     </a>
                                                    </div>
@@ -132,5 +131,47 @@
                </div>
             </div>
          </div>
+
+@endsection
+
+@section('script')
+<script type="text/javascript">
+function total_cart() {
+    $.get(
+      "/total_cart/"+$('#cart_id').data('id'), {}, onAjaxSuccess
+    );
+    // cart-value
+}
+function onAjaxSuccess(data)
+{
+  // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
+  console.log(data);
+  $("#cart-value").html(data+" руб.")
+  $("#cart-value2").html(data+" руб.")
+    
+}
+
+
+$(document).ready(function (){   
+    // var l = $.get("/total_cart/"+$('#cart_id').data('id'))
+    // total_cart()
+
+    // $('a.remove_line_item').click(function(e){
+    //     $.get("/line_item_remove/"+$(this).data('id'));
+    //     $(this).parent().parent().remove()
+    //     total_cart()
+    // })
+
+    $('a.to_cart').click(function(e){
+        e.preventDefault();
+        $.get("/product/"+$(this).data('ident')+"/to_cart/1");
+        // total_cart()
+        // console.log($(this).data('id'))
+    })
+
+
+});
+  
+</script>
       
 @endsection

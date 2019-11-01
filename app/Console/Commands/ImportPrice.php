@@ -40,12 +40,11 @@ class ImportPrice extends Command {
                         // echo $itemp['@attributes']['ObjectID']."\n";
                         // ищем по id
                     // array( "ident" => $itemp['@attributes']['ObjectID'])
-                        $p = Product::where('ident', $itemp['@attributes']['ObjectID'])->first();
+                        // $p = Product::where('ident', $itemp['@attributes']['ObjectID'])->first();
+                        $p = Product::where('ident' , '=', $itemp['@attributes']['ObjectID'])->first();
                         // $p = Product::find();
                         if ($p) {
-
                                 // echo $p->name;
-
                                 // $p->price = $itemp['@attributes']['Value'];
                                 $p->price_amount = $itemp['@attributes']['Value']/100;
 

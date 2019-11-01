@@ -258,7 +258,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::resource('cats', 'CatController');
-    Route::resource('products', 'ProductController');
+    
 
 });
 
@@ -267,6 +267,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/menu', function () {
     $cats = Cat::all();
+    // $cart
     return view('menu3.menu3')->with('cats', $cats);
 });
 
@@ -291,7 +292,9 @@ Route::get('/about2', function () {
 // rs-fullwidth-wrap
 
 Route::get('/cart', function () {
-    return view('menu3.cart');
+    // session('cart');
+    // return view('menu3.cart');
+    return view('menu3.cart')->with('cart', session('cart'));
 });
 
 Route::get('/admin2_start', function () {
@@ -301,3 +304,16 @@ Route::get('/admin2_start', function () {
 Route::get('/admin2_mindmap', function () {
     return view('menu3.admin2_mindmap');
 });
+
+
+Route::resource('carts', 'CartController');
+
+Route::resource('lineItems', 'LineItemController');
+
+Route::resource('orders', 'OrderController');
+
+Route::get('/product/{id}/to_cart/{qty}', 'ProductController@to_cart');
+
+
+
+Route::resource('products', 'ProductController');

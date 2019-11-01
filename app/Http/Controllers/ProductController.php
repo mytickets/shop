@@ -16,6 +16,9 @@ use Illuminate\Http\File;
 use Illuminate\Http\UploadedFile;
 // datatable_controller.stub
 
+use App\Models\LineItem;
+use Config;
+
 class ProductController extends AppBaseController
 {
     /** @var  ProductRepository */
@@ -24,6 +27,12 @@ class ProductController extends AppBaseController
     public function __construct(ProductRepository $productRepo)
     {
         $this->productRepository = $productRepo;
+    }
+
+    public function to_cart($id, $qty=1)
+    {
+        LineItem::create(['cart_id' => session('cart')->id, 'product_id'=>$id, 'qty'=>$qty]);
+        return 'ok';
     }
 
     /**

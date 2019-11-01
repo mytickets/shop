@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Schema;
 // use Session;
-
+use Config;
 
 use Illuminate\Support\Facades\DB;
 
@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\View;
 
 // use App\Providers\RouteServiceProvider;
 
+use App\Models\Cart;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -53,8 +54,12 @@ class AppServiceProvider extends ServiceProvider
         // TODO Fuck_UP SHARE SESSION_ID
         view()->composer('*', function ($view) 
         {
-            $view->with('session_id', \Session::getId() );    
-            // $view->with('session_id', \Session::get('session_id') );    
+            $cart = Cart::firstOrCreate(['session_id' => \Session::getId()]);
+            $view->with('session_id', \Session::getId() );
+            // session(['cart' => $cart ]);
+            // Config::set("cart", $cart);
+            session('cart', $cart);
+            // $view->with('cart', $cart );
         });
         
         // dd( $request );
@@ -71,8 +76,6 @@ class AppServiceProvider extends ServiceProvider
         // $session_id2 = $request->session()->getId();
         // view()->share('session_id2', $session_id2);
 
-        // $cart = Cart::firstOrCreate(['session_id' => $session_id]);
-        // view()->share('cart', $cart);
 
     }
 

@@ -40,18 +40,25 @@ class ImportCat extends Command {
                 $arrXX = array("uploads/menu-title-burgers.jpg", "uploads/menu-title-desserts.jpg", "uploads/menu-title-drinks.jpg", "uploads/menu-title-pasta.jpg", "uploads/menu-title-pizza.jpg", "uploads/menu-title-sushi.jpg" );
                 $randIndex2 = array_rand($arrXX, 2);
 
+                Cat::create(array('id' => $item['@attributes']['Ident'], 'name' => $item['@attributes']['Name'], 'ident' => $item['@attributes']['Ident'], 'image'=> '/'.$arrXX[$randIndex2[0]], 'xml_name' => $item['@attributes']['Name'], "parent_id" => (int) $item['@attributes']['MainParentIdent'] ));
+                echo "+";
+
                 // FIND ID IDENT
-                $row = Cat::where('ident' , '=', $item['@attributes']['Ident'])->first();
-                if ($row) {
-                    // UPDATE
-                    // echo $row['name'];
-                    $row->update(array('ident' => $item['@attributes']['Ident'], 'xml_name' => $item['@attributes']['Name'], "parent_id" => (int) $item['@attributes']['MainParentIdent'] ));
-                    echo "~";
-                } else {
-                    Cat::create(array('id' => $item['@attributes']['Ident'], 'name' => $item['@attributes']['Name'], 'ident' => $item['@attributes']['Ident'], 'image'=> '/'.$arrXX[$randIndex2[0]], 'xml_name' => $item['@attributes']['Name'], "parent_id" => (int) $item['@attributes']['MainParentIdent'] ));
-                    echo "+";
-                    // echo "=";
-                }
+                // $row = Cat::where('ident' , '=', $item['@attributes']['Ident'])->first();
+                // if ($row) {
+                //     // UPDATE
+                //     // echo $row['name'];
+                //     $row->update(array('ident' => $item['@attributes']['Ident'], 'xml_name' => $item['@attributes']['Name'], "parent_id" => (int) $item['@attributes']['MainParentIdent'] ));
+                //     echo "~";
+                // } else {
+                //     Cat::create(array('id' => $item['@attributes']['Ident'], 'name' => $item['@attributes']['Name'], 'ident' => $item['@attributes']['Ident'], 'image'=> '/'.$arrXX[$randIndex2[0]], 'xml_name' => $item['@attributes']['Name'], "parent_id" => (int) $item['@attributes']['MainParentIdent'] ));
+                //     echo "+";
+                //     // echo "=";
+                // }
+
+
+
+
                     // $row->save();
         // UNSET ROW
                 // unset($row);

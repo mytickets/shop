@@ -52,15 +52,26 @@
               </div>
             </div>
             <div class="panel-body">
+
+
+@foreach ( $cart->line_items as $line)
+
               <div class="row">
-                <div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
+                <div class="col-xs-2">
+                  <img class="img-responsive" src="{{ $line->product->image ?? "http://placehold.it/100x70" }}">
                 </div>
                 <div class="col-xs-4">
-                  <h4 class="product-name"><strong>Product name</strong></h4><h4><small>Product description</small></h4>
+                  <h4 class="product-name">
+                    <strong>{{ $line->product->name }}</strong>
+
+                  </h4>
+                  <h4>
+                    <small>{{ $line->product->desc ?? "" }}</small>
+                  </h4>
                 </div>
                 <div class="col-xs-6">
                   <div class="col-xs-6 text-right">
-                    <h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
+                    <h6><strong>{{ $line->product->price_amount ?? "" }} </strong></h6>
                   </div>
                   <div class="col-xs-4">
                     <input type="text" class="form-control input-sm" value="1">
@@ -74,6 +85,8 @@
                 </div>
               </div>
               <hr>
+@endforeach
+
               <div class="row">
                 <div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
                 </div>
@@ -93,6 +106,7 @@
                 </div>
               </div>
               <hr>
+
               <div class="row">
                 <div class="text-center">
                   <div class="col-xs-9">

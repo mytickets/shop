@@ -16,6 +16,12 @@
     <p>{!! $product->updated_at !!}</p>
 </div>
 
+<!-- Ident Field -->
+<div class="form-group">
+    {!! Form::label('ident', __('Ident') ) !!}
+    <p>{!! $product->ident !!}</p>
+</div>
+
 <!-- Name Field -->
 <div class="form-group">
     {!! Form::label('name', __('Name') ) !!}
@@ -52,15 +58,15 @@
     <p>{!! $product->cat_id !!}</p>
 </div>
 
-<!-- Remote Images Field -->
-<div class="form-group">
-    {!! Form::label('remote_images', __('Remote Images') ) !!}
-    <p>{!! $product->remote_images !!}</p>
-</div>
-
 <!-- Price Amount Field -->
 <div class="form-group">
     {!! Form::label('price_amount', __('Price Amount') ) !!}
     <p>{!! $product->price_amount !!}</p>
+</div>
+
+<!-- Menu Field -->
+<div class="form-group">
+    {!! Form::label('menu', __('Menu') ) !!}
+    <p>{!! $product->menu !!}</p>
 </div>
 

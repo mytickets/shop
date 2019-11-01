@@ -5,6 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
         <title>Надеджа - ресторан</title>
 
         <link type="text/css" media="all" href="/index_files/autoptimize_ab9895912fe68dcb407d1afd9522f8ed.css" rel="stylesheet">
@@ -43,7 +47,9 @@
         <link rel="stylesheet" id="bsf-Evatheme-Icon-Fonts-css" href="/index_files/autoptimize_single_07876df0f68f7648e3b77ed09b67589a.css" type="text/css" media="all">
         <link rel="stylesheet" id="ultimate-google-fonts-css"   href="/index_files/css.css" type="text/css" media="all">
 
-        <script type="text/javascript" src="/index_files/jquery.js"></script>
+        {{-- <script type="text/javascript" src="/index_files/jquery.js"></script> --}}
+        <!-- jQuery 3.1.1 -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
         <noscript>
             <style type="text/css">
@@ -363,35 +369,7 @@
 
         <script type="text/javascript" defer="" src="/index_files/autoptimize_2216b68e8b5ad201c9520c02d4963b75.js"></script>
 
+        @yield('script')
 
-<noscript>
-
-<pre>
-    
-Основной сайт
- 
-
-Меню 
-Блок разделения категорий меню
- 
-Сами продукты карточками
- 1-3 в ряд, в зависимости от ширины экрана
- Кнопки количества изменения тут же
- Кнопка Купить
-
-
-МЕНЮ сайта верхнее
-
-Главная
-О Нас
-Меню
-Бронирование
-Контакты
-Корзина
-Войти/Выйти
-
-</pre>
-	
-</noscript>
     </body>
 </html>

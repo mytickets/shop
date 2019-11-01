@@ -87,6 +87,8 @@ class CatController extends AppBaseController
             return redirect(route('cats.index'));
         }
 
+        // $this->data['products'] = Product::where('cat_id',$id)->get();
+        // $this->data['childrens'] = Cat::where('parent_id',$id)->get();
         return view('cats.show')->with('cat', $cat);
     }
 

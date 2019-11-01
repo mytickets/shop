@@ -4,6 +4,12 @@
     <a href="{!! route('products.index') !!}" class="btn btn-default">Отмена</a>
 </div>
 
+<!-- Ident Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('ident', 'Ident:') !!}
+    {!! Form::text('ident', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Name Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('name', 'Name:') !!}
@@ -41,17 +47,21 @@
     {!! Form::text('cat_id', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Remote Images Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('remote_images', 'Remote Images:') !!}
-    {!! Form::textarea('remote_images', null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Price Amount Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('price_amount', 'Price Amount:') !!}
     {!! Form::text('price_amount', null, ['class' => 'form-control']) !!}
 </div>
+
+<!-- Menu Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('menu', 'Menu:') !!}
+    <label class="checkbox-inline">
+        {!! Form::hidden('menu', 0) !!}
+        {!! Form::checkbox('menu', '1', null) !!}
+    </label>
+</div>
+
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

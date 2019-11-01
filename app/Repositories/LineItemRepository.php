@@ -2,30 +2,25 @@
 
 namespace App\Repositories;
 
-use App\Models\Product;
+use App\Models\LineItem;
 use App\Repositories\BaseRepository;
 
 /**
- * Class ProductRepository
+ * Class LineItemRepository
  * @package App\Repositories
- * @version November 1, 2019, 4:46 pm UTC
+ * @version November 1, 2019, 4:13 pm UTC
 */
 
-class ProductRepository extends BaseRepository
+class LineItemRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
-        'ident',
-        'name',
-        'desc',
-        'image',
-        'xml_name',
-        'xml_cat',
-        'cat_id',
-        'price_amount',
-        'menu'
+        'qty',
+        'cart_id',
+        'product_id',
+        'order_id'
     ];
 
     /**
@@ -43,6 +38,6 @@ class ProductRepository extends BaseRepository
      **/
     public function model()
     {
-        return Product::class;
+        return LineItem::class;
     }
 }
