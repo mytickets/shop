@@ -18,8 +18,9 @@ class ImportProduct extends Command {
         // exec('wget --secure-protocol=TLSv1 --no-check-certificate --header="Content-Type: text/xml" --http-user=18 --http-password=18 --post-file=post_items.xml -O public\storage\data_items.xml -q https://46.39.29.2:2244/rk7api/v0/xmlinterface.xml');
         $data_items = Storage::get('public\data_items.xml');
 // Items
-        Product::truncate();
         echo "Import Items: ";
+        // Product::truncate();
+
         $xml3 = simplexml_load_string($data_items);
         $json3 = json_encode($xml3);
         $array3 = json_decode($json3,TRUE,512,JSON_INVALID_UTF8_IGNORE);
@@ -30,34 +31,22 @@ class ImportProduct extends Command {
 
 // // FOREACH Items
         foreach ($array3["RK7Reference"]["Items"]['Item'] as $item) {
-
 //     // RANDOM
             $arrX = array("/uploads/product-chicken-wings.jpg", "/uploads/product-burger.jpg", "/uploads/product-chicken-burger.jpg", "/uploads/product-sushi.jpg", "/uploads/product-pizza.jpg" );
             $randIndex = array_rand($arrX, 2);
-
 //     // FIND
-//             // $row = Product::find($item['@attributes']['Ident']);
-//             // $row = Product::firstOrNew(array('ident' => $item['@attributes']['Ident'] ));
-
-            $row = Product::create( array('id' => $item['@attributes']['Ident'], 'name' => $item['@attributes']['Name'], 'ident' => $item['@attributes']['Ident'], 'xml_name' => $item['@attributes']['Name'], "cat_id" => (int) $item['@attributes']['MainParentIdent'], 'xml_cat' => $item['@attributes']['CategPath'], 'image'=> $arrX[$randIndex[0]] ) );
-            
-//             // $arrX[$randIndex[0]]
-
-//             // if ($row) {
-//             //     // Product::create
-//             //     $row->update( array('ident' => $item['@attributes']['Ident'], 'xml_name' => $item['@attributes']['Name'], "cat_id" => (int) $item['@attributes']['MainParentIdent'], 'xml_cat' => $item['@attributes']['CategPath'] ) );
-//             //     echo "|";
-//             // } else {
-//             //     // $row->update( array('ident' => $item['@attributes']['Ident'], 'xml_name' => $item['@attributes']['Name'], "cat_id" => (int) $item['@attributes']['MainParentIdent'], 'xml_cat' => $item['@attributes']['CategPath'], 'image'=> $arrX[$randIndex[0]] ) );
+            $row = Product::where('ident' , '=', $item['@attributes']['Ident'])->first();
+            if ($row) {
+                $row->update( array('ident' => $item['@attributes']['Ident'], 'xml_name' => $item['@attributes']['Name'], "cat_id" => (int) $item['@attributes']['MainParentIdent'], 'xml_cat' => $item['@attributes']['CategPath'] ) );
+                echo "~";
+            } else {
+                $row = Product::create( array('id' => $item['@attributes']['Ident'], 'name' => $item['@attributes']['Name'], 'ident' => $item['@attributes']['Ident'], 'xml_name' => $item['@attributes']['Name'], "cat_id" => (int) $item['@attributes']['MainParentIdent'], 'xml_cat' => $item['@attributes']['CategPath'], 'image'=> $arrX[$randIndex[0]] ) );
                 echo "+";
-//             // }
-            $row->save();
+            }
+            // $row->save();
 //             unset($row);
-
 //             // echo $arrX[$randIndex[0]];
             unset($randIndex);
-            
-
         }
         echo "\n";
 // FOREACH Items END

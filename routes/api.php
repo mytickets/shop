@@ -24,25 +24,10 @@ Route::resource('roles', 'RoleAPIController');
 
 Route::resource('permissions', 'PermissionAPIController');
 
-
-
-
-
-
-
 Route::resource('menus', 'MenuAPIController');
-
-Route::resource('menus', 'MenuAPIController');
-
-Route::resource('menus', 'MenuAPIController');
-
-
-
-
 
 Route::resource('cats', 'CatAPIController');
 
 Route::resource('products', 'ProductAPIController');
 
-Route::resource('posts', 'PostAPIController');
 

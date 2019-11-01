@@ -24,8 +24,5 @@
     <a href="{!! route('products.index') !!}"><i class="fa fa-edit"></i><span>Products</span></a>
 </li>
 
-<li class="{{ Request::is('posts*') ? 'active' : '' }}">
-    <a href="{!! route('posts.index') !!}"><i class="fa fa-edit"></i><span>Posts</span></a>
-</li>
 
 

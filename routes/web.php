@@ -239,6 +239,10 @@ Route::get('/administrator', function () {
 Route::get('/generator', function () {
     return view('generator');
 });
+Route::get('/file_manager1', function () {
+    return view('file_manager1');
+});
+// 
 
 
 Route::get('/show_session', 'AppBaseController@show_session');
@@ -252,12 +256,9 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-
-
-
 Route::resource('cats', 'CatController');
 Route::resource('products', 'ProductController');
 
 
-Route::resource('posts', 'PostController');
+
 

@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons" />
+
 
     <!-- jQuery 3.1.1 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -187,10 +189,30 @@
     <script src="/lte1/bower_components/fastclick/lib/fastclick.js"></script>
 
     <!-- AdminLTE for demo purposes -->
-    <script src="/lte1/dist/js/demo.js"></script>
+    {{-- <script src="/lte1/dist/js/demo.js"></script> --}}
 
     @yield('scripts')
 
+
+    <script src="{{ asset('js/bootstrap-notify.js') }}" defer></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pnotify@4.0.0/dist/PNotifyBrightTheme.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/nonblockjs@1/NonBlock.es5.js" type="text/javascript"></script>
+    {{-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pnotify@4.0.0/dist/iife/PNotify.min.js"></script> --}}
+    {{-- https://cdn.jsdelivr.net/npm/pnotify@4.0.0/dist/umd/ --}}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pnotify@4.0.0/dist/umd/PNotify.js"></script>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pnotify@4.0.0/dist/umd/PNotifyButtons.js"></script>
+
+    <script type="text/javascript">
+        {{-- PNotify.defaults.styling = 'bootstrap3'; // Bootstrap version 3 --}}
+        // PNotify.defaults.icons = 'bootstrap3'; // glyphicons
+        // PNotify.defaults.icons = 'fontawesome4'; // Font Awesome 4
+    </script>
+
+
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Scripts -->
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 

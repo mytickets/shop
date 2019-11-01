@@ -70,7 +70,8 @@ class Cat extends Model
 
     public $table = 'cats';
     
-
+    protected $primaryKey = 'ident'; // or null
+    public $incrementing = false;
 
 
     public $fillable = [

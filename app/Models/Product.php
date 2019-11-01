@@ -87,7 +87,8 @@ class Product extends Model
 
     public $table = 'products';
     
-
+    protected $primaryKey = 'ident'; // or null
+    public $incrementing = false;
 
 
     public $fillable = [
