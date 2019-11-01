@@ -192,6 +192,7 @@ return [
         \InfyOm\Generator\InfyOmGeneratorServiceProvider::class,
         \InfyOm\AdminLTETemplates\AdminLTETemplatesServiceProvider::class, 
 
+        // https://unisharp.github.io/laravel-filemanager/installation
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
@@ -278,6 +279,7 @@ return [
         'Html'      => Collective\Html\HtmlFacade::class,
         'Flash'     => Laracasts\Flash\Flash::class,
 
+        // https://unisharp.github.io/laravel-filemanager/installation
         'Image' => Intervention\Image\Facades\Image::class,
 
     ],

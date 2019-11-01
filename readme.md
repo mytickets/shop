@@ -1,3 +1,7 @@
+https://github.com/UniSharp/cart
+https://github.com/UniSharp/helpers.js
+https://github.com/UniSharp/doc-us
+
 php artisan make:command ImportCat --command=import:cat
 php artisan make:command ImportProduct --command=import:product
 php artisan make:command ImportPrice --command=import:price
