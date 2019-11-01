@@ -138,23 +138,25 @@ Route::get('/session', function (Request $request) {
 
 
 Route::get('/migrate', function () {
-    // return view('welcome');
     Artisan::call('migrate');
 });
 
+
+
+Route::get('/import', function (Request $request) {
+    return view('import');
+    // Artisan::call('make:view '.$request->all()['viewName'].' --extends='.$request->all()['layoutName'].' --section=content');
+    // return redirect('/manager');
+});
+Route::get('/import_run', function (Request $request) {
+    return view('import');
+    // Artisan::call('make:view '.$request->all()['viewName'].' --extends='.$request->all()['layoutName'].' --section=content');
+    // return redirect('/manager');
+});
 Route::get('/schemaView', function (Request $request) {
-    Artisan::call('make:view '.$request->all()['viewName'].' --extends='.$request->all()['layoutName'].' --section=content');
-    // generator_builder
+    Artisan::call('make:view '.$request->all()['viewName'].' --extends=layouts.'.pathinfo($request->all()['viewName'])['filename'].' --section=content');
     return redirect('/generator_builder');
 });
-// Route::post('/schemaView', function (Request $request) {
-//     return Artisan::call('make:view '.$request->all()['viewName'].' --extends='.$request->all()['layoutName'].' --section=content');
-// });
-
-
-// Route::post('/scrapView', function (Request $request) {
-//     return Artisan::call('scrap:view '.pathinfo($request->all()['viewName'])['filename']);
-// });
 Route::get('/scrapView', function (Request $request) {
     Artisan::call('scrap:view '.pathinfo($request->all()['viewName'])['filename'].' --force');
     // return Artisan::call('scrap:view '.pathinfo($request->all()['viewName'])['filename'].' --force');
@@ -242,3 +244,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
     // list all lfm routes here...
 });
+
+Route::resource('cats', 'CatController');
+
+Route::resource('products', 'ProductController');

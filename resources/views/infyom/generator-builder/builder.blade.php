@@ -51,7 +51,11 @@
               <li class="active"><a href="#tab_1" data-toggle="tab">Generator</a></li>
               <li><a href="#tab_3" data-toggle="tab">Rollback</a></li>
               <li><a href="#tab_from" data-toggle="tab">From</a></li>
+
+              {{-- https://github.com/svenluijten/artisan-view --}}
               <li><a href="#tab_Views" data-toggle="tab">Views</a></li>
+              {{-- https://github.com/andersao/l5-repository --}}
+
             </ul>
             <div class="tab-content">
 
