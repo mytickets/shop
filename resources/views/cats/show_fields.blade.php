@@ -19,13 +19,6 @@
     <p>{!! $cat->updated_at !!}</p>
 </div>
 
-<!-- Ident Field -->
-<div class="form-group">
-    {!! Form::label('ident', {{ __('Ident') }} ) !!}
-
-    <p>{!! $cat->ident !!}</p>
-</div>
-
 <!-- Name Field -->
 <div class="form-group">
     {!! Form::label('name', {{ __('Name') }} ) !!}
@@ -61,17 +54,17 @@
     <p>{!! $cat->menu !!}</p>
 </div>
 
-<!-- Menu Left Field -->
-<div class="form-group">
-    {!! Form::label('menu_left', {{ __('Menu Left') }} ) !!}
-
-    <p>{!! $cat->menu_left !!}</p>
-</div>
-
 <!-- Parent Id Field -->
 <div class="form-group">
     {!! Form::label('parent_id', {{ __('Parent Id') }} ) !!}
 
     <p>{!! $cat->parent_id !!}</p>
+</div>
+
+<!-- Ident Field -->
+<div class="form-group">
+    {!! Form::label('ident', {{ __('Ident') }} ) !!}
+
+    <p>{!! $cat->ident !!}</p>
 </div>
 

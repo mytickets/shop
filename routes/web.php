@@ -149,13 +149,13 @@ Route::get('/import', function (Request $request) {
     // return redirect('/manager');
 });
 Route::get('/import_run', function (Request $request) {
-    // Artisan::call('make:console '.$request->all()['viewName'].' --extends='.$request->all()['layoutName'].' --section=content');
+    return Artisan::call('import:cat');
 
-    // php artisan make:console ImportCat --command=import:cat
-    // php artisan make:console ImportProduct --command=import:product
-    // php artisan make:console ImportPrice --command=import:price
+    // php artisan make:command ImportCat --command=import:cat
+    // php artisan make:command ImportProduct --command=import:product
+    // php artisan make:command ImportPrice --command=import:price
 
-    return view('import');
+    // return view('import');
     // Artisan::call('make:view '.$request->all()['viewName'].' --extends='.$request->all()['layoutName'].' --section=content');
     // return redirect('/manager');
 });
@@ -251,6 +251,13 @@ Route::group(['middleware' => 'auth'], function () {
     // list all lfm routes here...
 });
 
-Route::resource('cats', 'CatController');
 
+
+
+
+Route::resource('cats', 'CatController');
 Route::resource('products', 'ProductController');
+
+
+Route::resource('posts', 'PostController');
+

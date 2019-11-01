@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Eloquent as Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @SWG\Definition(
@@ -28,6 +27,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          format="date-time"
  *      ),
  *      @SWG\Property(
+ *          property="ident",
+ *          description="ident",
+ *          type="integer",
+ *          format="int32"
+ *      ),
+ *      @SWG\Property(
  *          property="name",
  *          description="name",
  *          type="string"
@@ -38,12 +43,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          type="string"
  *      ),
  *      @SWG\Property(
- *          property="ident",
- *          description="ident",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
  *          property="image",
  *          description="image",
  *          type="string"
@@ -51,14 +50,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *      @SWG\Property(
  *          property="xml_name",
  *          description="xml_name",
- *          type="integer",
- *          format="int32"
+ *          type="string"
  *      ),
  *      @SWG\Property(
  *          property="xml_cat",
  *          description="xml_cat",
- *          type="integer",
- *          format="int32"
+ *          type="string"
  *      ),
  *      @SWG\Property(
  *          property="cat_id",
@@ -87,19 +84,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Product extends Model
 {
-    use SoftDeletes;
 
     public $table = 'products';
     
 
-    protected $dates = ['deleted_at'];
-
 
 
     public $fillable = [
+        'ident',
         'name',
         'desc',
-        'ident',
         'image',
         'xml_name',
         'xml_cat',
@@ -116,11 +110,11 @@ class Product extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name' => 'string',
         'ident' => 'integer',
+        'name' => 'string',
         'image' => 'string',
-        'xml_name' => 'integer',
-        'xml_cat' => 'integer',
+        'xml_name' => 'string',
+        'xml_cat' => 'string',
         'cat_id' => 'integer',
         'price_amount' => 'float',
         'price' => 'integer'

@@ -31,7 +31,7 @@ class CatAPIController extends AppBaseController
      *
      * @SWG\Get(
      *      path="/cats",
-     *      summary="Get a listing of the Cats.",
+     *      summary="Возвращает список всехз категорий.",
      *      tags={"Cat"},
      *      description="Get all Cats",
      *      produces={"application/json"},

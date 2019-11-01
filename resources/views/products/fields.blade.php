@@ -4,6 +4,12 @@
     <a href="{!! route('products.index') !!}" class="btn btn-default">Отмена</a>
 </div>
 
+<!-- Ident Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('ident', 'Ident:') !!}
+    {!! Form::text('ident', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Name Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('name', 'Name:') !!}
@@ -11,15 +17,9 @@
 </div>
 
 <!-- Desc Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('desc', 'Desc:') !!}
-    {!! Form::text('desc', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Ident Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('ident', 'Ident:') !!}
-    {!! Form::text('ident', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('desc', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Image Field -->
@@ -47,21 +47,15 @@
 </div>
 
 <!-- Remote Images Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('remote_images', 'Remote Images:') !!}
-    {!! Form::text('remote_images', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('remote_images', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Price Amount Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('price_amount', 'Price Amount:') !!}
     {!! Form::text('price_amount', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Price Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('price', 'Price:') !!}
-    {!! Form::number('price', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

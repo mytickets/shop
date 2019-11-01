@@ -1,3 +1,9 @@
+php artisan make:command ImportCat --command=import:cat
+php artisan make:command ImportProduct --command=import:product
+php artisan make:command ImportPrice --command=import:price
+
+
+
 https://github.com/andersao/l5-repository#methods
 
 

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\CatDataTable;
+use App\Http\Requests;
 use App\Http\Requests\CreateCatRequest;
 use App\Http\Requests\UpdateCatRequest;
 use App\Repositories\CatRepository;
-use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
 use Flash;
+use App\Http\Controllers\AppBaseController;
 use Response;
 
 class CatController extends AppBaseController
@@ -23,16 +24,12 @@ class CatController extends AppBaseController
     /**
      * Display a listing of the Cat.
      *
-     * @param Request $request
-     *
+     * @param CatDataTable $catDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(CatDataTable $catDataTable)
     {
-        $cats = $this->catRepository->all();
-
-        return view('cats.index')
-            ->with('cats', $cats);
+        return $catDataTable->render('cats.index');
     }
 
     /**
@@ -66,7 +63,7 @@ class CatController extends AppBaseController
     /**
      * Display the specified Cat.
      *
-     * @param int $id
+     * @param  int $id
      *
      * @return Response
      */
@@ -86,7 +83,7 @@ class CatController extends AppBaseController
     /**
      * Show the form for editing the specified Cat.
      *
-     * @param int $id
+     * @param  int $id
      *
      * @return Response
      */
@@ -106,7 +103,7 @@ class CatController extends AppBaseController
     /**
      * Update the specified Cat in storage.
      *
-     * @param int $id
+     * @param  int              $id
      * @param UpdateCatRequest $request
      *
      * @return Response
@@ -131,9 +128,7 @@ class CatController extends AppBaseController
     /**
      * Remove the specified Cat from storage.
      *
-     * @param int $id
-     *
-     * @throws \Exception
+     * @param  int $id
      *
      * @return Response
      */

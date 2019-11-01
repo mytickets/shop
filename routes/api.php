@@ -36,6 +36,13 @@ Route::resource('menus', 'MenuAPIController');
 
 Route::resource('menus', 'MenuAPIController');
 
+
+
+
+
 Route::resource('cats', 'CatAPIController');
 
 Route::resource('products', 'ProductAPIController');
+
+Route::resource('posts', 'PostAPIController');
+

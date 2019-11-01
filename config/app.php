@@ -194,6 +194,34 @@ return [
 
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+
+        // https://yajrabox.com/docs/laravel-datatables/master
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        // $ composer require yajra/laravel-datatables:^1.5
+        // ./composer.json has been updated
+        // Loading composer repositories with package information
+        // Updating dependencies (including require-dev)
+        // Package operations: 11 installs, 0 updates, 0 removals
+        //   - Installing league/fractal (0.18.0): Downloading (100%)
+        //   - Installing yajra/laravel-datatables-oracle (v9.7.1): Downloading (100%)
+        //   - Installing yajra/laravel-datatables-fractal (v1.5.0): Downloading (100%)
+        //   - Installing yajra/laravel-datatables-html (v4.19.4): Loading from cache
+        //   - Installing markbaker/matrix (1.2.0): Downloading (100%)
+        //   - Installing markbaker/complex (1.4.7): Loading from cache
+        //   - Installing phpoffice/phpspreadsheet (1.9.0): Loading from cache
+        //   - Installing maatwebsite/excel (3.1.17): Loading from cache
+        //   - Installing yajra/laravel-datatables-buttons (v4.8.0): Loading from cache
+        //   - Installing yajra/laravel-datatables-editor (v1.17.1): Downloading (100%)
+        //   - Installing yajra/laravel-datatables (v1.5.0): Downloading (100%)
+        // league/fractal suggests installing pagerfanta/pagerfanta (Pagerfanta Paginator)
+        // league/fractal suggests installing zendframework/zend-paginator (Zend Framework Paginator)
+        // phpoffice/phpspreadsheet suggests installing mpdf/mpdf (Option for rendering PDF with PDF Writer)
+        // phpoffice/phpspreadsheet suggests installing dompdf/dompdf (Option for rendering PDF with PDF Writer)
+        // phpoffice/phpspreadsheet suggests installing tecnickcom/tcpdf (Option for rendering PDF with PDF Writer)
+        // phpoffice/phpspreadsheet suggests installing jpgraph/jpgraph (Option for rendering charts, or including charts with PDF or HTML Writers)
+        // yajra/laravel-datatables-buttons suggests installing dompdf/dompdf (Allows exporting of dataTable to PDF using the DomPDF.)
+        // yajra/laravel-datatables-buttons suggests installing barryvdh/laravel-snappy (Allows exporting of dataTable to PDF using the print view.)
+
     ],
 
     /*

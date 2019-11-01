@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ProductDataTable;
+use App\Http\Requests;
 use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Repositories\ProductRepository;
-use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
 use Flash;
+use App\Http\Controllers\AppBaseController;
 use Response;
 
 class ProductController extends AppBaseController
@@ -23,16 +24,12 @@ class ProductController extends AppBaseController
     /**
      * Display a listing of the Product.
      *
-     * @param Request $request
-     *
+     * @param ProductDataTable $productDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(ProductDataTable $productDataTable)
     {
-        $products = $this->productRepository->all();
-
-        return view('products.index')
-            ->with('products', $products);
+        return $productDataTable->render('products.index');
     }
 
     /**
@@ -66,7 +63,7 @@ class ProductController extends AppBaseController
     /**
      * Display the specified Product.
      *
-     * @param int $id
+     * @param  int $id
      *
      * @return Response
      */
@@ -86,7 +83,7 @@ class ProductController extends AppBaseController
     /**
      * Show the form for editing the specified Product.
      *
-     * @param int $id
+     * @param  int $id
      *
      * @return Response
      */
@@ -106,7 +103,7 @@ class ProductController extends AppBaseController
     /**
      * Update the specified Product in storage.
      *
-     * @param int $id
+     * @param  int              $id
      * @param UpdateProductRequest $request
      *
      * @return Response
@@ -131,9 +128,7 @@ class ProductController extends AppBaseController
     /**
      * Remove the specified Product from storage.
      *
-     * @param int $id
-     *
-     * @throws \Exception
+     * @param  int $id
      *
      * @return Response
      */

@@ -10,9 +10,9 @@ $factory->define(Product::class, function (Faker $faker) {
     return [
         'created_at' => $faker->date('Y-m-d H:i:s'),
         'updated_at' => $faker->date('Y-m-d H:i:s'),
+        'ident' => $faker->word,
         'name' => $faker->word,
         'desc' => $faker->word,
-        'ident' => $faker->word,
         'image' => $faker->word,
         'xml_name' => $faker->word,
         'xml_cat' => $faker->word,

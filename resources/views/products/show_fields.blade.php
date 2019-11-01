@@ -19,6 +19,13 @@
     <p>{!! $product->updated_at !!}</p>
 </div>
 
+<!-- Ident Field -->
+<div class="form-group">
+    {!! Form::label('ident', {{ __('Ident') }} ) !!}
+
+    <p>{!! $product->ident !!}</p>
+</div>
+
 <!-- Name Field -->
 <div class="form-group">
     {!! Form::label('name', {{ __('Name') }} ) !!}
@@ -31,13 +38,6 @@
     {!! Form::label('desc', {{ __('Desc') }} ) !!}
 
     <p>{!! $product->desc !!}</p>
-</div>
-
-<!-- Ident Field -->
-<div class="form-group">
-    {!! Form::label('ident', {{ __('Ident') }} ) !!}
-
-    <p>{!! $product->ident !!}</p>
 </div>
 
 <!-- Image Field -->

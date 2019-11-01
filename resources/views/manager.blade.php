@@ -27,8 +27,8 @@
             <div class="info-box-content">
               <span class="info-box-text">Категорий</span>
               <span class="info-box-number">
-                {{-- {{ \App\Models\Menu::all()->count() }} --}}
-              <small>шт.</small></span>
+                {{ \App\Models\Cat::all()->count() }}
+              {{-- <small>шт.</small></span> --}}
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -41,7 +41,7 @@
             <div class="info-box-content">
               <span class="info-box-text">Продукты</span>
               <span class="info-box-number">
-                {{ \App\Models\Menu::all()->count() }}
+                {{ \App\Models\Product::all()->count() }}
               </span>
             </div>
             <!-- /.info-box-content -->

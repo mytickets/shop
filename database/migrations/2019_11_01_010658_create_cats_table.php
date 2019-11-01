@@ -15,16 +15,14 @@ class CreateCatsTable extends Migration
     {
         Schema::create('cats', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('ident')->nullable();
-            $table->increments('name')->nullable();
-            $table->increments('desc')->nullable();
-            $table->increments('image')->nullable();
-            $table->increments('xml_name')->nullable();
-            $table->increments('menu')->nullable();
-            $table->increments('menu_left')->nullable();
+            $table->string('name')->nullable();
+            $table->longText('desc')->nullable();
+            $table->string('image')->nullable();
+            $table->string('xml_name')->nullable();
+            $table->boolean('menu')->nullable();
             $table->bigInteger('parent_id')->nullable();
+            $table->bigInteger('ident')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
