@@ -149,6 +149,12 @@ Route::get('/import', function (Request $request) {
     // return redirect('/manager');
 });
 Route::get('/import_run', function (Request $request) {
+    // Artisan::call('make:console '.$request->all()['viewName'].' --extends='.$request->all()['layoutName'].' --section=content');
+
+    // php artisan make:console ImportCat --command=import:cat
+    // php artisan make:console ImportProduct --command=import:product
+    // php artisan make:console ImportPrice --command=import:price
+
     return view('import');
     // Artisan::call('make:view '.$request->all()['viewName'].' --extends='.$request->all()['layoutName'].' --section=content');
     // return redirect('/manager');
