@@ -15,6 +15,8 @@ use Illuminate\Http\File;
 use Illuminate\Http\UploadedFile;
 // controller.stub
 
+use App\Models\LineItem;
+
 class LineItemController extends AppBaseController
 {
     /** @var  LineItemRepository */
@@ -165,7 +167,6 @@ class LineItemController extends AppBaseController
         }
 
         // TODO Удаляем файл
-        unlink( getcwd().$lineItem['image'] );
 
         $this->lineItemRepository->delete($id);
 
@@ -173,4 +174,12 @@ class LineItemController extends AppBaseController
 
         return redirect(route('lineItems.index'));
     }
+
+    public function destroy_all()
+    {
+        LineItem::truncate();
+        Flash::success('Всё удалено!');
+        return redirect(route('line_items.index'));
+    }
+
 }

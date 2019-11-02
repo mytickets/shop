@@ -15,6 +15,8 @@ use Illuminate\Http\File;
 use Illuminate\Http\UploadedFile;
 // controller.stub
 
+use App\Models\Cart;
+
 class CartController extends AppBaseController
 {
     /** @var  CartRepository */
@@ -38,6 +40,14 @@ class CartController extends AppBaseController
 
         return view('carts.index')
             ->with('carts', $carts);
+    }
+
+    public function clear($id, Request $request)
+    {
+        // $carts = $this->cartRepository->paginate(10);
+        
+        // return view('carts.index')
+            // ->with('carts', $carts);
     }
 
     /**
@@ -165,7 +175,10 @@ class CartController extends AppBaseController
         }
 
         // TODO Удаляем файл
-        unlink( getcwd().$cart['image'] );
+        if ( file_exists( getcwd().$cart['image']) ) {
+            # code...
+            // unlink( getcwd().$cart['image'] );
+        }
 
         $this->cartRepository->delete($id);
 
@@ -173,4 +186,13 @@ class CartController extends AppBaseController
 
         return redirect(route('carts.index'));
     }
+
+    public function destroy_all()
+    {
+        Cart::truncate();
+        Flash::success('Всё удалено!');
+        return redirect(route('carts.index'));
+    }
+
+
 }

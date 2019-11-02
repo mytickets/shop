@@ -110,5 +110,18 @@ class Cat extends Model
     public $incrementing = false;
     protected $primaryKey = 'ident';
     // public $timestamp = false;
+
+    public function products()
+    {
+        return $this->hasMany('App\Models\Product','cat_id');
+        // return $this->belongsTo('App\Carts');
+    }
+    // public function category(){
+    //     return $this->belongsTo('Category','act_acc_ID');
+    // }
+
+    // public function adventures(){
+    //     return $this->hasMany('Adventure','act_acc_ID');
+    // }
     
 }

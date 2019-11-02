@@ -258,7 +258,14 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::resource('cats', 'CatController');
-    
+    Route::resource('products', 'ProductController');
+    Route::resource('orders', 'OrderController');
+
+    Route::resource('carts', 'CartController');
+    Route::get('carts/destroy_all', 'CartController@destroy_all');
+
+    Route::resource('lineItems', 'LineItemController');
+    Route::get('lineItems/destroy_all', 'LineItemController@destroy_all');
 
 });
 
@@ -306,14 +313,6 @@ Route::get('/admin2_mindmap', function () {
 });
 
 
-Route::resource('carts', 'CartController');
-
-Route::resource('lineItems', 'LineItemController');
-
-Route::resource('orders', 'OrderController');
 
 Route::get('/product/{id}/to_cart/{qty}', 'ProductController@to_cart');
 
-
-
-Route::resource('products', 'ProductController');

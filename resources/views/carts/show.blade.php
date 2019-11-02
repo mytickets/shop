@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-           <b>Показать:</b>  Cart
+           <b>Показать:</b>  Корзины
         </h1>
     </section>
     <div class="content">

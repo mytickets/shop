@@ -130,9 +130,15 @@ class Product extends Model
     public function orders()
     {
         return $this->hasManyThrough('App\Models\Orders', 'App\Models\LineItem');
-
         // return $this->belongsTo('App\Carts');
     }
+    public function cat()
+    {
+        return $this->belongsTo('App\Models\Cat', 'cat_id');
+        // return $this->hasMany('App\Models\LineItem');
+        // return $this->belongsTo('App\Carts');
+    }
+
 
     public $incrementing = false;
     protected $primaryKey = 'ident';
