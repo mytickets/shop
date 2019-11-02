@@ -227,7 +227,7 @@
         className: 'buttons-print',
 
         text: function (dt) {
-            return  '<i class="fa fa-fw fa-print"></i> ' + dt.i18n('buttons.print', 'Print');
+            return  '<i class="fa fa-fw fa-print"></i> ' + dt.i18n('buttons.print', 'Печать');
         },
 
         action: function (e, dt, button, config) {
@@ -240,7 +240,7 @@
         className: 'buttons-reset',
 
         text: function (dt) {
-            return '<i class="fa fa-fw fa-undo"></i> ' + dt.i18n('buttons.reset', 'Reset');
+            return '<i class="fa fa-fw fa-undo"></i> ' + dt.i18n('buttons.reset', 'Сброс');
         },
 
         action: function (e, dt, button, config) {
@@ -254,7 +254,7 @@
         className: 'buttons-reload',
 
         text: function (dt) {
-            return '<i class="fa fa-fw fa-refresh"></i> ' + dt.i18n('buttons.reload', 'Reload');
+            return '<i class="fa fa-fw fa-refresh"></i> ' + dt.i18n('buttons.reload', 'Загрузить');
         },
 
         action: function (e, dt, button, config) {
@@ -274,21 +274,21 @@
         }
     };
 
-    // // if (typeof DataTable.ext.buttons.copyHtml5 !== 'undefined') {
-    //     $.extend(DataTable.ext.buttons.copyHtml5, {
-    //         text: function (dt) {
-    //             return '<i class="fa fa-fw fa-copy"></i> ' + dt.i18n('buttons.copy', 'Copy');
-    //         }
-    //     });
-    // // }
-
-    // if (typeof DataTable.ext.buttons.colvis !== 'undefined') {
-    //     $.extend(DataTable.ext.buttons.colvis, {
-    //         text: function (dt) {
-    //             return '<i class="fa fa-fw fa-eye"></i> ' + dt.i18n('buttons.colvis', 'Видимость');
-    //         }
-    //     });
+    // if (typeof DataTable.ext.buttons.copyHtml5 !== 'undefined') {
+        $.extend(DataTable.ext.buttons.copyHtml5, {
+            text: function (dt) {
+                return '<i class="fa fa-fw fa-copy"></i> ' + dt.i18n('buttons.copy', 'Copy');
+            }
+        });
     // }
+
+    if (typeof DataTable.ext.buttons.colvis !== 'undefined') {
+        $.extend(DataTable.ext.buttons.colvis, {
+            text: function (dt) {
+                return '<i class="fa fa-fw fa-eye"></i> ' + dt.i18n('buttons.colvis', 'Видимость');
+            }
+        });
+    }
 
 
 
@@ -321,18 +321,28 @@
         // buttons: ['csv', 'excel', 'pdf', 'colvis']
         // buttons: []
         buttons: [
-            'csv', 'excel', 'import', 'copy',
-            {
-                extend: 'colvis',
-                columns: ':gt(0)'
-            },
-            'selected',
-            'selectedSingle',
-            'selectAll',
-            'selectNone',
-            'selectRows',
-            'selectColumns',
-            'selectCells'
+            // 'csv',
+            'excel',
+            // 'import'
+            // , 'copy',
+            // {
+            //     extend: 'colvis',
+            //     columns: ':gt(0)'
+            // },
+
+            // 'selected',
+            // 'selectedSingle',
+            // 'selectAll',
+            // 'selectNone',
+            // 'selectRows',
+            // 'selectColumns',
+            // 'selectCells',
+            // {
+            //     text: 'Reload',
+            //     action: function ( e, dt, node, config ) {
+            //         dt.ajax.reload();
+            //     }
+            // }
         ],
     };
 
@@ -342,17 +352,93 @@
         searching: true,
         ordering:  true,
         language: {
-            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json",
-            "select": {
-                rows: {
-                    _: "Вы выбрали %d строк",
-                    0: "Нажмите для выбора строки",
-                    1: "Выбрана 1 строка"
-                }            
-            }
+            // "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json",
+              "processing": "Подождите...",
+              "search": "Поиск:",
+              "lengthMenu": "Показать _MENU_ записей",
+              "info": "Записи с _START_ до _END_ из _TOTAL_ записей",
+              "infoEmpty": "Записи с 0 до 0 из 0 записей",
+              "infoFiltered": "(отфильтровано из _MAX_ записей)",
+              "infoPostFix": "",
+              "loadingRecords": "Загрузка записей...",
+              "zeroRecords": "Записи отсутствуют.",
+              "emptyTable": "В таблице отсутствуют данные",
+              "paginate": {
+                "first": "Первая",
+                "previous": "Назад",
+                "next": "Вперед",
+                "last": "Последняя"
+              },
+              "aria": {
+                "sortAscending": ": активировать для сортировки столбца по возрастанию",
+                "sortDescending": ": активировать для сортировки столбца по убыванию"
+              },
+              "select": {
+                "rows": {
+                  "_": "Выбрано записей: %d",
+                  "0": "Кликните по записи для выбора",
+                  "1": "Выбрана одна запись"
+                }
+              },
+            // "select": {
+            //     rows: {
+            //         _: "Вы выбрали %d строк",
+            //         0: "Нажмите для выбора строки",
+            //         1: "Выбрана 1 строка"
+            //     }            
+            // },
+            buttons: {
+                colvis: 'Выбрать колонки'
+            }            
         },
-        select: true,
-        fixedHeader: true
+        // select: true,
+        fixedHeader: true,
+        orderCellsTop: true,
+
+        columnDefs : [
+            {
+                targets : 1,
+                data: "img",
+                "render" : function ( url, type, full) {
+                    return '<a href="'+url+'" target="_blank"><img class="datatables_img img-responsive img-hover-zoom--colorize" src="'+url+'"/></a>';
+                },
+            },
+            {
+                targets : 0,
+                data: "a",
+                "render" : function ( url, type, full) {
+                    // console.log(url)
+                    return '<a href="'+url+'">'+url+'</a>';
+                }
+            }
+        ],
+        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Все"]],
+        // scrollY:        1200,
+        // scrollCollapse: true,
+        pagingType: "simple_numbers_no_ellipses", // scrolling input
+
+        // initComplete: function () {
+        //     this.api().columns().every( function () {
+        //         var column = this;
+        //         var select = $('<select><option value=""></option></select>')
+        //             .appendTo( $(column.footer()).empty() )
+        //             .on( 'change', function () {
+        //                 var val = $.fn.dataTable.util.escapeRegex(
+        //                     $(this).val()
+        //                 );
+ 
+        //                 column
+        //                     .search( val ? '^'+val+'$' : '', true, false )
+        //                     .draw();
+        //             } );
+ 
+        //         column.data().unique().sort().each( function ( d, j ) {
+        //             select.append( '<option value="'+d+'">'+d+'</option>' )
+        //         } );
+        //     } );
+        // }
+        // dom: 'ilrftip',
+        // pageLength: 50
 
         // select: {
         //     style: 'multi'
@@ -385,7 +471,53 @@
     } );
     // $.fn.dataTable.ext.order.intl('fr');
 
+    // $.fn.dataTable.ext.buttons.reload = {
+    //     text: 'Reload',
+    //     action: function ( e, dt, node, config ) {
+    //         dt.ajax.reload();
+    //     }
+    // };
+    // $('#dataTableBuilder')
 
 
+    // // Setup - add a text input to each footer cell
+    // $('#dataTableBuilder tfoot th').each( function () {
+    //     var title = $(this).text();
+    //     $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+    // } );
+ 
+    // // DataTable
+    // var table = $('#dataTableBuilder').DataTable();
+ 
+    // // Apply the search
+    // table.columns().every( function () {
+    //     var that = this;
+ 
+    //     $( 'input', this.footer() ).on( 'keyup change clear', function () {
+    //         if ( that.search() !== this.value ) {
+    //             that
+    //                 .search( this.value )
+    //                 .draw();
+    //         }
+    //     } );
+    // } );
+
+    // if ('loading' in HTMLImageElement.prototype) alert("yes"); else alert("no");
 
 })(jQuery, jQuery.fn.dataTable);
+
+    // var table = $('#dataTableBuilder').DataTable();
+    // $('#dataTableBuilder thead tr').clone(true).appendTo( '#dataTableBuilder thead' );
+    // $('#dataTableBuilder thead tr:eq(1) th').each( function (i) {
+    //     var title = $(this).text();
+    //     $(this).html( '<input type="text" placeholder="Поиск '+title+'" />' );
+ 
+    //     $( 'input', this ).on( 'keyup change', function () {
+    //         if ( table.column(i).search() !== this.value ) {
+    //             table
+    //                 .column(i)
+    //                 .search( this.value )
+    //                 .draw();
+    //         }
+    //     } );
+    // } );

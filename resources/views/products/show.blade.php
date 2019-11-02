@@ -12,7 +12,7 @@
                 <div class="row" style="padding-left: 20px">
                     @include('products.show_fields')
                     <a href="{!! route('products.index') !!}" class="btn btn-default">Назад</a>
-                    <a href="{!! route('products.edit', [$product->id]) !!}" class='btn btn-default'>Изменить</a>
+                    <a href="{!! route('products.edit', [$product->ident]) !!}" class='btn btn-default'>Изменить</a>
                 </div>
             </div>
         </div>

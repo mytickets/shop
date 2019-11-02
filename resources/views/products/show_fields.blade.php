@@ -1,7 +1,12 @@
 <!-- Id Field -->
-<div class="form-group">
+{{-- <div class="form-group">
     {!! Form::label('id', __('Id') ) !!}
-    <p>{!! $product->id !!}</p>
+    <p>{!! $product->ident !!}</p>
+</div> --}}
+<!-- Ident Field -->
+<div class="form-group">
+    {!! Form::label('ident', __('Ident') ) !!}
+    <p>{!! $product->ident !!}</p>
 </div>
 
 <!-- Created At Field -->
@@ -16,11 +21,6 @@
     <p>{!! $product->updated_at !!}</p>
 </div>
 
-<!-- Ident Field -->
-<div class="form-group">
-    {!! Form::label('ident', __('Ident') ) !!}
-    <p>{!! $product->ident !!}</p>
-</div>
 
 <!-- Name Field -->
 <div class="form-group">

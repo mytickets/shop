@@ -107,5 +107,8 @@ class Cat extends Model
         
     ];
 
+    public $incrementing = false;
+    protected $primaryKey = 'ident';
+    // public $timestamp = false;
     
 }

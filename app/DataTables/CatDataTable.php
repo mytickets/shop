@@ -44,11 +44,13 @@ class CatDataTable extends DataTable
             ->minifiedAjax()
             ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
-                'dom'       => 'Bfrtip',
+                // 'dom'       => 'Bfrtip',
+                'dom'       => 'fBlrtip',
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
                     ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
+                    ['extend' => 'colvis', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
@@ -66,8 +68,8 @@ class CatDataTable extends DataTable
     {
         return [
             'ident',
-            'name',
             'image',
+            'name',
             'xml_name',
             'parent_id',
             'menu'

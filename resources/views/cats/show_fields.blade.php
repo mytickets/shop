@@ -1,7 +1,7 @@
 <!-- Id Field -->
 <div class="form-group">
     {!! Form::label('id', __('Id') ) !!}
-    <p>{!! $cat->id !!}</p>
+    <p>{!! $cat->ident !!}</p>
 </div>
 
 <!-- Created At Field -->

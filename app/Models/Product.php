@@ -134,5 +134,7 @@ class Product extends Model
         // return $this->belongsTo('App\Carts');
     }
 
+    public $incrementing = false;
+    protected $primaryKey = 'ident';
     
 }

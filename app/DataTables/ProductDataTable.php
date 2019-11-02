@@ -44,10 +44,12 @@ class ProductDataTable extends DataTable
             ->minifiedAjax()
             ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
-                'dom'       => 'Bfrtip',
+                'dom'       => 'fBlrtip',
+                // 'dom'       => '<"top"iflp<"clear">>rt<"bottom"iflp<"clear">>',
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
+                    ['extend' => 'colvis', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
@@ -66,8 +68,8 @@ class ProductDataTable extends DataTable
     {
         return [
             'ident',
-            'name',
             'image',
+            'name',
             'xml_cat',
             'cat_id',
             'price_amount',
