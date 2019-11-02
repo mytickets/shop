@@ -93,7 +93,7 @@
         className: 'buttons-excel',
 
         text: function (dt) {
-            return '<i class="fa fa-file-excel-o"></i> ' + dt.i18n('buttons.excel', 'Excel');
+            return '<i class="fa fa-fw fa-file-excel-o"></i> ' + dt.i18n('buttons.excel', 'Excel');
         },
 
         action: function (e, dt, button, config) {
@@ -106,7 +106,7 @@
         className: 'buttons-excel',
 
         text: function (dt) {
-            return '<i class="fa fa-file-excel-o"></i> ' + dt.i18n('buttons.excel', 'Excel');
+            return '<i class="fa fa-fw fa-file-excel-o"></i> ' + dt.i18n('buttons.excel', 'Excel');
         },
 
         action: function (e, dt, button, config) {
@@ -121,7 +121,7 @@
         className: 'buttons-excel',
 
         text: function (dt) {
-            return '<i class="fa fa-file-excel-o"></i> ' + dt.i18n('buttons.excel', 'Excel (only visible columns)');
+            return '<i class="fa fa-fw fa-file-excel-o"></i> ' + dt.i18n('buttons.excel', 'Excel (only visible columns)');
         },
 
         action: function (e, dt, button, config) {
@@ -132,23 +132,14 @@
         }
     };
 
-    DataTable.ext.buttons.export = {
-        extend: 'collection',
 
-        className: 'buttons-export',
 
-        text: function (dt) {
-            return '<i class="fa fa-download"></i> ' + dt.i18n('buttons.export', 'Export') + '&nbsp;<span class="caret"/>';
-        },
-
-        buttons: ['csv', 'excel', 'pdf']
-    };
 
     DataTable.ext.buttons.csv = {
         className: 'buttons-csv',
 
         text: function (dt) {
-            return '<i class="fa fa-file-excel-o"></i> ' + dt.i18n('buttons.csv', 'CSV');
+            return '<i class="fa fa-fw fa-file-excel-o"></i> ' + dt.i18n('buttons.csv', 'CSV');
         },
 
         action: function (e, dt, button, config) {
@@ -161,7 +152,7 @@
         className: 'buttons-csv',
 
         text: function (dt) {
-            return '<i class="fa fa-file-excel-o"></i> ' + dt.i18n('buttons.csv', 'CSV (only visible columns)');
+            return '<i class="fa fa-fw fa-file-excel-o"></i> ' + dt.i18n('buttons.csv', 'CSV (only visible columns)');
         },
 
         action: function (e, dt, button, config) {
@@ -176,7 +167,7 @@
         className: 'buttons-csv',
 
         text: function (dt) {
-            return '<i class="fa fa-file-excel-o"></i> ' + dt.i18n('buttons.csv', 'CSV');
+            return '<i class="fa fa-fw fa-file-excel-o"></i> ' + dt.i18n('buttons.csv', 'CSV');
         },
 
         action: function (e, dt, button, config) {
@@ -191,7 +182,7 @@
         className: 'buttons-pdf',
 
         text: function (dt) {
-            return '<i class="fa fa-file-pdf-o"></i> ' + dt.i18n('buttons.pdf', 'PDF');
+            return '<i class="fa fa-fw fa-file-pdf-o"></i> ' + dt.i18n('buttons.pdf', 'PDF');
         },
 
         action: function (e, dt, button, config) {
@@ -204,7 +195,7 @@
         className: 'buttons-pdf',
 
         text: function (dt) {
-            return '<i class="fa fa-file-pdf-o"></i> ' + dt.i18n('buttons.pdf', 'PDF');
+            return '<i class="fa fa-fw fa-file-pdf-o"></i> ' + dt.i18n('buttons.pdf', 'PDF');
         },
 
         action: function (e, dt, button, config) {
@@ -215,11 +206,28 @@
         }
     };
 
+
+
+    DataTable.ext.buttons.import = {
+        className: 'buttons-import',
+
+        text: function (dt) {
+            return  '<i class="fa fa-fw fa-print"></i> ' + dt.i18n('buttons.import', 'import');
+        },
+
+        action: function (e, dt, button, config) {
+            alert('import')
+            // var url = _buildUrl(dt, 'print');
+            // window.location = url;
+        }
+    };
+
+
     DataTable.ext.buttons.print = {
         className: 'buttons-print',
 
         text: function (dt) {
-            return  '<i class="fa fa-print"></i> ' + dt.i18n('buttons.print', 'Print');
+            return  '<i class="fa fa-fw fa-print"></i> ' + dt.i18n('buttons.print', 'Print');
         },
 
         action: function (e, dt, button, config) {
@@ -232,7 +240,7 @@
         className: 'buttons-reset',
 
         text: function (dt) {
-            return '<i class="fa fa-undo"></i> ' + dt.i18n('buttons.reset', 'Reset');
+            return '<i class="fa fa-fw fa-undo"></i> ' + dt.i18n('buttons.reset', 'Reset');
         },
 
         action: function (e, dt, button, config) {
@@ -246,7 +254,7 @@
         className: 'buttons-reload',
 
         text: function (dt) {
-            return '<i class="fa fa-refresh"></i> ' + dt.i18n('buttons.reload', 'Reload');
+            return '<i class="fa fa-fw fa-refresh"></i> ' + dt.i18n('buttons.reload', 'Reload');
         },
 
         action: function (e, dt, button, config) {
@@ -258,7 +266,7 @@
         className: 'buttons-create',
 
         text: function (dt) {
-            return '<i class="fa fa-plus"></i> ' + dt.i18n('buttons.create', 'Create');
+            return '<i class="fa fa-fw fa-plus"></i> ' + dt.i18n('buttons.create', 'Создать');
         },
 
         action: function (e, dt, button, config) {
@@ -266,19 +274,118 @@
         }
     };
 
-    if (typeof DataTable.ext.buttons.copyHtml5 !== 'undefined') {
-        $.extend(DataTable.ext.buttons.copyHtml5, {
-            text: function (dt) {
-                return '<i class="fa fa-copy"></i> ' + dt.i18n('buttons.copy', 'Copy');
-            }
-        });
-    }
+    // // if (typeof DataTable.ext.buttons.copyHtml5 !== 'undefined') {
+    //     $.extend(DataTable.ext.buttons.copyHtml5, {
+    //         text: function (dt) {
+    //             return '<i class="fa fa-fw fa-copy"></i> ' + dt.i18n('buttons.copy', 'Copy');
+    //         }
+    //     });
+    // // }
 
-    if (typeof DataTable.ext.buttons.colvis !== 'undefined') {
-        $.extend(DataTable.ext.buttons.colvis, {
-            text: function (dt) {
-                return '<i class="fa fa-eye"></i> ' + dt.i18n('buttons.colvis', 'Column visibility');
+    // if (typeof DataTable.ext.buttons.colvis !== 'undefined') {
+    //     $.extend(DataTable.ext.buttons.colvis, {
+    //         text: function (dt) {
+    //             return '<i class="fa fa-fw fa-eye"></i> ' + dt.i18n('buttons.colvis', 'Видимость');
+    //         }
+    //     });
+    // }
+
+
+
+    // DataTable.ext.buttons.export = {
+    //     extend: 'collection',
+
+    //     className: 'buttons-colvis',
+
+    //     text: function (dt) {
+    //         return '<i class="fa fa-fw fa-eye"></i> ' + dt.i18n('buttons.colvis', 'Видимость');
+    //         // return '<i class="fa fa-fw fa-download"></i> ' + dt.i18n('buttons.colvis', 'colvis') + '&nbsp;<span class="caret"/>';
+    //     },
+
+    //     buttons: ['colvis']
+    // };
+
+        // "language": {
+        //     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"
+        // }
+
+    DataTable.ext.buttons.export = {
+        extend: 'collection',
+
+        className: 'buttons-collection',
+
+        text: function (dt) {
+            return '<i class="fa fa-fw fa-download"></i> ' + dt.i18n('buttons.collection', 'Больше') + '&nbsp;<span class="caret"/>';
+        },
+
+        // buttons: ['csv', 'excel', 'pdf', 'colvis']
+        // buttons: []
+        buttons: [
+            'csv', 'excel', 'import', 'copy',
+            {
+                extend: 'colvis',
+                columns: ':gt(0)'
+            },
+            'selected',
+            'selectedSingle',
+            'selectAll',
+            'selectNone',
+            'selectRows',
+            'selectColumns',
+            'selectCells'
+        ],
+    };
+
+   
+    // Disable search and ordering by default
+    $.extend( $.fn.dataTable.defaults, {
+        searching: true,
+        ordering:  true,
+        language: {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json",
+            "select": {
+                rows: {
+                    _: "Вы выбрали %d строк",
+                    0: "Нажмите для выбора строки",
+                    1: "Выбрана 1 строка"
+                }            
             }
-        });
-    }
+        },
+        select: true,
+        fixedHeader: true
+
+        // select: {
+        //     style: 'multi'
+        // },
+        // select: {
+        //     style: 'os',
+        //     items: 'cell'
+        // },
+        // columnDefs: [ {
+        //     orderable: false,
+        //     className: 'select-checkbox',
+        //     targets:   0
+        // } ],
+        // select: {
+        //     style:    'os',
+        //     selector: 'td:first-child'
+        // },
+        // order: [[ 1, 'asc' ]]        
+        // select: {
+        //     style: 'multi',
+        //     rows: {
+        //         _: "Вы выбрали %d строк",
+        //         0: "Нажмите для выбора строки",
+        //         1: "Выбрана 1 строка"
+        //     }
+        // }
+        // dom: 'Bfrtip',
+        // dom: 'Bfrtip',
+
+    } );
+    // $.fn.dataTable.ext.order.intl('fr');
+
+
+
+
 })(jQuery, jQuery.fn.dataTable);

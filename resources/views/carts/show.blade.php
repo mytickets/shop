@@ -11,6 +11,7 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('carts.show_fields')
+                    @include('carts.line_items')
                     <a href="{!! route('carts.index') !!}" class="btn btn-default">Назад</a>
                     <a href="{!! route('carts.edit', [$cart->id]) !!}" class='btn btn-default'>Изменить</a>
                 </div>
