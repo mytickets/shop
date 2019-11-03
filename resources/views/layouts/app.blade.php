@@ -119,6 +119,7 @@
         @include('layouts.sidebar')
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+            @yield('content-header')
             @yield('content')
         </div>
 
@@ -191,7 +192,6 @@
     <!-- AdminLTE for demo purposes -->
     {{-- <script src="/lte1/dist/js/demo.js"></script> --}}
 
-    @yield('scripts')
 
 
     <script src="{{ asset('js/bootstrap-notify.js') }}" defer></script>
@@ -201,9 +201,9 @@
     {{-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pnotify@4.0.0/dist/iife/PNotify.min.js"></script> --}}
     {{-- https://cdn.jsdelivr.net/npm/pnotify@4.0.0/dist/umd/ --}}
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pnotify@4.0.0/dist/umd/PNotify.js"></script>
-
-
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pnotify@4.0.0/dist/umd/PNotifyButtons.js"></script>
+
+    <script type="text/javascript" src="/js/masonry.pkgd.min.js"></script>
 
     <script type="text/javascript">
         {{-- PNotify.defaults.styling = 'bootstrap3'; // Bootstrap version 3 --}}
@@ -211,8 +211,10 @@
         // PNotify.defaults.icons = 'fontawesome4'; // Font Awesome 4
     </script>
 
-
     <script src="{{ asset('js/app.js') }}" defer></script>
+
+    @yield('scripts')
+
     <!-- Scripts -->
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 

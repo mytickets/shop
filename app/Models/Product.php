@@ -124,7 +124,7 @@ class Product extends Model
 
     public function line_items()
     {
-        return $this->hasMany('App\Models\LineItem');
+        return $this->hasMany('App\Models\LineItem', 'product_id');
         // return $this->belongsTo('App\Carts');
     }
     public function orders()

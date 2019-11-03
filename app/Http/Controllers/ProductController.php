@@ -17,6 +17,7 @@ use Illuminate\Http\UploadedFile;
 // datatable_controller.stub
 
 use App\Models\LineItem;
+use App\Models\Cart;
 use Config;
 
 class ProductController extends AppBaseController
@@ -29,9 +30,22 @@ class ProductController extends AppBaseController
         $this->productRepository = $productRepo;
     }
 
-    public function to_cart($id, $qty=1)
+    public function to_cart($ident, $qty=1)
     {
-        LineItem::create(['cart_id' => session('cart')->id, 'product_id'=>$id, 'qty'=>$qty]);
+            $session_id = \Session::getId();
+            $cart = Cart::firstOrCreate(['session_id' => $session_id]);
+            session('cart', $cart);
+            // session('session_id', $session_id);
+            // $attributes = ['invited_by_id' => '..'];
+
+            $instance = LineItem::where(['cart_id' => $cart->id, 'product_id'=>$ident])->first();
+            if( is_null ( $instance ) ) {
+                LineItem::create(['cart_id' => $cart->id, 'product_id'=>$ident, 'qty'=>$qty]);
+            } else {
+                $qty_new = $instance->qty+$qty;
+                $instance->update(['qty'=>$qty_new]);
+            }
+
         return 'ok';
     }
 
@@ -43,6 +57,7 @@ class ProductController extends AppBaseController
      */
     public function index(ProductDataTable $productDataTable)
     {
+        
         return $productDataTable->render('products.index');
     }
 

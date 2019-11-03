@@ -10,6 +10,7 @@
                 </div>
                 <div class="col-xs-4">
                   <h4 class="product-name">
+                    {{ $line->product->ident }}
                     <strong>{{ $line->product->name ?? "Название" }}</strong>
 
                   </h4>

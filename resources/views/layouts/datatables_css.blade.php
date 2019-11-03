@@ -33,6 +33,10 @@
 	  transform: scale(1.4);
 	}	
 
+	tr:hover {
+      background-color: #ffff99 !important;
+    }		
+
 </style>
 {{-- <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css" rel="stylesheet"> --}}
 {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css"> --}}

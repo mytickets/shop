@@ -396,6 +396,14 @@
         orderCellsTop: true,
 
         columnDefs : [
+            // {
+            //     targets : 0,
+            //     data: "a",
+            //     "render" : function ( url, type, full) {
+            //         // console.log(url)
+            //         return '<a href="'+url+'">'+url+'</a>';
+            //     }
+            // },
             {
                 targets : 1,
                 data: "img",
@@ -403,14 +411,6 @@
                     return '<a href="'+url+'" target="_blank"><img class="datatables_img img-responsive img-hover-zoom--colorize" src="'+url+'"/></a>';
                 },
             },
-            {
-                targets : 0,
-                data: "a",
-                "render" : function ( url, type, full) {
-                    // console.log(url)
-                    return '<a href="'+url+'">'+url+'</a>';
-                }
-            }
         ],
         lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Все"]],
         // scrollY:        1200,

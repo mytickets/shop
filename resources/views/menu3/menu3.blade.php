@@ -20,7 +20,7 @@
    <div id="pagetitle" class=" text-center">
          <div class="container" style="padding-top: 90px;">
             <p>Полный список категорий</p>
-            <h2>МЕНЮ</h2>
+            <h2>МЕНЮ {{ $session_id }}</h2>
          </div>
    </div>
 
@@ -50,6 +50,7 @@
 
                           {{-- @foreach ( \App\Models\Product::where('cat_id', $cat->id)->get() as $product) --}}
                            <div class="vc_row wpb_row vc_row-fluid vc_custom_1536348479913">
+
                            @foreach ( \App\Models\Product::where('cat_id', "=", $cat->ident)->get() as $product)
                            @if ( $product->menu == 1)
 
@@ -71,7 +72,7 @@
                                                 <div class="col-lg-4 mb30">
                                                    <div class="menu_img_wrap" style="text-align: center;" ><img src="{{ $product->image }}" alt="{{ $product->name }}">
                                                     <br>
-                                                    <a href="#" data-ident="{{ $product->id }}" class="btn to_cart" style="width: 100%;">
+                                                    <a href="#" data-ident="{{ $product->ident }}" class="btn to_cart" style="width: 100%;">
                                                       В корзину
                                                     </a>
                                                    </div>
@@ -136,20 +137,20 @@
 
 @section('script')
 <script type="text/javascript">
-function total_cart() {
-    $.get(
-      "/total_cart/"+$('#cart_id').data('id'), {}, onAjaxSuccess
-    );
-    // cart-value
-}
-function onAjaxSuccess(data)
-{
-  // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
-  console.log(data);
-  $("#cart-value").html(data+" руб.")
-  $("#cart-value2").html(data+" руб.")
+// function total_cart() {
+//     $.get(
+//       "/total_cart/"+$('#cart_id').data('id'), {}, onAjaxSuccess
+//     );
+//     // cart-value
+// }
+// function onAjaxSuccess(data)
+// {
+//   // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
+//   console.log(data);
+//   $("#cart-value").html(data+" руб.")
+//   $("#cart-value2").html(data+" руб.")
     
-}
+// }
 
 
 $(document).ready(function (){   

@@ -153,6 +153,20 @@ Route::group(['middleware' => 'auth'], function () {
 
     
 
+                                Route::get('/cart', function () {
+                                    // session('cart');
+                                    // return view('menu3.cart');
+                                    return view('menu3.cart')->with('cart', session('cart'));
+                                });
+                                Route::get('/product/{ident}/to_cart/{qty}', 'ProductController@to_cart');
+                                // Route::get('/cart/{cart_id}/product/{ident}/to_cart/{qty}', 'ProductController@to_cart');
+                                Route::get('/menu', function () {
+                                    $cats = Cat::all();
+                                    // $cart
+                                    return view('menu3.menu3')->with('cats', $cats);
+                                });
+
+
     // 
     Route::get('/manager', 'ManagerController@index');
     // Route::get('/manager', function () {
@@ -262,21 +276,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('orders', 'OrderController');
 
     Route::resource('carts', 'CartController');
-    Route::get('carts/destroy_all', 'CartController@destroy_all');
+    // Route::get('carts/destroy_all', 'CartController@destroy_all');
 
     Route::resource('lineItems', 'LineItemController');
-    Route::get('lineItems/destroy_all', 'LineItemController@destroy_all');
+    Route::get('/lineItems_destroy_all', 'LineItemController@destroy_all');
 
 });
 
 // MENU
 // Route::get('/menu', 'MenuController@index');
 
-Route::get('/menu', function () {
-    $cats = Cat::all();
-    // $cart
-    return view('menu3.menu3')->with('cats', $cats);
-});
 
 
 Route::get('/', function () {
@@ -298,11 +307,6 @@ Route::get('/about2', function () {
 });
 // rs-fullwidth-wrap
 
-Route::get('/cart', function () {
-    // session('cart');
-    // return view('menu3.cart');
-    return view('menu3.cart')->with('cart', session('cart'));
-});
 
 Route::get('/admin2_start', function () {
     return view('menu3.admin2_start');
@@ -314,5 +318,4 @@ Route::get('/admin2_mindmap', function () {
 
 
 
-Route::get('/product/{id}/to_cart/{qty}', 'ProductController@to_cart');
 

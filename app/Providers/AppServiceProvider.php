@@ -54,15 +54,15 @@ class AppServiceProvider extends ServiceProvider
         // TODO Fuck_UP SHARE SESSION_ID
         view()->composer('*', function ($view) 
         {
-            $cart = Cart::firstOrCreate(['session_id' => \Session::getId()]);
-            $view->with('session_id', \Session::getId() );
-            // session(['cart' => $cart ]);
-            // Config::set("cart", $cart);
+            $session_id = \Session::getId();
+            $cart = Cart::firstOrCreate(['session_id' => $session_id]);
             session('cart', $cart);
-            // $view->with('cart', $cart );
+            session('session_id', $session_id);
+            $view->with('cart', $cart );
+            $view->with('session_id', $session_id );
+            // Config::set("cart", $cart);
         });
         
-        // dd( $request );
         // dd( Session::all() );
         // $session_id = $request->cookie('_session');
         // $_session = $request->session()->get('_session');

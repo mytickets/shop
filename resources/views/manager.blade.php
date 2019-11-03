@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
-
+@section('content-header')
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -10,10 +9,15 @@
         <small>Version 0.1</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-dashboard"></i> Главная</a></li>
-        <li class="active">Генератор</li>
+        {{-- <li><a href="/"><i class="fa fa-dashboard"></i> Главная</a></li> --}}
+        <li><a href="/"><i class="fa fa-dashboard"></i> Пространство</a></li>
+        <li class="active">Рабочий стол менеджера</li>
       </ol>
     </section>
+
+@endsection
+
+@section('content')
 
     <!-- Main content -->
     <section class="content">

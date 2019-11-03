@@ -33,6 +33,33 @@ class Cart extends Model
         'session_id' => 'string'
     ];
 
+
+    public function total()
+    {
+        // $this->line_items
+        $total_price = 0;
+        foreach ($this->line_items as $key => $value) {
+            $total_price = $total_price + $value->product->price_amount*$value->qty;
+            // echo $total_price."<br>";
+        // dd($total_price);
+        // dd($total_price);
+        }
+
+        return $total_price;
+    }
+
+    public function total_qty()
+    {
+        // $this->line_items
+        $qtys = 0;
+        foreach ($this->line_items as $key => $value) {
+            $qtys = $qtys + $value->qty;
+        }
+
+        return $qtys;
+    } 
+
+
     /**
      * Validation rules
      *

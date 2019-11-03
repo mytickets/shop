@@ -179,7 +179,7 @@ class LineItemController extends AppBaseController
     {
         LineItem::truncate();
         Flash::success('Всё удалено!');
-        return redirect(route('line_items.index'));
+        return redirect(route('lineItems.index'));
     }
 
 }

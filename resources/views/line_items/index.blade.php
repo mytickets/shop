@@ -5,6 +5,8 @@
         <h1 class="pull-left"><b>Список:</b> Список позиций корзины</h1>
         <h1 class="pull-right">
            <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('lineItems.create') !!}">Создать</a>
+           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="/lineItems_destroy_all">Del all</a>
+
         </h1>
     </section>
     <div class="content">
