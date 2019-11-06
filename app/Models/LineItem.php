@@ -59,5 +59,16 @@ class LineItem extends Model
     {
         return $this->belongsTo('App\Models\Product', 'product_id');
     }
+
+    public function order()
+    {
+        return $this->belongsTo('App\Models\LineItem', 'order_id');
+    }
+
+
+    public function total()
+        {
+            return $this->qty*$this->product->price_amount;
+        } 
         
 }

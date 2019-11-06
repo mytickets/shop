@@ -113,12 +113,12 @@
               <div class="clearfix"></div>
               <div class="box box-primary">
                   <div class="box-body">
-                          @include('menus.table')
+                          @include('orders.table')
                   </div>
               </div>
               <div class="text-center">
               
-              @include('adminlte-templates::common.paginate', ['records' => $menus])
+              @include('adminlte-templates::common.paginate', ['records' => $orders])
 
               </div>
 

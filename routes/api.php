@@ -36,6 +36,7 @@ Route::resource('carts', 'CartAPIController');
 
 Route::resource('line_items', 'LineItemAPIController');
 
-Route::resource('orders', 'OrderAPIController');
+
 
 Route::resource('products', 'ProductAPIController');
+

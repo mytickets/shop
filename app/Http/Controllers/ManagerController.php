@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateMenuRequest;
-use App\Http\Requests\UpdateMenuRequest;
-use App\Repositories\MenuRepository;
+use App\Repositories\OrderRepository;
+
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
 
+
+
 class ManagerController extends AppBaseController
 {
-    /** @var  MenuRepository */
-    private $menuRepository;
+    private $orderRepository;
 
-    public function __construct(MenuRepository $menuRepo)
+    public function __construct(OrderRepository $orderRepo)
     {
-        $this->menuRepository = $menuRepo;
+        $this->orderRepository = $orderRepo;
     }
 
     /**
@@ -29,19 +29,18 @@ class ManagerController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $menus = $this->menuRepository->paginate(10);
+        // $menus = $this->menuRepository->paginate(10);
+
+        // return view('manager')
+        //     ->with('menus', $menus);
+        $orders = $this->orderRepository->paginate(10);
 
         return view('manager')
-            ->with('menus', $menus);
+            ->with('orders', $orders);
     }
 
     public function alert(Request $request)
     {
-        // $menus = $this->menuRepository->paginate(10);
-
-        // return view('menus.index')
-            // ->with('menus', $menus);
-        // return redirect(route('menus.index'));
     }
 
 

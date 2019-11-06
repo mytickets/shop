@@ -16,7 +16,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
 
         <link rel="stylesheet" type="text/css" href="/menu3/Evatheme-Icon-Fonts.css">
-        <link rel="stylesheet" type="text/css" href="/menu3/animate.css">
+
+
         <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" /> -->
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js" integrity="sha256-2JRzNxMJiS0aHOJjG+liqsEOuBb6++9cY4dSOyiijX4=" crossorigin="anonymous"></script> -->
 
@@ -146,8 +147,13 @@
                 padding-top: 0 !important;
             }
 
-            /** Ultimate: Media Responsive - **/
+
+           /** Ultimate: Media Responsive - **/
         </style>
+        @yield('css')
+
+        {{-- <link rel="stylesheet" type="text/css" href="/menu3/animate.css"> --}}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
     <script type="text/javascript">
         function setREVStartSize(e) {
@@ -219,12 +225,12 @@
     top: -18px;
     left: -13px;
     z-index: 100;
-    margin: 6px 0 6px 20px;
+    margin: 6px 0 6px 0px;
   }    
 </style>
                             <a class="menu_creative_btn2" href="/cart/" style="float: right; color: white; z-index: 99;">
                                 <i class="fa fa-2x fa-shopping-cart"></i>
-                                <span class="badge badge-notify" style="font-size:10px;">3</span>
+                                <span id="qty_badge" class="badge badge-notify" style="font-size:10px;" data-cart_id={{ $cart->id }}></span>
                             </a>
 
                             <div class="menu_creative_block"
@@ -370,6 +376,23 @@
         <script type="text/javascript" defer="" src="/index_files/autoptimize_2216b68e8b5ad201c9520c02d4963b75.js"></script>
 
         @yield('script')
+
+<script type="text/javascript">
+// $(window).load(function (){
+
+    cart_id = $('#qty_badge').data('cart_id')
+    $.ajax({
+        url: '/carts/'+cart_id+'/total_qty',
+        type: 'GET',
+        success: function(result) {
+          $('#qty_badge').text(result)
+        }
+    });
+
+// });
+
+</script>        
+
 
     </body>
 </html>

@@ -22,15 +22,39 @@
     <p>{!! $order->pay_type !!}</p>
 </div>
 
-<!-- Adr Field -->
+<!-- Pay Place Field -->
 <div class="form-group">
-    {!! Form::label('adr', __('Adr') ) !!}
-    <p>{!! $order->adr !!}</p>
+    {!! Form::label('pay_place', __('Pay Place') ) !!}
+    <p>{!! $order->pay_place !!}</p>
 </div>
 
-<!-- Total Field -->
+<!-- Pay Adr Field -->
 <div class="form-group">
-    {!! Form::label('total', __('Total') ) !!}
-    <p>{!! $order->total !!}</p>
+    {!! Form::label('pay_adr', __('Pay Adr') ) !!}
+    <p>{!! $order->pay_adr !!}</p>
+</div>
+
+<!-- Pay Contact Field -->
+<div class="form-group">
+    {!! Form::label('pay_contact', __('Pay Contact') ) !!}
+    <p>{!! $order->pay_contact !!}</p>
+</div>
+
+<!-- Pay Discount Field -->
+<div class="form-group">
+    {!! Form::label('pay_discount', __('Pay Discount') ) !!}
+    <p>{!! $order->pay_discount !!}</p>
+</div>
+
+<!-- Status Field -->
+<div class="form-group">
+    {!! Form::label('status', __('Status') ) !!}
+    <p>{!! $order->status !!}</p>
+</div>
+
+<!-- Comment Field -->
+<div class="form-group">
+    {!! Form::label('comment', __('Comment') ) !!}
+    <p>{!! $order->comment !!}</p>
 </div>
 

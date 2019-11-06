@@ -172,7 +172,8 @@ class LineItemController extends AppBaseController
 
         Flash::success('Line Item deleted successfully.');
 
-        return redirect(route('lineItems.index'));
+        // return redirect(route('lineItems.index'));
+        return redirect('/cart');
     }
 
     public function destroy_all()
@@ -181,5 +182,27 @@ class LineItemController extends AppBaseController
         Flash::success('Всё удалено!');
         return redirect(route('lineItems.index'));
     }
+
+    public function qty_minus($id)
+    {
+        $lineItem = LineItem::find($id);
+        $lineItem->qty = $lineItem->qty -1;
+        $lineItem->save();
+        return $lineItem->qty;
+    }
+    public function qty_plus($id)
+    {
+        $lineItem = LineItem::find($id);
+        $lineItem->qty = $lineItem->qty + 1;
+        $lineItem->save();
+        return $lineItem->qty;
+    }
+    public function total($id)
+    {
+        $lineItem = LineItem::find($id);
+        return $lineItem->total();
+    }
+
+
 
 }

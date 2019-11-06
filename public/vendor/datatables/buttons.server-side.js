@@ -394,6 +394,7 @@
         // select: true,
         fixedHeader: true,
         orderCellsTop: true,
+        colReorder: true,
 
         columnDefs : [
             // {

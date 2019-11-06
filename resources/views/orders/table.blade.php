@@ -3,8 +3,12 @@
         <thead>
             <tr>
                 <th>{{ __('Pay Type') }}</th>
-        <th>{{ __('Adr') }}</th>
-        <th>{{ __('Total') }}</th>
+        <th>{{ __('Pay Place') }}</th>
+        <th>{{ __('Pay Adr') }}</th>
+        <th>{{ __('Pay Contact') }}</th>
+        <th>{{ __('Pay Discount') }}</th>
+        <th>{{ __('Status') }}</th>
+        <th>{{ __('Comment') }}</th>
                 <th colspan="3">Действие</th>
             </tr>
         </thead>
@@ -12,8 +16,12 @@
         @foreach($orders as $order)
             <tr>
                 <td>{!! $order->pay_type !!}</td>
-            <td>{!! $order->adr !!}</td>
-            <td>{!! $order->total !!}</td>
+            <td>{!! $order->pay_place !!}</td>
+            <td>{!! $order->pay_adr !!}</td>
+            <td>{!! $order->pay_contact !!}</td>
+            <td>{!! $order->pay_discount !!}</td>
+            <td>{!! $order->status !!}</td>
+            <td>{!! $order->comment !!}</td>
                 <td>
                     {!! Form::open(['route' => ['orders.destroy', $order->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

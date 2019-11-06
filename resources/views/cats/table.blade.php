@@ -26,12 +26,19 @@
     </div>
   </div>
 
+<script type="text/javascript">
+
+</script>
 @section('scripts')
     @include('layouts.datatables_js')
     {!! $dataTable->scripts() !!}
 
     <script type="text/javascript">
+
+
 		$(document).on({
+
+    // Disable search and ordering by default
 		  click: function (event) {
 
 		    var table = $(event.target).parents('.dataTables_wrapper').find('table.dataTable');
@@ -54,6 +61,26 @@
 		  //   table.find("tr:eq(" + trIndex + ")").removeClass("hover");
 		  // }
 		}, ".dataTables_wrapper tbody tr");
+
+
+      // $.extend( $.fn.dataTable.defaults, 
+
+      // $.fn.dataTable.defaults = 
+      // {
+      //   searching: false,
+      //   ordering:  true,
+      //   columnDefs : [
+      //       {
+      //           targets : 1,
+      //           data: "img",
+      //           "render" : function ( url, type, full) {
+      //               return '<a href="'+url+'" target="_blank"><img class="datatables_img img-responsive img-hover-zoom--colorize" src="'+url+'"/></a>';
+      //           },
+      //       },
+      //   ],
+      // }
+
     </script>
+
 
 @endsection

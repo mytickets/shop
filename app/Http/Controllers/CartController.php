@@ -42,13 +42,6 @@ class CartController extends AppBaseController
             ->with('carts', $carts);
     }
 
-    public function clear($id, Request $request)
-    {
-        // $carts = $this->cartRepository->paginate(10);
-        
-        // return view('carts.index')
-            // ->with('carts', $carts);
-    }
 
     /**
      * Show the form for creating a new Cart.
@@ -123,6 +116,9 @@ class CartController extends AppBaseController
         return view('carts.edit')->with('cart', $cart);
     }
 
+
+
+
     /**
      * Update the specified Cart in storage.
      *
@@ -193,6 +189,61 @@ class CartController extends AppBaseController
         Flash::success('Всё удалено!');
         return redirect(route('carts.index'));
     }
+
+
+    public function total($id)
+    {
+        $cart = Cart::find($id);
+        return $cart->total();
+    }
+
+    public function total_qty($id)
+    {
+        $cart = Cart::find($id);
+        return $cart->total_qty();
+    }
+    public function remove_items($id)
+    {
+        $cart = Cart::find($id);
+        return $cart->remove_items();
+    }
+
+    public function checkout($id, Request $request)
+    {
+
+        $input = $request->all();
+
+        // if ($request->hasFile('image')) {
+        //     $path = $request->file('image')->store('public/carts');
+        //     $publicPath = \Storage::url( $path );
+        //     $input['image'] = $publicPath;
+        // }
+
+        $cart = Cart::find($id);
+        $check = \App\Models\Order::create( [ 'pay_type' => $input['pay_type'], 'pay_place' => $input['pay_place'], 'pay_adr' => $input['pay_adr'], 'pay_contact' => $input['pay_contact'] ]);
+
+        foreach ($cart->line_items as $key => $line) {
+            $new_line = \App\Models\LineItem::create(['order_id'=>$check->id, 'product_id'=>$line->product_id, 'qty'=>$line->qty]);
+        }
+
+        // $order = App\Models\Order::create(['cart_id'=>$cart->id, 'status'=>'new', 'pay_type'=>"", 'adr'=>'adr', 'phone'=>])
+        
+        // $params = array('');
+        // return $cart->checkout($cart);
+
+        // return view('carts.index')
+            // ->with('carts', $carts);
+
+        return redirect('/thanks');
+
+    }
+
+    public function thanks($thanks_id=777)
+    {
+        event( new \App\Events\ServerCreated("Новый заказ!", 1) );
+        return view('menu3.thanks')->with('thanks', $thanks_id);
+    }
+        
 
 
 }

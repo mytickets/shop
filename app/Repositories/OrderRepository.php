@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class OrderRepository
  * @package App\Repositories
- * @version November 1, 2019, 4:16 pm UTC
+ * @version November 5, 2019, 12:54 am UTC
 */
 
 class OrderRepository extends BaseRepository
@@ -18,8 +18,12 @@ class OrderRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'pay_type',
-        'adr',
-        'total'
+        'pay_place',
+        'pay_adr',
+        'pay_contact',
+        'pay_discount',
+        'status',
+        'comment'
     ];
 
     /**

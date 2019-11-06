@@ -13,11 +13,16 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
+        Schema::drop('orders');
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('pay_type')->nullable();
-            $table->longText('adr')->nullable();
-            $table->decimal('total')->nullable();
+            $table->string('pay_type')->nullable();
+            $table->string('pay_place')->nullable();
+            $table->longText('pay_adr')->nullable();
+            $table->string('pay_contact')->nullable();
+            $table->decimal('pay_discount')->nullable();
+            $table->string('status')->nullable();
+            $table->longText('comment')->nullable();
             $table->timestamps();
         });
     }

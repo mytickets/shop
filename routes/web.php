@@ -273,19 +273,36 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('cats', 'CatController');
     Route::resource('products', 'ProductController');
-    Route::resource('orders', 'OrderController');
+    
 
     Route::resource('carts', 'CartController');
+    Route::get('/carts/{id}/total', 'CartController@total');
+    Route::get('/carts/{id}/total_qty', 'CartController@total_qty');
+    Route::get('/carts/{id}/clear', 'CartController@remove_items');
+
+    Route::get('/carts/{id}/checkout', 'CartController@checkout');
+
     // Route::get('carts/destroy_all', 'CartController@destroy_all');
 
     Route::resource('lineItems', 'LineItemController');
     Route::get('/lineItems_destroy_all', 'LineItemController@destroy_all');
+    Route::get('/qty_minus/{id}', 'LineItemController@qty_minus');
+    Route::get('/qty_plus/{id}', 'LineItemController@qty_plus');
+    Route::get('/lineItems/total/{id}', 'LineItemController@total');
+
 
 });
 
 // MENU
 // Route::get('/menu', 'MenuController@index');
 
+
+    Route::get('/thanks/{id}', 'CartController@thanks');
+    Route::get('/thanks', 'CartController@thanks');
+
+// Route::get('/thanks', function () {
+//     return view('menu3.thanks');
+// });
 
 
 Route::get('/', function () {
@@ -319,3 +336,8 @@ Route::get('/admin2_mindmap', function () {
 
 
 
+
+
+
+
+Route::resource('orders', 'OrderController');

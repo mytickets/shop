@@ -20,7 +20,8 @@
    <div id="pagetitle" class=" text-center">
          <div class="container" style="padding-top: 90px;">
             <p>Полный список категорий</p>
-            <h2>МЕНЮ {{ $session_id }}</h2>
+            <h2>МЕНЮ</h2>
+            
          </div>
    </div>
 
@@ -153,7 +154,9 @@
 // }
 
 
-$(document).ready(function (){   
+
+$(document).ready(function (){
+// $(window).load(function (){
     // var l = $.get("/total_cart/"+$('#cart_id').data('id'))
     // total_cart()
 
@@ -163,13 +166,31 @@ $(document).ready(function (){
     //     total_cart()
     // })
 
+function doBounce(element, times, distance, speed) {
+    for(var i = 0; i < times; i++) {
+        element.animate({marginTop: '-='+distance}, speed)
+            .animate({marginTop: '+='+distance}, speed);
+    }        
+}
+
     $('a.to_cart').click(function(e){
         e.preventDefault();
+        doBounce($(this), 1, '13px', 300);
+        // $(this).addClass('animated', 'bounceOutLeft')
         $.get("/product/"+$(this).data('ident')+"/to_cart/1");
+
+            cart_id = $('#qty_badge').data('cart_id')
+            $.ajax({
+                url: '/carts/'+cart_id+'/total_qty',
+                type: 'GET',
+                success: function(result) {
+                  $('#qty_badge').text(result)
+                }
+            });
+
         // total_cart()
         // console.log($(this).data('id'))
     })
-
 
 });
   

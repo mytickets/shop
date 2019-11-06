@@ -48,14 +48,21 @@ class Cart extends Model
         return $total_price;
     }
 
+    public function remove_items()
+    {
+        foreach ($this->line_items as $key => $value) {
+            $value->delete();
+        }
+        return 'ok';
+    }
+
+
     public function total_qty()
     {
-        // $this->line_items
         $qtys = 0;
         foreach ($this->line_items as $key => $value) {
             $qtys = $qtys + $value->qty;
         }
-
         return $qtys;
     } 
 

@@ -7,11 +7,15 @@ use Eloquent as Model;
 /**
  * Class Order
  * @package App\Models
- * @version November 1, 2019, 4:16 pm UTC
+ * @version November 5, 2019, 12:54 am UTC
  *
- * @property integer pay_type
- * @property string adr
- * @property number total
+ * @property string pay_type
+ * @property string pay_place
+ * @property string pay_adr
+ * @property string pay_contact
+ * @property number pay_discount
+ * @property string status
+ * @property string comment
  */
 class Order extends Model
 {
@@ -23,8 +27,12 @@ class Order extends Model
 
     public $fillable = [
         'pay_type',
-        'adr',
-        'total'
+        'pay_place',
+        'pay_adr',
+        'pay_contact',
+        'pay_discount',
+        'status',
+        'comment'
     ];
 
     /**
@@ -34,8 +42,11 @@ class Order extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'pay_type' => 'integer',
-        'total' => 'float'
+        'pay_type' => 'string',
+        'pay_place' => 'string',
+        'pay_contact' => 'string',
+        'pay_discount' => 'float',
+        'status' => 'string'
     ];
 
     /**
@@ -47,5 +58,23 @@ class Order extends Model
         
     ];
 
-    
+
+    public function line_items()
+    {
+        return $this->hasMany('App\Models\LineItem', 'order_id');
+    }        
+
+    public function total()
+    {
+        // $this->line_items
+        $total_price = 0;
+        foreach ($this->line_items as $key => $value) {
+            $total_price = $total_price + $value->product->price_amount*$value->qty;
+            // echo $total_price."<br>";
+        // dd($total_price);
+        // dd($total_price);
+        }
+
+        return $total_price;
+    }
 }

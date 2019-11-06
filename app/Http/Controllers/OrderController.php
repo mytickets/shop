@@ -60,15 +60,17 @@ class OrderController extends AppBaseController
     public function store(CreateOrderRequest $request)
     {
         $input = $request->all();
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('public/orders');
-            $publicPath = \Storage::url( $path );
-            $input['image'] = $publicPath;
-        }
+        // if ($request->hasFile('image')) {
+        //     $path = $request->file('image')->store('public/orders');
+        //     $publicPath = \Storage::url( $path );
+        //     $input['image'] = $publicPath;
+        // }
 
         $order = $this->orderRepository->create($input);
 
         Flash::success('Order успешно сохранен.');
+        // $order['id']
+        event( new \App\Events\ServerCreated("Новый заказ!", "asd") );
 
         return redirect(route('orders.index'));
     }
@@ -132,15 +134,16 @@ class OrderController extends AppBaseController
         }
 
         $input = $request->all();
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('public/orders');
-            $publicPath = \Storage::url( $path );
-            $input['image'] = $publicPath;
-        }
+        // if ($request->hasFile('image')) {
+        //     $path = $request->file('image')->store('public/orders');
+        //     $publicPath = \Storage::url( $path );
+        //     $input['image'] = $publicPath;
+        // }
 
         $order = $this->orderRepository->update($input, $id);
 
         Flash::success('Order updated successfully.');
+        event( new \App\Events\ServerCreated("Новый заказ!", 1) );
 
         return redirect(route('orders.index'));
     }
@@ -165,7 +168,7 @@ class OrderController extends AppBaseController
         }
 
         // TODO Удаляем файл
-        unlink( getcwd().$order['image'] );
+        // unlink( getcwd().$order['image'] );
 
         $this->orderRepository->delete($id);
 
