@@ -13,7 +13,7 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::drop('orders');
+        // Schema::drop('orders');
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('pay_type')->nullable();

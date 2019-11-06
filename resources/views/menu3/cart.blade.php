@@ -260,9 +260,9 @@
         console.log(currentVal)
 
 
-        $('#cart_total').text(result)
-        total.text('='+result)
-        $('#qty_badge').text(result)
+        // $('#cart_total').text(result)
+        // total.text('='+result)
+        // $('#qty_badge').text(result)
 
 
         if (!isNaN(currentVal)) {
