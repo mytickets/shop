@@ -70,7 +70,7 @@ class OrderController extends AppBaseController
 
         Flash::success('Order успешно сохранен.');
         // $order['id']
-        event( new \App\Events\ServerCreated("Новый заказ!", "asd") );
+        event( new \App\Events\ServerCreated("Новый заказ!", $id) );
 
         return redirect(route('orders.index'));
     }
@@ -143,7 +143,7 @@ class OrderController extends AppBaseController
         $order = $this->orderRepository->update($input, $id);
 
         Flash::success('Order updated successfully.');
-        event( new \App\Events\ServerCreated("Новый заказ!", 1) );
+        event( new \App\Events\ServerCreated("Новый заказ!", $id) );
 
         return redirect(route('orders.index'));
     }

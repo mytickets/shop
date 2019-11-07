@@ -37,7 +37,7 @@ class SendEvent extends Command
      */
     public function handle()
     {
-        event(             new \App\Events\ServerCreated("Новый заказ ", 1)        );
+        event(             new \App\Events\ServerCreated("Новый заказ ", "send:event")        );
         // broadcast(             new \App\Events\ServerCreated("event")        );
 
         // Notification::send($users, new TestNote());

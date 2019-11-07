@@ -234,13 +234,14 @@ class CartController extends AppBaseController
         // return view('carts.index')
             // ->with('carts', $carts);
 
-        return redirect('/thanks');
 
+        event( new \App\Events\ServerCreated("Новый заказ!", $check->id) );
+        return view('menu3.thanks')->with('order_id', $check->id);
     }
 
     public function thanks($thanks_id=777)
     {
-        event( new \App\Events\ServerCreated("Новый заказ!", 1) );
+        // event( new \App\Events\ServerCreated("Новый заказ!", 1) );
         return view('menu3.thanks')->with('thanks', $thanks_id);
     }
         

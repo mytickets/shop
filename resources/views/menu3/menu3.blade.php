@@ -15,6 +15,12 @@
           background-color: #111111;
           color: #ffffff;
       }     
+
+
+.menu_item_ingredients {
+  line-height: 29px;
+}
+
    </style>
 
    <div id="pagetitle" class=" text-center">
@@ -84,7 +90,16 @@
                                                          <span class="menu_item_label" style="color:#ffffff;background-color:#d3ab55;margin-bottom:25px;padding-left:14px;padding-right:14px;letter-spacing:1px;">НОВИНКА</span>
                                                       </div> --}}
                                                       <h4 class="menu_item_title" style="color:#333333;"><span class="menu_item_title_span" style="background-color:#ffffff;font-size: 27px;">{{ $product->name }}</span></h4>
-                                                      <p class="menu_item_ingredients" style="color:#555555;">{{ $product->desc }}</p>
+
+                                                      <p class="menu_item_ingredients" style="color:#555555;">
+
+                                                        @if (mb_strlen($product->desc)>140)
+                                                          {{ mb_substr($product->desc, 0, 140,'UTF-8') }}...
+                                                        @else
+                                                          {{ $product->desc }}
+                                                        @endif
+                                                      </p>
+
                                                    </div>
                                                 </div>
                                              </div>

@@ -296,6 +296,13 @@
                             {{-- <img class="logo-img" src="./index_files/logo.png" alt="Benedicta"> --}}
                         </a>
                     </div>
+
+                         <a class="menu_creative_btn2" href="/cart/" style="float: right; color: white; z-index: 99; margin-right: 1em;">
+                            <i class="fa fa-2x fa-shopping-cart"></i>
+                            <span id="qty_badge2" class="badge badge-notify" style="font-size:10px;" data-cart_id={{ $cart->id }}></span>
+                        </a>
+
+
                     <a class="mobile_menu_btn" href="javascript:void(0)">
                         <span></span>
                         <span></span>
@@ -386,6 +393,8 @@
         type: 'GET',
         success: function(result) {
           $('#qty_badge').text(result)
+          $('#qty_badge2').text(result)
+          
         }
     });
 

@@ -8,7 +8,7 @@
    <div id="pagetitle" class=" text-center">
          <div class="container" style="padding-top: 90px;">
             <h2>Спасибо</h2>
-            <p>за заказ</p>
+            <p>Номер заказа: {{ $order_id }}</p>
          </div>
    </div>
 
@@ -21,7 +21,7 @@
                   <div class="col-sm-12 col-md-10 col-md-offset-1">
                     <div class="panel panel-info">
 
-                      <div class="panel-body">
+{{--                       <div class="panel-body">
                           <div class="row">
                             <div class="col-xs-12 text-center">
                               Спасибо за заказ. Ожидайте.
@@ -29,7 +29,7 @@
                           </div>
                           <hr>
                       </div>
-
+ --}}
                       <div class="panel-heading">
                         <div class="panel-title">
                           <div class="row">

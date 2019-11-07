@@ -40,6 +40,13 @@
     background-color: #111111;
     color: #ffffff;
     }
+
+
+    div.radio label input {
+        margin-top: 10px !important;
+    }
+
+
   </style>
 
 
@@ -132,8 +139,8 @@
 
                               <div class="col-md-6" style="text-align: left;">
 
-                                Метод оплаты
-                                <div class="radio ">
+                                <b>Метод оплаты</b>
+                                <div class="radio">
                                   <label>
                                     <input type="radio" name="pay_type" id="optionsRadios1" value="0" >
                                     Оплата курьеру
@@ -155,7 +162,7 @@
 
                               </div>
                               <div class="col-md-6" style="text-align: left;">
-                                Место получения Продукта
+                                <b>Место получения Продукта</b>
                                 <div class="radio">
                                   <label>
                                     <input type="radio" name="pay_place" id="optionsRadios4" value="0" >
@@ -198,9 +205,6 @@
                                   <h4 class="text-right">Итого <strong id="cart_total">{{ $cart->total() }}</strong></h4>
                                 </div>
                                 <div class="col-xs-3">
-{{--                                   <a href="/carts/{{$cart->id}}/checkout" class="btn btn-success btn-block">
-                                    Оплатить
-                                  </a> --}}
                                   <a href="/carts/{{$cart->id}}/checkout" class="btn-success btn-block" id="checkout_link">
                                     Оплатить
                                   </a>
@@ -364,19 +368,18 @@
 
       e.preventDefault();
       uurl=$(this).attr('href')
-      console.log(uurl)
+      // console.log(uurl)
+      window.location=uurl+'?'+$('#form_id').serialize()
 
-       //this produces: "foo=1&bar=xxx&this=hi"
-
-        $.ajax({
-            url: uurl+'?'+$('#form_id').serialize(),
-            type: 'GET',  // user.destroy
-            success: function(result) {
-                // total.text('='+result)
-                // console.log()
-                window.location="/thanks"
-            }
-        });
+        // $.ajax({
+        //     url: uurl+'?'+$('#form_id').serialize(),
+        //     type: 'GET',  // user.destroy
+        //     success: function(result) {
+        //         // total.text('='+result)
+        //         // console.log()
+        //         window.location="/thanks"
+        //     }
+        // });
 
       // body...
     })
