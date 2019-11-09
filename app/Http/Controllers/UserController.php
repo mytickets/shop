@@ -31,6 +31,7 @@ class UserController extends AppBaseController
     {
         $users = $this->userRepository->paginate(10);
         $role_types = ['Администратор', 'Менеджер'];
+        
 
         return view('users.index')
             ->with('users', $users)

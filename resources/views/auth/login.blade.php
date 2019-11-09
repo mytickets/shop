@@ -11,28 +11,62 @@
                     @csrf
                     <span class="login100-form-title">
                         {{ __('Login') }}
+
                     </span>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 
-                        <input id="email" type="email" class="input100 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    
 
-                        {{-- <input class="input100" type="text" name="email" placeholder="{{ __('E-Mail Address') }}"> --}}
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-envelope" aria-hidden="true"></i>
-                        </span>
-                    </div>
+                        <div class="form-group row">
+                            {{-- <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label> --}}
 
-                    <div class="wrap-input100">
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                    <i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>
+                                  </span>
+                                </div>
+                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus >
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                              </div>
 
-                                <input id="password" type="password" class="input100 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                        </div>
+
+
+                        <div class="form-group row">
+                            {{-- <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label> --}}
+
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                    <i class="fa fa-lock fa-fw" aria-hidden="true"></i>
+                                  </span>
+                                </div>
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="email" autofocus >
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                              </div>
+
+
+                        </div>
+
+{{--                     <div class="form-group row">
+
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                    <i class="fa fa-lock fa-fw" aria-hidden="true"></i>
+                                  </span>
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                </div>
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -40,12 +74,13 @@
                                     </span>
                                 @enderror
 
-                        {{-- <input class="input100" type="password" name="pass" placeholder="Password"> --}}
-                        <span class="focus-input100"></span>
-                        <span class="symbol-input100">
-                            <i class="fa fa-lock" aria-hidden="true"></i>
-                        </span>
-                    </div>
+
+                             </div>
+
+
+
+
+                    </div> --}}
 
                     <div class="wrap-input100"  style="padding-top: 1em;">
 
