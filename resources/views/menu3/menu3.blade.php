@@ -57,6 +57,7 @@
 
                             @foreach ( \App\Models\Product::where('cat_id', "=", $cat->ident)->get() as $product)
                               @if ( $product->menu == 1)
+                              {{-- @if ( true) --}}
                                 <style type="text/css">
                                    .vc_column-inner {
                                       min-height: 16em;
@@ -82,7 +83,8 @@
                                                         {{-- <div>
                                                            <span class="menu_item_label" style="color:#ffffff;background-color:#d3ab55;margin-bottom:25px;padding-left:14px;padding-right:14px;letter-spacing:1px;">НОВИНКА</span>
                                                         </div> --}}
-                                                        <h4 class="menu_item_title" style="color:#333333;"><span class="menu_item_title_span" style="background-color:#ffffff;font-size: 27px;">{{ $product->name }}</span></h4>
+                                                        <h7 class="menu_item_title" style="color:#333333;"><span class="menu_item_title_span" style="background-color:#ffffff;font-size: 27px;">{{ $product->name }}:</span> <b>  <span style="background-color:#ffffff;font-size: 23px;">{{ $product->price_amount }} руб.</span></b> </h7>
+
 
                                                         <p class="menu_item_ingredients" style="color:#555555;">
 

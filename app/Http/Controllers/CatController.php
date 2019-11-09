@@ -37,13 +37,28 @@ class CatController extends AppBaseController
         return $catDataTable->render('cats.index');
     }
 
+    public function check_menu($ident)
+    {
+        $m = \App\Models\Cat::where('ident',$ident)->first();
+
+        if ($m->menu==true) {
+            $m->menu=false;
+            $mm='V';
+        } else {
+            $m->menu=true;
+            $mm='X';
+        }
+        $m->save();
+        return $mm;
+    }
+
+
     public function cats_tree()
     {
         // return $catDataTable->render('cats.index');
         // return view('cats.tree')->with('cats', \App\Models\Cat::all() );
         return view('cats.tree')->with('cats', \App\Models\Cat::where('parent_id',0)->get() );
     }
-
 
 
     /**
@@ -100,6 +115,8 @@ class CatController extends AppBaseController
         // $this->data['childrens'] = Cat::where('parent_id',$id)->get();
         return view('cats.show')->with('cat', $cat);
     }
+
+
 
     /**
      * Show the form for editing the specified Cat.

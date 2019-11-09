@@ -10,6 +10,10 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
+
+                    <a href="{!! route('cats.index') !!}" class="btn btn-default">Назад</a>
+                    <a href="{!! route('cats.edit', [$cat->ident]) !!}" class='btn btn-default'>Изменить</a>
+
                     @include('cats.show_fields')
 
 <hr>
@@ -36,13 +40,15 @@
                 <div class="col-xs-6">
                   <div class="col-xs-6 text-right">
                     {{-- <h6><strong>{{ $line->price_amount ?? "" }} </strong></h6> --}}
-                  </div>
-                  <div class="col-xs-4">
                     <input type="text" class="form-control input-sm" disabled value="{{ $line->price_amount ?? "" }}">
-                    {{-- <h6><strong>{{ $line->price_amount ?? "" }} </strong></h6> --}}
                   </div>
                   <div class="col-xs-2">
-                      <a href="/remove" style="color: red;">X</a>
+                    @php
+                      if ($line->menu){
+                          $m="V";
+                      } else { $m="X"; }
+                    @endphp
+                    <span class="badge label label-warning menu_check" data-id={{ $line->ident }}>{{ $m }}</span>
                   </div>
                 </div>
               </div>
@@ -55,4 +61,24 @@
             </div>
         </div>
     </div>
+
+<script>
+$('.menu_check').click(function(e){
+      var t1 = this;
+    console.log( $(this).data('id') )
+      // check_menu
+                          $.ajax({
+                              url: '/products/'+$(this).data('id')+'/check_menu',
+                              type: 'GET',
+                              success: function(result) {
+                                  console.log( result )
+                                  console.log( $(t1).text(result) )
+                                  // $()
+                              }
+                          });
+
+});
+</script>
+
 @endsection
+

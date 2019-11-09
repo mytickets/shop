@@ -25,7 +25,6 @@
 
 
 
-
     <div class="content">
         <div class="clearfix"></div>
 
@@ -55,7 +54,73 @@
 
         @include('flash::message')
 
+
+<h3>  Вкючение в меню</h3>
+<div id="tree_ul">
+
+  @php
+
+
+      function renderNode($node) {
+        if ( count(App\Models\Cat::where('parent_id',$node->ident)->get())>0 ) {
+          $html = '<li>' . $node->name;
+          $html .= '<ul>';
+          foreach($node->children as $child)
+            $html .= renderNode($child);
+          $html .= '</ul>';
+          $html .= '</li>';
+        // if( $node->isLeaf() ) {
+        } else {
+          // {{  }}
+
+            if ($node->menu){
+              $m="V";
+            } else { $m="X"; }
+
+          // return '<li>' . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span>'. $node->name .'</li>';
+          return '<li>' . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span> <a href="/cats/'.$node->ident.'">'. $node->name .'</a></li>';
+                            
+        }
+
+        return $html;
+      };
+
+      function renderJ($node) {
+
+        $html = '{ text' . $node->name;
+
+        if ( count(App\Models\Cat::where('parent_id',$node->ident)->get())>0 ) {
+          $html = '{ text:"' . $node->name.'"';
+          $html .= ', "nodes": [';
+          foreach($node->children as $child)
+            $html .= renderJ($child).',';
+          $html .= ']';
+          $html .= '}';
+
+        // if( $node->isLeaf() ) {
+        } else {
+          // {{  }}
+          return '{ text:"' . $node->name .'"}';
+        }
+          $html .= '}';
+
+        return $html;
+      };
+
+
+  @endphp
+
+    @foreach ( $cats as $line)
+        {!! renderNode($line) !!}
+    @endforeach
+
+</div>
+
+                {{-- <div id="tree3"></div> --}}
+                <h4> Дерево  </h4>
                 <div id="tree"></div>
+
+
     </div>
 
                     
@@ -90,37 +155,36 @@
 jQuery(function($) {
 
 
+
 tree2 = [
 			{{-- @foreach ( App\Models\Cat::where('parent_id',0)->get() as $line) --}}
       @foreach ( $cats as $line)
 
-
-
 					@if ( count(App\Models\Cat::where('parent_id',$line->ident)->get())>0 )
-						{ "text" : "{!! $line->name !!} ({{ count(App\Models\Cat::where('parent_id',$line->ident)->get()) }})", nodes: [
+						{ text : "<a style='color:black;' href='/cats/{{ $line->ident }}'>{!! $line->name !!}</a> <span class='badge label label-primary'>{{ count(App\Models\Product::where('cat_id',$line->ident)->get()) }}шт.</span> <span class='badge label label-success'>({{ count(App\Models\Cat::where('parent_id',$line->ident)->get()) }})кат.</span>", nodes: [
 						@foreach ( App\Models\Cat::where('parent_id',$line->ident)->get() as $line4)
 
              @if ( count(App\Models\Cat::where('parent_id',$line4->ident)->get())>0 )
-								{text: "<a href='/cats/{{ $line4->ident }}'>{{ $line4->name }} ({{ count(App\Models\Cat::where('parent_id',$line4->ident)->get()) }})</a>", nodes: [
+								{text: "<a style='color:black;' href='/cats/{{ $line4->ident }}'>{{ $line4->name }} </a><span class='badge label label-primary'>{{ count(App\Models\Product::where('cat_id',$line4->ident)->get()) }}шт.</span> <span class='badge label label-success'>({{ count(App\Models\Cat::where('parent_id',$line4->ident)->get()) }})кат.</span>", nodes: [
 
                     @foreach ( App\Models\Cat::where('parent_id',$line4->ident)->get() as $line5)
 
                         @if ( count(App\Models\Cat::where('parent_id',$line5->ident)->get())>0 )
-                          {text: "<a href='/cats/{{ $line5->ident }}'>{{ $line5->name }} ({{ count(App\Models\Cat::where('parent_id',$line5->ident)->get()) }})</a>"},
+                            {text: "<a style='color:black;' href='/cats/{{ $line5->ident }}'>{{ $line5->name }}</a> <span class='badge label label-primary'>{{ count(App\Models\Product::where('cat_id',$line5->ident)->get()) }}шт.</span> <span class='badge label label-success'>({{ count(App\Models\Cat::where('parent_id',$line5->ident)->get()) }})кат.</span>"},
                         @else
-                            {text: "<a href='/cats/{{ $line5->ident }}'>{{ $line5->name }} ({{ count(App\Models\Cat::where('parent_id',$line5->ident)->get()) }})</a>"},
+                            {text: "<a style='color:black;' href='/cats/{{ $line5->ident }}'>{{ $line5->name }} </a><span class='badge label label-primary'>{{ count(App\Models\Product::where('cat_id',$line5->ident)->get()) }}шт.</span> <span class='badge label label-success'>({{ count(App\Models\Cat::where('parent_id',$line5->ident)->get()) }})кат.</span>"},
                         @endif
 
                     @endforeach
                 ]
               },
              @else
-                    {text: "<a href='/cats/{{ $line4->ident }}'>{{ $line4->name }} ({{ count(App\Models\Cat::where('parent_id',$line4->ident)->get()) }})</a>"},
+                    {text: "<a style='color:black;' href='/cats/{{ $line4->ident }}'>{{ $line4->name }} </a><span class='badge label label-primary'>{{ count(App\Models\Product::where('cat_id',$line4->ident)->get()) }}шт.</span> <span class='badge label label-success'>({{ count(App\Models\Cat::where('parent_id',$line4->ident)->get()) }})кат.</span>"},
              @endif 
 						@endforeach
 						] },
 					@else
-						{ "text" : "{!! $line->name !!} ({{ count(App\Models\Cat::where('parent_id',$line->ident)->get()) }})" },
+						{ text : "<a style='color:black;' href='/cats/{{ $line->ident }}'>{!! $line->name !!} </a><span class='badge label label-primary'>{{ count(App\Models\Product::where('cat_id',$line->ident)->get()) }}шт.</span> <span class='badge label label-success'>({{ count(App\Models\Cat::where('parent_id',$line->ident)->get()) }})кат.</span>" },
 
 					@endif
 			@endforeach
@@ -130,8 +194,28 @@ tree2 = [
 $('#tree').treeview({ data: tree2 });
 
 
+
+$('.menu_check').click(function(e){
+      var t1 = this;
+    console.log( $(this).data('id') )
+      // check_menu
+                          $.ajax({
+                              url: '/cats/'+$(this).data('id')+'/check_menu',
+                              type: 'GET',
+                              success: function(result) {
+                                  console.log( result )
+                                  console.log( $(t1).text(result) )
+                                  // $()
+                              }
+                          });
+
+
+})
+
+
   });
 
+  
     
 
 

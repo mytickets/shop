@@ -320,6 +320,10 @@ Route::get('/product/{ident}/to_cart/{qty}', 'ProductController@to_cart');
         return view('menu3.menu3')->with('cats', $cats);
     });
 
+
+    Route::get('/cats/{ident}/check_menu', 'CatController@check_menu');
+    Route::get('/products/{ident}/check_menu', 'ProductController@check_menu');
+
     Route::get('/carts/{id}/total', 'CartController@total');
     Route::get('/carts/{id}/total_qty', 'CartController@total_qty');
     Route::get('/carts/{id}/clear', 'CartController@remove_items');

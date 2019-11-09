@@ -103,17 +103,15 @@
 
                           <div class="panel-footer">
                             <div class="row text-center">
-                              <div class="col-xs-9">
+                              <div class="col-xs-12">
                                 <h4 class="text-right">Итого <strong id="cart_total">{{ $order->total() }}</strong></h4>
                               </div>
-                              <div class="col-xs-3">
-                                <button type="button" class="btn btn-success btn-block" onclick="alert('print');">
-                                  Счет
-                                </button>
-                                <a href="/carts/{{$order->id}}/clear" class="btn btn-danger btn-block" >
+                              {{-- <div class="col-xs-3"> --}}
+                                {{-- <button type="button" class="btn btn-success btn-block" onclick="alert('print');">                                  Счет</button> --}}
+                                {{-- <a href="/carts/{{$order->id}}/clear" class="btn btn-danger btn-block" >
                                   Очистить
-                                </a>
-                              </div>
+                                </a> --}}
+                              {{-- </div> --}}
                             </div>
                           </div>
 

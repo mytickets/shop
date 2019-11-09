@@ -51,7 +51,10 @@
 <!-- Status Field -->
 <div class="form-group">
     {!! Form::label('status', __('Status') ) !!}: 
-    <p>{!! $order->status !!}</p>
+    <p>
+        {{-- {!! $order->status !!} --}}
+        {!! $status[$order->status] !!}
+    </p>
 </div>
 
 <!-- Comment Field -->

@@ -232,7 +232,7 @@ class CartController extends AppBaseController
 
 		        	if (isset($input['pay_type'])){
 
-				        $check = \App\Models\Order::create( [ 'pay_type' => $input['pay_type'], 'pay_place' => $input['pay_place'], 'pay_adr' => $input['pay_adr'], 'pay_contact' => $input['pay_contact'] ]);
+				        $check = \App\Models\Order::create( [ 'pay_type' => $input['pay_type'], 'pay_place' => $input['pay_place'], 'pay_adr' => $input['pay_adr'], 'pay_contact' => $input['pay_contact'], 'status' => '0' ]);
 
 				        foreach ($cart->line_items as $key => $line) {
 				            $new_line = \App\Models\LineItem::create(['order_id'=>$check->id, 'product_id'=>$line->product_id, 'qty'=>$line->qty]);

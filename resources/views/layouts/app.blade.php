@@ -44,6 +44,13 @@
 
 
     @yield('css')
+
+<style >
+  .menu_check {
+    cursor: pointer;
+  }
+</style>
+
 </head>
 
 <body class="skin-blue sidebar-mini">

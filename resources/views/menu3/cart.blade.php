@@ -98,10 +98,9 @@
                               </div>
 
                               <div class="col-xs-5">
-                                <h4 class="product-name">
+                                {{-- <h4 class="product-name"> --}}
                                   <strong>{{ $line->product->name ?? "" }}</strong>
-
-                                </h4>
+                                {{-- </h4> --}}
                                     {{-- {{ $line->product->desc ?? "" }} --}}
 
 @if (mb_strlen($line->product->desc)>140)
@@ -112,26 +111,30 @@
                               </div>
 
                               <div class="col-xs-5" style="text-align: left;">
-                                <div class="col-xs-10 cart_id" >
+                                <div class="col-xs-12 cart_id" >
 
-                                  <h7>{{ $line->product->price_amount ?? "" }} X</h7>
+                                  {{-- <h7> --}}
+                                    {{ $line->product->price_amount ?? "" }} X
+                                  {{-- </h7> --}}
 
                                   <span class="btn-number" style="    cursor: pointer; min-width: 1em; color: red; border: 1px solid grey; padding: 6px 9px;" data-type="minus" >-</span>
                                   <input type="text" min="1" max="1000" class="input-number form-control input-sm one_line one_line_in" value="{{ $line->qty ?? "" }}" data-line_id="{{ $line->id }}">
 
                                   <span class="btn-number" style="    cursor: pointer; min-width: 1em; color: green; border: 1px solid grey; padding: 6px;" data-type="plus" >+</span>
 
-                                  <h6 class="one_line">={{ $line->qty*$line->product->price_amount }}</h6>
-                                  {{-- cart_id --}}
-                                </div>
-                                <div class="col-xs-2">
+                                  <b> <span class="one_line sh6">={{ $line->qty*$line->product->price_amount }}</span> </b>
 
-                                  {!! Form::open(['route' => ['lineItems.destroy', $line->id], 'method' => 'delete']) !!}
-                                  {!! Form::button('X', ['type' => 'submit', 'class' => 'destroy_button btn-sm', 'style'=>'background-color: white;    color: red;', 'onclick' => "return confirm('Вы уверены?')"]) !!}
+                                  {!! Form::open(['route' => ['lineItems.destroy', $line->id], 'method' => 'delete','class'=>"position",'style'=>"position: absolute;display: contents;"]) !!}
+                                  {!! Form::button('X', ['type' => 'submit', 'class' => 'destroy_button btn-sm btn', 'style'=>'background-color: white;color: red;text-align: right;right: 1px;position: absolute;margin-top: 0px;', 'onclick' => "return confirm('Вы уверены?')"]) !!}
                                   {!! Form::close() !!}
 
-                                    {{-- <a href="/remove" style="color: red;">X</a> --}}
+                                  {{-- cart_id --}}
                                 </div>
+                                {{-- <div class="col-xs-2"> --}}
+
+
+                                    {{-- <a href="/remove" style="color: red;">X</a> --}}
+                                {{-- </div> --}}
                               </div>
                             </div>
                             <hr>
@@ -152,7 +155,7 @@
                                 </div>
                                 <div class="radio">
                                   <label>
-                                    <input type="radio" name="pay_type" id="optionsRadios2" value="1" >
+                                    <input type="radio" name="pay_type" id="optionsRadios2" value="1" checked>
                                     Оплата в заведении
                                   </label>
                                 </div>
@@ -175,7 +178,7 @@
                                 </div>
                                 <div class="radio">
                                   <label>
-                                    <input type="radio" name="pay_place" id="optionsRadios5" value="1">
+                                    <input type="radio" name="pay_place" id="optionsRadios5" value="1" checked>
                                     Место в заведении
                                   </label>
                                 </div>
@@ -209,7 +212,10 @@
                                   <h4 class="text-right">Итого <strong id="cart_total">{{ $cart->total() }}</strong></h4>
                                 </div>
                                 <div class="col-xs-3">
-                                  <a href="/carts/{{$cart->id}}/checkout" class="btn-success btn-block" id="checkout_link">
+{{--                                   <a href="/carts/{{$cart->id}}/checkout" class="btn-success btn-block" id="checkout_link">
+                                    Оплатить
+                                  </a> --}}
+                                  <a href="#" class="btn-success btn-block" id="checkout_link" data-link="/carts/{{$cart->id}}/checkout">
                                     Оплатить
                                   </a>
                                   {{-- <a href="/carts/{{$cart->id}}/clear" class="btn-danger btn-block" data-url="/carts/{{$cart->id}}/clear"> --}}
@@ -275,7 +281,7 @@ $('#clear_btn').click(function(e){
         // TODO выбрать КНОПКИ только свой ряд +
         var input = $(this).parent().find('input');
         var line_id = $(this).parent().find('input').data('line_id');
-        var total = $(this).parent().find('h6');
+        var total = $(this).parent().find('.sh6');
         // cart_id = $('#cart_id').data('cart_id')
         cart_id = $('#qty_badge').data('cart_id')
 
@@ -386,7 +392,8 @@ $('#clear_btn').click(function(e){
     $('#checkout_link').click(function(e) {
 
       e.preventDefault();
-      uurl=$(this).attr('href')
+      // uurl=$(this).attr('href')
+      uurl=$(this).data('link')
       // console.log(uurl)
       window.location=uurl+'?'+$('#form_id').serialize()
 

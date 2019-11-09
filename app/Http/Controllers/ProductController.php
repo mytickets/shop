@@ -94,6 +94,23 @@ class ProductController extends AppBaseController
         return redirect(route('products.index'));
     }
 
+    public function check_menu($ident)
+    {
+        $m = \App\Models\Product::where('ident',$ident)->first();
+
+        if ($m->menu===false) {
+            $m->menu=true;
+            $mm='V';
+        } else {
+            $m->menu=false;
+            $mm='X';
+        }
+        $m->save();
+        return $mm;
+        
+    }
+
+
     /**
      * Display the specified Product.
      *
