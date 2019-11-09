@@ -81,7 +81,8 @@ class Cat extends Model
         'image',
         'xml_name',
         'parent_id',
-        'menu'
+        'menu',
+        'position'
     ];
 
     /**

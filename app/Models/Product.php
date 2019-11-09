@@ -93,7 +93,8 @@ class Product extends Model
         'xml_cat',
         'cat_id',
         'price_amount',
-        'menu'
+        'menu',
+        'position'
     ];
 
     /**

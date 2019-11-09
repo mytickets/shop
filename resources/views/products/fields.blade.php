@@ -4,8 +4,14 @@
     <a href="{!! route('products.index') !!}" class="btn btn-default">Отмена</a>
 </div>
 
+<!-- Ident Field -->
+<div class="form-group col-sm-2">
+    {!! Form::label('ident', 'Ident:') !!}
+    {!! Form::text('ident', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Menu Field -->
-<div class="form-group col-sm-3">
+<div class="form-group col-sm-2">
     {!! Form::label('menu', 'В меню:') !!}
     <label class="checkbox-inline form-control" style="    text-align: center;">
         {!! Form::hidden('menu', 0) !!}
@@ -13,11 +19,11 @@
     </label>
 </div>
 
-<!-- Ident Field -->
-<div class="form-group col-sm-3">
-    {!! Form::label('ident', 'Ident:') !!}
-    {!! Form::text('ident', null, ['class' => 'form-control']) !!}
+<div class="form-group col-sm-2">
+    {!! Form::label('position', 'Порядок в списке:') !!}
+    {!! Form::text('position', null, ['class' => 'form-control']) !!}
 </div>
+
 
 
 <!-- Name Field -->
