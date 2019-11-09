@@ -40,7 +40,8 @@
                 <div class="col-xs-6">
                   <div class="col-xs-6 text-right">
                     {{-- <h6><strong>{{ $line->price_amount ?? "" }} </strong></h6> --}}
-                    <input type="text" class="form-control input-sm" disabled value="{{ $line->price_amount ?? "" }}">
+                    {{-- <input type="text" class="form-control input-sm" disabled value="{{ $line->price_amount ?? "" }}"> --}}
+                    {{ $line->price_amount ?? "" }} руб.
                   </div>
                   <div class="col-xs-2">
                     @php
@@ -48,7 +49,8 @@
                           $m="V";
                       } else { $m="X"; }
                     @endphp
-                    <span class="badge label label-warning menu_check" data-id={{ $line->ident }}>{{ $m }}</span>
+                    В меню: 
+                    <span class="badge label label-info menu_check" data-id={{ $line->ident }}>{{ $m }}</span>
                   </div>
                 </div>
               </div>

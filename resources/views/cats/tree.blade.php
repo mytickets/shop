@@ -70,8 +70,15 @@
 
         if ( count(App\Models\Cat::where('parent_id',$node->ident)->get())>0 ) {
           // $html = '<li>'   . $node->name;
-          $html = '<li>'   . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span> <a href="/cats/'.$node->ident.'">'. $node->name .'</a>';
-          $html .= '<ul>';
+          // $html = '<li>'   . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span>  <a data-toggle="collapse" data-parent="#accordion1" href="#cola_'.$node->ident.'">'. $node->name .'</a>';
+          // $html = '<li>'   . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span>  '.$node->ident.' <a href="/cats/'.$node->ident.'">'. $node->name .'</a>';
+
+          $html = '<li>'   . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Cat::where('parent_id',$node->ident)->get()).'кат.</span> <span class="badge label label-info">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span> <a data-toggle="collapse" href="#cola_'.$node->ident.'">'. $node->name .'<i class="fa fa-caret-down" aria-hidden="true"></i>
+</a>  <a target="_blank" href="/cats/'.$node->ident.'"><i class="fa fa-link" aria-hidden="true"></i></a>';
+
+          $html .= '<ul id="cola_'.$node->ident.'" class="collapse ">'; 
+          // $html .= '<ul id="cola_'.$node->ident.'" >';
+
           foreach($node->children as $child)
             $html .= renderNode($child);
           $html .= '</ul>';
@@ -79,7 +86,9 @@
         // if( $node->isLeaf() ) {
         } else {
           // return '<li>' . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span>'. $node->name .'</li>';
-          return '<li>' . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span> <a href="/cats/'.$node->ident.'">'. $node->name .'</a></li>';
+          return '<li>' . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Cat::where('parent_id',$node->ident)->get()).'кат.</span> <span class="badge label label-info">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span> <a target="_blank" href="/cats/'.$node->ident.'">'. $node->name .'</a>  </a>  <a target="_blank" href="/cats/'.$node->ident.'"><i class="fa fa-link" aria-hidden="true"></i></a></li>';
+          // return '<li>' . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span> <a href="/cats/'.$node->ident.'">'. $node->name .'</a> <span class="badge label label-primary">'. count(App\Models\Cat::where('parent_id',$node->ident)->get()).'кат.</span></li>';
+
         }
 
         return $html;
@@ -116,9 +125,8 @@
 
 </div>
 
-                {{-- <div id="tree3"></div> --}}
-                <h4> Дерево  </h4>
-                <div id="tree"></div>
+                {{-- <h4> Дерево  </h4> --}}
+                {{-- <div id="tree"></div> --}}
 
 
     </div>
@@ -191,7 +199,7 @@ tree2 = [
 ];
 
 
-$('#tree').treeview({ data: tree2 });
+// $('#tree').treeview({ data: tree2 });
 
 
 
