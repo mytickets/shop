@@ -24,7 +24,7 @@ class CreateProductsTable extends Migration
             $table->string('xml_cat')->nullable();
             $table->bigInteger('cat_id')->nullable();
             $table->decimal('price_amount')->nullable();
-            $table->boolean('menu')->nullable();
+            $table->boolean('menu')->nullable()->default(0);;
             $table->timestamps();
         });
     }

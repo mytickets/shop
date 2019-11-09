@@ -36,8 +36,6 @@ class ImportProduct extends Command {
             $randIndex = array_rand($arrX, 2);
 //     // FIND
 
-
-
             $row = Product::create( array('id' => $item['@attributes']['Ident'], 'name' => $item['@attributes']['Name'], 'ident' => $item['@attributes']['Ident'], 'xml_name' => $item['@attributes']['Name'], "cat_id" => (int) $item['@attributes']['MainParentIdent'], 'xml_cat' => $item['@attributes']['CategPath'], 'image'=> $arrX[$randIndex[0]] ) );
             echo "+";
 

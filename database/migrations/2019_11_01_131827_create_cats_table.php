@@ -22,7 +22,7 @@ class CreateCatsTable extends Migration
             $table->string('image')->nullable();
             $table->string('xml_name')->nullable();
             $table->bigInteger('parent_id')->nullable();
-            $table->boolean('menu')->nullable();
+            $table->boolean('menu')->nullable()->default(0);;
             $table->timestamps();
         });
     }

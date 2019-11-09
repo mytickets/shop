@@ -41,13 +41,12 @@ class CatController extends AppBaseController
     {
         $m = \App\Models\Cat::where('ident',$ident)->first();
 
-        // $mm='X';
-        if ($m->menu==true) {
-            $m->menu=false;
-            $mm='X';
-        } else {
-            $m->menu=true;
+        if ($m->menu==0) {
+            $m->menu=1;
             $mm='V';
+        } else {
+            $m->menu=0;
+            $mm='X';
         }
         $m->save();
         return $mm;

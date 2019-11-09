@@ -98,16 +98,15 @@ class ProductController extends AppBaseController
     {
         $m = \App\Models\Product::where('ident',$ident)->first();
 
-        if ($m->menu===false) {
-            $m->menu=true;
+        if ($m->menu==0) {
+            $m->menu=1;
             $mm='V';
         } else {
-            $m->menu=false;
+            $m->menu=0;
             $mm='X';
         }
         $m->save();
         return $mm;
-        
     }
 
 
