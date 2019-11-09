@@ -31,6 +31,7 @@
 <div class="form-group col-sm-6">
     {!! Form::label('image', 'Фото:') !!}
     <img class="img-responsive" src="{{ $product->image ?? "http://placehold.it/100x70" }}">
+    {{$product->image}}
     {!! Form::file('image') !!}
 </div>
 {{-- <div class="clearfix"></div> --}}
@@ -52,7 +53,6 @@
     {!! Form::label('cat_id', 'Категория:') !!}
     {{-- {!! Form::text('cat_id', null, ['class' => 'form-control']) !!} --}}
     {!!  Form::select('cat_id', App\Models\Cat::all()->pluck('name', 'ident'), null, ['class' => 'form-control']) !!}
-    {{-- {!! Form::text('cat_id', null, ['class' => 'form-control']) !!} --}}
 </div>
 
 <!-- Price Amount Field -->
