@@ -61,7 +61,9 @@
   "Your Name": "Ваше Имя",
   "Desc": "Описание",
   "Image": "Изображение",
-  "Xml Name": "Xml Name",
+  "Xml Name": "Xml Имя",
+  "Xml Cat": "Xml Категория",
+  "Cat Id": "Категория",
   "Menu": "В меню",
   "Parent Id": "Родитель",
   "Ident": "ident",
@@ -73,6 +75,10 @@
   "Status": "Статус",
   "Comment": "Кооментарий",
   "Orders": "Заказы",
-  "Order": "Заказ"
+  "Order": "Заказ",
+  "Role": "Роль",
+  "Action": "действия",
+  "Price Amount": "Цена",
+  "Product": "Продукт"
 
 }

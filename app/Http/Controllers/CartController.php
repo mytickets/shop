@@ -71,7 +71,7 @@ class CartController extends AppBaseController
 
         $cart = $this->cartRepository->create($input);
 
-        Flash::success('Cart успешно сохранен.');
+        Flash::success('Корзина успешно сохранена.');
 
         return redirect(route('carts.index'));
     }
@@ -88,7 +88,7 @@ class CartController extends AppBaseController
         $cart = $this->cartRepository->find($id);
 
         if (empty($cart)) {
-            Flash::error('Cart not found');
+            Flash::error('Cart не найдена');
 
             return redirect(route('carts.index'));
         }
@@ -108,7 +108,7 @@ class CartController extends AppBaseController
         $cart = $this->cartRepository->find($id);
 
         if (empty($cart)) {
-            Flash::error('Cart not found');
+            Flash::error('Cart не найдена');
 
             return redirect(route('carts.index'));
         }
@@ -132,7 +132,7 @@ class CartController extends AppBaseController
         $cart = $this->cartRepository->find($id);
 
         if (empty($cart)) {
-            Flash::error('Cart not found');
+            Flash::error('Cart не найдена');
 
             return redirect(route('carts.index'));
         }
@@ -146,7 +146,7 @@ class CartController extends AppBaseController
 
         $cart = $this->cartRepository->update($input, $id);
 
-        Flash::success('Cart updated successfully.');
+        Flash::success('Корзина обновлена успешно.');
 
         return redirect(route('carts.index'));
     }
@@ -165,7 +165,7 @@ class CartController extends AppBaseController
         $cart = $this->cartRepository->find($id);
 
         if (empty($cart)) {
-            Flash::error('Cart not found');
+            Flash::error('Корзина не найдена');
 
             return redirect(route('carts.index'));
         }
@@ -178,7 +178,7 @@ class CartController extends AppBaseController
 
         $this->cartRepository->delete($id);
 
-        Flash::success('Cart deleted successfully.');
+        Flash::success('Корзина удалена.');
 
         return redirect(route('carts.index'));
     }

@@ -321,8 +321,12 @@
         // buttons: ['csv', 'excel', 'pdf', 'colvis']
         // buttons: []
         buttons: [
-            // 'csv',
             'excel',
+            'print',
+            'copy',
+            'reset',
+            'reload',
+            // 'csv',
             // 'import'
             // , 'copy',
             // {

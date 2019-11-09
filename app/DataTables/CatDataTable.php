@@ -52,9 +52,9 @@ class CatDataTable extends DataTable
                     ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'colvis', 'className' => 'btn btn-default btn-sm no-corner',],
                     ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
-                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
+                    // ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
+                    // ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
+                    // ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
                 ],
             ]);
     }
@@ -67,12 +67,44 @@ class CatDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'ident',
-            'image',
-            'name',
-            'xml_name',
-            'parent_id',
-            'menu'
+        [
+            'data' => 'ident',
+            'name' => 'ident',
+            'title' => 'ID'
+        ],
+        [
+            'data' => 'image',
+            'name' => 'image',
+            'title' => 'Фото'
+        ],
+        [
+            'data' => 'name',
+            'name' => 'name',
+            'title' => 'Название'
+        ],
+        [
+            'data' => 'xml_name',
+            'name' => 'xml_name',
+            'title' => 'Путь'
+        ],
+
+        [
+            'data' => 'parent_id',
+            'name' => 'parent_id',
+            'title' => 'Категория'
+        ],
+        [
+            'data' => 'menu',
+            'name' => 'menu',
+            'title' => 'В меню'
+        ],
+
+            // 'ident',
+            // 'image',
+            // 'name',
+            // 'xml_name',
+            // 'parent_id',
+            // 'menu'
         ];
     }
 

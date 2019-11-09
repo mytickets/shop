@@ -3,7 +3,8 @@
         <thead>
             <tr>
                 <th>{{ __('Name') }}</th>
-        <th>{{ __('Email') }}</th>
+                <th>{{ __('Email') }}</th>
+                <th>{{ __('Role') }}</th>
                 <th colspan="3">Действие</th>
             </tr>
         </thead>
@@ -11,7 +12,8 @@
         @foreach($users as $user)
             <tr>
                 <td>{!! $user->name !!}</td>
-            <td>{!! $user->email !!}</td>
+                <td>{!! $user->email !!}</td>
+                <td>{!! $role_types[$user->role_type]  !!}</td>
                 <td>
                     {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

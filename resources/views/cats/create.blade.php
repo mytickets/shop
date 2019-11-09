@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            <b>Создать:</b> Cat
+            <b>Создать:</b> {{ __('Cat') }}
         </h1>
     </section>
     <div class="content">

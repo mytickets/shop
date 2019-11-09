@@ -21,10 +21,17 @@ class OrderController extends AppBaseController
 {
     /** @var  OrderRepository */
     private $orderRepository;
+    public $status;
+    public $pay_types;
+    public $pay_places;
 
     public function __construct(OrderRepository $orderRepo)
     {
         $this->orderRepository = $orderRepo;
+        $this->status = ['Новый', 'Подтвержден', 'Готовиться', 'Получен', 'Оплачен'];
+        $this->pay_types = ['Оплата курьеру', 'Оплата в заведении', 'Онлайн оплата'];
+        $this->pay_places = ['Доставка курьером','Место в заведении', 'На вынос'];
+
     }
 
     /**
@@ -37,15 +44,11 @@ class OrderController extends AppBaseController
     public function index(Request $request)
     {
         $orders = $this->orderRepository->paginate(10);
-        $pay_types = ['Оплата курьеру', 'Оплата в заведении', 'Онлайн оплата'];
-        $pay_places = ['Доставка курьером','Место в заведении', 'На вынос'];
-        $status = ['Новый', 'Подтвержден', 'Готовиться', 'Получен', 'Оплачен'];
-
         return view('orders.index')
             ->with('orders', $orders)
-            ->with('status', $status)
-            ->with('pay_types', $pay_types)
-            ->with('pay_places', $pay_places);
+            ->with('status', $this->status)
+            ->with('pay_types', $this->pay_types)
+            ->with('pay_places', $this->pay_places);
 
 
     }
@@ -57,13 +60,9 @@ class OrderController extends AppBaseController
      */
     public function create()
     {
-        $pay_types = ['Оплата курьеру', 'Оплата в заведении', 'Онлайн оплата'];
-        $pay_places = ['Доставка курьером','Место в заведении', 'На вынос'];
-
         return view('orders.create')
-            ->with('pay_types', $pay_types)
-            ->with('pay_places', $pay_places);
-
+            ->with('pay_types', $this->pay_types)
+            ->with('pay_places', $this->pay_places);
     }
 
     /**
@@ -103,26 +102,16 @@ class OrderController extends AppBaseController
         $order = $this->orderRepository->find($id);
 
         if (empty($order)) {
-            Flash::error('Order not found');
+            Flash::error('Order не найдена');
 
             return redirect(route('orders.index'));
         }
 
-        $pay_types = ['Оплата курьеру', 'Оплата в заведении', 'Онлайн оплата'];
-        $pay_places = ['Доставка курьером','Место в заведении', 'На вынос'];
-        $status = ['Новый', 'Подтвержден', 'Готовиться', 'Получен', 'Оплачен'];
-
-        // return view('orders.index')
-        //     ->with('orders', $orders)
-        //     ->with('pay_types', $pay_types)
-        //     ->with('pay_places', $pay_places);
-
-
         return view('orders.show')
                 ->with('order', $order)
-                ->with('status', $status)
-                ->with('pay_types', $pay_types)
-                ->with('pay_places', $pay_places);
+                ->with('status', $this->status)
+                ->with('pay_types', $this->pay_types)
+                ->with('pay_places', $this->pay_places);
 
     }
 
@@ -138,20 +127,16 @@ class OrderController extends AppBaseController
         $order = $this->orderRepository->find($id);
 
         if (empty($order)) {
-            Flash::error('Order not found');
+            Flash::error('Order не найдена');
 
             return redirect(route('orders.index'));
         }
 
-        $pay_types = ['Оплата курьеру', 'Оплата в заведении', 'Онлайн оплата'];
-        $pay_places = ['Доставка курьером','Место в заведении', 'На вынос'];
-        $status = ['Новый', 'Подтвержден', 'Готовиться', 'Получен', 'Оплачен'];
-
         return view('orders.edit')
                 ->with('order', $order)
-                ->with('status', $status)
-                ->with('pay_types', $pay_types)
-                ->with('pay_places', $pay_places);
+                ->with('status', $this->status)
+                ->with('pay_types', $this->pay_types)
+                ->with('pay_places', $this->pay_places);
 
     }
 
@@ -168,7 +153,7 @@ class OrderController extends AppBaseController
         $order = $this->orderRepository->find($id);
 
         if (empty($order)) {
-            Flash::error('Order not found');
+            Flash::error('Order не найдена');
 
             return redirect(route('orders.index'));
         }
@@ -182,7 +167,7 @@ class OrderController extends AppBaseController
 
         $order = $this->orderRepository->update($input, $id);
 
-        Flash::success('Order updated successfully.');
+        Flash::success('Заказ обновлен.');
         // event( new \App\Events\ServerCreated("Новый заказ!", $id) );
 
         return redirect(route('orders.index'));
@@ -204,7 +189,7 @@ class OrderController extends AppBaseController
         $order = $this->orderRepository->find($id);
 
         if (empty($order)) {
-            Flash::error('Order not found');
+            Flash::error('Order не найдена');
 
             return redirect(route('orders.index'));
         }

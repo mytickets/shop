@@ -43,7 +43,32 @@
             {{-- <td>{!! $order->pay_discount !!}</td> --}}
             <td>
                 {{-- {!! $order->status !!} --}}
-                {!! $status[$order->status] !!}
+                {{-- $status = ['Новый', 'Подтвержден', 'Готовиться', 'Получен', 'Оплачен']; --}}
+
+                @if ($order->status==0)
+                        <span class="badge label label-danger">{!! $status[$order->status] !!}</span>
+                @endif
+                @if ($order->status==1)
+                        <span class="badge label label-warning">{!! $status[$order->status] !!}</span>
+                @endif
+                @if ($order->status==2)
+                        <span class="badge label label-primary">{!! $status[$order->status] !!}</span>
+                @endif
+                @if ($order->status==3)
+                        <span class="badge label label-info">{!! $status[$order->status] !!}</span>
+                @endif
+                @if ($order->status==4)
+                        <span class="badge label label-success">{!! $status[$order->status] !!}</span>
+                @endif
+{{-- 
+<span class="label label-default">Default Label</span>
+<span class="label label-primary">Primary Label</span>
+<span class="label label-success">Success Label</span>
+<span class="label label-info">Info Label</span>
+<span class="label label-warning">Warning Label</span>
+<span class="label label-danger">Danger Label</span>
+--}}
+
             </td>
             {{-- <td>{!! $order->comment !!}</td> --}}
 

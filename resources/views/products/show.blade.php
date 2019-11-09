@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-           <b>Показать:</b>  Product
+           <b>Показать:</b>  {{ __('Product') }}
         </h1>
     </section>
     <div class="content">

@@ -75,7 +75,7 @@ class MenuController extends AppBaseController
         $menu = $this->menuRepository->find($id);
 
         if (empty($menu)) {
-            Flash::error('Menu not found');
+            Flash::error('Menu не найдена');
 
             return redirect(route('menus.index'));
         }
@@ -95,7 +95,7 @@ class MenuController extends AppBaseController
         $menu = $this->menuRepository->find($id);
 
         if (empty($menu)) {
-            Flash::error('Menu not found');
+            Flash::error('Menu не найдена');
 
             return redirect(route('menus.index'));
         }
@@ -116,14 +116,14 @@ class MenuController extends AppBaseController
         $menu = $this->menuRepository->find($id);
 
         if (empty($menu)) {
-            Flash::error('Menu not found');
+            Flash::error('Menu не найдена');
 
             return redirect(route('menus.index'));
         }
 
         $menu = $this->menuRepository->update($request->all(), $id);
 
-        Flash::success('Menu updated successfully.');
+        Flash::success('Menu обновлено успешно.');
 
         return redirect(route('menus.index'));
     }
@@ -142,7 +142,7 @@ class MenuController extends AppBaseController
         $menu = $this->menuRepository->find($id);
 
         if (empty($menu)) {
-            Flash::error('Menu not found');
+            Flash::error('Menu не найдена');
 
             return redirect(route('menus.index'));
         }

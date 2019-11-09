@@ -74,7 +74,7 @@ class LineItemAPIController extends AppBaseController
         $lineItem = $this->lineItemRepository->find($id);
 
         if (empty($lineItem)) {
-            return $this->sendError('Line Item not found');
+            return $this->sendError('Line Item не найдена');
         }
 
         return $this->sendResponse($lineItem->toArray(), 'Line Item retrieved successfully');
@@ -97,12 +97,12 @@ class LineItemAPIController extends AppBaseController
         $lineItem = $this->lineItemRepository->find($id);
 
         if (empty($lineItem)) {
-            return $this->sendError('Line Item not found');
+            return $this->sendError('Line Item не найдена');
         }
 
         $lineItem = $this->lineItemRepository->update($input, $id);
 
-        return $this->sendResponse($lineItem->toArray(), 'LineItem updated successfully');
+        return $this->sendResponse($lineItem->toArray(), 'LineItem обновлено успешно');
     }
 
     /**
@@ -121,7 +121,7 @@ class LineItemAPIController extends AppBaseController
         $lineItem = $this->lineItemRepository->find($id);
 
         if (empty($lineItem)) {
-            return $this->sendError('Line Item not found');
+            return $this->sendError('Line Item не найдена');
         }
 
         $lineItem->delete();

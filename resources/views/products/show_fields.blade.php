@@ -37,7 +37,10 @@
 <!-- Image Field -->
 <div class="form-group">
     {!! Form::label('image', __('Image') ) !!}
-    <p>{!! $product->image !!}</p>
+    <p>
+        <img class="img-responsive" src="{{ $product->image ?? "http://placehold.it/100x70" }}">
+        {!! $product->image !!}
+    </p>
 </div>
 
 <!-- Xml Name Field -->
@@ -55,7 +58,10 @@
 <!-- Cat Id Field -->
 <div class="form-group">
     {!! Form::label('cat_id', __('Cat Id') ) !!}
-    <p>{!! $product->cat_id !!}</p>
+    <p>
+        {!! $product->cat_id !!}
+        <a href="/cats/{{ $product->cat_id }}"> {!! \App\Models\Cat::where('ident', $product->cat_id)->first()->name !!} </a>
+    </p>
 </div>
 
 <!-- Price Amount Field -->
@@ -67,6 +73,6 @@
 <!-- Menu Field -->
 <div class="form-group">
     {!! Form::label('menu', __('Menu') ) !!}
-    <p>{!! $product->menu !!}</p>
+    <p>{!! var_dump($product->menu) !!}</p>
 </div>
 

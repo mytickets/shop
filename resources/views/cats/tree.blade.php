@@ -75,28 +75,24 @@
 
         if ($node->menu){
           $m="V";
-        } else { $m="X"; }
+          $mcolor="success";
+        } else { 
+          $m="X";
+          $mcolor="default";
+      }
 
 
         if ( count(App\Models\Cat::where('parent_id',$node->ident)->get())>0 ) {
-          // $html = '<li>'   . $node->name;
-          // $html = '<li>'   . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span>  <a data-toggle="collapse" data-parent="#accordion1" href="#cola_'.$node->ident.'">'. $node->name .'</a>';
-          // $html = '<li>'   . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span>  '.$node->ident.' <a href="/cats/'.$node->ident.'">'. $node->name .'</a>';
-
-          $html = '<li>'   . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Cat::where('parent_id',$node->ident)->get()).'кат.</span> <span class="badge label label-info">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span> <span class="badge label label-success"><a style="color:black;" data-toggle="collapse" href="#cola_'.$node->ident.'">'. $node->name .'<i class="fa fa-caret-down" aria-hidden="true"></i></a></span>  <a target="_blank" href="/cats/'.$node->ident.'"><i class="fa fa-link" aria-hidden="true"></i></a>';
+          $html = '<li>'   . '<span class="badge label label-'.$mcolor.' menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Cat::where('parent_id',$node->ident)->get()).'кат.</span> <span class="badge label label-info">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span> <span class="badge label label-success"><a style="color:black;" data-toggle="collapse" href="#cola_'.$node->ident.'">'. $node->name .'<i class="fa fa-caret-down" aria-hidden="true"></i></a></span>  <a target="_blank" href="/cats/'.$node->ident.'"><i class="fa fa-link" aria-hidden="true"></i></a>';
 
           $html .= '<ul id="cola_'.$node->ident.'" class="collapse ">'; 
-          // $html .= '<ul id="cola_'.$node->ident.'" >';
 
           foreach($node->children as $child)
             $html .= renderNode($child);
           $html .= '</ul>';
           $html .= '</li>';
-        // if( $node->isLeaf() ) {
         } else {
-          // return '<li>' . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span>'. $node->name .'</li>';
-          return '<li>' . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Cat::where('parent_id',$node->ident)->get()).'кат.</span> <span class="badge label label-info">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span> <a target="_blank" href="/cats/'.$node->ident.'">'. $node->name .'</a>  </a>  <a target="_blank" href="/cats/'.$node->ident.'"><i class="fa fa-link" aria-hidden="true"></i></a></li>';
-          // return '<li>' . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span> <a href="/cats/'.$node->ident.'">'. $node->name .'</a> <span class="badge label label-primary">'. count(App\Models\Cat::where('parent_id',$node->ident)->get()).'кат.</span></li>';
+          return '<li>' . '<span class="badge label label-'.$mcolor.' menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Cat::where('parent_id',$node->ident)->get()).'кат.</span> <span class="badge label label-info">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span> <a target="_blank" href="/cats/'.$node->ident.'">'. $node->name .'</a>  </a>  <a target="_blank" href="/cats/'.$node->ident.'"><i class="fa fa-link" aria-hidden="true"></i></a></li>';
 
         }
 
@@ -220,8 +216,15 @@ $('.menu_check').click(function(e){
                               url: '/cats/'+$(this).data('id')+'/check_menu',
                               type: 'GET',
                               success: function(result) {
-                                  console.log( result )
-                                  console.log( $(t1).text(result) )
+                                  console.log( result[0] )
+                                  console.log( result[1] )
+                                  console.log( $(t1).text(result[0]) )
+
+                                  $(t1).removeClass('label-default')
+                                  $(t1).removeClass('label-success')
+                                  $(t1).addClass('label-'+result[1])
+                                    // label-
+
                                   // $()
                               }
                           });

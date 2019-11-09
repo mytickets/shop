@@ -19,6 +19,9 @@
 
 @section('content')
 
+
+{{-- {{ $role_types[Auth::user()->role_type] }} --}}
+
     <!-- Main content -->
     <section class="content">
 
@@ -26,14 +29,16 @@
       <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
+            <a href="/cats" style="text-decoration: unset; color: black;" >
+              
             <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">Категорий</span>
               <span class="info-box-number">
-                {{ \App\Models\Cat::all()->count() }}
-              {{-- <small>шт.</small></span> --}}
+                {{ $cats }}
             </div>
+            </a>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
@@ -41,6 +46,7 @@
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
+            <a href="/products" style="text-decoration: unset; color: black;" >
             <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Продукты</span>
@@ -48,6 +54,7 @@
                 {{ \App\Models\Product::all()->count() }}
               </span>
             </div>
+            </a>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
@@ -60,11 +67,14 @@
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-
+            <a href="/orders" style="text-decoration: unset; color: black;" >
             <div class="info-box-content">
               <span class="info-box-text">Заказов</span>
-              <span class="info-box-number">760</span>
+              <span class="info-box-number">
+                {{ \App\Models\Order::all()->count() }}
+              </span>
             </div>
+            </a>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
@@ -75,8 +85,8 @@
             <span class="info-box-icon bg-grey"><i class="ion ion-ios-people-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Пользователей</span>
-              <span class="info-box-number">2,000</span>
+              <span class="info-box-text">Обмен</span>
+              <span class="info-box-number">Импорт</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -93,19 +103,6 @@
         <div class="col-md-12">
 
           <!-- TABLE: LATEST ORDERS -->
-          <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Последние заказы</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-
               <div class="clearfix"></div>
 
               @include('flash::message')
@@ -122,87 +119,27 @@
 
               </div>
 
-{{--               <div class="table-responsive">
-                <table class="table no-margin">
-                  <thead>
-                  <tr>
-                    <th>Order ID</th>
-                    <th>Item</th>
-                    <th>Status</th>
-                    <th>Popularity</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td><a href="/lte1/pages/examples/invoice.html">OR9842</a></td>
-                    <td>Call of Duty IV</td>
-                    <td><span class="label label-success">Shipped</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="/lte1/pages/examples/invoice.html">OR1848</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="/lte1/pages/examples/invoice.html">OR7429</a></td>
-                    <td>iPhone 6 Plus</td>
-                    <td><span class="label label-danger">Delivered</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="/lte1/pages/examples/invoice.html">OR7429</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-info">Processing</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="/lte1/pages/examples/invoice.html">OR1848</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="/lte1/pages/examples/invoice.html">OR7429</a></td>
-                    <td>iPhone 6 Plus</td>
-                    <td><span class="label label-danger">Delivered</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="/lte1/pages/examples/invoice.html">OR9842</a></td>
-                    <td>Call of Duty IV</td>
-                    <td><span class="label label-success">Shipped</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
+{{--           <div class="box box-info">
+             <div class="box-header with-border">
+              <h3 class="box-title">Последние заказы</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
- --}}
-               <!-- /.table-responsive -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-              {{-- <a href="/lte1/javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a> --}}
               <a href="/orders" class="btn btn-sm btn-default btn-flat pull-right">Все заказы</a>
             </div>
             <!-- /.box-footer -->
           </div>
-          <!-- /.box -->
+          <!-- /.box --> --}}
+          
         </div>
         <!-- /.col -->
 

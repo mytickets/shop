@@ -30,9 +30,12 @@ class UserController extends AppBaseController
     public function index(Request $request)
     {
         $users = $this->userRepository->paginate(10);
+        $role_types = ['Администратор', 'Менеджер'];
 
         return view('users.index')
-            ->with('users', $users);
+            ->with('users', $users)
+                ->with('role_types', $role_types);
+
     }
 
     /**
@@ -75,12 +78,16 @@ class UserController extends AppBaseController
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
+            Flash::error('User не найдена');
 
             return redirect(route('users.index'));
         }
 
-        return view('users.show')->with('user', $user);
+        $role_types = ['Администратор', 'Менеджер'];
+        // return view('users.index')->with('user', $user);
+        return view('users.show')
+                ->with('user', $user)
+                ->with('role_types', $role_types);
     }
 
     /**
@@ -95,12 +102,19 @@ class UserController extends AppBaseController
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
+            Flash::error('User не найдена');
 
             return redirect(route('users.index'));
         }
 
-        return view('users.edit')->with('user', $user);
+
+        $role_types = ['Администратор', 'Менеджер'];
+        // return view('users.index')->with('user', $user);
+        return view('users.edit')
+                ->with('user', $user)
+                ->with('role_types', $role_types);
+
+        // return view('users.edit')->with('user', $user);
     }
 
     /**
@@ -116,14 +130,15 @@ class UserController extends AppBaseController
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
+            Flash::error('User не найдена');
 
             return redirect(route('users.index'));
         }
 
         $user = $this->userRepository->update($request->all(), $id);
 
-        Flash::success('User updated successfully.');
+        Flash::success('User обновлено успешно.');
+        // $role_type
 
         return redirect(route('users.index'));
     }
@@ -142,7 +157,7 @@ class UserController extends AppBaseController
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
+            Flash::error('User не найдена');
 
             return redirect(route('users.index'));
         }

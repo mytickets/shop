@@ -159,7 +159,7 @@ class ProductAPIController extends AppBaseController
         $product = $this->productRepository->find($id);
 
         if (empty($product)) {
-            return $this->sendError('Product not found');
+            return $this->sendError('Product не найдена');
         }
 
         return $this->sendResponse($product->toArray(), 'Product retrieved successfully');
@@ -219,12 +219,12 @@ class ProductAPIController extends AppBaseController
         $product = $this->productRepository->find($id);
 
         if (empty($product)) {
-            return $this->sendError('Product not found');
+            return $this->sendError('Product не найдена');
         }
 
         $product = $this->productRepository->update($input, $id);
 
-        return $this->sendResponse($product->toArray(), 'Product updated successfully');
+        return $this->sendResponse($product->toArray(), 'Product обновлено успешно');
     }
 
     /**
@@ -271,7 +271,7 @@ class ProductAPIController extends AppBaseController
         $product = $this->productRepository->find($id);
 
         if (empty($product)) {
-            return $this->sendError('Product not found');
+            return $this->sendError('Product не найдена');
         }
 
         $product->delete();

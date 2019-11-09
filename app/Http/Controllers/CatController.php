@@ -43,13 +43,17 @@ class CatController extends AppBaseController
 
         if ($m->menu==0) {
             $m->menu=1;
+            // $mm='V';
             $mm='V';
+            $mcolor="success";
         } else {
             $m->menu=0;
+            // $mm='X';
             $mm='X';
+            $mcolor="default";
         }
         $m->save();
-        return $mm;
+        return [$mm, $mcolor];
     }
 
 
@@ -106,7 +110,7 @@ class CatController extends AppBaseController
         $cat = $this->catRepository->find($id);
 
         if (empty($cat)) {
-            Flash::error('Cat not found');
+            Flash::error('Cat не найдена');
 
             return redirect(route('cats.index'));
         }
@@ -130,7 +134,7 @@ class CatController extends AppBaseController
         $cat = $this->catRepository->find($id);
 
         if (empty($cat)) {
-            Flash::error('Cat not found');
+            Flash::error('Cat не найдена');
 
             return redirect(route('cats.index'));
         }
@@ -151,7 +155,7 @@ class CatController extends AppBaseController
         $cat = $this->catRepository->find($id);
 
         if (empty($cat)) {
-            Flash::error('Cat not found');
+            Flash::error('Cat не найдена');
 
             return redirect(route('cats.index'));
         }
@@ -165,7 +169,7 @@ class CatController extends AppBaseController
 
         $cat = $this->catRepository->update($input, $id);
 
-        Flash::success('Cat updated successfully.');
+        Flash::success('Cat обновлено успешно.');
 
         return redirect(route('cats.index'));
     }
@@ -182,7 +186,7 @@ class CatController extends AppBaseController
         $cat = $this->catRepository->find($id);
 
         if (empty($cat)) {
-            Flash::error('Cat not found');
+            Flash::error('Cat не найдена');
 
             return redirect(route('cats.index'));
         }
