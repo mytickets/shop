@@ -50,13 +50,23 @@
                 <div role="tabpanel" class="tab-pane fade   in active" id="tab_card">
 
     <div class="content">
-        <div class="clearfix"></div>
+        {{-- <div class="clearfix"></div> --}}
 
-        @include('flash::message')
+        
 
 
-<h3>  Вкючение в меню</h3>
+<h3>  Дерево меню</h3>
 <div id="tree_ul">
+
+<table class=""> 
+  <thead> 
+    <th class="label label-warning">Вкл/Выкл</th>
+    <th class="label label-primary">Категорий</th>
+    <th class="label label-info">Продуктов</th>
+    <th class="label label-success">Раскрыть <i class="fa fa-caret-down" aria-hidden="true"></i></th>
+    <th class="label label-default">Ссылка<i class="fa fa-link" aria-hidden="true"></i></a></th>
+  </thead>
+</table>
 
   @php
 
@@ -73,8 +83,7 @@
           // $html = '<li>'   . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span>  <a data-toggle="collapse" data-parent="#accordion1" href="#cola_'.$node->ident.'">'. $node->name .'</a>';
           // $html = '<li>'   . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span>  '.$node->ident.' <a href="/cats/'.$node->ident.'">'. $node->name .'</a>';
 
-          $html = '<li>'   . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Cat::where('parent_id',$node->ident)->get()).'кат.</span> <span class="badge label label-info">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span> <a data-toggle="collapse" href="#cola_'.$node->ident.'">'. $node->name .'<i class="fa fa-caret-down" aria-hidden="true"></i>
-</a>  <a target="_blank" href="/cats/'.$node->ident.'"><i class="fa fa-link" aria-hidden="true"></i></a>';
+          $html = '<li>'   . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Cat::where('parent_id',$node->ident)->get()).'кат.</span> <span class="badge label label-info">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span> <span class="badge label label-success"><a style="color:black;" data-toggle="collapse" href="#cola_'.$node->ident.'">'. $node->name .'<i class="fa fa-caret-down" aria-hidden="true"></i></a></span>  <a target="_blank" href="/cats/'.$node->ident.'"><i class="fa fa-link" aria-hidden="true"></i></a>';
 
           $html .= '<ul id="cola_'.$node->ident.'" class="collapse ">'; 
           // $html .= '<ul id="cola_'.$node->ident.'" >';
