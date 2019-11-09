@@ -25,11 +25,13 @@
                         <strong>{{ $line->name ?? "Название" }}</strong>
                     </a>
                   </h4>
-                  <h4>
-                    <small>
-                      {{ $line->desc ?? "Описание" }}
-                    </small>
-                  </h4>
+
+@if (mb_strlen($line->desc)>140)
+  {{ mb_substr($line->desc, 0, 140,'UTF-8') }}...
+@else
+  {{ $line->desc ?? "Описание" }}
+@endif
+
                 </div>
                 <div class="col-xs-6">
                   <div class="col-xs-6 text-right">

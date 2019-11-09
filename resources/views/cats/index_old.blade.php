@@ -29,11 +29,8 @@
 
             <!-- Nav tabs -->
               <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation"  class="active"><a href="#tab_table" aria-controls="home" role="tab" data-toggle="tab">Таблица</a></li>
-                <li role="presentation">
-                  {{-- <a href="#tab_card" aria-controls="profile" role="tab" data-toggle="tab">Дерево</a> --}}
-                  <a href="/cats_tree" >Дерево</a>
-                </li>
+                <li role="presentation" ><a href="#tab_table" aria-controls="home" role="tab" data-toggle="tab">Таблица</a></li>
+                <li role="presentation" class="active"><a href="#tab_card" aria-controls="profile" role="tab" data-toggle="tab">Дерево</a></li>
               </ul>
 
         @include('flash::message')
@@ -44,12 +41,12 @@
 
               <!-- Tab panes -->
               <div class="tab-content">
-                <div role="tabpanel" class="tab-pane fade  in active" id="tab_table">
+                <div role="tabpanel" class="tab-pane fade " id="tab_table">
                     @include('cats.table')
                 </div>
-{{--                 <div role="tabpanel" class="tab-pane fade" id="tab_card">
+                <div role="tabpanel" class="tab-pane fade in active" id="tab_card">
                     @include('cats.tree')
-                </div> --}}
+                </div>
               </div>
                     
             </div>

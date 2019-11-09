@@ -130,6 +130,7 @@
 
     </div>
 @else
+
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
@@ -152,7 +153,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{!! url('/home') !!}">Домашняя</a></li>
+                    {{-- <li><a href="{!! url('/home') !!}">Домашняя</a></li> --}}
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -169,7 +170,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    @yield('content')
+                    {{-- qwe --}}
+                    {{-- @yield('content') --}}
+                    Необходима авторизация
                 </div>
             </div>
         </div>
@@ -206,6 +209,7 @@
     <script type="text/javascript" src="/js/masonry.pkgd.min.js"></script>
 
     <script type="text/javascript">
+        
         {{-- PNotify.defaults.styling = 'bootstrap3'; // Bootstrap version 3 --}}
         // PNotify.defaults.icons = 'bootstrap3'; // glyphicons
         // PNotify.defaults.icons = 'fontawesome4'; // Font Awesome 4

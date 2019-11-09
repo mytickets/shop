@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Session;
 
 // use App\Providers\View;
 use Illuminate\Support\Facades\View;
+// use user_id
+use Auth;
 
 
 // use App\Providers\RouteServiceProvider;
@@ -54,12 +56,31 @@ class AppServiceProvider extends ServiceProvider
         // TODO Fuck_UP SHARE SESSION_ID
         view()->composer('*', function ($view) 
         {
-            $session_id = \Session::getId();
-            $cart = Cart::firstOrCreate(['session_id' => $session_id]);
-            session('cart', $cart);
-            session('session_id', $session_id);
-            $view->with('cart', $cart );
-            $view->with('session_id', $session_id );
+
+            if (Auth::check()) {
+                # code...
+                // Auth::user()->id;
+                $view->with('user_id', Auth::user()->id );
+    
+                $session_id = \Session::getId();
+                $cart = Cart::firstOrCreate(['session_id' => $session_id]);
+                session('cart', $cart);
+                session('session_id', $session_id);
+                $view->with('cart', $cart );
+                $view->with('session_id', $session_id );
+    
+            }
+            else {
+    
+                $session_id = \Session::getId();
+                $cart = Cart::firstOrCreate(['session_id' => $session_id]);
+                session('cart', $cart);
+                session('session_id', $session_id);
+                $view->with('cart', $cart );
+                $view->with('session_id', $session_id );
+    
+            }
+
             // Config::set("cart", $cart);
         });
         

@@ -45,12 +45,21 @@
 
                               <div class="col-xs-5">
                                 <h4 class="product-name">
-                                  <strong>{{ $line->product->name ?? "" }}</strong>
+                                  {{-- <strong>{{ $line->product->name ?? "" }}</strong> --}}
+
+                    <a href="/products/{{ $line->product->ident }}">
+                        <strong>{{ $line->product->name ?? "Название" }}</strong>
+                    </a>
+
 
                                 </h4>
-                                <h4>
-                                  <small>{{ $line->product->desc ?? "" }}</small>
-                                </h4>
+
+@if (mb_strlen($line->product->desc)>140)
+  {{ mb_substr($line->product->desc, 0, 140,'UTF-8') }}...
+@else
+  {{ $line->product->desc }}
+@endif
+
                               </div>
 
                               <div class="col-xs-5" style="text-align: left;">
@@ -86,9 +95,9 @@
                                 <h4 class="text-right">Итого <strong id="cart_total">{{ $cart->total() }}</strong></h4>
                               </div>
                               <div class="col-xs-3">
-                                <button type="button" class="btn btn-success btn-block" onclick="alert('add vue update');">
+                                {{-- <button type="button" class="btn btn-success btn-block" onclick="alert('add vue update');">
                                   Оплатить
-                                </button>
+                                </button> --}}
                                 <a href="/carts/{{$cart->id}}/clear" class="btn btn-danger btn-block" >
                                   Очистить корзину
                                 </a>

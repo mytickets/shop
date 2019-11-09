@@ -1,3 +1,10 @@
+
+https://habr.com/ru/post/354036/
+https://magora-systems.ru/how-to-create-a-software-requirement-specification/
+
+
+
+
 https://github.com/barryvdh/laravel-elfinder
 
 https://github.com/Krato/Laravel-5-File-Manager

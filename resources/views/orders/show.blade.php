@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-           <b>Показать:</b>  Order
+           <b>Показать:</b>  {{ __('Order') }}
         </h1>
     </section>
     <div class="content">
@@ -57,13 +57,25 @@
 
                               <div class="col-xs-5">
                                 <h4 class="product-name">
-                                  <strong>{{ $line->product->name ?? "" }}</strong>
+
+
+                    <a href="/products/{{ $line->product->ident }}">
+                        <strong>{{ $line->product->name ?? "Название" }}</strong>
+                    </a>
 
                                 </h4>
-                                <h4>
-                                  <small>{{ $line->product->desc ?? "" }}</small>
-                                </h4>
+
+                                  {{-- <small>{{ $line->product->desc ?? "" }}</small> --}}
+
+@if (mb_strlen($line->product->desc)>140)
+  {{ mb_substr($line->product->desc, 0, 140,'UTF-8') }}...
+@else
+  {{ $line->product->desc }}
+@endif
+
+
                               </div>
+
 
                               <div class="col-xs-5" style="text-align: left;">
                                 <div class="col-xs-10" data-order_id="{{ $order->id }}" id="order_id">
@@ -138,7 +150,7 @@
                                             success: function(result) {
 
                                               $.ajax({
-                                                  url: '/carts/'+cart_id+'/total',
+                                                  url: '/orders/'+cart_id+'/total',
                                                   type: 'GET',
                                                   success: function(result) {
                                                       $('#cart_total').text(result)
@@ -146,7 +158,7 @@
                                               });
                                                 
                                               $.ajax({
-                                                  url: '/carts/'+cart_id+'/total_qty',
+                                                  url: '/orders/'+cart_id+'/total_qty',
                                                   type: 'GET',
                                                   success: function(result) {
                                                     $('#qty_badge').text(result)

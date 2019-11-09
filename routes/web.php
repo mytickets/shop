@@ -53,37 +53,39 @@ Route::get('hello', function () {
 // https://laravel.com/docs/6.x/authentication
  
 //отображение формы аутентификации
-// Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-// //POST запрос аутентификации на сайте
-// Route::post('login', 'Auth\LoginController@login');
-// //POST запрос на выход из системы (логаут)
-// Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+//POST запрос аутентификации на сайте
+Route::post('login', 'Auth\LoginController@login');
+//POST запрос на выход из системы (логаут)
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
  
 /**
  * Маршруты регистрации...
  */
  
-// //страница с формой Laravel регистрации пользователей
-// Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-// //POST запрос регистрации на сайте
-// Route::post('register', 'Auth\RegisterController@register');
+//страница с формой Laravel регистрации пользователей
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+//POST запрос регистрации на сайте
+Route::post('register', 'Auth\RegisterController@register');
  
 /**
  * URL для сброса пароля...
  */
  
-// //POST запрос для отправки email письма пользователю для сброса пароля
-// Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-// //ссылка для сброса пароля (можно размещать в письме)
-// Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-// //страница с формой для сброса пароля
-// Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-// //POST запрос для сброса старого и установки нового пароля
-// Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+//POST запрос для отправки email письма пользователю для сброса пароля
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+//ссылка для сброса пароля (можно размещать в письме)
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+//страница с формой для сброса пароля
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+//POST запрос для сброса старого и установки нового пароля
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+// Route::get('/home', 'HomeController@index');
+Route::get('/home', 'ManagerController@index');
+// Route::get('/manager', 'ManagerController@index');
 
 
 Route::get('/session', function (Request $request) {
@@ -153,18 +155,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     
 
-                                Route::get('/cart', function () {
-                                    // session('cart');
-                                    // return view('menu3.cart');
-                                    return view('menu3.cart')->with('cart', session('cart'));
-                                });
-                                Route::get('/product/{ident}/to_cart/{qty}', 'ProductController@to_cart');
-                                // Route::get('/cart/{cart_id}/product/{ident}/to_cart/{qty}', 'ProductController@to_cart');
-                                Route::get('/menu', function () {
-                                    $cats = Cat::all();
-                                    // $cart
-                                    return view('menu3.menu3')->with('cats', $cats);
-                                });
 
 
     // 
@@ -275,24 +265,82 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('products', 'ProductController');
     
 
-    Route::resource('carts', 'CartController');
+
+    Route::resource('orders', 'OrderController');
+
+    Route::get('/route_list', function () {
+
+
+    $routes = collect(\Route::getRoutes())
+                    ->map(function ($route) { 
+                            return  array(
+                                            'domain' => $route->domain(),
+                                            'method' => implode('|', $route->methods()),
+                                            'uri'    => $route->uri(),
+                                            'name'   => $route->getName(),
+                                            'action' => ltrim($route->getActionName(), '\\'),
+                                            'middleware' => collect($route->gatherMiddleware())
+                                                            ->map(function ($middleware) {
+                                                                return $middleware instanceof Closure ? 'Closure' : $middleware;
+                                                            })->implode(','),
+                                        ); 
+                        });
+    return $routes;
+        // Artisan::call('route:list');
+        // return response(Artisan::output(), 200)
+        //       ->header('Content-Type', 'text/plain');
+        // return Artisan::output();
+        // return exec('php artisan route:list');
+    });
+
+
+
+
+Route::get('cats_tree', 'CatController@cats_tree');
+
+});
+//  !!! END AUTH !!!
+
+
+
+Route::resource('carts', 'CartController');
+
+Route::get('/cart', function () {
+    // session('cart');
+    // return view('menu3.cart');
+    return view('menu3.cart')->with('cart', session('cart'));
+});
+
+Route::get('/product/{ident}/to_cart/{qty}', 'ProductController@to_cart');
+// Route::get('/cart/{cart_id}/product/{ident}/to_cart/{qty}', 'ProductController@to_cart');
+
+    Route::get('/menu', function () {
+        $cats = Cat::all();
+        // $cart
+        return view('menu3.menu3')->with('cats', $cats);
+    });
+
     Route::get('/carts/{id}/total', 'CartController@total');
     Route::get('/carts/{id}/total_qty', 'CartController@total_qty');
     Route::get('/carts/{id}/clear', 'CartController@remove_items');
-
     Route::get('/carts/{id}/checkout', 'CartController@checkout');
 
-    // Route::get('carts/destroy_all', 'CartController@destroy_all');
-
-    Route::resource('lineItems', 'LineItemController');
-    Route::get('/lineItems_destroy_all', 'LineItemController@destroy_all');
-    Route::get('/qty_minus/{id}', 'LineItemController@qty_minus');
-    Route::get('/qty_plus/{id}', 'LineItemController@qty_plus');
-    Route::get('/lineItems/total/{id}', 'LineItemController@total');
+    Route::get('carts_destroy_all', 'CartController@destroy_all');
 
 
-});
+    Route::get('/orders/{id}/total', 'OrderController@total');
+    Route::get('/orders/{id}/total_qty', 'OrderController@total_qty');
+    Route::get('/orders/{id}/clear', 'OrderController@remove_items');
+    Route::get('/orders/{id}/checkout', 'OrderController@checkout');
+    
+    Route::get('orders_destroy_all', 'OrderController@destroy_all');
+    
 
+    Route::resource('lineItems',            'LineItemController');
+    Route::get('/lineItems_destroy_all',    'LineItemController@destroy_all');
+    Route::get('/qty_minus/{id}',           'LineItemController@qty_minus');
+    Route::get('/qty_plus/{id}',            'LineItemController@qty_plus');
+    Route::get('/lineItems/total/{id}',     'LineItemController@total');
 // MENU
 // Route::get('/menu', 'MenuController@index');
 
@@ -308,6 +356,11 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/', function () {
     return view('menu3.index_site');
 });
+
+
+
+
+
 Route::get('/contact', function () {
     return view('menu3.contact1');
 });
@@ -337,7 +390,5 @@ Route::get('/admin2_mindmap', function () {
 
 
 
+// php artisan route:list
 
-
-
-Route::resource('orders', 'OrderController');

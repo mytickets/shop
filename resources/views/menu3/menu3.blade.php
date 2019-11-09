@@ -35,11 +35,10 @@
             <div id="default_page">
                <div class="container">
                   <div class="contentarea clearfix">
+                    
                      @foreach ($cats as $cat)
                         @if ( $cat->menu == 1)
 
-                           {{-- <div class="vc_row wpb_row vc_row-fluid vc_custom_1539131192676 ult-vc-hide-row vc_row-has-fill" data-rtl="false" style="position: relative;" data-row-effect-mobile-disable="true" data-img-parallax-mobile-disable="true"><div class="upb_row_bg vcpb-vz-jquery" data-upb_br_animation="" data-parallax_sense="50" data-bg-override="full" data-bg-animation="left-animation" data-bg-animation-type="h" data-animation-repeat="repeat" style="background-size: cover; background-repeat: no-repeat; background-color: rgba(0, 0, 0, 0); background-image: url(/slider-bg4.jpg); background-attachment: scroll; min-width: 1310px; left: 0px; width: 1310px;"></div> --}}
-                           {{-- {{ $cat->image }} --}}
                               <div class="wpb_column vc_column_container vc_col-sm-12">
                                  <div class="vc_column-inner">
                                     <div class="wpb_wrapper">
@@ -52,91 +51,64 @@
                                     </div>
                                  </div>
                               </div>
-                           {{-- </div> --}}
                            <br>
 
-                          {{-- @foreach ( \App\Models\Product::where('cat_id', $cat->id)->get() as $product) --}}
-                           <div class="vc_row wpb_row vc_row-fluid vc_custom_1536348479913">
+                     <div class="vc_row wpb_row vc_row-fluid vc_custom_1536348479913">
 
-                           @foreach ( \App\Models\Product::where('cat_id', "=", $cat->ident)->get() as $product)
-                           @if ( $product->menu == 1)
+                            @foreach ( \App\Models\Product::where('cat_id', "=", $cat->ident)->get() as $product)
+                              @if ( $product->menu == 1)
+                                <style type="text/css">
+                                   .vc_column-inner {
+                                      min-height: 16em;
+                                   }
+                                </style>
+                                <div class="col-sm-6">
+                                   <div class="vc_column-inner">
+                                      <div class="wpb_wrapper">
 
-                           {{-- <td>{{ App\Models\Cat::where('ident', '=', $product->cat_id)->first()->name }}</td> --}}
+                                         <div class="evatheme_core-menu-wrap menu_item_id5d99e5d6b7378 left rounded type1 with_img   vc_custom_1542075873094">
+                                            <div class="menu_item">
+                                               <div class="row">
+                                                  <div class="col-lg-4 mb30">
+                                                     <div class="menu_img_wrap" style="text-align: center;" ><img src="{{ $product->image }}" alt="{{ $product->name }}">
+                                                      <br>
+                                                      <a href="#" data-ident="{{ $product->ident }}" class="btn to_cart" style="width: 100%;">
+                                                        В корзину
+                                                      </a>
+                                                     </div>
+                                                  </div>
+                                                  <div class="col-lg-8">
+                                                     <div class="menu_item_content">
+                                                        {{-- <div>
+                                                           <span class="menu_item_label" style="color:#ffffff;background-color:#d3ab55;margin-bottom:25px;padding-left:14px;padding-right:14px;letter-spacing:1px;">НОВИНКА</span>
+                                                        </div> --}}
+                                                        <h4 class="menu_item_title" style="color:#333333;"><span class="menu_item_title_span" style="background-color:#ffffff;font-size: 27px;">{{ $product->name }}</span></h4>
 
-                              {{-- <div class="wpb_column vc_column_container vc_col-sm-6"> --}}
-                              <style type="text/css">
-                                 .vc_column-inner {
-                                    min-height: 16em;
-                                 }
-                              </style>
-                              <div class="col-sm-6">
-                                 <div class="vc_column-inner">
-                                    <div class="wpb_wrapper">
+                                                        <p class="menu_item_ingredients" style="color:#555555;">
 
-                                       <div class="evatheme_core-menu-wrap menu_item_id5d99e5d6b7378 left rounded type1 with_img   vc_custom_1542075873094">
-                                          <div class="menu_item">
-                                             <div class="row">
-                                                <div class="col-lg-4 mb30">
-                                                   <div class="menu_img_wrap" style="text-align: center;" ><img src="{{ $product->image }}" alt="{{ $product->name }}">
-                                                    <br>
-                                                    <a href="#" data-ident="{{ $product->ident }}" class="btn to_cart" style="width: 100%;">
-                                                      В корзину
-                                                    </a>
-                                                   </div>
-                                                </div>
-                                                <div class="col-lg-8">
-                                                   <div class="menu_item_content">
-                                                      {{-- <div>
-                                                         <span class="menu_item_label" style="color:#ffffff;background-color:#d3ab55;margin-bottom:25px;padding-left:14px;padding-right:14px;letter-spacing:1px;">НОВИНКА</span>
-                                                      </div> --}}
-                                                      <h4 class="menu_item_title" style="color:#333333;"><span class="menu_item_title_span" style="background-color:#ffffff;font-size: 27px;">{{ $product->name }}</span></h4>
+                                                          @if (mb_strlen($product->desc)>140)
+                                                            {{ mb_substr($product->desc, 0, 140,'UTF-8') }}...
+                                                          @else
+                                                            {{ $product->desc }}
+                                                          @endif
+                                                        </p>
 
-                                                      <p class="menu_item_ingredients" style="color:#555555;">
-
-                                                        @if (mb_strlen($product->desc)>140)
-                                                          {{ mb_substr($product->desc, 0, 140,'UTF-8') }}...
-                                                        @else
-                                                          {{ $product->desc }}
-                                                        @endif
-                                                      </p>
-
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </div>
+                                                     </div>
+                                                  </div>
+                                               </div>
+                                            </div>
+                                         </div>
 
 
-                                    </div>
-                                 </div>
-                              </div>
-                          @endif
-                          @endforeach
+                                      </div>
+                                   </div>
+                                </div>
+                              @endif
+                            @endforeach
                      </div>
 
-{{--
-                            <ul>
-                              @foreach ( \App\Models\Product::where('cat_id', "=", $cat->ident)->get() as $product)
-                                  <li>
-                                      <a href="/products/{{ $product->id }}">
-                                          {{ $product->name }}
-                                      </a>
-                                  </li>
-                              @endforeach
-                            </ul>
- --}}
-                           {{-- @foreach ( \App\Models\Product::where('cat_id', $cat->id)->get() as $product) --}}
-                           {{-- <div class="vc_row wpb_row vc_row-fluid vc_custom_1536348479913"> --}}
-                           {{-- @foreach ( \App\Models\Product::where('cat_id', "=", $cat->ident)->get() as $product) --}}
-
-                           {{-- <td>{{ App\Models\Cat::where('ident', '=', $product->cat_id)->first()->name }}</td> --}}
-
-                              {{-- <div class="wpb_column vc_column_container vc_col-sm-6"> --}}
-
-                           {{-- @endforeach --}}
-                            {{-- </div> --}}
-
                       @else
+
                       @endif
                     @endforeach
 

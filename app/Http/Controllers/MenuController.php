@@ -60,10 +60,6 @@ class MenuController extends AppBaseController
 
         Flash::success('Menu saved successfully.');
 
-        // dd($menu['id']);
-
-        event( new \App\Events\ServerCreated("Новый заказ!", $menu['id']) );
-
         return redirect(route('menus.index'));
     }
 

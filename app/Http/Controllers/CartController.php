@@ -183,6 +183,7 @@ class CartController extends AppBaseController
         return redirect(route('carts.index'));
     }
 
+
     public function destroy_all()
     {
         Cart::truncate();
@@ -208,43 +209,74 @@ class CartController extends AppBaseController
         return $cart->remove_items();
     }
 
+
     public function checkout($id, Request $request)
     {
 
         $input = $request->all();
 
-        // if ($request->hasFile('image')) {
-        //     $path = $request->file('image')->store('public/carts');
-        //     $publicPath = \Storage::url( $path );
-        //     $input['image'] = $publicPath;
-        // }
+  //       // if ($request->hasFile('image')) {
+  //       //     $path = $request->file('image')->store('public/carts');
+  //       //     $publicPath = \Storage::url( $path );
+  //       //     $input['image'] = $publicPath;
+  //       // }
 
         $cart = Cart::find($id);
-        $check = \App\Models\Order::create( [ 'pay_type' => $input['pay_type'], 'pay_place' => $input['pay_place'], 'pay_adr' => $input['pay_adr'], 'pay_contact' => $input['pay_contact'] ]);
-
-        foreach ($cart->line_items as $key => $line) {
-            $new_line = \App\Models\LineItem::create(['order_id'=>$check->id, 'product_id'=>$line->product_id, 'qty'=>$line->qty]);
+        // $cart = Cart::findOrFail($id);
+        if ($cart == null) {
+    		// return 'error нет корзины';
+    		 return abort(404);
         }
+    	else
+    		{
 
-        // $order = App\Models\Order::create(['cart_id'=>$cart->id, 'status'=>'new', 'pay_type'=>"", 'adr'=>'adr', 'phone'=>])
-        
-        // $params = array('');
-        // return $cart->checkout($cart);
+		        	if (isset($input['pay_type'])){
 
-        // return view('carts.index')
-            // ->with('carts', $carts);
+				        $check = \App\Models\Order::create( [ 'pay_type' => $input['pay_type'], 'pay_place' => $input['pay_place'], 'pay_adr' => $input['pay_adr'], 'pay_contact' => $input['pay_contact'] ]);
+
+				        foreach ($cart->line_items as $key => $line) {
+				            $new_line = \App\Models\LineItem::create(['order_id'=>$check->id, 'product_id'=>$line->product_id, 'qty'=>$line->qty]);
+				        }
+
+			        	event( new \App\Events\ServerCreated("Новый заказ!", $check->id) );
+			    	    $cart->delete();
+			        	return view('menu3.thanks')->with('order_id', $check->id);
+	        		
+		        	}
+			        else {
+			        	return 'null';
+			        }
+		        // if ($cart->line_items) {
+		        	
+				if (!isset($cart->line_items)){
+
+		        // 	# code...
+
+		        // }
+		        	// return view('menu3.thanks')->with('order_id', $cart->line_items);
+
+				// $article = Cart::findOrFail($id);
+				// $article->delete();
+
+		        // $order = App\Models\Order::create(['cart_id'=>$cart->id, 'status'=>'new', 'pay_type'=>"", 'adr'=>'adr', 'phone'=>])
+		        
+		        // $params = array('');
+		        // return $cart->checkout($cart);
+
+		        // return view('carts.index')
+		            // ->with('carts', $carts);
+		    	}
+		    	// else 
+		    	// {
+		    	// 	return 'error нет позиций';
+		    	// }
 
 
-        event( new \App\Events\ServerCreated("Новый заказ!", $check->id) );
-        return view('menu3.thanks')->with('order_id', $check->id);
-    }
+    		}
 
-    public function thanks($thanks_id=777)
-    {
-        // event( new \App\Events\ServerCreated("Новый заказ!", 1) );
-        return view('menu3.thanks')->with('thanks', $thanks_id);
-    }
-        
+
+	}
+      
 
 
 }

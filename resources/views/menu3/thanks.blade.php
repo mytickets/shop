@@ -7,7 +7,7 @@
 
    <div id="pagetitle" class=" text-center">
          <div class="container" style="padding-top: 90px;">
-            <h2>Спасибо</h2>
+            <h2>Спасибо за заказ. Ожидайте, менеджер с Вами свяжется для подтверждения заказа.</h2>
             <p>Номер заказа: {{ $order_id }}</p>
          </div>
    </div>

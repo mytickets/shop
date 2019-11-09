@@ -102,9 +102,13 @@
                                   <strong>{{ $line->product->name ?? "" }}</strong>
 
                                 </h4>
-                                <h4>
-                                  <small>{{ $line->product->desc ?? "" }}</small>
-                                </h4>
+                                    {{-- {{ $line->product->desc ?? "" }} --}}
+
+@if (mb_strlen($line->product->desc)>140)
+  {{ mb_substr($line->product->desc, 0, 140,'UTF-8') }}...
+@else
+  {{ $line->product->desc }}
+@endif
                               </div>
 
                               <div class="col-xs-5" style="text-align: left;">
@@ -208,7 +212,8 @@
                                   <a href="/carts/{{$cart->id}}/checkout" class="btn-success btn-block" id="checkout_link">
                                     Оплатить
                                   </a>
-                                  <a href="/carts/{{$cart->id}}/clear" class="btn-danger btn-block" >
+                                  {{-- <a href="/carts/{{$cart->id}}/clear" class="btn-danger btn-block" data-url="/carts/{{$cart->id}}/clear"> --}}
+                                  <a href="#" class="btn-danger btn-block " data-url="/carts/{{$cart->id}}/clear" id="clear_btn">
                                     Очистить корзину
                                   </a>
                                 </div>
@@ -249,6 +254,20 @@
 @section('script')
 
   <script type="text/javascript">
+
+
+$('#clear_btn').click(function(e){
+  e.preventDeafult;
+
+                          $.ajax({
+                              url: $(this).data('url'),
+                              type: 'GET',
+                              success: function(result) {
+                                window.location='/cart'
+                              }
+                          });
+});
+
     $('span.btn-number').click(function(e){
         type      = $(this).attr('data-type');
         console.log(type)

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+// use App\Models\Cat;
 
 use Eloquent as Model;
 
@@ -123,5 +124,15 @@ class Cat extends Model
     // public function adventures(){
     //     return $this->hasMany('Adventure','act_acc_ID');
     // }
+
+    public function parent()
+    {
+        return $this->belongsTo('App\Models\Cat', 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany('App\Models\Cat', 'parent_id');
+    }
     
 }

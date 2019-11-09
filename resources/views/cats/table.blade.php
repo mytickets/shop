@@ -31,7 +31,9 @@
 </script>
 @section('scripts')
     @include('layouts.datatables_js')
+    <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
     {!! $dataTable->scripts() !!}
+
 
     <script type="text/javascript">
 

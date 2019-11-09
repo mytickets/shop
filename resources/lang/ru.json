@@ -64,6 +64,15 @@
   "Xml Name": "Xml Name",
   "Menu": "В меню",
   "Parent Id": "Родитель",
-  "Ident": "ident"
+  "Ident": "ident",
+  "Pay Type": "Тип оплаты",
+  "Pay Place": "Место получения",
+  "Pay Adr": "Адрес",
+  "Pay Contact": "Контакт",
+  "Pay Discount": "Скидка",
+  "Status": "Статус",
+  "Comment": "Кооментарий",
+  "Orders": "Заказы",
+  "Order": "Заказ"
 
 }
