@@ -104,8 +104,14 @@ tree2 = [
 								{text: "<a href='/cats/{{ $line4->ident }}'>{{ $line4->name }} ({{ count(App\Models\Cat::where('parent_id',$line4->ident)->get()) }})</a>", nodes: [
 
                     @foreach ( App\Models\Cat::where('parent_id',$line4->ident)->get() as $line5)
-                        {text: "<a href='/cats/{{ $line5->ident }}'>{{ $line5->name }} ({{ count(App\Models\Cat::where('parent_id',$line5->ident)->get()) }})</a>"},
-                    @endforeach                
+
+                        @if ( count(App\Models\Cat::where('parent_id',$line5->ident)->get())>0 )
+                          {text: "<a href='/cats/{{ $line5->ident }}'>{{ $line5->name }} ({{ count(App\Models\Cat::where('parent_id',$line5->ident)->get()) }})</a>"},
+                        @else
+                            {text: "<a href='/cats/{{ $line5->ident }}'>{{ $line5->name }} ({{ count(App\Models\Cat::where('parent_id',$line5->ident)->get()) }})</a>"},
+                        @endif
+
+                    @endforeach
                 ]
               },
              @else
