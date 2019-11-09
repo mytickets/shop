@@ -62,8 +62,15 @@
 
 
       function renderNode($node) {
+
+        if ($node->menu){
+          $m="V";
+        } else { $m="X"; }
+
+
         if ( count(App\Models\Cat::where('parent_id',$node->ident)->get())>0 ) {
-          $html = '<li>' . $node->name;
+          // $html = '<li>'   . $node->name;
+          $html = '<li>'   . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span> <a href="/cats/'.$node->ident.'">'. $node->name .'</a>';
           $html .= '<ul>';
           foreach($node->children as $child)
             $html .= renderNode($child);
@@ -71,15 +78,8 @@
           $html .= '</li>';
         // if( $node->isLeaf() ) {
         } else {
-          // {{  }}
-
-            if ($node->menu){
-              $m="V";
-            } else { $m="X"; }
-
           // return '<li>' . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span>'. $node->name .'</li>';
           return '<li>' . '<span class="badge label label-warning menu_check" data-id="'.$node->ident.'">'.$m.'</span><span class="badge label label-primary">'. count(App\Models\Product::where('cat_id',$node->ident)->get()).'шт.</span> <a href="/cats/'.$node->ident.'">'. $node->name .'</a></li>';
-                            
         }
 
         return $html;
