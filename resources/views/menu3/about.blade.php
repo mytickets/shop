@@ -62,8 +62,8 @@ body.page #pagetitle {
                   <div class="vc_column-inner">
                      <div class="wpb_wrapper">
                         <div id="ultimate-heading-80345d99d6f3524bf" class="uvc-heading ult-adjust-bottom-margin ultimate-heading-80345d99d6f3524bf uvc-1383 " data-hspacer="line_only" data-halign="left" style="text-align:left">
-                           <div class="uvc-main-heading ult-responsive" data-ultimate-target=".uvc-heading.ultimate-heading-80345d99d6f3524bf h2" data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:52px;&quot;,&quot;line-height&quot;:&quot;desktop:64px;&quot;}">
-                              <h2 style="font-family:'Roboto Condensed';font-weight:700;color:#111111;">НАША КОМАНДА</h2>
+                           <div class="uvc-main-heading ult-responsive" >
+                              <h2 style="font-family:'Roboto Condensed';font-weight:700;color:#111111; font-size: 2em !important;">НАША КОМАНДА</h2>
                            </div>
                            <div class="uvc-heading-spacer line_only" style="margin-top:30px;margin-bottom:30px;height:2px;"><span class="uvc-headings-line" style="border-style: solid; border-bottom-width: 2px; border-color: rgb(166, 157, 109); width: 20px; float: left;"></span></div>
                            <div class="uvc-sub-heading ult-responsive" data-ultimate-target=".uvc-heading.ultimate-heading-80345d99d6f3524bf .uvc-sub-heading " data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:22px;&quot;,&quot;line-height&quot;:&quot;desktop:36px;&quot;}" style="font-family:'Roboto';font-weight:normal;font-style:normal;color:#111111;"><span id="result_box" class="" lang="en">We have a friendly and successful team. Want to join us?</span></div>

@@ -296,7 +296,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-Route::get('cats_tree', 'CatController@cats_tree');
+    Route::get('cats_tree', 'CatController@cats_tree');
+    Route::get('products_enable', 'ProductController@products_enable');
 
 });
 //  !!! END AUTH !!!
@@ -323,6 +324,7 @@ Route::get('/product/{ident}/to_cart/{qty}', 'ProductController@to_cart');
 
     Route::get('/cats/{ident}/check_menu', 'CatController@check_menu');
     Route::get('/products/{ident}/check_menu', 'ProductController@check_menu');
+    Route::get('/products/{ident}/check_menu2', 'ProductController@check_menu2');
 
     Route::get('/carts/{id}/total', 'CartController@total');
     Route::get('/carts/{id}/total_qty', 'CartController@total_qty');

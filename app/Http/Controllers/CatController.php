@@ -37,34 +37,6 @@ class CatController extends AppBaseController
         return $catDataTable->render('cats.index');
     }
 
-    public function check_menu($ident)
-    {
-        $m = \App\Models\Cat::where('ident',$ident)->first();
-
-        if ($m->menu==0) {
-            $m->menu=1;
-            // $mm='V';
-            $mm='V';
-            $mcolor="success";
-        } else {
-            $m->menu=0;
-            // $mm='X';
-            $mm='X';
-            $mcolor="default";
-        }
-        $m->save();
-        return [$mm, $mcolor];
-    }
-
-
-    public function cats_tree()
-    {
-        // return $catDataTable->render('cats.index');
-        // return view('cats.tree')->with('cats', \App\Models\Cat::all() );
-        return view('cats.tree')->with('cats', \App\Models\Cat::where('parent_id',0)->get() );
-    }
-
-
     /**
      * Show the form for creating a new Cat.
      *
@@ -199,4 +171,31 @@ class CatController extends AppBaseController
 
         return redirect(route('cats.index'));
     }
+
+    public function check_menu($ident)
+    {
+        $m = \App\Models\Cat::where('ident',$ident)->first();
+
+        if ($m->menu==0) {
+            $m->menu=1;
+            // $mm='V';
+            $mm='V';
+            $mcolor="success";
+        } else {
+            $m->menu=0;
+            // $mm='X';
+            $mm='X';
+            $mcolor="default";
+        }
+        $m->save();
+        return [$mm, $mcolor];
+    }
+
+    public function cats_tree()
+    {
+        return view('cats.tree')->with('cats', \App\Models\Cat::where('parent_id',0)->get() );
+    }
+
+
+
 }

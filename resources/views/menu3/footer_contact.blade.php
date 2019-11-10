@@ -5,8 +5,8 @@
                                     <div class="vc_column-inner">
                                         <div class="wpb_wrapper">
                                             <div id="ultimate-heading-58045d99d51fe8bdd" class="uvc-heading ult-adjust-bottom-margin ultimate-heading-58045d99d51fe8bdd uvc-7403 " data-hspacer="line_only" data-halign="left" style="text-align:left">
-                                                <div class="uvc-main-heading ult-responsive" data-ultimate-target=".uvc-heading.ultimate-heading-58045d99d51fe8bdd h2" data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:100px;&quot;,&quot;line-height&quot;:&quot;desktop:110px;&quot;}">
-                                                    <h2 style="font-family:'Roboto Condensed';font-weight:700;color:#ffffff;">КОНТАКТЫ</h2>
+                                                <div class="uvc-main-heading ult-responsive" data-ultimate-target=".uvc-heading.ultimate-heading-58045d99d51fe8bdd h2" >
+                                                    <h2 style="font-family:'Roboto Condensed';font-weight:700;color:#ffffff; font-size: 2em;">КОНТАКТЫ</h2>
                                                 </div>
                                                 <div class="uvc-heading-spacer line_only" style="margin-top:30px;margin-bottom:30px;height:2px;"><span class="uvc-headings-line" style="border-style: solid; border-bottom-width: 2px; border-color: rgb(166, 157, 109); width: 20px; float: left;"></span></div>
                                                 <div class="uvc-sub-heading ult-responsive" data-ultimate-target=".uvc-heading.ultimate-heading-58045d99d51fe8bdd .uvc-sub-heading " data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:18px;&quot;,&quot;line-height&quot;:&quot;desktop:32px;&quot;}" style="font-family:'Roboto';font-weight:normal;color:#ffffff;"><span id="result_box" class="" lang="en"><span class="">Всегда будем рады ответить </span> <span class="">на все интересующие Вас вопросы.</span></span></div>

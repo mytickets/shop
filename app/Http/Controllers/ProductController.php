@@ -30,24 +30,6 @@ class ProductController extends AppBaseController
         $this->productRepository = $productRepo;
     }
 
-    public function to_cart($ident, $qty=1)
-    {
-            $session_id = \Session::getId();
-            $cart = Cart::firstOrCreate(['session_id' => $session_id]);
-            session('cart', $cart);
-            // session('session_id', $session_id);
-            // $attributes = ['invited_by_id' => '..'];
-
-            $instance = LineItem::where(['cart_id' => $cart->id, 'product_id'=>$ident])->first();
-            if( is_null ( $instance ) ) {
-                LineItem::create(['cart_id' => $cart->id, 'product_id'=>$ident, 'qty'=>$qty]);
-            } else {
-                $qty_new = $instance->qty+$qty;
-                $instance->update(['qty'=>$qty_new]);
-            }
-
-        return 'ok';
-    }
 
     /**
      * Display a listing of the Product.
@@ -92,21 +74,6 @@ class ProductController extends AppBaseController
         Flash::success('Продукт успешно сохранен.');
 
         return redirect(route('products.index'));
-    }
-
-    public function check_menu($ident)
-    {
-        $m = \App\Models\Product::where('ident',$ident)->first();
-
-        if ($m->menu==0) {
-            $m->menu=1;
-            $mm='V';
-        } else {
-            $m->menu=0;
-            $mm='X';
-        }
-        $m->save();
-        return $mm;
     }
 
 
@@ -208,4 +175,91 @@ class ProductController extends AppBaseController
 
         return redirect(route('products.index'));
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function to_cart($ident, $qty=1)
+    {
+            $session_id = \Session::getId();
+            $cart = Cart::firstOrCreate(['session_id' => $session_id]);
+            session('cart', $cart);
+            // session('session_id', $session_id);
+            // $attributes = ['invited_by_id' => '..'];
+
+            $instance = LineItem::where(['cart_id' => $cart->id, 'product_id'=>$ident])->first();
+            if( is_null ( $instance ) ) {
+                LineItem::create(['cart_id' => $cart->id, 'product_id'=>$ident, 'qty'=>$qty]);
+            } else {
+                $qty_new = $instance->qty+$qty;
+                $instance->update(['qty'=>$qty_new]);
+            }
+
+        return 'ok';
+    }
+
+
+
+
+
+
+
+
+
+
+    public function check_menu($ident)
+    {
+        $m = \App\Models\Product::where('ident',$ident)->first();
+
+        if ($m->menu==0) {
+            $m->menu=1;
+            $mm='V';
+        } else {
+            $m->menu=0;
+            $mm='X';
+        }
+        $m->save();
+        return $mm;
+    }
+    public function check_menu2($ident)
+    {
+        $m = \App\Models\Product::where('ident',$ident)->first();
+
+        if ($m->menu==0) {
+            $m->menu=1;
+            // $mm='V';
+            $mm='V';
+            $mcolor="success";
+        } else {
+            $m->menu=0;
+            // $mm='X';
+            $mm='X';
+            $mcolor="default";
+        }
+        $m->save();
+        return [$mm, $mcolor];
+    }
+
+
+
+    public function products_enable()
+    {
+        return view('products.products_enable')->with('products', \App\Models\Product::where('parent_id',0)->get() );
+    }
+
+
+
 }

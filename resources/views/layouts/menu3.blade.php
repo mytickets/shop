@@ -2,7 +2,7 @@
 <html lang="ru">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        {{-- <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1"> --}}
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
         <!-- CSRF Token -->
@@ -98,7 +98,7 @@
             }
 
             .uvc-heading.ultimate-heading-60325d9243f02f8e7 h2 {
-                font-size: 100px;
+                /*font-size: 100px;*/
                 line-height: 110px;
             }
 
@@ -134,9 +134,15 @@
             }
 
             @media (max-width: 767px) {
+                h2 {
+                    font-size: 2em !important;
+                }
             }
 
             @media (max-width: 479px) {
+                h2 {
+                    font-size: 2em !important;
+                }
             }
 
             .wpb_row {
@@ -272,13 +278,17 @@
                                             <a class="social_link instagram" href="/demo3/#" target="_blank">
                                                 <i class="fa fa-instagram"></i>
                                             </a>
-                                            <a class="social_link behance" href="/demo3/#" target="_blank">
+                                            <a class="social_link behance" href="/login" target="_blank">
                                                 <i class="fa fa-behance"></i>
+                                            </a>
+                                            <a class="social_link behance" href="/login" target="_blank">
+                                                {{-- <i class="fa fa-behance"></i> --}}
+                                                <i class="fa fa-user-o" aria-hidden="true"></i>
                                             </a>
                                         </div>
                                         <div class="copyright">
-                                            Copyright © 2019 <a href=""></a>
-                                            . All Rights Reserved.
+                                            Разработка 2019 <a href="">Alex&Co</a>
+                                    . Все права соблюденены.
                                         </div>
                                     </div>
                                 </div>

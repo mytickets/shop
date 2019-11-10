@@ -5,8 +5,8 @@
             <div class="wpb_wrapper">
                 <div id="ultimate-heading-60325d9243f02f8e7" class="uvc-heading ult-adjust-bottom-margin ultimate-heading-60325d9243f02f8e7 uvc-6149 " data-hspacer="no_spacer" data-halign="left" style="text-align:left">
                     <div class="uvc-heading-spacer no_spacer" style="top"></div>
-                    <div class="uvc-main-heading ult-responsive" data-ultimate-target=".uvc-heading.ultimate-heading-60325d9243f02f8e7 h2" data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:100px;&quot;,&quot;line-height&quot;:&quot;desktop:110px;&quot;}">
-                        <h2 style="font-family:&#39;Roboto Condensed&#39;;font-weight:700;color:#ffffff;margin-bottom:30px;">ПОЧЕМУ МЫ?</h2>
+                    <div class="uvc-main-heading ult-responsive" >
+                        <h2 style="font-family:&#39;Roboto Condensed&#39;;font-weight:700;color:#ffffff;margin-bottom:30px; ">ПОЧЕМУ МЫ?</h2>
                     </div>
                     <div class="uvc-sub-heading ult-responsive" data-ultimate-target=".uvc-heading.ultimate-heading-60325d9243f02f8e7 .uvc-sub-heading " data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:32px;&quot;,&quot;line-height&quot;:&quot;desktop:46px;&quot;}" style="font-family:&#39;Roboto Condensed&#39;;font-weight:normal;font-style:normal;color:#ffffff;margin-bottom:50px;">
                         <span id="result_box" class="" lang="en">
