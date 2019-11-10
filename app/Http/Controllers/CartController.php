@@ -240,10 +240,10 @@ class CartController extends AppBaseController
 
 			        	event( new \App\Events\ServerCreated("Новый заказ!", $check->id) );
 
-                        foreach ($cart->line_items as $key => $line) {
-                            // $new_line = \App\Models\LineItem::find('cart_id',$cart->id);
-                            $line->remove();
-                        }
+                        // foreach ($cart->line_items as $key => $line) {
+                        //     // $new_line = \App\Models\LineItem::find('cart_id',$cart->id);
+                        //     $line->remove();
+                        // }
 
 			    	    $cart->delete();
                         // $cart->delete();
