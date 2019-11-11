@@ -67,6 +67,11 @@
     {!! Form::text('price_amount', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Desc Field -->
+<div class="form-group col-sm-12 col-lg-12">
+    {!! Form::label('desc', 'Описание:') !!}
+    {!! Form::textarea('desc', null, ['class' => 'form-control']) !!}
+</div>
 
 
 <!-- Submit Field -->

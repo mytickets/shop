@@ -93,11 +93,11 @@
 
                             <div class="row">
 
-                              <div class="col-xs-2">
+                              <div class="col-xs-2 col-lg-2">
                                 <img class="img-responsive" src="{{ $line->product->image ?? "http://placehold.it/100x70" }}">
                               </div>
 
-                              <div class="col-xs-5">
+                              <div class="col-xs-3 col-md-6 col-lg-6">
                                 {{-- <h4 class="product-name"> --}}
                                   <strong>{{ $line->product->name ?? "" }}</strong>
                                 {{-- </h4> --}}
@@ -110,7 +110,7 @@
 @endif
                               </div>
 
-                              <div class="col-xs-5" style="text-align: left;">
+                              <div class="col-xs-7 col-md-4 col-lg-4" style="text-align: left;">
                                 <div class="col-xs-12 cart_id" >
 
                                   {{-- <h7> --}}
@@ -125,7 +125,8 @@
                                   <b> <span class="one_line sh6">={{ $line->qty*$line->product->price_amount }}</span> </b>
 
                                   {!! Form::open(['route' => ['lineItems.destroy', $line->id], 'method' => 'delete','class'=>"position",'style'=>"position: absolute;display: contents;"]) !!}
-                                  {!! Form::button('X', ['type' => 'submit', 'class' => 'destroy_button btn-sm btn', 'style'=>'background-color: white;color: red;text-align: right;right: 1px;position: absolute;margin-top: 0px;', 'onclick' => "return confirm('Вы уверены?')"]) !!}
+
+                                  {!! Form::button('X', ['type' => 'submit', 'class' => 'destroy_button btn-sm btn', 'style'=>'background-color: white;color: red;right: 0em;position: absolute;margin-top: 4px;padding: 3px;', 'onclick' => "return confirm('Вы уверены?')"]) !!}
                                   {!! Form::close() !!}
 
                                   {{-- cart_id --}}

@@ -18,10 +18,24 @@
 
 
 .menu_item_ingredients {
-  line-height: 29px;
+  /*line-height: 29px;*/
+      margin-top: 6px;
 }
 
    </style>
+    <link rel="stylesheet" href="/assets/plugins/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/plugins/slick-carousel/slick/slick.css" />
+    <link rel="stylesheet" href="/assets/plugins/animate.css/animate.min.css" />
+    <link rel="stylesheet" href="/assets/plugins/animsition/dist/css/animsition.min.css" />
+
+    <!-- CSS Icons -->
+    <link rel="stylesheet" href="/assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css" />
+
+    <!-- CSS Theme -->
+    <link id="theme" rel="stylesheet" href="/assets/css/themes/theme-beige.min.css" />
+
+
 
    <div id="pagetitle" class=" text-center">
          <div class="container" style="padding-top: 90px;">
@@ -31,129 +45,101 @@
          </div>
    </div>
 
-         <div id="page-content" style="margin-bottom: 0px;margin-top: 0px;">
-            <div id="default_page">
-               <div class="container">
-                  <div class="contentarea clearfix">
-                    
+<div id="content">
+
+
+        <!-- Page Title -->
+<!--         <div class="page-title bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 push-lg-4">
+                        <h1 class="mb-0">Menu Grid</h1>
+                        <h4 class="text-muted mb-0">Some informations about our restaurant</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+ -->
+
+
+
+        <!-- Page Content -->
+        <div class="page-content">
+            <div class="container">
+                <div class="row no-gutters">
+                    <div class="col-md-10 push-md-1" role="tablist">
+                        <!-- Menu Category / Burgers -->
+
                      @foreach ($cats as $cat)
                         @if ( $cat->menu == 1)
 
-                              <div class="wpb_column vc_column_container vc_col-sm-12">
-                                 <div class="vc_column-inner">
-                                    <div class="wpb_wrapper">
-                                       <div id="ultimate-heading-99885d99d11d21788" class="uvc-heading ult-adjust-bottom-margin ultimate-heading-99885d99d11d21788 uvc-4885 " data-hspacer="no_spacer" data-halign="center" style="text-align:center">
-                                          <div class="uvc-heading-spacer no_spacer" style="top"></div>
-                                          <div class="uvc-main-heading ult-responsive" data-ultimate-target=".uvc-heading.ultimate-heading-99885d99d11d21788 h2" data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:120px;&quot;,&quot;line-height&quot;:&quot;desktop:130px;&quot;}">
-                                             <h2 style="font-family:'Roboto Condensed';font-weight:700;color:#000;">{{ $cat->name }}</h2>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           <br>
-
-                     <div class="vc_row wpb_row vc_row-fluid vc_custom_1536348479913">
-
-                            @foreach ( \App\Models\Product::where('cat_id', "=", $cat->ident)->get() as $product)
-                              @if ( $product->menu == 1)
-                              {{-- @if ( true) --}}
-                                <style type="text/css">
-                                   .vc_column-inner {
-                                      min-height: 16em;
-                                   }
-                                </style>
-                                <div class="col-sm-6">
-                                   <div class="vc_column-inner">
-                                      <div class="wpb_wrapper">
-
-                                         <div class="evatheme_core-menu-wrap menu_item_id5d99e5d6b7378 left rounded type1 with_img   vc_custom_1542075873094">
-                                            <div class="menu_item">
-                                               <div class="row">
-                                                  <div class="col-lg-4 mb30">
-                                                     <div class="menu_img_wrap" style="text-align: center;" ><img src="{{ $product->image }}" alt="{{ $product->name }}">
-                                                      <br>
-                                                      <a href="#" data-ident="{{ $product->ident }}" class="btn to_cart" style="width: 100%;">
-                                                        В корзину
-                                                      </a>
-                                                     </div>
-                                                  </div>
-                                                  <div class="col-lg-8">
-                                                     <div class="menu_item_content">
-                                                        {{-- <div>
-                                                           <span class="menu_item_label" style="color:#ffffff;background-color:#d3ab55;margin-bottom:25px;padding-left:14px;padding-right:14px;letter-spacing:1px;">НОВИНКА</span>
-                                                        </div> --}}
-                                                        <h7 class="menu_item_title" style="color:#333333;"><span class="menu_item_title_span" style="background-color:#ffffff;font-size: 27px;">{{ $product->name }}:</span> <b>  <span style="background-color:#ffffff;font-size: 23px;">{{ $product->price_amount }} руб.</span></b> </h7>
+                        <div id="cat_{{ $cat->id }}" class="menu-category">
+                            <div class="menu-category-title collapse-toggle collapsed" role="tab" data-target="#menu_cat_{{ $cat->id }}_Content" data-toggle="collapse" aria-expanded="false">
+                                <div class="bg-image" style="background-image: url(&quot;{{ $cat->image }}&quot;);"><img src="{{ $cat->image }}" alt="" style="display: none;"></div>
+                                <h2 class="title">{{ $cat->name }}</h2>
+                            </div>
+                            <div id="menu_cat_{{ $cat->id }}_Content" class="menu-category-content padded collapse" aria-expanded="false" style="">
+                                <div class="row gutters-sm">
+                                        @foreach ( \App\Models\Product::where('cat_id', "=", $cat->ident)->get() as $product)
+                                          @if ( $product->menu == 1)
+                                    <div class="col-lg-4 col-6">
 
 
-                                                        <p class="menu_item_ingredients" style="color:#555555;">
+                                            <!-- Menu Item -->
+                                            <div class="menu-item menu-grid-item">
 
-                                                          @if (mb_strlen($product->desc)>140)
-                                                            {{ mb_substr($product->desc, 0, 140,'UTF-8') }}...
-                                                          @else
-                                                            {{ $product->desc }}
-                                                          @endif
-                                                        </p>
+                                                <img class="mb-4" src="{{ $product->image }}" alt="">
 
-                                                     </div>
-                                                  </div>
-                                               </div>
+                                                <h6 class="mb-0">{{ $product->name }}</h6>
+
+                                                <span class="text-muted text-sm">
+                                                  @if (mb_strlen($product->desc)>140)
+                                                    {{ mb_substr($product->desc, 0, 100,'UTF-8') }}...
+                                                  @else
+                                                    {{ $product->desc }}
+                                                  @endif
+                                                </span>
+
+                                                <div class="row align-items-center mt-4">
+                                                    <div class="col-sm-6"><span class="text-md mr-4">{{ $product->price_amount }} руб.</span></div>
+                                                    <div class="col-sm-6 text-sm-right mt-2 mt-sm-0"><button class="btn btn-outline-secondary btn-sm to_cart" data-ident="{{ $product->ident }}" ><span>В корзину</span></button></div>
+                                                </div>
+
                                             </div>
-                                         </div>
 
 
-                                      </div>
-                                   </div>
+                                    </div>
+                                          @endif
+                                        @endforeach
+
                                 </div>
-                              @endif
-                            @endforeach
-                     </div>
+                            </div>
+                        </div>
 
-                      @else
 
-                      @endif
+                        @else
+                        @endif
                     @endforeach
 
-                     {{-- {{ $cats[0]->name }} --}}
 
-                  @include('menu3.footer_contact')
 
-                  </div>
-               </div>
+
+                    </div>
+                </div>
             </div>
-         </div>
+        </div>
+
+
+</div>
+
+
+
+
 
 @endsection
 
 @section('script')
 <script type="text/javascript">
-// function total_cart() {
-//     $.get(
-//       "/total_cart/"+$('#cart_id').data('id'), {}, onAjaxSuccess
-//     );
-//     // cart-value
-// }
-// function onAjaxSuccess(data)
-// {
-//   // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
-//   console.log(data);
-//   $("#cart-value").html(data+" руб.")
-//   $("#cart-value2").html(data+" руб.")
-    
-// }
-
-
-
-$(document).ready(function (){
-// $(window).load(function (){
-    // var l = $.get("/total_cart/"+$('#cart_id').data('id'))
-    // total_cart()
-
-    // $('a.remove_line_item').click(function(e){
-    //     $.get("/line_item_remove/"+$(this).data('id'));
-    //     $(this).parent().parent().remove()
-    //     total_cart()
-    // })
 
 function doBounce(element, times, distance, speed) {
     for(var i = 0; i < times; i++) {
@@ -162,10 +148,12 @@ function doBounce(element, times, distance, speed) {
     }        
 }
 
-    $('a.to_cart').click(function(e){
+$(document).ready(function (){
+
+    $('.to_cart').click(function(e){
         e.preventDefault();
         doBounce($(this), 1, '13px', 300);
-        // $(this).addClass('animated', 'bounceOutLeft')
+        $(this).addClass('animated', 'bounceOutLeft')
         $.get("/product/"+$(this).data('ident')+"/to_cart/1");
 
             cart_id = $('#qty_badge').data('cart_id')
@@ -177,8 +165,6 @@ function doBounce(element, times, distance, speed) {
                 }
             });
 
-        // total_cart()
-        // console.log($(this).data('id'))
     })
 
 });

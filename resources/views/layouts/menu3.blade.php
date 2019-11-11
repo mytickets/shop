@@ -2,7 +2,7 @@
 <html lang="ru">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        {{-- <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1"> --}}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
         <!-- CSRF Token -->
@@ -127,6 +127,10 @@
                 line-height: 32px;
             }
 
+            h2 {
+                line-height: 1em !important;
+            }
+
             @media (max-width: 1199px) {
             }
 
@@ -135,14 +139,17 @@
 
             @media (max-width: 767px) {
                 h2 {
-                    font-size: 2em !important;
+                    font-size: 5em !important;
                 }
             }
 
             @media (max-width: 479px) {
                 h2 {
-                    font-size: 2em !important;
+                    font-size: 3em !important;
                 }
+                .cart_id {
+                    font-size: 12px;
+                }                
             }
 
             .wpb_row {
@@ -199,7 +206,7 @@
 {{--  --}}
 
     {{-- <body class="home page-template-default page page-id-609 full-width header_full_width header-top header_bgline header_opacity pagetitle_hide breadcrumbs_hide footer_fixed wpb-js-composer js-comp-ver-5.5.4 vc_responsive slider_first_row" style=""> --}}
-    <body class="home page-template-default page page-id-609 full-width header_full_width header-top header_bgline header_opacity pagetitle_hide breadcrumbs_hide footer_fixed wpb-js-composer js-comp-ver-5.5.4 vc_responsive" style="">
+    <body class="home page-template-default page page-id-609 full-width header_full_width header-top header_bgline header_opacity pagetitle_hide breadcrumbs_hide footer_fixed wpb-js-composer js-comp-ver-5.5.4 vc_responsive" style="margin-left: 0px;margin-right: 0px;">
         <div id="page-wrap">
             <header class="clearfix full_width header-top header_type2" 
             >
