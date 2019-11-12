@@ -74,7 +74,7 @@ class CartAPIController extends AppBaseController
         $cart = $this->cartRepository->find($id);
 
         if (empty($cart)) {
-            return $this->sendError('Cart не найдена');
+            return $this->sendError('Cart объект не найден');
         }
 
         return $this->sendResponse($cart->toArray(), 'Cart retrieved successfully');
@@ -97,7 +97,7 @@ class CartAPIController extends AppBaseController
         $cart = $this->cartRepository->find($id);
 
         if (empty($cart)) {
-            return $this->sendError('Cart не найдена');
+            return $this->sendError('Cart объект не найден');
         }
 
         $cart = $this->cartRepository->update($input, $id);
@@ -121,7 +121,7 @@ class CartAPIController extends AppBaseController
         $cart = $this->cartRepository->find($id);
 
         if (empty($cart)) {
-            return $this->sendError('Cart не найдена');
+            return $this->sendError('Cart объект не найден');
         }
 
         $cart->delete();

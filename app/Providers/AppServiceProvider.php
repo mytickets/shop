@@ -58,7 +58,7 @@ class AppServiceProvider extends ServiceProvider
         {
 
             if (Auth::check()) {
-                # code...
+                # code..
                 // Auth::user()->id;
                 $view->with('user_id', Auth::user()->id );
     

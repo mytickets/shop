@@ -58,7 +58,7 @@ class PermissionController extends AppBaseController
 
         $permission = $this->permissionRepository->create($input);
 
-        Flash::success('Permission saved successfully.');
+        Flash::success('Permission объект успешно сохранён.');
 
         return redirect(route('permissions.index'));
     }
@@ -75,7 +75,7 @@ class PermissionController extends AppBaseController
         $permission = $this->permissionRepository->find($id);
 
         if (empty($permission)) {
-            Flash::error('Permission не найдена');
+            Flash::error('Permission объект не найден');
 
             return redirect(route('permissions.index'));
         }
@@ -95,7 +95,7 @@ class PermissionController extends AppBaseController
         $permission = $this->permissionRepository->find($id);
 
         if (empty($permission)) {
-            Flash::error('Permission не найдена');
+            Flash::error('Permission объект не найден');
 
             return redirect(route('permissions.index'));
         }
@@ -116,7 +116,7 @@ class PermissionController extends AppBaseController
         $permission = $this->permissionRepository->find($id);
 
         if (empty($permission)) {
-            Flash::error('Permission не найдена');
+            Flash::error('Permission объект не найден');
 
             return redirect(route('permissions.index'));
         }
@@ -142,14 +142,14 @@ class PermissionController extends AppBaseController
         $permission = $this->permissionRepository->find($id);
 
         if (empty($permission)) {
-            Flash::error('Permission не найдена');
+            Flash::error('Permission объект не найден');
 
             return redirect(route('permissions.index'));
         }
 
         $this->permissionRepository->delete($id);
 
-        Flash::success('Permission deleted successfully.');
+        Flash::success('Permission объект успешно удалён.');
 
         return redirect(route('permissions.index'));
     }

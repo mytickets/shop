@@ -112,7 +112,7 @@ class UserAPIController extends AppBaseController
 
         $user = $this->userRepository->create($input);
 
-        return $this->sendResponse($user->toArray(), 'User saved successfully');
+        return $this->sendResponse($user->toArray(), 'User объект успешно сохранён.');
     }
 
     /**
@@ -159,7 +159,7 @@ class UserAPIController extends AppBaseController
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
-            return $this->sendError('User не найдена');
+            return $this->sendError('User объект не найден');
         }
 
         return $this->sendResponse($user->toArray(), 'User retrieved successfully');
@@ -219,7 +219,7 @@ class UserAPIController extends AppBaseController
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
-            return $this->sendError('User не найдена');
+            return $this->sendError('User объект не найден');
         }
 
         $user = $this->userRepository->update($input, $id);
@@ -271,7 +271,7 @@ class UserAPIController extends AppBaseController
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
-            return $this->sendError('User не найдена');
+            return $this->sendError('User объект не найден');
         }
 
         $user->delete();

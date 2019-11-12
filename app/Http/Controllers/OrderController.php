@@ -102,7 +102,7 @@ class OrderController extends AppBaseController
         $order = $this->orderRepository->find($id);
 
         if (empty($order)) {
-            Flash::error('Order не найдена');
+            Flash::error('Order объект не найден');
 
             return redirect(route('orders.index'));
         }
@@ -127,7 +127,7 @@ class OrderController extends AppBaseController
         $order = $this->orderRepository->find($id);
 
         if (empty($order)) {
-            Flash::error('Order не найдена');
+            Flash::error('Order объект не найден');
 
             return redirect(route('orders.index'));
         }
@@ -153,7 +153,7 @@ class OrderController extends AppBaseController
         $order = $this->orderRepository->find($id);
 
         if (empty($order)) {
-            Flash::error('Order не найдена');
+            Flash::error('Order объект не найден');
 
             return redirect(route('orders.index'));
         }
@@ -189,7 +189,7 @@ class OrderController extends AppBaseController
         $order = $this->orderRepository->find($id);
 
         if (empty($order)) {
-            Flash::error('Order не найдена');
+            Flash::error('Order объект не найден');
 
             return redirect(route('orders.index'));
         }
@@ -199,7 +199,7 @@ class OrderController extends AppBaseController
 
         $this->orderRepository->delete($id);
 
-        Flash::success('Order deleted successfully.');
+        Flash::success('Order объект успешно удалён.');
 
         return redirect(route('orders.index'));
     }

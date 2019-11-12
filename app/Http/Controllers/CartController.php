@@ -88,7 +88,7 @@ class CartController extends AppBaseController
         $cart = $this->cartRepository->find($id);
 
         if (empty($cart)) {
-            Flash::error('Cart не найдена');
+            Flash::error('Cart объект не найден');
 
             return redirect(route('carts.index'));
         }
@@ -108,7 +108,7 @@ class CartController extends AppBaseController
         $cart = $this->cartRepository->find($id);
 
         if (empty($cart)) {
-            Flash::error('Cart не найдена');
+            Flash::error('Cart объект не найден');
 
             return redirect(route('carts.index'));
         }
@@ -132,7 +132,7 @@ class CartController extends AppBaseController
         $cart = $this->cartRepository->find($id);
 
         if (empty($cart)) {
-            Flash::error('Cart не найдена');
+            Flash::error('Cart объект не найден');
 
             return redirect(route('carts.index'));
         }
@@ -165,14 +165,14 @@ class CartController extends AppBaseController
         $cart = $this->cartRepository->find($id);
 
         if (empty($cart)) {
-            Flash::error('Корзина не найдена');
+            Flash::error('Корзина объект не найден');
 
             return redirect(route('carts.index'));
         }
 
         // TODO Удаляем файл
         if ( file_exists( getcwd().$cart['image']) ) {
-            # code...
+            # code..
             // unlink( getcwd().$cart['image'] );
         }
 
@@ -258,7 +258,7 @@ class CartController extends AppBaseController
 		        	
 				if (!isset($cart->line_items)){
 
-		        // 	# code...
+		        // 	# code..
 
 		        // }
 		        	// return view('menu3.thanks')->with('order_id', $cart->line_items);

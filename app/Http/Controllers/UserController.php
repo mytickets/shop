@@ -62,7 +62,7 @@ class UserController extends AppBaseController
 
         $user = $this->userRepository->create($input);
 
-        Flash::success('User saved successfully.');
+        Flash::success('User объект успешно сохранён.');
 
         return redirect(route('users.index'));
     }
@@ -79,7 +79,7 @@ class UserController extends AppBaseController
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
-            Flash::error('User не найдена');
+            Flash::error('User объект не найден');
 
             return redirect(route('users.index'));
         }
@@ -103,7 +103,7 @@ class UserController extends AppBaseController
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
-            Flash::error('User не найдена');
+            Flash::error('User объект не найден');
 
             return redirect(route('users.index'));
         }
@@ -131,7 +131,7 @@ class UserController extends AppBaseController
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
-            Flash::error('User не найдена');
+            Flash::error('User объект не найден');
 
             return redirect(route('users.index'));
         }
@@ -158,14 +158,14 @@ class UserController extends AppBaseController
         $user = $this->userRepository->find($id);
 
         if (empty($user)) {
-            Flash::error('User не найдена');
+            Flash::error('User объект не найден');
 
             return redirect(route('users.index'));
         }
 
         $this->userRepository->delete($id);
 
-        Flash::success('User deleted successfully.');
+        Flash::success('User объект успешно удалён.');
 
         return redirect(route('users.index'));
     }

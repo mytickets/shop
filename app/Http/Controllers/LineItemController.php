@@ -87,7 +87,7 @@ class LineItemController extends AppBaseController
         $lineItem = $this->lineItemRepository->find($id);
 
         if (empty($lineItem)) {
-            Flash::error('Line Item не найдена');
+            Flash::error('Line Item объект не найден');
 
             return redirect(route('lineItems.index'));
         }
@@ -107,7 +107,7 @@ class LineItemController extends AppBaseController
         $lineItem = $this->lineItemRepository->find($id);
 
         if (empty($lineItem)) {
-            Flash::error('Line Item не найдена');
+            Flash::error('Line Item объект не найден');
 
             return redirect(route('lineItems.index'));
         }
@@ -128,7 +128,7 @@ class LineItemController extends AppBaseController
         $lineItem = $this->lineItemRepository->find($id);
 
         if (empty($lineItem)) {
-            Flash::error('Line Item не найдена');
+            Flash::error('Line Item объект не найден');
 
             return redirect(route('lineItems.index'));
         }
@@ -161,7 +161,7 @@ class LineItemController extends AppBaseController
         $lineItem = $this->lineItemRepository->find($id);
 
         if (empty($lineItem)) {
-            Flash::error('Line Item не найдена');
+            Flash::error('Line Item объект не найден');
 
             return redirect(route('lineItems.index'));
         }
@@ -170,7 +170,7 @@ class LineItemController extends AppBaseController
 
         $this->lineItemRepository->delete($id);
 
-        Flash::success('Line Item deleted successfully.');
+        Flash::success('Line Item объект успешно удалён.');
 
         // return redirect(route('lineItems.index'));
         return redirect('/cart');

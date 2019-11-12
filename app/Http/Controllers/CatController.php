@@ -82,7 +82,7 @@ class CatController extends AppBaseController
         $cat = $this->catRepository->find($id);
 
         if (empty($cat)) {
-            Flash::error('Cat не найдена');
+            Flash::error('Cat объект не найден');
 
             return redirect(route('cats.index'));
         }
@@ -106,7 +106,7 @@ class CatController extends AppBaseController
         $cat = $this->catRepository->find($id);
 
         if (empty($cat)) {
-            Flash::error('Cat не найдена');
+            Flash::error('Cat объект не найден');
 
             return redirect(route('cats.index'));
         }
@@ -127,7 +127,7 @@ class CatController extends AppBaseController
         $cat = $this->catRepository->find($id);
 
         if (empty($cat)) {
-            Flash::error('Cat не найдена');
+            Flash::error('Cat объект не найден');
 
             return redirect(route('cats.index'));
         }
@@ -158,7 +158,7 @@ class CatController extends AppBaseController
         $cat = $this->catRepository->find($id);
 
         if (empty($cat)) {
-            Flash::error('Cat не найдена');
+            Flash::error('Cat объект не найден');
 
             return redirect(route('cats.index'));
         }
@@ -167,7 +167,7 @@ class CatController extends AppBaseController
 
         $this->catRepository->delete($id);
 
-        Flash::success('Cat deleted successfully.');
+        Flash::success('Cat объект успешно удалён.');
 
         return redirect(route('cats.index'));
     }

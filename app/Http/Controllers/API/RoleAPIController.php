@@ -112,7 +112,7 @@ class RoleAPIController extends AppBaseController
 
         $role = $this->roleRepository->create($input);
 
-        return $this->sendResponse($role->toArray(), 'Role saved successfully');
+        return $this->sendResponse($role->toArray(), 'Role объект успешно сохранён.');
     }
 
     /**
@@ -159,7 +159,7 @@ class RoleAPIController extends AppBaseController
         $role = $this->roleRepository->find($id);
 
         if (empty($role)) {
-            return $this->sendError('Role не найдена');
+            return $this->sendError('Role объект не найден');
         }
 
         return $this->sendResponse($role->toArray(), 'Role retrieved successfully');
@@ -219,7 +219,7 @@ class RoleAPIController extends AppBaseController
         $role = $this->roleRepository->find($id);
 
         if (empty($role)) {
-            return $this->sendError('Role не найдена');
+            return $this->sendError('Role объект не найден');
         }
 
         $role = $this->roleRepository->update($input, $id);
@@ -271,7 +271,7 @@ class RoleAPIController extends AppBaseController
         $role = $this->roleRepository->find($id);
 
         if (empty($role)) {
-            return $this->sendError('Role не найдена');
+            return $this->sendError('Role объект не найден');
         }
 
         $role->delete();

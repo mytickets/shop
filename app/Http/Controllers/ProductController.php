@@ -89,7 +89,7 @@ class ProductController extends AppBaseController
         $product = $this->productRepository->find($id);
 
         if (empty($product)) {
-            Flash::error('Продукт не найдена');
+            Flash::error('Продукт объект не найден');
 
             return redirect(route('products.index'));
         }
@@ -109,7 +109,7 @@ class ProductController extends AppBaseController
         $product = $this->productRepository->find($id);
 
         if (empty($product)) {
-            Flash::error('Продукт не найдена');
+            Flash::error('Продукт объект не найден');
 
             return redirect(route('products.index'));
         }
@@ -130,7 +130,7 @@ class ProductController extends AppBaseController
         $product = $this->productRepository->find($id);
 
         if (empty($product)) {
-            Flash::error('Продукт не найдена');
+            Flash::error('Продукт объект не найден');
 
             return redirect(route('products.index'));
         }
@@ -161,7 +161,7 @@ class ProductController extends AppBaseController
         $product = $this->productRepository->find($id);
 
         if (empty($product)) {
-            Flash::error('Продукт не найдена');
+            Flash::error('Продукт объект не найден');
 
             return redirect(route('products.index'));
         }
@@ -198,7 +198,7 @@ class ProductController extends AppBaseController
             $cart = Cart::firstOrCreate(['session_id' => $session_id]);
             session('cart', $cart);
             // session('session_id', $session_id);
-            // $attributes = ['invited_by_id' => '..'];
+            // $attributes = ['invited_by_id' => '.'];
 
             $instance = LineItem::where(['cart_id' => $cart->id, 'product_id'=>$ident])->first();
             if( is_null ( $instance ) ) {

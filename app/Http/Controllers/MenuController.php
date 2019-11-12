@@ -58,7 +58,7 @@ class MenuController extends AppBaseController
 
         $menu = $this->menuRepository->create($input);
 
-        Flash::success('Menu saved successfully.');
+        Flash::success('Menu объект успешно сохранён.');
 
         return redirect(route('menus.index'));
     }
@@ -75,7 +75,7 @@ class MenuController extends AppBaseController
         $menu = $this->menuRepository->find($id);
 
         if (empty($menu)) {
-            Flash::error('Menu не найдена');
+            Flash::error('Menu объект не найден');
 
             return redirect(route('menus.index'));
         }
@@ -95,7 +95,7 @@ class MenuController extends AppBaseController
         $menu = $this->menuRepository->find($id);
 
         if (empty($menu)) {
-            Flash::error('Menu не найдена');
+            Flash::error('Menu объект не найден');
 
             return redirect(route('menus.index'));
         }
@@ -116,7 +116,7 @@ class MenuController extends AppBaseController
         $menu = $this->menuRepository->find($id);
 
         if (empty($menu)) {
-            Flash::error('Menu не найдена');
+            Flash::error('Menu объект не найден');
 
             return redirect(route('menus.index'));
         }
@@ -142,14 +142,14 @@ class MenuController extends AppBaseController
         $menu = $this->menuRepository->find($id);
 
         if (empty($menu)) {
-            Flash::error('Menu не найдена');
+            Flash::error('Menu объект не найден');
 
             return redirect(route('menus.index'));
         }
 
         $this->menuRepository->delete($id);
 
-        Flash::success('Menu deleted successfully.');
+        Flash::success('Menu объект успешно удалён.');
 
         return redirect(route('menus.index'));
     }

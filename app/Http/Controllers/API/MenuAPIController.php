@@ -112,7 +112,7 @@ class MenuAPIController extends AppBaseController
 
         $menu = $this->menuRepository->create($input);
 
-        return $this->sendResponse($menu->toArray(), 'Menu saved successfully');
+        return $this->sendResponse($menu->toArray(), 'Menu объект успешно сохранён.');
     }
 
     /**
@@ -159,7 +159,7 @@ class MenuAPIController extends AppBaseController
         $menu = $this->menuRepository->find($id);
 
         if (empty($menu)) {
-            return $this->sendError('Menu не найдена');
+            return $this->sendError('Menu объект не найден');
         }
 
         return $this->sendResponse($menu->toArray(), 'Menu retrieved successfully');
@@ -219,7 +219,7 @@ class MenuAPIController extends AppBaseController
         $menu = $this->menuRepository->find($id);
 
         if (empty($menu)) {
-            return $this->sendError('Menu не найдена');
+            return $this->sendError('Menu объект не найден');
         }
 
         $menu = $this->menuRepository->update($input, $id);
@@ -271,7 +271,7 @@ class MenuAPIController extends AppBaseController
         $menu = $this->menuRepository->find($id);
 
         if (empty($menu)) {
-            return $this->sendError('Menu не найдена');
+            return $this->sendError('Menu объект не найден');
         }
 
         $menu->delete();

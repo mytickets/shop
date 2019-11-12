@@ -112,7 +112,7 @@ class PermissionAPIController extends AppBaseController
 
         $permission = $this->permissionRepository->create($input);
 
-        return $this->sendResponse($permission->toArray(), 'Permission saved successfully');
+        return $this->sendResponse($permission->toArray(), 'Permission объект успешно сохранён.');
     }
 
     /**
@@ -159,7 +159,7 @@ class PermissionAPIController extends AppBaseController
         $permission = $this->permissionRepository->find($id);
 
         if (empty($permission)) {
-            return $this->sendError('Permission не найдена');
+            return $this->sendError('Permission объект не найден');
         }
 
         return $this->sendResponse($permission->toArray(), 'Permission retrieved successfully');
@@ -219,7 +219,7 @@ class PermissionAPIController extends AppBaseController
         $permission = $this->permissionRepository->find($id);
 
         if (empty($permission)) {
-            return $this->sendError('Permission не найдена');
+            return $this->sendError('Permission объект не найден');
         }
 
         $permission = $this->permissionRepository->update($input, $id);
@@ -271,7 +271,7 @@ class PermissionAPIController extends AppBaseController
         $permission = $this->permissionRepository->find($id);
 
         if (empty($permission)) {
-            return $this->sendError('Permission не найдена');
+            return $this->sendError('Permission объект не найден');
         }
 
         $permission->delete();

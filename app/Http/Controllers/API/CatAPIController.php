@@ -159,7 +159,7 @@ class CatAPIController extends AppBaseController
         $cat = $this->catRepository->find($id);
 
         if (empty($cat)) {
-            return $this->sendError('Cat не найдена');
+            return $this->sendError('Cat объект не найден');
         }
 
         return $this->sendResponse($cat->toArray(), 'Cat retrieved successfully');
@@ -219,7 +219,7 @@ class CatAPIController extends AppBaseController
         $cat = $this->catRepository->find($id);
 
         if (empty($cat)) {
-            return $this->sendError('Cat не найдена');
+            return $this->sendError('Cat объект не найден');
         }
 
         $cat = $this->catRepository->update($input, $id);
@@ -271,7 +271,7 @@ class CatAPIController extends AppBaseController
         $cat = $this->catRepository->find($id);
 
         if (empty($cat)) {
-            return $this->sendError('Cat не найдена');
+            return $this->sendError('Cat объект не найден');
         }
 
         $cat->delete();
