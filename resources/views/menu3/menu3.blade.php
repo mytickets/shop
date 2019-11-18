@@ -16,11 +16,10 @@
           color: #ffffff;
       }     
 
-
-.menu_item_ingredients {
-  /*line-height: 29px;*/
-      margin-top: 6px;
-}
+      .menu_item_ingredients {
+        /*line-height: 29px;*/
+            margin-top: 6px;
+      }
 
    </style>
     <link rel="stylesheet" href="/assets/plugins/bootstrap/dist/css/bootstrap.min.css" />
@@ -35,7 +34,11 @@
     <!-- CSS Theme -->
     <link id="theme" rel="stylesheet" href="/assets/css/themes/theme-beige.min.css" />
 
-
+    <style type="text/css">
+      .menu-category .menu-category-title .title {
+        z-index: 0 !important;
+      }
+    </style>
 
    <div id="pagetitle" class=" text-center">
          <div class="container" style="padding-top: 90px;">

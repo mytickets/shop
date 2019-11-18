@@ -356,9 +356,10 @@
             @yield('content')
             {{-- page-content --}}
 
-
             {{-- footer --}}
-            <footer class="full_width with_backtotop  fixed" style="height: 6em;">
+            {{-- 82px --}}
+            {{-- <footer class="full_width with_backtotop  fixed" style="height: 6em;"> --}}
+            <footer class="full_width with_backtotop  fixed">
                 <div id="footer_bottom">
                     <div class="container">
                         <div class="row">
