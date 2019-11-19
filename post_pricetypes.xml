@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RK7Query>
+	<RK7CMD CMD="GetRefData" RefName="PRICETYPES" />
+</RK7Query>
