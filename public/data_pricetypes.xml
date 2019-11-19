@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RK7QueryResult ServerVersion="7.5.7.75" XmlVersion="231" NetName="SERV" Status="Ok" CMD="GetRefData" ErrorText="" DateTime="2019-08-11T07:47:14" WorkTime="0" Processed="1">
+	<RK7Reference DataVersion="5" ClassName="TPriceTypes" Name="PRICETYPES" MinIdent="1" MaxIdent="0" ViewRight="0" UpdateRight="25" ChildRight="25" DeleteRight="25" XMLExport="true" XMLMask="*" LeafCollectionCount="0">
+		<Items>
+			<Item Ident="3" ItemIdent="3" SourceIdent="0" GUIDString="{30CF7B8A-3F50-4527-AE62-A2C6F0C08682}" AssignChildsOnServer="false" ActiveHierarchy="true" Name="Основная" AltName="Main" Code="1" MainParentIdent="0" Status="rsActive" EditRight="1" Flags="[ptConsumPercent, ptBonusPercent, ptStoreHousePrice, ptUseDefBonusPercent, ptUseDefConsumPercent]" RoundRule="rr1Cent" DefBonusPercent="0" DefConsumPercent="0" DefComboPercent="0" PriceTypeType="pttUsual" ParentPriceType="0" AllowOverridings="false" SHSettingsLink="0" SHCommodityGroup="" SHStoreHouse="" ModiPercent="false" ConsumPercent="true" BonusPercent="true" NotPrice="false" StoreHousePrice="true" ComboPercent="false" LoLimitPercent="false" DenyManualInput="false" SpecialCalcMode="false" Add2ReportsData="false" LocalDataValues="false" UseDefBonusPercent="true" UseDefConsumPercent="true" UseDefComboPercent="false">
+				<Childs ClassName="tChildCollection"/>
+			</Item>
+			<Item Ident="4" ItemIdent="4" SourceIdent="0" GUIDString="{6934C78F-A101-4C1F-81D3-F791578670F1}" AssignChildsOnServer="false" ActiveHierarchy="true" Name="Себестоимость" AltName="Self-Cost" Code="2" MainParentIdent="0" Status="rsActive" EditRight="0" Flags="[]" RoundRule="rr1Cent" DefBonusPercent="0" DefConsumPercent="0" DefComboPercent="0" PriceTypeType="pttCosts" ParentPriceType="0" AllowOverridings="false" SHSettingsLink="0" SHCommodityGroup="" SHStoreHouse="" ModiPercent="false" ConsumPercent="false" BonusPercent="false" NotPrice="false" StoreHousePrice="false" ComboPercent="false" LoLimitPercent="false" DenyManualInput="false" SpecialCalcMode="false" Add2ReportsData="false" LocalDataValues="false" UseDefBonusPercent="false" UseDefConsumPercent="false" UseDefComboPercent="false">
+				<Childs ClassName="tChildCollection"/>
+			</Item>
+		</Items>
+	</RK7Reference>
+</RK7QueryResult>

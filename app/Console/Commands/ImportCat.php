@@ -17,7 +17,7 @@ class ImportCat extends Command {
     public function handle(){
 
         echo "Get cats file skip\n";
-        // exec('wget --secure-protocol=TLSv1 --no-check-certificate --header="Content-Type: text/xml" --http-user=18 --http-password=18 --post-file=post_cats.xml -O public\storage\data_cats.xml -q https://46.39.29.2:2244/rk7api/v0/xmlinterface.xml');
+        // exec('wget --secure-protocol=TLSv1 --no-check-certificate --header="Content-Type: text/xml" --http-user=18 --http-password=18 --post-file=post_cats.xml -O public/storage/data_cats.xml -q https://46.39.29.2:2244/rk7api/v0/xmlinterface.xml');
 
         echo "Import Cats: ";
         Cat::truncate();

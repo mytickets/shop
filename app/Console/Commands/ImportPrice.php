@@ -19,8 +19,8 @@ class ImportPrice extends Command {
     public function handle(){
 
         echo "Import Prices: ";
-        // exec('wget --secure-protocol=TLSv1 --no-check-certificate --header="Content-Type: text/xml" --http-user=18 --http-password=18 --post-file=post_pricetypes.xml -O public\storage\data_pricetypes.xml -q https://46.39.29.2:2244/rk7api/v0/xmlinterface.xml');
-        // exec('wget --secure-protocol=TLSv1 --no-check-certificate --header="Content-Type: text/xml" --http-user=18 --http-password=18 --post-file=post_prices.xml -O public\storage\data_prices.xml -q https://46.39.29.2:2244/rk7api/v0/xmlinterface.xml');
+        // exec('wget --secure-protocol=TLSv1 --no-check-certificate --header="Content-Type: text/xml" --http-user=18 --http-password=18 --post-file=post_pricetypes.xml -O public/storage/data_pricetypes.xml -q https://46.39.29.2:2244/rk7api/v0/xmlinterface.xml');
+        // exec('wget --secure-protocol=TLSv1 --no-check-certificate --header="Content-Type: text/xml" --http-user=18 --http-password=18 --post-file=post_prices.xml -O public/storage/data_prices.xml -q https://46.39.29.2:2244/rk7api/v0/xmlinterface.xml');
 
         $data_prices = Storage::get('public\data_prices.xml');
         $json2 = json_encode(  simplexml_load_string($data_prices) );

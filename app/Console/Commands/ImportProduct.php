@@ -15,7 +15,7 @@ class ImportProduct extends Command {
     public function __construct()    {        parent::__construct();    }
     public function handle(){
         echo "Get products file skip\n";
-        // exec('wget --secure-protocol=TLSv1 --no-check-certificate --header="Content-Type: text/xml" --http-user=18 --http-password=18 --post-file=post_items.xml -O public\storage\data_items.xml -q https://46.39.29.2:2244/rk7api/v0/xmlinterface.xml');
+        // exec('wget --secure-protocol=TLSv1 --no-check-certificate --header="Content-Type: text/xml" --http-user=18 --http-password=18 --post-file=post_items.xml -O public/storage/data_items.xml -q https://46.39.29.2:2244/rk7api/v0/xmlinterface.xml');
         $data_items = Storage::get('public\data_items.xml');
 // Items
         echo "Import Items: ";
