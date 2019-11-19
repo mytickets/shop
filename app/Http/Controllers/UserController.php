@@ -14,10 +14,12 @@ class UserController extends AppBaseController
 {
     /** @var  UserRepository */
     private $userRepository;
+    public $role_types;
 
     public function __construct(UserRepository $userRepo)
     {
         $this->userRepository = $userRepo;
+        $this->role_types = ['Администратор', 'Менеджер'];
     }
 
     /**
@@ -30,12 +32,10 @@ class UserController extends AppBaseController
     public function index(Request $request)
     {
         $users = $this->userRepository->paginate(10);
-        $role_types = ['Администратор', 'Менеджер'];
-        
 
         return view('users.index')
             ->with('users', $users)
-                ->with('role_types', $role_types);
+                ->with('role_types', $this->role_types);
 
     }
 
@@ -46,7 +46,9 @@ class UserController extends AppBaseController
      */
     public function create()
     {
-        return view('users.create');
+        // return view('users.create');
+        return view('users.create')
+                ->with('role_types', $this->role_types);
     }
 
     /**
@@ -84,11 +86,10 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        $role_types = ['Администратор', 'Менеджер'];
         // return view('users.index')->with('user', $user);
         return view('users.show')
                 ->with('user', $user)
-                ->with('role_types', $role_types);
+                ->with('role_types', $this->role_types);
     }
 
     /**
@@ -107,14 +108,10 @@ class UserController extends AppBaseController
 
             return redirect(route('users.index'));
         }
-
-
-        $role_types = ['Администратор', 'Менеджер'];
         // return view('users.index')->with('user', $user);
         return view('users.edit')
                 ->with('user', $user)
-                ->with('role_types', $role_types);
-
+                ->with('role_types', $this->role_types);
         // return view('users.edit')->with('user', $user);
     }
 

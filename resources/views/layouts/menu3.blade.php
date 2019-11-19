@@ -338,9 +338,9 @@
                             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-724">
                                 <a href="/menu/">Меню</a>
                             </li>
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-794">
+                            {{-- <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-794">
                                 <a href="/reservation/">Бронирование</a>
-                            </li>
+                            </li> --}}
                             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-793">
                                 <a href="/contact/">Контакты</a>
                             </li>
