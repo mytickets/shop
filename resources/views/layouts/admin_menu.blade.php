@@ -1,23 +1,27 @@
 
         <li class="header">Навигация</li>
 {{-- http://127.0.0.1:8000/manager --}}
-        <li class="active treeview menu-open">
+        <li class="treeview">
         {{-- <li class="treeview menu-open"> --}}
-          <a href="/lte1/#">
+          <a href="#">
             <i class="fa fa-dashboard"></i> <span>Пространства</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="/manager"><i class="fa fa-circle-o text-success"></i> Менджер </a></li>
+            <li class="active">
+              <a href="/manager">
+                <i class="fa fa-circle-o text-success"></i> Менджер
+              </a>
+            </li>
             {{-- <li><a href="/administrator"><i class="fa fa-circle-o"></i> Администратор </a></li> --}}
             {{-- <li><a href="/mind_map"><i class="fa fa-circle-o"></i> Карта </a></li> --}}
           </ul>
         </li>
 
         <li class="treeview">
-          <a href="/lte1/#">
+          <a href="#">
             <i class="fa fa-table"></i> <span>Таблицы</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -30,7 +34,7 @@
 
 @if (Auth::user()->role_type==0)
         <li class="treeview">
-          <a href="/lte1/#">
+          <a href="#">
             <i class="fa fa-share"></i> <span>Дополнения</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -40,9 +44,9 @@
 
           <ul class="treeview-menu">
             <li><a href="/api/docs"  target="_blank"><i class="fa fa-book"></i> <span>Документация</span></a></li>
-            {{-- <li><a href="/lte1/#"><i class="fa fa-circle-o"></i> Level One</a></li> --}}
+            {{-- <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li> --}}
             <li class="treeview">
-              <a href="/lte1/#"><i class="fa fa-circle-o text-blue"></i> Visual
+              <a href="#"><i class="fa fa-circle-o text-blue"></i> Visual
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -51,7 +55,7 @@
 
                 <li><a href="/widgets/"><i class="fa fa-circle-o"></i> Виджеты</a></li>
                 <li class="treeview">
-                  <a href="/lte1/#"><i class="fa fa-pie-chart"></i> Графики
+                  <a href="#"><i class="fa fa-pie-chart"></i> Графики
                     <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -63,7 +67,7 @@
                 </li>
 
                 <li class="treeview">
-                  <a href="/lte1/#"><i class="fa fa-pie-chart"></i> Шаблоны
+                  <a href="#"><i class="fa fa-pie-chart"></i> Шаблоны
                     <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -86,7 +90,7 @@
             </li>
 
             <li class="treeview">
-              <a href="/lte1/#"><i class="fa fa-circle-o  text-green"></i> Разработка
+              <a href="#"><i class="fa fa-circle-o  text-green"></i> Разработка
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -98,7 +102,7 @@
 
                 <li class="treeview">
                   {{-- <a href="#"><i class="fa fa-pie-circle-o"></i> Debug --}}
-                  <a href="/lte1/#"><i class="fa fa-circle-o  text-red"></i> Отладка
+                  <a href="#"><i class="fa fa-circle-o  text-red"></i> Отладка
                     <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>

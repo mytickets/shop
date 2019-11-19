@@ -91,7 +91,7 @@ class CatDataTable extends DataTable
         [
             'data' => 'parent_id',
             'name' => 'parent_id',
-            'title' => 'Категория'
+            'title' => 'Родитель'
         ],
         [
             'data' => 'menu',

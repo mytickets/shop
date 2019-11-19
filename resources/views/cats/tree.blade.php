@@ -22,16 +22,19 @@
 
 @section('content')
 
-<style type="text/css">
-.label_node_name {
-  min-width: 10em;
-  text-align: left;
-}
-.label_node_name_icon {
-  text-align: right;
-}
+  <style type="text/css">
+  .label_node_name {
+    min-width: 10em;
+    text-align: left;
+  }
+  .label_node_name_icon {
+    text-align: right;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
 
-</style>
+  </style>
 
     <div class="content">
         <div class="clearfix"></div>
@@ -273,50 +276,32 @@ tree2 = [
 ];
 
 
-// $('#tree').treeview({ data: tree2 });
+    // $('#tree').treeview({ data: tree2 });
+    $('.menu_check').click(function(e){
+          var t1 = this;
+        console.log( $(this).data('id') )
+          // check_menu
+          $.ajax({
+              url: '/cats/'+$(this).data('id')+'/check_menu',
+              type: 'GET',
+              success: function(result) {
+                  console.log( result[0] )
+                  console.log( result[1] )
+                  console.log( $(t1).text(result[0]) )
+
+                  $(t1).removeClass('label-default')
+                  $(t1).removeClass('label-success')
+                  $(t1).addClass('label-'+result[1])
+                    // label-
+
+                  // $()
+              }
+          });
+    }) // $('.menu_check').click
 
 
-
-$('.menu_check').click(function(e){
-      var t1 = this;
-    console.log( $(this).data('id') )
-      // check_menu
-                          $.ajax({
-                              url: '/cats/'+$(this).data('id')+'/check_menu',
-                              type: 'GET',
-                              success: function(result) {
-                                  console.log( result[0] )
-                                  console.log( result[1] )
-                                  console.log( $(t1).text(result[0]) )
-
-                                  $(t1).removeClass('label-default')
-                                  $(t1).removeClass('label-success')
-                                  $(t1).addClass('label-'+result[1])
-                                    // label-
-
-                                  // $()
-                              }
-                          });
-
-
-})
-
-
-  });
-
-  
-    
-
+  }); // jQuery(function($){
 
 </script>
 
-
 @endsection
-
-
-
-
-
-
-
-
