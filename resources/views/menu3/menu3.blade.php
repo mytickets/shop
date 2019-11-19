@@ -1,8 +1,21 @@
 @extends('layouts.menu3')
 
 @section('content')
+    <link rel="stylesheet" href="/assets/plugins/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/plugins/slick-carousel/slick/slick.css" />
+    {{-- <link rel="stylesheet" href="/assets/plugins/animate.css/animate.min.css" /> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
-   <style type="text/css">
+    <link rel="stylesheet" href="/assets/plugins/animsition/dist/css/animsition.min.css" />
+
+    <!-- CSS Icons -->
+    <link rel="stylesheet" href="/assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css" />
+
+    <!-- CSS Theme -->
+    <link id="theme" rel="stylesheet" href="/assets/css/themes/theme-beige.min.css" />
+
+    <style type="text/css">
       body.page #pagetitle {
           background-image: url(/slider-bg4.jpg);
           background-repeat: no-repeat;
@@ -21,34 +34,26 @@
             margin-top: 6px;
       }
 
-   </style>
-    <link rel="stylesheet" href="/assets/plugins/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/assets/plugins/slick-carousel/slick/slick.css" />
-    <link rel="stylesheet" href="/assets/plugins/animate.css/animate.min.css" />
-    <link rel="stylesheet" href="/assets/plugins/animsition/dist/css/animsition.min.css" />
+      .menu-category .menu-category-title.collapse-toggle:after {
+          z-index: 0;
+        }
 
-    <!-- CSS Icons -->
-    <link rel="stylesheet" href="/assets/css/themify-icons.css" />
-    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css" />
-
-    <!-- CSS Theme -->
-    <link id="theme" rel="stylesheet" href="/assets/css/themes/theme-beige.min.css" />
-
-    <style type="text/css">
       .menu-category .menu-category-title .title {
         z-index: 0 !important;
       }
+      .animated {
+            visibility: visible;
+        }
     </style>
 
-   <div id="pagetitle" class=" text-center">
+  <div id="pagetitle" class=" text-center">
          <div class="container" style="padding-top: 90px;">
             <p>Полный список категорий</p>
             <h2>МЕНЮ</h2>
-            
          </div>
-   </div>
+  </div>
 
-<div id="content">
+  <div id="content">
 
 
         <!-- Page Title -->
@@ -127,14 +132,18 @@
 
 
 
+
                     </div>
+            <hr>
+            {{-- @include('about_brands') --}}
+            @include('menu3.footer_contact')
+
                 </div>
+
             </div>
         </div>
 
-
 </div>
-
 
 
 
@@ -155,8 +164,8 @@ $(document).ready(function (){
 
     $('.to_cart').click(function(e){
         e.preventDefault();
-        doBounce($(this), 1, '13px', 300);
-        $(this).addClass('animated', 'bounceOutLeft')
+        // doBounce($(this), 1, '13px', 300);
+        $(this).addClass('animated bounce')
         $.get("/product/"+$(this).data('ident')+"/to_cart/1");
 
             cart_id = $('#qty_badge').data('cart_id')
