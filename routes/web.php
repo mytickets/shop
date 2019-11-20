@@ -153,7 +153,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
     // list all lfm routes here...
 
-    
+    Route::resource('metatexts', 'MetatextController');    
 
 
 
@@ -374,6 +374,10 @@ Route::get('/contact', function () {
     return view('menu3.contact1');
 });
 
+
+
+
+
 Route::get('/reservation', function () {
     return view('menu3.reservation');
 });
@@ -403,4 +407,37 @@ Route::get('/admin2_mindmap', function () {
 
 
 
-Route::resource('metatexts', 'MetatextController');
+
+
+
+Route::get('/contact_us', function (Request $request) {
+    // contact_us
+    // message
+    // Route::get('/menu', function () {
+        // $cats = Cat::all();
+        // $cart
+        // return view('menu3.menu3')->with('cats', $cats);
+    // });
+    // dd($request->all()['your-contact']);
+if (isset($request->all()['your-contact'])) {
+    # code...
+
+    $contact = $request->all()['your-contact'];
+    $mes = $request->all()['your-message'];
+
+    Mail::send('email',
+       array(
+           'contact' => $contact,
+           'mes' => $mes
+       ), function($sendm)
+   {
+       $sendm->from('mltefive@gmail.com');
+       $sendm->to('mltefive@gmail.com', 'Admin')->subject('Запрос');
+   });
+
+    return view('menu3.contact_us')->with('contact', $contact)->with('mes', $mes);
+} else {
+    # code...
+    return view('menu3.contact_us')->with('contact', '$contact')->with('mes', '$mes');
+}
+})->name('contact_us');
