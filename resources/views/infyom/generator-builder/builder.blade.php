@@ -609,7 +609,28 @@
 
                                     <div class="form-group col-md-4">
                                         <label for="txtRBModelName">Model Name<span class="required">*</span></label>
-                                        <input type="text" class="form-control" required id="txtRBModelName" placeholder="Enter name">
+                                        {{-- <input type="text" class="form-control" required id="txtRBModelName" placeholder="Enter name"> --}}
+                                        <select id="txtRBModelName" class="form-control" style="width: 100%">
+                                            {{-- <option value="api_scaffold">API Scaffold Generator</option> --}}
+                                            {{-- <option value="api">API Generator</option> --}}
+
+                                        @php
+                                        // $i-
+                                        @endphp
+                                        @foreach(glob("../app/models/*.php") as $filename)
+
+                                                            @if (is_dir($filename))
+                                                                {{-- Dir: {{ pathinfo($filename)['filename'] }} --}}
+                                                            @else
+                                                                {{-- File: {{ pathinfo($filename)['filename'] }} --}}
+                                                                <option value="{{ pathinfo($filename)['filename'] }}">{{ pathinfo($filename)['filename'] }}</option>
+
+                                                            @endif
+
+                                                                        {{-- {{ var_dump(pathinfo($filename)) }} --}}
+                                                    </li>
+                                        @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="drdRBCommandType">Command Type</label>

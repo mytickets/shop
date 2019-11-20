@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-           <b>Показать:</b>  {{ __('Order') }}
+           <b>Просмотр:</b>  {{ __('Order') }} №{{ $order->id }}
         </h1>
     </section>
     <div class="content">
@@ -192,7 +192,7 @@
                                             success: function(result) {
 
                                               $.ajax({
-                                                  url: '/carts/'+cart_id+'/total',
+                                                  url: '/orders/'+cart_id+'/total',
                                                   type: 'GET',
                                                   success: function(result) {
                                                       $('#cart_total').text(result)
@@ -200,7 +200,7 @@
                                               });
                                                 
                                               $.ajax({
-                                                  url: '/carts/'+cart_id+'/total_qty',
+                                                  url: '/orders/'+cart_id+'/total_qty',
                                                   type: 'GET',
                                                   success: function(result) {
                                                     $('#qty_badge').text(result)

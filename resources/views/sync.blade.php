@@ -82,13 +82,12 @@
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-grey" id="span1"><i class="ion ion-ios-people-outline"></i></span>
-            <a href="/sync" id="sync">
+            <span class="info-box-icon bg-grey"><i class="ion ion-ios-people-outline"></i></span>
+
             <div class="info-box-content">
               <span class="info-box-text">Обмен</span>
               <span class="info-box-number">Импорт</span>
             </div>
-            </a>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
@@ -149,45 +148,6 @@
     </section>
     <!-- /.content -->
 
-<script type="text/javascript">
-  $('#sync').click(function(e){
-    var t1 = this;
-    $('#span1').addClass('animated pulse infinite')
-    e.preventDefault()
-    console.log(this)
-
-
-    // $('.menu_check').click(function(e){
-        // console.log( $(this).data('id') )
-          // check_menu
-          $.ajax({
-              url: '/sync',
-              type: 'GET',
-              success: function(result) {
-                  console.log( "sync" )
-                  console.log( "result" )
-                  $('#span1').removeClass('animated pulse infinite')
-
-                  // addClass('label-success')
-                  // $(this).addClass('animated bounce')
-
-
-                  // console.log( result[1] )
-                  // console.log( $(t1).text(result[0]) )
-
-                  // $(t1).removeClass('label-default')
-                  // $(t1).removeClass('label-success')
-                  // $(t1).addClass('label-'+result[1])
-                    // label-
-
-                  // $()
-              }
-          });
-    // }) // $('.menu_check').click
-
-
-  })
-</script>
 
 @endsection
 

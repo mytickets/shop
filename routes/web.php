@@ -234,14 +234,22 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/migrate', function () {
         Artisan::call('migrate');
+        // return true;
+        return redirect('/generator_builder');
     });
 
 
 
-    Route::get('/import', function (Request $request) {
-        return view('import');
+
+    Route::get('/sync', function (Request $request) {
         // Artisan::call('make:view '.$request->all()['viewName'].' --extends='.$request->all()['layoutName'].' --section=content');
         // return redirect('/manager');
+        Artisan::call('import:cat');
+        Artisan::call('import:product');
+        Artisan::call('import:price');
+        return "import all";
+        // return redirect('/manager');
+        // return view('sync');
     });
     Route::get('/import_run', function (Request $request) {
         return Artisan::call('import:cat');

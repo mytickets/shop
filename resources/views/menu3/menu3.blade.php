@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="/assets/plugins/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/assets/plugins/slick-carousel/slick/slick.css" />
     {{-- <link rel="stylesheet" href="/assets/plugins/animate.css/animate.min.css" /> --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"> --}}
 
     <link rel="stylesheet" href="/assets/plugins/animsition/dist/css/animsition.min.css" />
 

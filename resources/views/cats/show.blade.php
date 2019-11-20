@@ -44,20 +44,27 @@
                     {{ $line->price_amount ?? "" }} руб.
                   </div>
                   <div class="col-xs-2">
+                    В меню: 
                     @php
                       if ($line->menu){
                           $m="V";
                           $mcolor="success";
+                    @endphp
+                        <span class="badge label label-success menu_check" data-id={{ $line->ident }}>V</span>
+                    @php
                         } else { 
                           $m="X";
                           $mcolor="default";
+                          @endphp
+                              <span class="badge label label-default menu_check" data-id={{ $line->ident }}>X</span>
+                          @php
+
                       }
                       // if ($line->menu){
                       //     $m="V";
                       // } else { $m="X"; }
                     @endphp
-                    В меню: 
-                    <span class="badge label label-{{ $mcolor }} menu_check" data-id={{ $line->ident }}>{{ $m }}</span>
+                    {{-- <span class="badge label label-{{ $mcolor }} menu_check" data-id={{ $line->ident }}>{{ $m }}</span> --}}
                   </div>
                 </div>
               </div>
@@ -77,11 +84,27 @@ $('.menu_check').click(function(e){
     console.log( $(this).data('id') )
       // check_menu
                           $.ajax({
-                              url: '/products/'+$(this).data('id')+'/check_menu',
+                              url: '/products/'+$(this).data('id')+'/check_menu2',
                               type: 'GET',
                               success: function(result) {
-                                  console.log( result )
-                                  console.log( $(t1).text(result) )
+                                  console.log( result[0] )
+                                  console.log( result[1] )
+                                  $(t1).text(result[0])
+
+                                  if (result[1]=='success') {
+                                    $(t1).removeClass('label-default')
+                                  } else {
+                                    $(t1).removeClass('label-success')
+                                  }
+
+                                  $(t1).addClass('label-'+result[1])
+                                  // label-default
+                                  // console.log( $(t1).text(result) )
+
+
+
+
+
                                   // $()
                               }
                           });
