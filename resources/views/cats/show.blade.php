@@ -47,10 +47,17 @@
                     @php
                       if ($line->menu){
                           $m="V";
-                      } else { $m="X"; }
+                          $mcolor="success";
+                        } else { 
+                          $m="X";
+                          $mcolor="default";
+                      }
+                      // if ($line->menu){
+                      //     $m="V";
+                      // } else { $m="X"; }
                     @endphp
                     В меню: 
-                    <span class="badge label label-info menu_check" data-id={{ $line->ident }}>{{ $m }}</span>
+                    <span class="badge label label-{{ $mcolor }} menu_check" data-id={{ $line->ident }}>{{ $m }}</span>
                   </div>
                 </div>
               </div>
