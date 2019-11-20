@@ -17,6 +17,7 @@
         "infyomlabs/laravel-generator": "6.0.x-dev",
         "infyomlabs/swagger-generator": "dev-master",
         "laravel/framework": "^6.2",
+        "laravel/helpers": "^1.1",
         "laravel/telescope": "^2.1",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^6.0",

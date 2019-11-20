@@ -412,6 +412,7 @@
             fixedHeader: true,
             orderCellsTop: true,
             colReorder: true,
+            // описываем что возвращать в колонках для таблицы
             columnDefs : [
                 {
                     targets : 1,

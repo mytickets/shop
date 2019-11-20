@@ -227,8 +227,11 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::get('/phpinfo', function () {
-        return view('addons.info.phpinfo');
+        // return view('addons.info.phpinfo');
+        return view('addons.info.phpinfo_standolone');
+        
     });
+
     Route::get('/migrate', function () {
         Artisan::call('migrate');
     });
