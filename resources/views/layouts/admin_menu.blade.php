@@ -1,7 +1,7 @@
 
         <li class="header">Навигация</li>
 {{-- http://127.0.0.1:8000/manager --}}
-        <li class="treeview">
+        <li class="treeview menu-open active">
         {{-- <li class="treeview menu-open"> --}}
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Пространства</span>

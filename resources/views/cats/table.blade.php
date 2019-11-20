@@ -495,9 +495,5 @@
 
     </script>
 
-    <script>
-        
-
-    </script>
 
 @endsection

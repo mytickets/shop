@@ -25,7 +25,11 @@
                                                         <div class="uvc-heading-spacer line_only" style="margin-top:30px;margin-bottom:30px;height:2px;">
                                                             <span class="uvc-headings-line" style="border-style: solid; border-bottom-width: 2px; border-color: rgb(166, 157, 109); width: 20px; float: left;"></span>
                                                         </div>
-                                                        <div class="uvc-sub-heading ult-responsive" style="margin-bottom: 1em; font-family:&#39;Roboto&#39;;font-weight:normal;font-style:normal;color:#111111;">В нашем ресторане Вы окунетесь в изысканый мир кулинарных продуктов. Мы работаем каждый день с 11:00 до 01:00 ночи. Дискотека, караоке и живая музыка каждый вечер.</div>
+                                                        <div class="uvc-sub-heading ult-responsive" style="margin-bottom: 1em; font-family:&#39;Roboto&#39;;font-weight:normal;font-style:normal;color:#111111;">
+                                                        В нашем ресторане Вы окунетесь в изысканый мир кулинарных продуктов. Мы работаем каждый день с 11:00 до 01:00 ночи. Дискотека, караоке и живая музыка каждый вечер.
+                                                        {{-- {!! App\Models\Metatext::find(3)->code_text !!} --}}
+                                                        </div>
+
 
                                                     </div>
                                                 </div>

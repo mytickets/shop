@@ -359,7 +359,7 @@
             {{-- footer --}}
             {{-- 82px --}}
             {{-- <footer class="full_width with_backtotop  fixed" style="height: 6em;"> --}}
-            <footer class="full_width with_backtotop " style="margin-top: -2em;">
+            <footer class="full_width with_backtotop " style="margin-top: -2em; display: none;">
                 <div id="footer_bottom">
                     <div class="container">
                         <div class="row">
