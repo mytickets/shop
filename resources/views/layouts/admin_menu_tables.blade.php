@@ -45,6 +45,6 @@
 
 @endif
 <li class="{{ Request::is('metatexts*') ? 'active' : '' }}">
-    <a href="{!! route('metatexts.index') !!}"><i class="fa fa-edit"></i><span>Metatexts</span></a>
+    <a href="{!! route('metatexts.index') !!}"><i class="fa fa-edit"></i><span>Мета метки</span></a>
 </li>
 
