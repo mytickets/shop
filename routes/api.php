@@ -40,3 +40,6 @@ Route::resource('line_items', 'LineItemAPIController');
 
 Route::resource('products', 'ProductAPIController');
 
+
+
+Route::resource('metatexts', 'MetatextAPIController');

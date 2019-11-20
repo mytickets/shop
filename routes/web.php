@@ -401,3 +401,6 @@ Route::get('/admin2_mindmap', function () {
 
 // php artisan route:list
 
+
+
+Route::resource('metatexts', 'MetatextController');

@@ -183,14 +183,15 @@ function doBounce(element, times, distance, speed) {
 $(document).ready(function (){
 
     $('.to_cart').click(function(e){
-        let this0=this
+        // let this0=this
         e.preventDefault();
         // doBounce($(this), 1, '13px', 300);
         $(this).addClass('animated bounce')
+        var this0=this
         $.get("/product/"+$(this).data('ident')+"/to_cart/1");
 
         setTimeout(function(){
-          $(this).removeClass('animated bounce')
+          $(this0).removeClass('animated bounce')
         }, 1500);
 // setInterval(qty_badge, 2000);
 // setTimeout(qty_badge, 1000);
