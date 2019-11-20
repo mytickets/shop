@@ -166,16 +166,18 @@ $(document).ready(function (){
         e.preventDefault();
         // doBounce($(this), 1, '13px', 300);
         $(this).addClass('animated bounce')
+        let this0=this
         $.get("/product/"+$(this).data('ident')+"/to_cart/1");
 
-            cart_id = $('#qty_badge').data('cart_id')
-            $.ajax({
-                url: '/carts/'+cart_id+'/total_qty',
-                type: 'GET',
-                success: function(result) {
-                  $('#qty_badge').text(result)
-                }
-            });
+          cart_id = $('#qty_badge').data('cart_id')
+          $.ajax({
+              url: '/carts/'+cart_id+'/total_qty',
+              type: 'GET',
+              success: function(result) {
+                $('#qty_badge').text(result)
+                $(this0).removeClass('animated bounce')
+              }
+          });
 
     })
 

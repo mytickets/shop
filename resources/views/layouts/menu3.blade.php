@@ -261,9 +261,9 @@
                                         <li id="menu-item-724" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-724">
                                             <a href="/menu/">Меню</a>
                                         </li>
-                                        <li id="menu-item-794" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-794">
+                                        {{-- <li id="menu-item-794" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-794">
                                             <a href="/reservation/">Бронирование</a>
-                                        </li>
+                                        </li> --}}
                                         <li id="menu-item-793" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-793">
                                             <a href="/contact/">Контакты</a>
                                         </li>
@@ -403,18 +403,39 @@
         @yield('script')
 
 <script type="text/javascript">
-// $(window).load(function (){
+// $(window).load(function(){
+
+
+$(document).ready(function (){
+
+
+function qty_badge() {
+  // alert('Привет');
 
     cart_id = $('#qty_badge').data('cart_id')
     $.ajax({
         url: '/carts/'+cart_id+'/total_qty',
         type: 'GET',
         success: function(result) {
+
+// animated bounce
+
           $('#qty_badge').text(result)
           $('#qty_badge2').text(result)
           
         }
     });
+
+}
+
+// setTimeout(qty_badge, 1000);
+setInterval(qty_badge, 2000);
+
+
+
+
+});
+
 
 // });
 
