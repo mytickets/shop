@@ -405,10 +405,6 @@
 <script type="text/javascript">
 // $(window).load(function(){
 
-
-$(document).ready(function (){
-
-
 function qty_badge() {
   // alert('Привет');
 
@@ -428,11 +424,10 @@ function qty_badge() {
 
 }
 
-// setTimeout(qty_badge, 1000);
-setInterval(qty_badge, 2000);
+$(document).ready(function (){
 
-
-
+    // setTimeout(qty_badge, 1000);
+    setInterval(qty_badge, 2000);
 
 });
 

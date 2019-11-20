@@ -153,6 +153,26 @@
 @section('script')
 <script type="text/javascript">
 
+
+
+function removeBtn(e) {
+  // alert('Привет');
+
+//     cart_id = $('#qty_badge').data('cart_id')
+//     $.ajax({
+//         url: '/carts/'+cart_id+'/total_qty',
+//         type: 'GET',
+//         success: function(result) {
+// // animated bounce
+//           $('#qty_badge').text(result)
+//           $('#qty_badge2').text(result)
+//           // $(this0).removeClass('animated bounce')
+//         }
+//     });
+
+}
+
+
 function doBounce(element, times, distance, speed) {
     for(var i = 0; i < times; i++) {
         element.animate({marginTop: '-='+distance}, speed)
@@ -163,21 +183,44 @@ function doBounce(element, times, distance, speed) {
 $(document).ready(function (){
 
     $('.to_cart').click(function(e){
+        let this0=this
         e.preventDefault();
         // doBounce($(this), 1, '13px', 300);
         $(this).addClass('animated bounce')
-        let this0=this
         $.get("/product/"+$(this).data('ident')+"/to_cart/1");
 
-          cart_id = $('#qty_badge').data('cart_id')
-          $.ajax({
-              url: '/carts/'+cart_id+'/total_qty',
-              type: 'GET',
-              success: function(result) {
-                $('#qty_badge').text(result)
-                $(this0).removeClass('animated bounce')
-              }
-          });
+        setTimeout(function(){
+          $(this).removeClass('animated bounce')
+        }, 1500);
+// setInterval(qty_badge, 2000);
+// setTimeout(qty_badge, 1000);
+
+
+
+//     cart_id = $('#qty_badge').data('cart_id')
+//     $.ajax({
+//         url: '/carts/'+cart_id+'/total_qty',
+//         type: 'GET',
+//         success: function(result) {
+// // animated bounce
+//           $('#qty_badge').text(result)
+//           $('#qty_badge2').text(result)
+//           $(this0).removeClass('animated bounce')
+//         }
+//     });
+
+          // cart_id = $('#qty_badge').data('cart_id')
+          // $.ajax({
+          //     url: '/carts/'+cart_id+'/total_qty',
+          //     type: 'GET',
+          //     success: function(result) {
+
+          //       $('#qty_badge').text(result)
+
+          //       // $(this0).removeClass('animated bounce')
+          //       $(this0).removeClass('animated bounce')
+          //     }
+          // });
 
     })
 
