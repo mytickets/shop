@@ -89,6 +89,7 @@
               </ul>
             </li>
 
+                
             <li class="treeview">
               <a href="#"><i class="fa fa-circle-o  text-green"></i> Разработка
                 <span class="pull-right-container">
@@ -99,6 +100,7 @@
 
               <ul class="treeview-menu">
                 <li><a href="/generator_builder"><i class="fa fa-circle-o text-orange"></i> Генераторы </a></li>
+
 
                 <li class="treeview">
                   {{-- <a href="#"><i class="fa fa-pie-circle-o"></i> Debug --}}
@@ -117,6 +119,8 @@
 
               </ul>
             </li>
+
+            <li><a href="/file_manager1"><i class="fa fa-circle-o text-red"></i> Файлы </a></li>
 
           </ul>
         </li>

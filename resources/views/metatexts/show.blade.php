@@ -10,6 +10,8 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
+                    <a href="{!! route('metatexts.index') !!}" class="btn btn-default">Назад</a>
+                    <a href="{!! route('metatexts.edit', [$metatext->id]) !!}" class='btn btn-default'>Изменить</a>
                     @include('metatexts.show_fields')
                     <a href="{!! route('metatexts.index') !!}" class="btn btn-default">Назад</a>
                     <a href="{!! route('metatexts.edit', [$metatext->id]) !!}" class='btn btn-default'>Изменить</a>

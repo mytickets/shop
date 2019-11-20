@@ -394,34 +394,18 @@
             orderCellsTop: true,
             colReorder: true,
             // описываем что возвращать в колонках для таблицы
-            // columnDefs : [
-            //     {
-            //         targets : 1,
-            //         data: "img",
-            //         "render" : function ( url, type, full) {
-            //             return '<a href="'+url+'" target="_blank"><img class="datatables_img img-responsive img-hover-zoom--colorize" src="'+url+'"/></a>';
-            //         },
-            //     },
-            //     {
-            //         targets : 4,
-            //         data: "cat",
-            //         "render" : function ( url, type, full) {
-            //             return '<a href="/cats/'+url+'" target="_blank">'+url+'</a>';
-            //         },
-            //     },
-            //     {
-            //         targets : 5,
-            //         data: "menu",
-            //         "render" : function ( url, type, full) {
-            //             if (url) {
-            //                 return '<span class="badge label label-success">Вкл</span>';
-            //             } else {
-            //               return '<span class="badge label label-default">Выкл</span>';
-            //             }
+            columnDefs : [
+                // { targets: 1, visible: false }
+                // {
+                //     targets : 1,
+                //     data: "html",
+                //     "render" : function ( url, type, full) {
+                //         // return '<a href="'+url+'" target="_blank"><img class="datatables_img img-responsive img-hover-zoom--colorize" src="'+url+'"/></a>';
+                //         return url;
 
-            //         },
-            //     },
-            // ],
+                //     },
+                // }
+            ],
             lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Все"]],
             pagingType: "simple_numbers_no_ellipses", // scrolling input
         } );

@@ -14,6 +14,8 @@
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('code_text', 'Code Text:') !!}
     {!! Form::textarea('code_text', null, ['class' => 'form-control']) !!}
+        CKEDITOR
+    {!! Form::checkbox('CKEDITOR', '1', null) !!}
 </div>
 
 
@@ -22,9 +24,9 @@
 <div class="form-group col-sm-6">
     {!! Form::label('draft', 'Draft:') !!}
     <label class="checkbox-inline">
+    </label>
         {!! Form::hidden('draft', 0) !!}
         {!! Form::checkbox('draft', '1', null) !!}
-    </label>
 </div>
 
 
@@ -43,5 +45,19 @@
     filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
     filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
   };
-  CKEDITOR.replace('code_text', options);
+  var ch;
+
+  $('input[name ="CKEDITOR"]').click(function(e){
+    if (ch==true) {
+        for(name in CKEDITOR.instances)
+        {
+            CKEDITOR.instances[name].destroy()
+        }
+        ch=false;
+    } else {
+        CKEDITOR.replace('code_text', options);
+        ch=true;
+    }
+
+  })
 </script>

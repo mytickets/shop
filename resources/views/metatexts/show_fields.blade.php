@@ -25,7 +25,7 @@
 <!-- Code Text Field -->
 <div class="form-group">
     {!! Form::label('code_text', __('Code Text') ) !!}
-    <p>{!! $metatext->code_text !!}</p>
+    {!! $metatext->code_text !!}
 </div>
 
 <!-- Draft Field -->

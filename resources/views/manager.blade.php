@@ -83,7 +83,7 @@
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-grey" id="span1"><i class="ion ion-ios-people-outline"></i></span>
-            <a href="/sync" id="sync">
+            <a href="/sync" id="sync" style="text-decoration: unset; color: black;">
             <div class="info-box-content">
               <span class="info-box-text">Обмен</span>
               <span class="info-box-number">Импорт</span>
