@@ -19,7 +19,7 @@ class ImportProduct extends Command {
         $data_items = Storage::get('public\data_items.xml');
 // Items
         echo "Import Items: ";
-        Product::truncate();
+        // Product::truncate();
 
         $xml3 = simplexml_load_string($data_items);
         $json3 = json_encode($xml3);

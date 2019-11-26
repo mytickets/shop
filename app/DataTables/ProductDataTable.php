@@ -46,7 +46,8 @@ class ProductDataTable extends DataTable
                 ->minifiedAjax()
             ->addAction(['width' => '120px', 'printable' => false])
             ->parameters([
-                'dom'       => 'fBlrtip',
+                // 'dom'       => 'fBlrtip',
+                'dom'       => 'fBrtlip',
                 // 'dom'       => '<"top"iflp<"clear">>rt<"bottom"iflp<"clear">>',
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],

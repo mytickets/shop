@@ -33,7 +33,7 @@
                       </a>
                     </h4>
                   </div>
-                  <div id="collapseOne" class="panel-collapse collapse in">
+                  <div id="collapseOne" class="panel-collapse collapse">
                     <div class="box-body">
 
                       @include('cats.show_fields')
@@ -50,14 +50,14 @@
                       </a>
                     </h4>
                   </div>
-                  <div id="collapseTwo" class="panel-collapse collapse">
+                  <div id="collapseTwo" class="panel-collapse collapse  in">
                     <div class="box-body">
 
                     @foreach ( $cat->products as $line)
 
                         <div class="row">
                           <div class="col-xs-2">
-                            <img class="img-responsive" src="{{ $line->image ?? "http://placehold.it/100x70" }}">
+                            <img class="img-responsive" src="{{ $line->image ?? "http://placehold.it/100x70" }}" style="    max-height: 80px;">
                           </div>
                           <div class="col-xs-4">
                             <h4 class="product-name">

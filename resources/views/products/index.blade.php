@@ -12,7 +12,7 @@
       <ol class="breadcrumb">
         {{-- <li><a href="/"><i class="fa fa-dashboard"></i> Главная</a></li> --}}
         <li><a href="/"><i class="fa fa-dashboard"></i> Пространство</a></li>
-        <li><a href="/shop"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Магазин</a></li>
+        <li><a href="/"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Магазин</a></li>
         <li class="active">Продукты</li>
       </ol>
     </section>

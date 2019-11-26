@@ -13,7 +13,7 @@
       <ol class="breadcrumb">
         {{-- <li><a href="/"><i class="fa fa-dashboard"></i> Главная</a></li> --}}
         <li><a href="/"><i class="fa fa-dashboard"></i> Пространство</a></li>
-        <li><a href="/shop"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Магазин</a></li>
+        <li><a href="/"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Магазин</a></li>
         <li class="active">Категории</li>
       </ol>
     </section>
@@ -45,7 +45,9 @@
               <!-- Tab panes -->
               <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade  in active" id="tab_table">
+
                     @include('cats.table')
+
                 </div>
 {{--                 <div role="tabpanel" class="tab-pane fade" id="tab_card">
                     @include('cats.tree')

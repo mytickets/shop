@@ -80,7 +80,9 @@
                     <span class="sr-only">{{ __('Toggle navigation') }}</span>
                 </a>
                 <!-- Navbar Right Menu -->
+
                 <div class="navbar-custom-menu">
+
                     <ul class="nav navbar-nav">
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
@@ -90,7 +92,7 @@
 
                                 {{-- <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg" --}}
                                 <img src="/lte1/dist/img/user2-160x160.jpg"
-                                     class="user-image" alt="User Image"/>
+                                     class="user-image" alt="" />
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs">{!! Auth::user()->name !!}</span>
                             </a>
@@ -98,19 +100,16 @@
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
                                     <img src="/lte1/dist/img/user2-160x160.jpg"
-                                         class="img-circle" alt="User Image"/>
+                                         class="img-circle" alt=""/>
                                     <p>
                                         {!! Auth::user()->name !!}
-                                        {{-- <small>Участник с  {!! Auth::user()->created_at->format('M. Y') !!}</small> --}}
                                         <small>Участник с  {!! Auth::user()->created_at->diffForHumans() !!}</small>
-                                        
-                                        {{-- <small>{{ $session_id ?? '$session_id' }}</small> --}}
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Профиль</a>
+                                        <a href="/users/{{ Auth::user()->id }}" class="btn btn-default btn-flat">Профиль</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="{!! url('/logout') !!}" class="btn btn-default btn-flat"
@@ -125,6 +124,7 @@
                             </ul>
                         </li>
                     </ul>
+
                 </div>
             </nav>
         </header>
@@ -233,6 +233,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     @yield('scripts')
+    {{-- @stack('after_scripts') --}}
 
     <!-- Scripts -->
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
