@@ -103,11 +103,11 @@
                                 {{-- </h4> --}}
                                     {{-- {{ $line->product->desc ?? "" }} --}}
 
-									@if (mb_strlen($line->product->desc)>140)
-									  {{ mb_substr($line->product->desc, 0, 140,'UTF-8') }}...
-									@else
-									  {{ $line->product->desc }}
-									@endif
+@if (mb_strlen($line->product->desc)>140)
+  {{ mb_substr($line->product->desc, 0, 140,'UTF-8') }}...
+@else
+  {{ $line->product->desc }}
+@endif
                               </div>
 
                               <div class="col-xs-7 col-md-4 col-lg-4" style="text-align: left;">
@@ -143,65 +143,67 @@
                           @endforeach
 
                           <form id="form_id">
-                          	<div class="row">
-                              <div class="col-md-12 my_place_div" style="text-align: left;">
-                                <b>Где вы находитесь?</b>
-                                <div class="radio">
-                                  <label>
-                                    <input type="radio" name="my_place" id="my_place1" value="0" class="my_place" >
-                                    Я в заведении
-                                  </label>
-                                </div>
-                                <div class="radio">
-                                  <label>
-                                    <input type="radio" name="my_place" id="my_place2" value="1" class="my_place">
-                                    Я в гостинице
-                                  </label>
-                                </div>
-                                <div class="radio">
-                                  <label>
-                                    <input type="radio" name="my_place" id="my_place3" value="2" class="my_place">
-                                    Это заказ на вынос
-                                  </label>
-                                </div>
-                              </div>
-                          		
-                          	</div>
-
-
-
-                          	<div class="row">
-
-                              <div class="col-md-12 stol_div" style="text-align: left; display: none;">
-                                <b>Номер столика</b>
-                                <div class="form-group">
-                                    <input type="text" name="stol_number" id="stol_number" value="" class="form-control">
-                                </div>
-                              </div>
-
-                              <div class="col-md-12 hotel_number_div" style="text-align: left; display: none;">
-                                <b>Номер в гостинице</b>
-                                <div class="form-group">
-                                    <input type="text" name="hotel_number" id="hotel_number" value="" class="form-control">
-                                </div>
-                              </div>
-
-                              <div class="col-md-12 contact_adr" style="text-align: left;  display: none;">
-                                <b>Адрес доставки</b>
-                                <textarea name="contact_adr" id="contact_adr" style="width: 100%;" rows="5" placeholder="Укажите адрес: Населеный пункт, улица, номер дома, офис, домофон, этаж, примечания..."></textarea>
-                              </div>
+                            <div class="row">
 
                               <div class="col-md-6" style="text-align: left;">
-                                <b>Контактный номер (телефон*)</b>
-	                            <div class="form-group">
-	                                <input type="text" name="contact_number" id="contact_number" value="" placeholder="Обязательно укажите контакты для связи: телефон" class="form-control">
+
+                                <b>Метод оплаты</b>
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" name="pay_type" id="optionsRadios1" value="0" >
+                                    Оплата курьеру
+                                  </label>
                                 </div>
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" name="pay_type" id="optionsRadios2" value="1" checked>
+                                    Оплата в заведении
+                                  </label>
+                                </div>
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" name="pay_type" id="optionsRadios3" value="2">
+                                    Онлайн оплата
+                                  </label>
+                                </div>
+
+
+                              </div>
+                              <div class="col-md-6" style="text-align: left;">
+                                <b>Место получения Продукта</b>
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" name="pay_place" id="optionsRadios4" value="0" >
+                                    Доставка курьером
+                                  </label>
+                                </div>
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" name="pay_place" id="optionsRadios5" value="1" checked>
+                                    Место в заведении
+                                  </label>
+                                </div>
+                                <div class="radio ">
+                                  <label>
+                                    <input type="radio" name="pay_place" id="optionsRadios6" value="2" >
+                                    На вынос
+                                  </label>
+                                </div>
+
+
+                              </div>
+                              
+                              <div class="col-md-12" style="text-align: left;">
+                                <b>Адрес/Место/Примечание</b>
+                                <textarea name="pay_adr" style="width: 100%;" rows="5" placeholder="Укажите адрес: Населеный пункт, улица, номер дома, офис, домофон, этаж, подЬезд и примечания"></textarea>
                               </div>
 
+                              <div class="col-md-12" style="text-align: left;">
+                                <b>Контакты</b>
+                                <textarea name="pay_contact" style="width: 100%;" rows="5" placeholder="Укажите контакты для связи: телефон, смс, почта, WhatsApp"></textarea>
+                              </div>
 
-                          	</div>
-
-
+                            </div>
 
                             <hr>
 
@@ -214,7 +216,7 @@
 {{--                                   <a href="/carts/{{$cart->id}}/checkout" class="btn-success btn-block" id="checkout_link">
                                     Оплатить
                                   </a> --}}
-                                  <a href="#" class="btn-success btn-block disabled" id="checkout_link" data-link="/carts/{{$cart->id}}/checkout" disabled>
+                                  <a href="#" class="btn-success btn-block" id="checkout_link" data-link="/carts/{{$cart->id}}/checkout">
                                     Оплатить
                                   </a>
                                   {{-- <a href="/carts/{{$cart->id}}/clear" class="btn-danger btn-block" data-url="/carts/{{$cart->id}}/clear"> --}}
@@ -260,46 +262,39 @@
 
   <script type="text/javascript">
 
-	// очистка корзины
-	$('#clear_btn').click(function(e){
-	  e.preventDeafult;
-	  $.ajax({
-	      url: $(this).data('url'),
-	      type: 'GET',
-	      success: function(result) {
-	        window.location='/cart'
-	      }
-	  });
-	});
 
-	// при нажатии на одну из кнопок + или - делаем следующее
+$('#clear_btn').click(function(e){
+  e.preventDeafult;
+
+                          $.ajax({
+                              url: $(this).data('url'),
+                              type: 'GET',
+                              success: function(result) {
+                                window.location='/cart'
+                              }
+                          });
+});
+
     $('span.btn-number').click(function(e){
-    	// определяем кнопку по типу minus или plus
         type      = $(this).attr('data-type');
-        // console.log(type)
+        console.log(type)
 
         // TODO выбрать КНОПКИ только свой ряд +
-
-        // поле с количеством линии продукта
         var input = $(this).parent().find('input');
-        // текущее значение количество
-        var currentVal = parseInt(input.val());
-        // номер линии
         var line_id = $(this).parent().find('input').data('line_id');
-        // итого сумма линии
         var total = $(this).parent().find('.sh6');
         // cart_id = $('#cart_id').data('cart_id')
-
-        // взять номер карзины из бейджа
         cart_id = $('#qty_badge').data('cart_id')
 
-        // console.log(currentVal)
+        var currentVal = parseInt(input.val());
+        console.log(currentVal)
+
 
         // $('#cart_total').text(result)
         // total.text('='+result)
         // $('#qty_badge').text(result)
 
-        // если текущее значение количества 
+
         if (!isNaN(currentVal)) {
             if(type == 'minus') {
                 
@@ -393,15 +388,14 @@
         }
     });
 
-	// отменяеть выбор текста мышкой - сделано чтобы не выбирался текст при двойном нажатии
     jQuery('.cart_id').mousedown(function(e){ e.preventDefault(); });
 
-	// кнопка оплаты
     $('#checkout_link').click(function(e) {
+
       e.preventDefault();
+      // uurl=$(this).attr('href')
       uurl=$(this).data('link')
-      // сериализуем форму и 
-      // переходим по ссылке data-link="/carts/$cart->id/checkout?+$('#form_id').serialize()"
+      // console.log(uurl)
       window.location=uurl+'?'+$('#form_id').serialize()
 
         // $.ajax({
@@ -413,36 +407,9 @@
         //         window.location="/thanks"
         //     }
         // });
+
+      // body...
     })
-
-
-
-$("input.my_place").click(function(e) {
-
-	console.log( $(this).val() )
-
-	if ($(this).val()==0) {
-		$(".stol_div").show()
-		$(".hotel_number_div").hide()
-		$(".contact_adr").hide()
-	}
-	if ($(this).val()==1) {
-		$(".stol_div").hide()
-		$(".hotel_number_div").show()
-		$(".contact_adr").hide()
-
-	}
-	if ($(this).val()==2) {
-		$(".stol_div").hide()
-		$(".hotel_number_div").hide()
-		$(".contact_adr").show()
-	}
-
-    // class will be removed if checked="checked"
-    // otherwise will be added
-    $(this).toggleClass("terms_error", !this.checked);
-}).change(); // set initial state
-
 
   </script>
 

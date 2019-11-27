@@ -215,6 +215,8 @@ class CartController extends AppBaseController
 
         $input = $request->all();
 
+        // dd($request->all());
+
   //       // if ($request->hasFile('image')) {
   //       //     $path = $request->file('image')->store('public/carts');
   //       //     $publicPath = \Storage::url( $path );
@@ -230,30 +232,51 @@ class CartController extends AppBaseController
     	else
     		{
 
-		        	if (isset($input['pay_type'])){
+  // $input["my_place"] => "0"
+  // $input["stol_number"] => "STOL1"
+  // $input["hotel_number"] => "HOTEL1"
+  // $input["contact_adr"] => "ADRES ZAKAZ"
+  // $input["contact_number"] => "+79622841331"
 
-				        $check = \App\Models\Order::create( [ 'pay_type' => $input['pay_type'], 'pay_place' => $input['pay_place'], 'pay_adr' => $input['pay_adr'], 'pay_contact' => $input['pay_contact'], 'status' => '0' ]);
+    	if (isset($input['my_place'])) {
 
-                        foreach ($cart->line_items as $key => $line) {
-                            $new_line = \App\Models\LineItem::create(['order_id'=>$check->id, 'product_id'=>$line->product_id, 'qty'=>$line->qty]);
-                        }
+            if ($input['my_place']==0) {
+                $pay_adr = $input['stol_number'];
+            }
+            if ($input['my_place']==1) {
+                $pay_adr = $input['hotel_number'];
+            }
+            if ($input['my_place']==2) {
+                $pay_adr = $input['contact_adr'];
+            }
 
-			        	event( new \App\Events\ServerCreated("Новый заказ!", $check->id) );
+            $contact_number = $input['contact_number'];
 
-                        // foreach ($cart->line_items as $key => $line) {
-                        //     // $new_line = \App\Models\LineItem::find('cart_id',$cart->id);
-                        //     $line->remove();
-                        // }
+            $check = \App\Models\Order::create( [ 'pay_place' => $input['my_place'], 'pay_adr' => $pay_adr, 'pay_contact' => $contact_number, 'status' => '0' ]);
 
-			    	    $cart->delete();
-                        // $cart->delete();
 
-			        	return view('menu3.thanks')->with('order_id', $check->id);
-	        		
-		        	}
-			        else {
-			        	return 'null';
-			        }
+	        // $check = \App\Models\Order::create( [ 'pay_type' => $input['pay_type'], 'pay_place' => $input['pay_place'], 'pay_adr' => $input['pay_adr'], 'pay_contact' => $input['pay_contact'], 'status' => '0' ]);
+
+            foreach ($cart->line_items as $key => $line) {
+                $new_line = \App\Models\LineItem::create(['order_id'=>$check->id, 'product_id'=>$line->product_id, 'qty'=>$line->qty]);
+            }
+
+        	event( new \App\Events\ServerCreated("Новый заказ!", $check->id) );
+
+            // foreach ($cart->line_items as $key => $line) {
+            //     // $new_line = \App\Models\LineItem::find('cart_id',$cart->id);
+            //     $line->remove();
+            // }
+
+    	    $cart->delete();
+            // $cart->delete();
+
+        	return view('menu3.thanks')->with('order_id', $check->id);
+		
+    	}
+        else {
+        	return 'null';
+        }
 		        // if ($cart->line_items) {
 		        	
 				if (!isset($cart->line_items)){

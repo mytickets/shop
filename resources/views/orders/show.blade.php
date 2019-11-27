@@ -52,26 +52,23 @@
                             <div class="row">
 
                               <div class="col-xs-2">
-                                <img class="img-responsive" src="{{ $line->product->image ?? "http://placehold.it/100x70" }}">
+                                <img class="img-responsive" style="max-width: 4em !important;" src="{{ $line->product->image ?? "http://placehold.it/100x70" }}">
                               </div>
 
                               <div class="col-xs-5">
                                 <h4 class="product-name">
 
-
-                    <a href="/products/{{ $line->product->ident }}">
-                        <strong>{{ $line->product->name ?? "Название" }}</strong>
-                    </a>
+                                  <a href="/products/{{ $line->product->ident }}">
+                                      <strong>{{ $line->product->name ?? "Название" }}</strong>
+                                  </a>
 
                                 </h4>
 
-                                  {{-- <small>{{ $line->product->desc ?? "" }}</small> --}}
-
-@if (mb_strlen($line->product->desc)>140)
-  {{ mb_substr($line->product->desc, 0, 140,'UTF-8') }}...
-@else
-  {{ $line->product->desc }}
-@endif
+                                  @if (mb_strlen($line->product->desc)>140)
+                                    {{ mb_substr($line->product->desc, 0, 140,'UTF-8') }}...
+                                  @else
+                                    {{ $line->product->desc }}
+                                  @endif
 
 
                               </div>

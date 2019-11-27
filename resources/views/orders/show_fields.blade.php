@@ -1,8 +1,8 @@
 <!-- Id Field -->
-<div class="form-group">
-    {!! Form::label('id', __('Id') ) !!}: 
-    <p>{!! $order->id !!}</p>
-</div>
+{{-- <div class="form-group"> --}}
+    {{-- {!! Form::label('id', __('Id') ) !!}:  --}}
+    {{-- <p>{!! $order->id !!}</p> --}}
+{{-- </div> --}}
 
 <!-- Created At Field -->
 <div class="form-group">
@@ -17,11 +17,11 @@
 </div>
 
 <!-- Pay Type Field -->
-<div class="form-group">
-    {!! Form::label('pay_type', __('Pay Type') ) !!}: 
+{{-- <div class="form-group"> --}}
+    {{-- {!! Form::label('pay_type', __('Pay Type') ) !!}:  --}}
     {{-- <p>{!! $order->pay_type !!}</p> --}}
-    {!! $pay_types[$order->pay_type] !!}
-</div>
+    {{-- {!! $pay_types[$order->pay_type] ?? 'pay_type' !!} --}}
+{{-- </div> --}}
 
 <!-- Pay Place Field -->
 <div class="form-group">
@@ -43,10 +43,10 @@
 </div>
 
 <!-- Pay Discount Field -->
-<div class="form-group">
-    {!! Form::label('pay_discount', __('Pay Discount') ) !!}: 
-    <p>{!! $order->pay_discount !!}</p>
-</div>
+{{-- <div class="form-group"> --}}
+    {{-- {!! Form::label('pay_discount', __('Pay Discount') ) !!}:  --}}
+    {{-- <p>{!! $order->pay_discount !!}</p> --}}
+{{-- </div> --}}
 
 <!-- Status Field -->
 <div class="form-group">
@@ -58,8 +58,8 @@
 </div>
 
 <!-- Comment Field -->
-<div class="form-group">
-    {!! Form::label('comment', __('Comment') ) !!}: 
-    <p>{!! $order->comment !!}</p>
-</div>
+{{-- <div class="form-group"> --}}
+    {{-- {!! Form::label('comment', __('Comment') ) !!}:  --}}
+    {{-- <p>{!! $order->comment !!}</p> --}}
+{{-- </div> --}}
 

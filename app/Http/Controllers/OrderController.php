@@ -30,7 +30,7 @@ class OrderController extends AppBaseController
         $this->orderRepository = $orderRepo;
         $this->status = ['Новый', 'Подтвержден', 'Готовиться', 'Получен', 'Оплачен'];
         $this->pay_types = ['Оплата курьеру', 'Оплата в заведении', 'Онлайн оплата'];
-        $this->pay_places = ['Доставка курьером','Место в заведении', 'На вынос'];
+        $this->pay_places = ['Место в заведении','Номер в гостинице', 'На вынос'];
 
     }
 
@@ -61,6 +61,7 @@ class OrderController extends AppBaseController
     public function create()
     {
         return view('orders.create')
+            ->with('status', $this->status)
             ->with('pay_types', $this->pay_types)
             ->with('pay_places', $this->pay_places);
     }
@@ -85,7 +86,7 @@ class OrderController extends AppBaseController
 
         Flash::success('Order успешно сохранен.');
         // $order['id']
-        event( new \App\Events\ServerCreated("Новый заказ!", $id) );
+//        event( new \App\Events\ServerCreated("Новый заказ!", $id) );
 
         return redirect(route('orders.index'));
     }

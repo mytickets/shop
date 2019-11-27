@@ -8,7 +8,7 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>{{ __('Pay Type') }}</th>
+                {{-- <th>{{ __('Pay Type') }}</th> --}}
         <th>{{ __('Pay Place') }}</th>
         {{-- <th>{{ __('Pay Adr') }}</th> --}}
         {{-- <th>{{ __('Pay Contact') }}</th> --}}
@@ -31,9 +31,9 @@
                     {!! $order->id !!}
                 </td>
 
-                <td>
-                    {!! $pay_types[$order->pay_type] !!}
-                </td>
+                {{-- <td> --}}
+                    {{-- {!! $pay_types[$order->pay_type] !!} --}}
+                {{-- </td> --}}
             <td>
                 {{-- {!! $order->pay_place !!} --}}
                 {!! $pay_places[$order->pay_place] !!}
