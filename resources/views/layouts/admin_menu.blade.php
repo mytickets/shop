@@ -10,7 +10,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active">
+            <li class="{{ Request::is('manager') ? 'active' : '' }}">
               <a href="/manager">
                 <i class="fa fa-circle-o text-success"></i> Менджер
               </a>
@@ -20,20 +20,21 @@
           </ul>
         </li>
 
-        <li class="treeview">
+        <li class="treeview menu-open active">
           <a href="#">
             <i class="fa fa-table"></i> <span>Таблицы</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
+          <ul class="treeview-menu tt">
             @include('layouts.admin_menu_tables')
           </ul>
         </li>
 
 @if (Auth::user()->role_type==0)
-        <li class="treeview">
+
+        <li class="treeview active">
           <a href="#">
             <i class="fa fa-share"></i> <span>Дополнения</span>
             <span class="pull-right-container">
