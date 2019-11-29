@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends AppBaseController
 {
@@ -62,7 +63,12 @@ class UserController extends AppBaseController
     public function store(CreateUserRequest $request)
     {
         $input = $request->all();
-
+        // $input2 = $request->all();
+        // $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+        $input['password_confirmation'] = Hash::make($input['password_confirmation']);
+        // $user->password = Hash::make($input['password']);
+        // $user->password_confirmation = Hash::make($input['password_confirmation']);
         $user = $this->userRepository->create($input);
 
         Flash::success('User объект успешно сохранён.');
