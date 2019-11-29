@@ -19,7 +19,8 @@ class UserController extends AppBaseController
     public function __construct(UserRepository $userRepo)
     {
         $this->userRepository = $userRepo;
-        $this->role_types = ['Администратор', 'Менеджер'];
+        $this->role_types = [ 'Администратор', 'Управляющий', 'Менеджер', 'Официант-Кассир', 'Курьер' ];
+
     }
 
     /**

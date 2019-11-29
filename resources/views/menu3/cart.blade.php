@@ -103,11 +103,11 @@
                                 {{-- </h4> --}}
                                     {{-- {{ $line->product->desc ?? "" }} --}}
 
-									@if (mb_strlen($line->product->desc)>140)
-									  {{ mb_substr($line->product->desc, 0, 140,'UTF-8') }}...
-									@else
-									  {{ $line->product->desc }}
-									@endif
+                									@if (mb_strlen($line->product->desc)>140)
+                									  {{ mb_substr($line->product->desc, 0, 140,'UTF-8') }}...
+                									@else
+                									  {{ $line->product->desc }}
+                									@endif
                               </div>
 
                               <div class="col-xs-7 col-md-4 col-lg-4" style="text-align: left;">
@@ -142,25 +142,25 @@
 
                           @endforeach
 
-                          <form id="form_id">
+                          <form id="form_id" action="/carts/{{$cart->id}}/checkout">
                           	<div class="row">
                               <div class="col-md-12 my_place_div" style="text-align: left;">
                                 <b>Где вы находитесь?</b>
                                 <div class="radio">
                                   <label>
-                                    <input type="radio" name="my_place" id="my_place1" value="0" class="my_place" >
+                                    <input type="radio" name="my_place" id="my_place1" value="0" class="my_place" required>
                                     Я в заведении
                                   </label>
                                 </div>
                                 <div class="radio">
                                   <label>
-                                    <input type="radio" name="my_place" id="my_place2" value="1" class="my_place">
+                                    <input type="radio" name="my_place" id="my_place2" value="1" class="my_place" required>
                                     Я в гостинице
                                   </label>
                                 </div>
                                 <div class="radio">
                                   <label>
-                                    <input type="radio" name="my_place" id="my_place3" value="2" class="my_place">
+                                    <input type="radio" name="my_place" id="my_place3" value="2" class="my_place" required>
                                     Это заказ на вынос
                                   </label>
                                 </div>
@@ -175,14 +175,41 @@
                               <div class="col-md-12 stol_div" style="text-align: left; display: none;">
                                 <b>Номер столика</b>
                                 <div class="form-group">
-                                    <input type="text" name="stol_number" id="stol_number" value="" class="form-control">
+                                    {{-- <input type="text" name="stol_number" id="stol_number" value="" class="form-control"> --}}
+                                    <select class="browser-default custom-select" name="stol_number">
+                                      <option selected>Номер</option>
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
+                                      <option value="6">6</option>
+                                      <option value="7">7</option>
+                                      <option value="8">8</option>
+                                      <option value="9">9</option>
+                                      <option value="10">10</option>
+                                    </select>
                                 </div>
                               </div>
 
                               <div class="col-md-12 hotel_number_div" style="text-align: left; display: none;">
                                 <b>Номер в гостинице</b>
                                 <div class="form-group">
-                                    <input type="text" name="hotel_number" id="hotel_number" value="" class="form-control">
+                                    {{-- <input type="text" name="hotel_number" id="hotel_number" value="" class="form-control"> --}}
+                                    <select class="browser-default custom-select" name="hotel_number">
+                                      <option selected>Номер</option>
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
+                                      <option value="6">6</option>
+                                      <option value="7">7</option>
+                                      <option value="8">8</option>
+                                      <option value="9">9</option>
+                                      <option value="10">10</option>
+                                    </select>
+
                                 </div>
                               </div>
 
@@ -194,7 +221,20 @@
                               <div class="col-md-6" style="text-align: left;">
                                 <b>Контактный номер (телефон*)</b>
 	                            <div class="form-group">
-	                                <input type="text" name="contact_number" id="contact_number" value="" placeholder="Обязательно укажите контакты для связи: телефон" class="form-control">
+
+        <div class="input-group">
+          <span class="input-group-addon">+7</span>
+          {{-- <input type="email" class="form-control" required="required" name="email"> --}}
+
+	                                <input type="number" name="contact_number" id="contact_number" value="" placeholder=" 10 цифр без 7: 9998887777" class="form-control" required pattern="[0-9]{10}">
+
+
+        </div>
+                                  {{-- <input type="tel" id="phone" name="phone"
+                                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                                  placeholder="+7-924-681-0757" 
+                                      required> --}}
+
                                 </div>
                               </div>
 
@@ -214,9 +254,13 @@
 {{--                                   <a href="/carts/{{$cart->id}}/checkout" class="btn-success btn-block" id="checkout_link">
                                     Оплатить
                                   </a> --}}
-                                  <a href="#" class="btn-success btn-block disabled" id="checkout_link" data-link="/carts/{{$cart->id}}/checkout" disabled>
+
+                                  {{-- <a href="#" class="btn-success btn-block disabled" id="checkout_link" data-link="/carts/{{$cart->id}}/checkout" disabled>
                                     Оплатить
-                                  </a>
+                                  </a> --}}
+                                  <button type="submit" value="Оплатить" class="btn-success btn-block disabled" id="checkout_link" data-link="/carts/{{$cart->id}}/checkout" >
+                                    Оплатить
+                                  </button>
                                   {{-- <a href="/carts/{{$cart->id}}/clear" class="btn-danger btn-block" data-url="/carts/{{$cart->id}}/clear"> --}}
                                   <a href="#" class="btn-danger btn-block " data-url="/carts/{{$cart->id}}/clear" id="clear_btn">
                                     Очистить корзину
@@ -397,23 +441,26 @@
     jQuery('.cart_id').mousedown(function(e){ e.preventDefault(); });
 
 	// кнопка оплаты
-    $('#checkout_link').click(function(e) {
-      e.preventDefault();
-      uurl=$(this).data('link')
-      // сериализуем форму и 
-      // переходим по ссылке data-link="/carts/$cart->id/checkout?+$('#form_id').serialize()"
-      window.location=uurl+'?'+$('#form_id').serialize()
+    // $('#checkout_link').click(function(e) {
 
-        // $.ajax({
-        //     url: uurl+'?'+$('#form_id').serialize(),
-        //     type: 'GET',  // user.destroy
-        //     success: function(result) {
-        //         // total.text('='+result)
-        //         // console.log()
-        //         window.location="/thanks"
-        //     }
-        // });
-    })
+    //   e.preventDefault();
+
+    //   uurl=$(this).data('link')
+
+    //   // сериализуем форму и 
+    //   // переходим по ссылке data-link="/carts/$cart->id/checkout?+$('#form_id').serialize()"
+    //   window.location=uurl+'?'+$('#form_id').serialize()
+
+    //     // $.ajax({
+    //     //     url: uurl+'?'+$('#form_id').serialize(),
+    //     //     type: 'GET',  // user.destroy
+    //     //     success: function(result) {
+    //     //         // total.text('='+result)
+    //     //         // console.log()
+    //     //         window.location="/thanks"
+    //     //     }
+    //     // });
+    // })
 
 
 

@@ -241,10 +241,10 @@ class CartController extends AppBaseController
     	if (isset($input['my_place'])) {
 
             if ($input['my_place']==0) {
-                $pay_adr = $input['stol_number'];
+                $pay_adr = "Стол в заведении ".$input['stol_number'];
             }
             if ($input['my_place']==1) {
-                $pay_adr = $input['hotel_number'];
+                $pay_adr = "Номер в отеле ".$input['hotel_number'];
             }
             if ($input['my_place']==2) {
                 $pay_adr = $input['contact_adr'];

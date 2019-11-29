@@ -17,6 +17,9 @@ use Illuminate\Http\UploadedFile;
 
 use App\Models\LineItem;
 
+use Illuminate\Support\Facades\Redirect;
+
+
 class LineItemController extends AppBaseController
 {
     /** @var  LineItemRepository */
@@ -162,7 +165,6 @@ class LineItemController extends AppBaseController
 
         if (empty($lineItem)) {
             Flash::error('Line Item объект не найден');
-
             return redirect(route('lineItems.index'));
         }
 
@@ -173,7 +175,11 @@ class LineItemController extends AppBaseController
         Flash::success('Line Item объект успешно удалён.');
 
         // return redirect(route('lineItems.index'));
-        return redirect('/cart');
+        // return redirect('/cart');
+        // return Redirect::back()->withErrors(['success', 'успешно']);
+        return Redirect::back();
+
+
     }
 
     public function destroy_all()

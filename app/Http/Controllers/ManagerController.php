@@ -23,7 +23,7 @@ class ManagerController extends AppBaseController
     public function __construct(OrderRepository $orderRepo)
     {
         $this->orderRepository = $orderRepo;
-        $this->role_types = ['Администратор', 'Менеджер'];
+        $this->role_types = [ 'Администратор', 'Управляющий', 'Менеджер', 'Официант-Кассир', 'Курьер' ];
 
         $this->status = ['Новый', 'Подтвержден', 'Готовиться', 'Получен', 'Оплачен'];
         $this->pay_types = ['Оплата курьеру', 'Оплата в заведении', 'Онлайн оплата'];
