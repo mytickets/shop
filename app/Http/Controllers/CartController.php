@@ -16,6 +16,7 @@ use Illuminate\Http\UploadedFile;
 // controller.stub
 
 use App\Models\Cart;
+use Mail;
 
 class CartController extends AppBaseController
 {
@@ -263,13 +264,59 @@ class CartController extends AppBaseController
 
         	event( new \App\Events\ServerCreated("Новый заказ!", $check->id) );
 
-            // foreach ($cart->line_items as $key => $line) {
-            //     // $new_line = \App\Models\LineItem::find('cart_id',$cart->id);
-            //     $line->remove();
-            // }
+            $subscribe_users = \App\Models\User::all();
 
-    	    $cart->delete();
-            // $cart->delete();
+            // dd($subscribe_users);
+
+            
+                foreach ($subscribe_users as $key2 ) {
+                     // $new_line = \App\Models\LineItem::find('cart_id',$cart->id);
+
+                    if ($key2['subscribe']==1) {
+                        // $toq = $key2->email;
+                        # code...
+                       //  Mail::send('email',
+                       //     array(
+                       //         'contact' => $key2['email'],
+                       //         'mes' => "Новый заказ!", $check->id
+                       //     ), function($sendm)
+                       // {
+                       //     $sendm->from('mltefive@gmail.com');
+                       //     $sendm->to($toq, '')->subject('Новый заказ! ');
+                       // });
+
+      //$data = array('contact'=>"Virat Gandhi",'mes'=>"Virat mesmesmes Gandhi", 'order' => $check);
+                        $to = $key2['email'];
+                        $contactName = $key2['name'];
+                        $contactEmail = $key2['email'];
+                        $data = array('order' => $check, 'to' => $to, 'email'=>$contactEmail);
+                          // Mail::send(['text'=>'order_email'], $data, function($message, $tto=$data) {
+                        Mail::send(['text'=>'order_email'], $data, function($message) use ($contactEmail, $contactName) {
+                            $message->to($contactEmail, $contactName)->subject('Заказ');
+                            $message->from('mltefive@gmail.com','Сайт');
+                        });
+
+
+
+      //echo "Basic Email Sent. Check your inbox.";
+
+              //          var_dump($key2['subscribe']);
+            //            var_dump($key2['email']);
+
+                    }
+                    // dd($key2['email']);
+                    // Mail::to($key2->email)->queue('Новый заказ');
+
+                    // $contact = $request->all()['your-contact'];
+                    // $mes = $request->all()['your-message'];
+
+                    
+                }
+            
+
+    	    // $cart->delete();
+
+            $cart->delete();
 
         	return view('menu3.thanks')->with('order_id', $check->id);
 		

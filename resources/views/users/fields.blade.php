@@ -37,15 +37,24 @@
 </div>
 
 <!-- Email Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-4">
+    {!! Form::label('set_pass', 'Установить пароль:') !!}
+    <label class="checkbox-inline form-control " style="    text-align: center;">
+        {!! Form::hidden('set_pass', 0) !!}
+        {!! Form::checkbox('set_pass', '1', null,['class'=> 'set_pass2']) !!}
+    </label>
+</div>
+<div class="form-group col-sm-4 set_pass">
     {!! Form::label('password', 'Пароль:') !!}
-    {!! Form::text('password', null, ['class' => 'form-control', 'required' => 'required']) !!}
+    {{-- @if (isset($user->password)) --}}
+        {!! Form::text('password', null, ['class' => 'form-control']) !!}
+    {{-- @endif --}}
 </div>
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-4 set_pass">
     {!! Form::label('password_confirmation', 'Пароль подтверждение:') !!}
-    {!! Form::text('password_confirmation', null, ['class' => 'form-control', 'required' => 'required']) !!}
+    {{-- , 'required' => 'required' --}}
+    {!! Form::text('password_confirmation', null, ['class' => 'form-control']) !!}
 </div>
-
 
 
 
@@ -54,3 +63,13 @@
     {!! Form::submit('Сохранить', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('users.index') !!}" class="btn btn-default">Отмена</a>
 </div>
+
+
+<script type="text/javascript">
+    $('#set_pass').click(function(e){
+        // $('.set_pass').show();
+        // $('.set_pass').first().show();
+        // $('.set_pass').last().show();
+        // $(this)
+    })
+</script>

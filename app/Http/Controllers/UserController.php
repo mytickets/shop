@@ -63,13 +63,19 @@ class UserController extends AppBaseController
     public function store(CreateUserRequest $request)
     {
         $input = $request->all();
-        // $input2 = $request->all();
-        // $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
-        $input['password_confirmation'] = Hash::make($input['password_confirmation']);
-        // $user->password = Hash::make($input['password']);
-        // $user->password_confirmation = Hash::make($input['password_confirmation']);
-        $user = $this->userRepository->create($input);
+
+        if ($input['set_pass']) {
+            # code...
+            $input['password'] = Hash::make($input['password']);
+            $input['password_confirmation'] = Hash::make($input['password_confirmation']);
+            $user = $this->userRepository->create($input);
+        } else {
+            //$user = $this->userRepository->find($input);
+            //$input['password'] = $user;
+            //unset();
+            //unset($input['password_confirmation']);
+
+        }
 
         Flash::success('User объект успешно сохранён.');
 
@@ -139,8 +145,26 @@ class UserController extends AppBaseController
 
             return redirect(route('users.index'));
         }
+        $input = $request->all();
+        if ($input['set_pass']) {
+            # code...
+            $input['password'] = Hash::make($input['password']);
+            $input['password_confirmation'] = Hash::make($input['password_confirmation']);
+            //$user = $this->userRepository->create($input);
+            $user = $this->userRepository->update($input, $id);
+        } else {
+            $input['password_confirmation'] = $input['password'];
+            $user = $this->userRepository->update($input, $id);
+            //$user = $this->userRepository->update($input, $id);
+            //$user = $this->userRepository->find($input);
+            //$input['password'] = $user;
+            //unset();
+            //unset($input['password_confirmation']);
+            
+        }
 
-        $user = $this->userRepository->update($request->all(), $id);
+
+        // $user = $this->userRepository->update($request->all(), $id);
 
         Flash::success('User обновлено успешно.');
         // $role_type

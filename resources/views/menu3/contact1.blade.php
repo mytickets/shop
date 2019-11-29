@@ -82,7 +82,9 @@ body.page #pagetitle {
 														{{-- <div class="col-md-4"> <label> Телефон*</label> <span class="wpcf7-form-control-wrap your-phone"><input type="text" name="your-phone" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required comm-field" aria-required="true" aria-invalid="false"></span></div> --}}
 													</div>
 													<p><label> Сообщение</label> <span class="wpcf7-form-control-wrap your-message"><textarea name="your-message" cols="40" rows="4" class="wpcf7-form-control wpcf7-textarea" id="msg-contact" aria-invalid="false"></textarea></span></p>
-													<p class="text-center"><input type="submit" value="Запрос" class="wpcf7-form-control wpcf7-submit"><span class="ajax-loader"></span></p>
+													<p class="text-center">
+														<input type="submit" value="Запрос" class="wpcf7-form-control wpcf7-submit"><span class="ajax-loader"></span>
+													</p>
 												</div>
 												<div class="wpcf7-response-output wpcf7-display-none"></div>
 											</form>
