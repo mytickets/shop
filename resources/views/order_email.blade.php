@@ -1,6 +1,8 @@
 
 Новый заказа с сайта
 
+Ссылка на заказ: http://restoran-nadezhda.com/orders/{!! $order->id !!}
+
 Заказ №: {!! $order->id !!}
 
   @foreach($order->line_items as $line)
