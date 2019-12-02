@@ -62,7 +62,6 @@
     {{-- , 'required' => 'required' --}}
     {{-- {!! Form::text('password_confirmation', null, ['class' => 'form-control']) !!} --}}
     {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
-
 </div>
 
 

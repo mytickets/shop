@@ -17,13 +17,14 @@ class UserController extends AppBaseController
 {
     /** @var  UserRepository */
     private $userRepository;
+    // типы ролей
     public $role_types;
 
     public function __construct(UserRepository $userRepo)
     {
         $this->userRepository = $userRepo;
+        // типы ролей 0 1 2 3 4
         $this->role_types = [ 'Администратор', 'Управляющий', 'Менеджер', 'Официант-Кассир', 'Курьер' ];
-
     }
 
     /**
@@ -36,11 +37,9 @@ class UserController extends AppBaseController
     public function index(Request $request)
     {
         $users = $this->userRepository->paginate(10);
-
         return view('users.index')
             ->with('users', $users)
                 ->with('role_types', $this->role_types);
-
     }
 
     /**
@@ -50,7 +49,6 @@ class UserController extends AppBaseController
      */
     public function create()
     {
-        // return view('users.create');
         return view('users.create')
                 ->with('role_types', $this->role_types);
     }
@@ -66,18 +64,21 @@ class UserController extends AppBaseController
     {
         $input = $request->all();
 
-        if ($input['set_pass']) {
-            # code...
-            $input['password'] = Hash::make($input['password']);
-            $input['password_confirmation'] = Hash::make($input['password_confirmation']);
-            $user = $this->userRepository->create($input);
-        } else {
+        $input['password'] = Hash::make($input['password']);
+        $input['password_confirmation'] = Hash::make($input['password_confirmation']);
+        $user = $this->userRepository->create($input);
+
+        // if ($input['set_pass']) {
+        //     # code...
+        //     $input['password'] = Hash::make($input['password']);
+        //     $input['password_confirmation'] = Hash::make($input['password_confirmation']);
+        //     $user = $this->userRepository->create($input);
+        // } else {
             //$user = $this->userRepository->find($input);
             //$input['password'] = $user;
             //unset();
             //unset($input['password_confirmation']);
-
-        }
+        // }
 
         Flash::success('User объект успешно сохранён.');
 
