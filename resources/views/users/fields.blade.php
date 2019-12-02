@@ -46,14 +46,24 @@
 </div>
 <div class="form-group col-sm-4 set_pass">
     {!! Form::label('password', 'Пароль:') !!}
-    {{-- @if (isset($user->password)) --}}
-        {!! Form::text('password', null, ['class' => 'form-control']) !!}
+        {{-- @if (isset($user->password)) --}}
+    @if (isset($user->password))
+        {{-- @if ( $user->password == '') --}}
+        {{-- {!! Form::text('password', null, ['class' => 'form-control']) !!} --}}
+        {!! Form::password('password', ['class' => 'form-control']) !!}
+    @else
+        {{-- Пароль нельзя увидеть, только изменить --}}
+        {{-- {!! Form::text('password', null, ['class' => 'form-control']) !!} --}}
+        {!! Form::password('password', ['class' => 'form-control']) !!}
+    @endif 
     {{-- @endif --}}
 </div>
 <div class="form-group col-sm-4 set_pass">
     {!! Form::label('password_confirmation', 'Пароль подтверждение:') !!}
     {{-- , 'required' => 'required' --}}
-    {!! Form::text('password_confirmation', null, ['class' => 'form-control']) !!}
+    {{-- {!! Form::text('password_confirmation', null, ['class' => 'form-control']) !!} --}}
+    {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
+
 </div>
 
 

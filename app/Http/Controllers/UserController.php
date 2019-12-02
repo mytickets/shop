@@ -11,6 +11,8 @@ use Flash;
 use Response;
 use Illuminate\Support\Facades\Hash;
 
+use App\User;
+
 class UserController extends AppBaseController
 {
     /** @var  UserRepository */
@@ -138,29 +140,34 @@ class UserController extends AppBaseController
      */
     public function update($id, UpdateUserRequest $request)
     {
+        $input = $request->all();
         $user = $this->userRepository->find($id);
+
+        // dd($input['set_pass']);
 
         if (empty($user)) {
             Flash::error('User объект не найден');
 
             return redirect(route('users.index'));
         }
-        $input = $request->all();
-        if ($input['set_pass']) {
-            # code...
+        if ($input['set_pass']==1) {
+
             $input['password'] = Hash::make($input['password']);
             $input['password_confirmation'] = Hash::make($input['password_confirmation']);
             //$user = $this->userRepository->create($input);
             $user = $this->userRepository->update($input, $id);
         } else {
-            $input['password_confirmation'] = $input['password'];
+
+            $u = User::find($id);
+            $input['password'] = $u->password;
+            $input['password_confirmation'] = $u->password;
             $user = $this->userRepository->update($input, $id);
+
             //$user = $this->userRepository->update($input, $id);
             //$user = $this->userRepository->find($input);
             //$input['password'] = $user;
             //unset();
             //unset($input['password_confirmation']);
-            
         }
 
 

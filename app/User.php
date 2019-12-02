@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Eloquent as Model;
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -9,11 +11,49 @@ use Illuminate\Notifications\Notifiable;
 // laravel-permission
 use Spatie\Permission\Traits\HasRoles;
 
+
+/**
+ * @SWG\Definition(
+ *      definition="User",
+ *      required={""},
+ *      @SWG\Property(
+ *          property="id",
+ *          description="id",
+ *          type="integer",
+ *          format="int32"
+ *      ),
+ *      @SWG\Property(
+ *          property="name",
+ *          description="name",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
+ *          property="email",
+ *          description="email",
+ *          type="string"
+ *      )
+ * )
+ */
+
+// class User extends Model
 class User extends Authenticatable
 {
     // laravel-permission
     use HasRoles;
     use Notifiable;
+
+    public $table = 'users';
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+        
+    ];
+
+    
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +61,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role_type', 'subscribe'
     ];
 
     /**
@@ -42,3 +82,5 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 }
+
+
