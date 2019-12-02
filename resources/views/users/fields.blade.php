@@ -26,8 +26,7 @@
 
 <div class="form-group col-sm-6">
 
-
-    {!! Form::label('subscribe', 'Уведомлять на почту:') !!}
+    {!! Form::label('subscribe', 'Получать уведомление о новом заказе:') !!}
     <label class="checkbox-inline form-control" style="    text-align: center;">
         {!! Form::hidden('subscribe', 0) !!}
         {!! Form::checkbox('subscribe', '1', null) !!}
