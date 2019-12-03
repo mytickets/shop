@@ -244,9 +244,33 @@
 
                           	</div>
 
+                            {{-- <hr> --}}
+                            
+                            <div class="row">
+                              <div class="col-md-12 my_pay_div" style="text-align: left;">
+                                <b>Метод оплаты</b>
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" name="pay_type" value="0" class="pay_type" required>
+                                    Оплата курьеру
+                                  </label>
+                                </div>
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" name="pay_type" value="1" class="pay_type" required>
+                                    Оплата в заведении
+                                  </label>
+                                </div>
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" name="pay_type" value="2" class="pay_type pay_type_online" required>
+                                    Онлайн оплата
+                                  </label>
+                                </div>
+                              </div>
+                              
+                            </div>
 
-
-                            <hr>
 
                             <div class="panel-footer">
                               <div class="row text-center">
@@ -466,7 +490,7 @@
 
     	if ($(this).val()==0) {
     		$(".stol_div").show()
-        $(".stol_div").addClass('animated bounceInLeft')
+        $(".stol_div").addClass('animated bounceInDown')
 
         // $(".hotel_number_div").addClass('animated bounceOutRight')
     		$(".hotel_number_div").hide()
@@ -476,7 +500,7 @@
     	}
     	if ($(this).val()==1) {
     		$(".hotel_number_div").show()
-        $(".hotel_number_div").addClass('animated bounceInLeft')
+        $(".hotel_number_div").addClass('animated bounceInDown')
 
         // $(".stol_div").addClass('animated bounceOutRight')
     		$(".stol_div").hide()
@@ -486,7 +510,7 @@
     	}
     	if ($(this).val()==2) {
     		$(".contact_adr").show()
-        $(".contact_adr").addClass('animated bounceInLeft')
+        $(".contact_adr").addClass('animated bounceInDown')
 
         // $(".stol_div").addClass('animated bounceOutRight')
     		$(".stol_div").hide()
@@ -499,6 +523,11 @@
         $(this).toggleClass("terms_error", !this.checked);
     }).change(); // set initial state
 
+
+
+    $("input.pay_type_online").click(function(e) {
+
+    }).change(); // set initial state
 
   </script>
 

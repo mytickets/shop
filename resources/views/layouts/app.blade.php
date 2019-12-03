@@ -54,6 +54,7 @@
   .menu_check {
     cursor: pointer;
   }
+  /* TODO по просьбе отключаю границы */
   label.checkbox-inline {
     border: none;
   }
