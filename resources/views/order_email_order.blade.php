@@ -1,7 +1,7 @@
 
 Новый заказа с сайта
 
-Ссылка на заказ: http://restoran-nadezhda.com/client_order_show/{!! $order->id !!}
+Ссылка на заказ: http://restoran-nadezhda.com/orders/{!! $order->id !!}
 
 Заказ №: {!! $order->id !!}
 

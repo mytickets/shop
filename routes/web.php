@@ -279,6 +279,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('orders', 'OrderController');
 
+
     Route::get('/route_list', function () {
 
 
@@ -316,6 +317,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Route::resource('carts', 'CartController');
+Route::resource('orders', 'OrderController', ['only' => ['show']]);
+
+Route::get('/client_order_show/{client_order_show_id}', 'OrderController@client_order_show');
+
 
 Route::get('/cart', function () {
     // session('cart');

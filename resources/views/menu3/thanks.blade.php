@@ -1,6 +1,23 @@
 @extends('layouts.menu3')
 
 @section('css')
+
+<style type="text/css">
+    body.page #pagetitle {
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      -moz-background-size: cover;
+      -webkit-background-size: cover;
+      -o-background-size: cover;
+      -ms-background-size: cover;
+      background-color: #111111;
+      color: #ffffff;
+      background-image: url(/slider-bg4.jpg);
+    }
+  
+</style>
+
 @endsection
 
 @section('content')

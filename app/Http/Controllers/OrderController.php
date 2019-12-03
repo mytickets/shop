@@ -253,5 +253,23 @@ class OrderController extends AppBaseController
     // }
 
 
+    public function client_order_show($client_order_show_id, Request $request)
+    {
+
+        $order = $this->orderRepository->find($client_order_show_id);
+
+        if (empty($order)) {
+            Flash::error('Объект не найден');
+            return abort(404);
+        }
+
+        return view('menu3.client_order_show')
+                ->with('order', $order)
+                ->with('status', $this->status)
+                ->with('pay_types', $this->pay_types)
+                ->with('pay_places', $this->pay_places);
+
+    }
+
 
 }
