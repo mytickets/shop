@@ -560,8 +560,8 @@
         // $(".contact_adr").addClass('animated bounceOutRight')
     		$(".contact_adr").hide()
 
-        $('#pay1').text('курьеру')
-        $('#pay2').text('курьеру')
+        $('#pay1').text('официанту')
+        $('#pay2').text('официанту')
 
     	}
     	if ($(this).val()==2) {
