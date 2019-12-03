@@ -30,7 +30,7 @@ class OrderController extends AppBaseController
         $this->orderRepository = $orderRepo;
         $this->status = ['Новый', 'Подтвержден', 'Готовиться', 'Получен', 'Оплачен'];
         $this->pay_places = ['Место в заведении','Номер в гостинице', 'На вынос'];
-        $this->pay_types = ['Оплата курьеру', 'Оплата в заведении', 'Онлайн оплата'];
+        $this->pay_types = ['Оплата наличными', 'Оплата картой', 'Онлайн оплата'];
 
     }
 

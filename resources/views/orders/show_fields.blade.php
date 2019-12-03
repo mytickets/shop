@@ -58,8 +58,8 @@
 </div>
 
 <!-- Comment Field -->
-{{-- <div class="form-group"> --}}
-    {{-- {!! Form::label('comment', __('Comment') ) !!}:  --}}
-    {{-- <p>{!! $order->comment !!}</p> --}}
-{{-- </div> --}}
+<div class="form-group">
+    {!! Form::label('comment', __('Comment') ) !!}: 
+    <pre>{!! $order->comment !!}</pre>
+</div>
 

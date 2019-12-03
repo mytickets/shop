@@ -140,7 +140,7 @@
 
                           <form id="form_id" action="/carts/{{$cart->id}}/checkout">
                           	<div class="row">
-                              <div class="col-md-12 my_place_div" style="text-align: left;">
+                              <div class="col-md-6 my_place_div" style="text-align: left;">
                                 <b>Где вы находитесь?</b>
                                 <div class="radio">
                                   <label>
@@ -158,6 +158,28 @@
                                   <label>
                                     <input type="radio" name="my_place" id="my_place3" value="2" class="my_place" required>
                                     Это заказ на вынос
+                                  </label>
+                                </div>
+                              </div>
+
+                              <div class="col-md-6 my_pay_div" style="text-align: left; display: none;">
+                                <b>Метод оплаты</b>
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" name="pay_type" value="0" class="pay_type" required>
+                                    Оплата наличными <span id="pay1" class="pay1">официанту/курьеру</span>
+                                  </label>
+                                </div>
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" name="pay_type" value="1" class="pay_type" required>
+                                    Оплата картой <span id="pay2" class="pay1">официанту/курьеру</span>
+                                  </label>
+                                </div>
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" name="pay_type" value="2" class="pay_type pay_type_online" required>
+                                    Онлайн оплата
                                   </label>
                                 </div>
                               </div>
@@ -215,7 +237,7 @@
                               </div>
 
                               <div class="col-md-6" style="text-align: left;">
-                                <b>Контактный номер (обязательно*)</b>
+                                <b>Контактный номер (<span style="color: red;">обязательно*</span>)</b>
   	                            <div class="form-group">
 
                                   <div class="input-group">
@@ -243,33 +265,40 @@
                               </div>
 
 
+                              <div class="col-md-6" style="text-align: left;">
+                                <b>Дата доставки (не обязательно)</b>
+                                <div class="form-group">
+
+                                  <div class="input-group">
+                                    <span class="input-group-addon">
+                                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+                                      <input type="date" name="order_date" id="order_date" value="" class="form-control" >
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="col-md-6" style="text-align: left;">
+                                <b>Время доставки (не обязательно)</b>
+                                <div class="form-group">
+
+                                  <div class="input-group">
+                                    <span class="input-group-addon">
+                                      <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    </span>
+                                      <input type="time" name="order_time" id="order_time" value="" class="form-control" >
+                                  </div>
+                                </div>
+                              </div>
+
+                              
+
+
                           	</div>
 
                             {{-- <hr> --}}
                             
                             <div class="row">
-                              <div class="col-md-12 my_pay_div" style="text-align: left;">
-                                <b>Метод оплаты</b>
-                                <div class="radio">
-                                  <label>
-                                    <input type="radio" name="pay_type" value="0" class="pay_type" required>
-                                    Оплата курьеру
-                                  </label>
-                                </div>
-                                <div class="radio">
-                                  <label>
-                                    <input type="radio" name="pay_type" value="1" class="pay_type" required>
-                                    Оплата в заведении
-                                  </label>
-                                </div>
-                                <div class="radio">
-                                  <label>
-                                    <input type="radio" name="pay_type" value="2" class="pay_type pay_type_online" required>
-                                    Онлайн оплата
-                                  </label>
-                                </div>
-                              </div>
-                              
                             </div>
 
 
@@ -317,6 +346,25 @@
          </div>
       </div>
    </div>
+
+    <div id="myModal2" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Онлайн оплата</h4>
+                </div>
+                <div class="modal-body">
+                    Модуль онлайн оплаты в тестовом режиме
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    {{-- <button type="button" class="btn btn-primary">Сохранить изменения</button> --}}
+                </div>
+            </div>
+        </div>
+    </div>
+
       
 @endsection
 
@@ -487,36 +535,47 @@
 
     $("input.my_place").click(function(e) {
 
+      $('.my_pay_div').show();
     	console.log( $(this).val() )
 
     	if ($(this).val()==0) {
     		$(".stol_div").show()
-        $(".stol_div").addClass('animated bounceInDown')
+        // $(".stol_div").addClass('animated bounceInDown')
 
         // $(".hotel_number_div").addClass('animated bounceOutRight')
     		$(".hotel_number_div").hide()
         // $(".contact_adr").addClass('animated bounceOutRight')
     		$(".contact_adr").hide()
+
+        $('#pay1').text('официанту')
+        $('#pay2').text('официанту')
 
     	}
     	if ($(this).val()==1) {
     		$(".hotel_number_div").show()
-        $(".hotel_number_div").addClass('animated bounceInDown')
+        // $(".hotel_number_div").addClass('animated bounceInDown')
 
         // $(".stol_div").addClass('animated bounceOutRight')
     		$(".stol_div").hide()
         // $(".contact_adr").addClass('animated bounceOutRight')
     		$(".contact_adr").hide()
 
+        $('#pay1').text('курьеру')
+        $('#pay2').text('курьеру')
+
     	}
     	if ($(this).val()==2) {
     		$(".contact_adr").show()
-        $(".contact_adr").addClass('animated bounceInDown')
+        // $(".contact_adr").addClass('animated bounceInDown')
 
         // $(".stol_div").addClass('animated bounceOutRight')
     		$(".stol_div").hide()
         // $(".hotel_number_div").addClass('animated bounceOutRight')
     		$(".hotel_number_div").hide()
+
+        $('#pay1').text('курьеру')
+        $('#pay2').text('курьеру')
+
     	}
 
         // class will be removed if checked="checked"
@@ -527,8 +586,8 @@
 
 
     $("input.pay_type_online").click(function(e) {
-
-    }).change(); // set initial state
+        $("#myModal2").modal('show')
+    }); // 
 
     $(document).ready(function(){
       // $(selector).inputmask("99-9999999");  //static mask

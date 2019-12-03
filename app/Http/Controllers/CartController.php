@@ -22,10 +22,14 @@ class CartController extends AppBaseController
 {
     /** @var  CartRepository */
     private $cartRepository;
+    public $pay_types;
+    public $pay_places;
 
     public function __construct(CartRepository $cartRepo)
     {
         $this->cartRepository = $cartRepo;
+        $this->pay_places = ['Место в заведении','Номер в гостинице', 'На вынос'];
+        $this->pay_types = ['Оплата наличными', 'Оплата картой', 'Онлайн оплата'];
     }
 
     /**
@@ -237,8 +241,42 @@ class CartController extends AppBaseController
                 $contact_number = $input['contact_number'];
                 // $contact_email  = $input['contact_email'];
 
+                if (isset($input['contact_email'])) {
+                    $contact_email = $input['contact_email'];
+                } else {
+                    $contact_email = 'нет';
+                }
+
+                if (isset($input['order_date'])) {
+                    $order_date = $input['order_date'];
+                } else {
+                    $order_date = 'сегодня';
+                }
+
+                if (isset($input['order_time'])) {
+                    $order_time = $input['order_time'];
+                } else {
+                    $order_time = 'сейчас';
+                }
+
+                $this_pay_place = $this->pay_places[$input["my_place"]];
+                $this_pay_type  = $this->pay_types[$input['pay_type']];
+
+$comment = <<<EOT
+Новый заказ
+
+Телефон: $contact_number
+Email: $contact_email
+Место: $this_pay_place
+Номер места/номера или адрес заказа: $pay_adr
+Тип оплаты: $this_pay_type
+
+На дату: $order_date
+На время: $order_time
+EOT;
+
                 // создаем Заказ
-                $check = \App\Models\Order::create( [ 'pay_place' => $input['my_place'], 'pay_adr' => $pay_adr, 'pay_contact' => $contact_number, 'status' => '0' ]);
+                $check = \App\Models\Order::create( [ 'pay_place' => $input['my_place'], 'pay_adr' => $pay_adr, 'pay_contact' => $contact_number, 'status' => '0', 'pay_type'=> $input['pay_type'], 'comment' => $comment ]);
 
                 // создаем позиции для Заказа order_id
                 foreach ($cart->line_items as $key => $line) {
@@ -253,21 +291,22 @@ class CartController extends AppBaseController
                 // перебор пользователей
                 foreach ($subscribe_users as $key2 ) {
                     // если пользователь подписан получать заказы
-                    if ($key2['subscribe']==1) {
+                    // if ($key2['subscribe']==1) {
+                    if (false) {
 
                         // $from = env('MAIL_USERNAME', 'mltefive@gmail.com');
                         $to = $key2['email'];
                         $contactName = $key2['name'];
                         $contactEmail = $key2['email'];
 
-                        $data = array('order' => $check, 'to' => $to, 'email'=>$contactEmail);
-                        // Mail::send(['text'=>'order_email'], $data, function($message, $tto=$data) {
 
+                        $data = array('order' => $check, 'to' => $to, 'email'=>$contactEmail);
                         // отправляем заказ на почту
                         Mail::send(['text'=>'order_email'], $data, function($message) use ($contactEmail, $contactName) {
                                 $message->to($contactEmail, $contactName)->subject('Заказ');
                                 $message->from(env('MAIL_USERNAME', 'mltefive@gmail.com'),'Сайт');
                             });
+
 
                         // если установлен contact_email
                         if (isset($input['contact_email'])) {
@@ -278,18 +317,13 @@ class CartController extends AppBaseController
                                     $message->to($contactEmail, 'Гость')->subject('Заказ');
                                     $message->from(env('MAIL_USERNAME', 'mltefive@gmail.com'),'Сайт');
                                 });
-                        }
+                        } // if (isset($input['contact_email'])) {
 
-                    }
+                    } // if ($key2['subscribe']==1) {
                 }
                 
-
-        	    // $cart->delete();
-
                 $cart->delete();
-
             	return view('menu3.thanks')->with('order_id', $check->id);
-    		
         	}
             else {
             	return abort(404);
