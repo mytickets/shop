@@ -60,7 +60,9 @@
     {!! Form::label('cat_id', __('Cat Id') ) !!}
     <p>
         {!! $product->cat_id !!}
-        <a href="/cats/{{ $product->cat_id }}"> {!! \App\Models\Cat::where('ident', $product->cat_id)->first()->name !!} </a>
+        @if (\App\Models\Cat::where('ident', $product->cat_id)->first())
+            <a href="/cats/{{ $product->cat_id }}"> {!! \App\Models\Cat::where('ident', $product->cat_id)->first()->name !!} </a>
+        @endif
     </p>
 </div>
 
@@ -73,6 +75,12 @@
 <!-- Menu Field -->
 <div class="form-group">
     {!! Form::label('menu', __('Menu') ) !!}
-    <p>{!! var_dump($product->menu) !!}</p>
+    {{-- <p>{!! var_dump($product->menu) !!}</p> --}}
+    @if ($product->menu)
+        <span class="badge label label-success">Вкл</span>
+    @else
+      <span class="badge label label-default">Выкл</span>
+    @endif
+
 </div>
 

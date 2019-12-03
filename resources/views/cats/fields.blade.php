@@ -17,7 +17,7 @@
 <!-- Ident Field -->
 <div class="form-group col-sm-3">
     {!! Form::label('ident', 'ID:') !!}
-    {!! Form::text('ident', null, ['class' => 'form-control']) !!}
+    {!! Form::text('ident', null, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
 </div>
 
 <!-- Name Field -->
@@ -29,8 +29,10 @@
 <!-- Image Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('image', 'Фото:') !!}
-    <p><img class="img-responsive" src="{!! $cat->image !!}"></p>
-    {!! $cat->image !!}
+    @if (isset($cat->image))
+        <p><img class="img-responsive" src="{!! $cat->image !!}"></p>
+        {!! $cat->image !!}
+    @endif
     {!! Form::file('image') !!}
 </div>
 {{-- <div class="clearfix"></div> --}}
@@ -38,21 +40,19 @@
 <!-- Xml Name Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('xml_name', 'Xml Имя:') !!}
-    {!! Form::text('xml_name', null, ['class' => 'form-control']) !!}
+    {!! Form::text('xml_name', null, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
 </div>
 
 <!-- Parent Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('parent_id', 'Родитель:') !!}
-    {{-- {!! Form::text('parent_id', null, ['class' => 'form-control']) !!} --}}
-    {{-- {!! Form::text('parent_id', null, ['class' => 'form-control']) !!} --}}
-    {!!  Form::select('parent_id', App\Models\Cat::all()->pluck('name', 'ident'), null, ['class' => 'form-control']) !!}
+    {!!  Form::select('parent_id', App\Models\Cat::all()->pluck('name', 'ident')->prepend('Корневая категория', '0'), null, ['class' => 'form-control']) !!}
 </div>
 
-<div class="form-group col-sm-6">
+{{-- <div class="form-group col-sm-6">
     {!! Form::label('position', 'Порядок в списке:') !!}
     {!! Form::text('position', null, ['class' => 'form-control']) !!}
-</div>
+</div> --}}
 
 
 <!-- Desc Field -->

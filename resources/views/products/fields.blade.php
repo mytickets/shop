@@ -5,15 +5,8 @@
 </div>
 
 {{-- <div class="row"> --}}
-
-    <!-- Ident Field -->
-    <div class="form-group col-md-2">
-        {!! Form::label('ident', 'Ident:') !!}
-        {!! Form::text('ident', null, ['class' => 'form-control']) !!}
-    </div>
-
     <!-- Menu Field -->
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-3">
         {!! Form::label('menu', 'В меню:') !!}
         <label class="checkbox-inline form-control" style="    text-align: center;">
             {!! Form::hidden('menu', 0) !!}
@@ -21,10 +14,17 @@
         </label>
     </div>
 
-    <div class="form-group col-md-2">
+    <!-- Ident Field -->
+    <div class="form-group col-md-3">
+        {!! Form::label('ident', 'Ident:') !!}
+        {!! Form::text('ident', null, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
+    </div>
+
+
+{{--     <div class="form-group col-md-2">
         {!! Form::label('position', 'Порядок:') !!}
         {!! Form::text('position', null, ['class' => 'form-control']) !!}
-    </div>
+    </div> --}}
 
 
 
@@ -48,7 +48,7 @@
 <!-- Xml Name Field -->
 <div class="form-group col-md-6">
     {!! Form::label('xml_name', 'Xml Имя:') !!}
-    {!! Form::text('xml_name', null, ['class' => 'form-control']) !!}
+    {!! Form::text('xml_name', null, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
 </div>
 
 <!-- Xml Cat Field -->
@@ -61,7 +61,7 @@
 <div class="form-group col-md-6">
     {!! Form::label('cat_id', 'Категория:') !!}
     {{-- {!! Form::text('cat_id', null, ['class' => 'form-control']) !!} --}}
-    {!!  Form::select('cat_id', App\Models\Cat::all()->pluck('name', 'ident'), null, ['class' => 'form-control']) !!}
+    {!!  Form::select('cat_id', App\Models\Cat::all()->pluck('name', 'ident')->prepend('Корневая категория', '0'), null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Price Amount Field -->

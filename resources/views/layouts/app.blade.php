@@ -54,6 +54,9 @@
   .menu_check {
     cursor: pointer;
   }
+  label.checkbox-inline {
+    border: none;
+  }
 </style>
 
 </head>

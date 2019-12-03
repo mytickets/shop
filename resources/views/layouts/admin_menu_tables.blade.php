@@ -37,13 +37,13 @@
         <a href="{!! route('permissions.index') !!}"><i class="fa fa-circle-o  text-white"></i><span>Разрешения</span></a>
     </li>
      --}}
-    <li class="{{ Request::is('menus*') ? 'active' : '' }}">
+{{--     <li class="{{ Request::is('menus*') ? 'active' : '' }}">
         <a href="{!! route('menus.index') !!}"><i class="fa fa-bars" aria-hidden="true"></i><span>Меню</span></a>
-    </li>
+    </li> --}}
 
 @endif
 
-<li class="{{ Request::is('metatexts*') ? 'active' : '' }}">
+{{-- <li class="{{ Request::is('metatexts*') ? 'active' : '' }}">
     <a href="{!! route('metatexts.index') !!}"><i class="fa fa-edit"></i><span>Мета метки</span></a>
-</li>
+</li> --}}
 

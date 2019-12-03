@@ -10,6 +10,22 @@
 a[aria-expanded=false] .fa-chevron-down {
    display: none;
 }  */
+/*
+.box-title > a:before {
+    font-family: FontAwesome;
+    padding-right: 5px;
+    content:"\f078";
+}
+.box-title > a.collapsed:before {
+    content:"\f054";
+
+}
+.box-title > a:hover, 
+.box-title > a:active, 
+.box-title > a:focus  {
+    text-decoration:none;
+}*/
+
 </style>
     <section class="content-header">
         <h1>
@@ -42,6 +58,7 @@ a[aria-expanded=false] .fa-chevron-down {
                                 @include('cats.show_fields')
                               {{-- </div> --}}
                             </div>
+
                             <div class="box-header with-border">
                               <h4 class="box-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="chevron_change">
