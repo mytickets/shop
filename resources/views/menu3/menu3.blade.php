@@ -151,6 +151,8 @@
 @endsection
 
 @section('script')
+
+<script type="text/javascript" src="/js/anime.min.js"></script>
 <script type="text/javascript">
 
 
@@ -183,6 +185,14 @@ function doBounce(element, times, distance, speed) {
 $(document).ready(function (){
 
     $('.to_cart').click(function(e){
+
+// to_cart
+      // $('.cart_over').show();
+      // anime({
+      //   targets: '.cart_over',
+      //   translateY: -1500
+      // });
+
         // let this0=this
         e.preventDefault();
         // doBounce($(this), 1, '13px', 300);

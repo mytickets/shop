@@ -231,16 +231,16 @@
                                     <path d="M28.228,23.986L47.092,5.122c1.172-1.171,1.172-3.071,0-4.242c-1.172-1.172-3.07-1.172-4.242,0L23.986,19.744L5.121,0.88 c-1.172-1.172-3.07-1.172-4.242,0c-1.172,1.171-1.172,3.071,0,4.242l18.865,18.864L0.879,42.85c-1.172,1.171-1.172,3.071,0,4.242 C1.465,47.677,2.233,47.97,3,47.97s1.535-0.293,2.121-0.879l18.865-18.864L42.85,47.091c0.586,0.586,1.354,0.879,2.121,0.879 s1.535-0.293,2.121-0.879c1.172-1.171,1.172-3.071,0-4.242L28.228,23.986z"></path>
                                 </svg>
                             </a>
-<style type="text/css">
-.badge-notify{
-    background: #4CD964;
-    position: relative;
-    top: -18px;
-    left: -13px;
-    z-index: 100;
-    margin: 6px 0 6px 0px;
-  }    
-</style>
+                            <style type="text/css">
+                            .badge-notify{
+                                background: #4CD964;
+                                position: relative;
+                                top: -18px;
+                                left: -13px;
+                                z-index: 100;
+                                margin: 6px 0 6px 0px;
+                              }    
+                            </style>
                             <a class="menu_creative_btn2" href="/cart/" style="float: right; color: white; z-index: 99;">
                                 <i class="fa fa-2x fa-shopping-cart"></i>
                                 <span id="qty_badge" class="badge badge-notify" style="font-size:10px;" data-cart_id={{ $cart->id }}></span>
@@ -395,6 +395,29 @@
             </footer>
         </div>
 
+
+        <style type="text/css">
+            .cart_over {
+                position: fixed;
+                right: 1.2em;
+                bottom: 2em;
+
+            }
+            .menu_creative_btn3 {
+                padding: 21px 15px;
+                background-color: green;
+                border-radius: 50%;
+                color: white;
+                box-shadow: 2px 2px 15px grey;
+            }
+        </style>
+        <div class="cart_over" style="display: none;">
+            <a class="menu_creative_btn3" href="/cart/" style="z-index: 99;">
+                <i class="fa fa-2x fa-shopping-cart" style="margin-top: -2px;"></i>
+                {{-- <span id="qty_badge3" class="badge badge-notify" style="font-size:10px;" data-cart_id={{ $cart->id }}>12</span> --}}
+            </a>
+        </div>
+
         <!-- <script type="text/javascript" src="./index_files/help-panel.js"></script> -->
         <!-- <link rel="stylesheet" href="/index_files/help-panel.css" type="text/css" media="all"> -->
 
@@ -425,10 +448,8 @@ function qty_badge() {
 }
 
 $(document).ready(function (){
-
     // setTimeout(qty_badge, 1000);
     setInterval(qty_badge, 2000);
-
 });
 
 
