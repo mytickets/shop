@@ -44,7 +44,8 @@
     }
   </style>
 
-
+  {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.com/libraries/jquery.mask"> --}}
+  <script type="text/javascript" src="/js/jquery.inputmask.min.js"></script>
 @endsection
 
 @section('content')
@@ -528,6 +529,12 @@
     $("input.pay_type_online").click(function(e) {
 
     }).change(); // set initial state
+
+    $(document).ready(function(){
+      // $(selector).inputmask("99-9999999");  //static mask
+      $('#contact_number').inputmask({"mask": "+9(999) 999-99-99"}); //specifying options
+      // $(selector).inputmask("9-a{1,3}9{1,3}"); //mask with dynamic syntax
+    });
 
   </script>
 
