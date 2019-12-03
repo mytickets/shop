@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            <b>Изменить:</b> Order
+            <b>Изменить:</b> Заказ
         </h1>
    </section>
    <div class="content">
@@ -12,7 +12,6 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-
 
                      <style type="text/css">
                         .one_line_in {
@@ -40,7 +39,6 @@
                         }
                       </style>
 
-                   <div class="panel panel-info">
 
                       <div class="panel-body">
 
@@ -114,8 +112,6 @@
                         @endif
 
                       </div>
-
-                          
 
                       <script type="text/javascript">
                         $('span.btn-number').click(function(e){
@@ -227,10 +223,9 @@
                         jQuery('.panel-body').mousedown(function(e){ e.preventDefault(); });
                       </script>
 
-                </div>
-    </div>
-  </div>
-</div>
+             </div>
+           </div>
+       </div>
 
 
        <div class="box box-primary">
