@@ -27,7 +27,7 @@
 
 
 <div class="form-group col-sm-12">
-    {!! Form::label('subscribe', 'Уведомлять на почту:') !!}
+    {!! Form::label('subscribe', 'Получать уведомление о новом заказе:') !!}
     @if ($user->subscribe==1)
         Да
     @else

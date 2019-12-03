@@ -151,25 +151,30 @@ class UserController extends AppBaseController
 
             return redirect(route('users.index'));
         }
-        if ($input['set_pass']==1) {
 
-            $input['password'] = Hash::make($input['password']);
-            $input['password_confirmation'] = Hash::make($input['password_confirmation']);
-            //$user = $this->userRepository->create($input);
-            $user = $this->userRepository->update($input, $id);
-        } else {
+        if (isset($input['set_pass']) ) {
+            
+            if ($input['set_pass']==1) {
 
-            $u = User::find($id);
-            $input['password'] = $u->password;
-            $input['password_confirmation'] = $u->password;
-            $user = $this->userRepository->update($input, $id);
+                $input['password'] = Hash::make($input['password']);
+                $input['password_confirmation'] = Hash::make($input['password_confirmation']);
+                //$user = $this->userRepository->create($input);
+                $user = $this->userRepository->update($input, $id);
+            } else {
 
-            //$user = $this->userRepository->update($input, $id);
-            //$user = $this->userRepository->find($input);
-            //$input['password'] = $user;
-            //unset();
-            //unset($input['password_confirmation']);
+                $u = User::find($id);
+                $input['password'] = $u->password;
+                $input['password_confirmation'] = $u->password;
+                $user = $this->userRepository->update($input, $id);
+
+                //$user = $this->userRepository->update($input, $id);
+                //$user = $this->userRepository->find($input);
+                //$input['password'] = $user;
+                //unset();
+                //unset($input['password_confirmation']);
+            }
         }
+
 
 
         // $user = $this->userRepository->update($request->all(), $id);
