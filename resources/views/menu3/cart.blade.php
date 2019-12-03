@@ -274,10 +274,10 @@
 
                             <div class="panel-footer">
                               <div class="row text-center">
-                                <div class="col-xs-9">
+                                <div class="col-md-9">
                                   <h4 class="text-right">Итого <strong id="cart_total">{{ $cart->total() }}</strong></h4>
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-md-3">
                                   <button type="submit" value="Оплатить" class="btn-success btn-block" id="checkout_link" style="padding: 0 0;">
                                     Оплатить
                                   </button>
