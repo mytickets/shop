@@ -37,7 +37,7 @@
 <!-- Image Field -->
 <div class="form-group">
     {!! Form::label('image', __('Image') ) !!}
-    <p><img class="img-responsive" style="max-width:400px;" src="{!! $cat->image !!}"></p>
+    <p><img class="img-responsive" src="{!! $cat->image !!}"></p>
     <p>{!! $cat->image !!}</p>
 </div>
 

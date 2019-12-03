@@ -29,7 +29,7 @@
 <!-- Image Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('image', 'Фото:') !!}
-    <p><img class="img-responsive" style="max-width:400px;" src="{!! $cat->image !!}"></p>
+    <p><img class="img-responsive" src="{!! $cat->image !!}"></p>
     {!! $cat->image !!}
     {!! Form::file('image') !!}
 </div>
