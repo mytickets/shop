@@ -79,7 +79,8 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 //страница с формой для сброса пароля
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 //POST запрос для сброса старого и установки нового пароля
-Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+
 
 // Auth::routes();
 
