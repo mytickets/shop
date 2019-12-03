@@ -21,7 +21,7 @@ body.page #pagetitle {
 		<div id="pagetitle" class=" text-center"><div class="container" style="padding-top: 90px;"><p>Полный список категорий</p><h2>МЕНЮ</h2></div></div>
 
 
-<div id="page-content" style="margin-bottom: 82px;">
+<div id="page-content" >
 	<div id="default_page">
 		<div class="container">
 			<div class="contentarea clearfix">

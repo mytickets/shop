@@ -53,7 +53,7 @@
          </div>
   </div>
 
-  <div id="content">
+  <div id="content" >
 
 
         <!-- Page Title -->
@@ -75,7 +75,7 @@
         <div class="page-content">
             <div class="container">
                 <div class="row no-gutters">
-                    <div class="col-md-10 push-md-1" role="tablist">
+                    <div class="col-md-10 push-md-1 animated bounceInLeft" role="tablist">
                         <!-- Menu Category / Burgers -->
 
                      @foreach ($cats as $cat)
@@ -129,14 +129,11 @@
                         @endif
                     @endforeach
 
-
-
-
-
                     </div>
-            <hr>
-            {{-- @include('about_brands') --}}
-            @include('menu3.footer_contact')
+                    
+                    <hr>
+                    {{-- @include('about_brands') --}}
+                    @include('menu3.footer_contact')
 
                 </div>
 
