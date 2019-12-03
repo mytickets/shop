@@ -25,28 +25,23 @@
     h6 {
     text-align: left;
     }
-  </style>
-
-  <style type="text/css">
-    body.page #pagetitle {
-    background-image: url(/slider-bg4.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
-    background-color: #111111;
-    color: #ffffff;
-    }
-
 
     div.radio label input {
         margin-top: 10px !important;
     }
 
-
+    body.page #pagetitle {
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      -moz-background-size: cover;
+      -webkit-background-size: cover;
+      -o-background-size: cover;
+      -ms-background-size: cover;
+      background-color: #111111;
+      color: #ffffff;
+      background-image: url(/slider-bg4.jpg);
+    }
   </style>
 
 
@@ -54,7 +49,7 @@
 
 @section('content')
 
-   <div id="pagetitle" class=" text-center">
+   <div id="pagetitle" class=" text-center ">
          <div class="container" style="padding-top: 90px;">
             <p>Выбранные позиции</p>
             <h2>КОРЗИНА</h2>
@@ -66,7 +61,7 @@
          <div class="container">
             <div class="contentarea clearfix">
 
-              <div class="row">
+              <div class="row animated bounceInUp">
                   <div class="col-sm-12 col-md-10 col-md-offset-1">
                     <div class="panel panel-info">
                       <div class="panel-heading">
@@ -215,26 +210,34 @@
 
                               <div class="col-md-12 contact_adr" style="text-align: left;  display: none;">
                                 <b>Адрес доставки</b>
-                                <textarea name="contact_adr" id="contact_adr" style="width: 100%;" rows="5" placeholder="Укажите адрес: Населеный пункт, улица, номер дома, офис, домофон, этаж, примечания..."></textarea>
+                                <textarea name="contact_adr" id="contact_adr" style="width: 100%;" rows="5" placeholder="Укажите адрес: Населенный пункт, улица, номер дома, офис, домофон, этаж, примечания..."></textarea>
                               </div>
 
                               <div class="col-md-6" style="text-align: left;">
-                                <b>Контактный номер (телефон*)</b>
-	                            <div class="form-group">
+                                <b>Контактный номер (обязательно*)</b>
+  	                            <div class="form-group">
 
-        <div class="input-group">
-          <span class="input-group-addon">+7</span>
-          {{-- <input type="email" class="form-control" required="required" name="email"> --}}
+                                  <div class="input-group">
+                                    <span class="input-group-addon">
+                                      <i class="fa fa-phone"></i>            
+                                    </span>
+                                      <input type="text" name="contact_number" id="contact_number" value="" placeholder="11 цифр: +7(999)-888-77-77" class="form-control" required>
+                                      {{-- <input type="text" name="contact_number" id="contact_number" value="" placeholder="11 цифр: 79998887777" class="form-control" required pattern="[0-9]{11}"> --}}
+                                      {{-- <input type="number" name="contact_number" id="contact_number" value="" placeholder=" 11 цифр: 79998887777" class="form-control" required pattern="[0-9]{10}"> --}}
+                                  </div>
+                                </div>
+                              </div>
 
-	                                <input type="number" name="contact_number" id="contact_number" value="" placeholder=" 10 цифр без 7: 9998887777" class="form-control" required pattern="[0-9]{10}">
+                              <div class="col-md-6" style="text-align: left;">
+                                <b>Email (не обязательно)</b>
+                                <div class="form-group">
 
-
-        </div>
-                                  {{-- <input type="tel" id="phone" name="phone"
-                                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                                  placeholder="+7-924-681-0757" 
-                                      required> --}}
-
+                                  <div class="input-group">
+                                    <span class="input-group-addon">
+                                      <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    </span>
+                                      <input type="text" name="contact_email" id="contact_email" value="" placeholder="Ваша электронная почта" class="form-control" >
+                                  </div>
                                 </div>
                               </div>
 
@@ -251,17 +254,9 @@
                                   <h4 class="text-right">Итого <strong id="cart_total">{{ $cart->total() }}</strong></h4>
                                 </div>
                                 <div class="col-xs-3">
-{{--                                   <a href="/carts/{{$cart->id}}/checkout" class="btn-success btn-block" id="checkout_link">
-                                    Оплатить
-                                  </a> --}}
-
-                                  {{-- <a href="#" class="btn-success btn-block disabled" id="checkout_link" data-link="/carts/{{$cart->id}}/checkout" disabled>
-                                    Оплатить
-                                  </a> --}}
-                                  <button type="submit" value="Оплатить" class="btn-success btn-block disabled" id="checkout_link" data-link="/carts/{{$cart->id}}/checkout" >
+                                  <button type="submit" value="Оплатить" class="btn-success btn-block" id="checkout_link" >
                                     Оплатить
                                   </button>
-                                  {{-- <a href="/carts/{{$cart->id}}/clear" class="btn-danger btn-block" data-url="/carts/{{$cart->id}}/clear"> --}}
                                   <a href="#" class="btn-danger btn-block " data-url="/carts/{{$cart->id}}/clear" id="clear_btn">
                                     Очистить корзину
                                   </a>
@@ -306,6 +301,7 @@
 
 	// очистка корзины
 	$('#clear_btn').click(function(e){
+    $("#page-content").addClass('animated bounceOutDown')
 	  e.preventDeafult;
 	  $.ajax({
 	      url: $(this).data('url'),
@@ -464,31 +460,44 @@
 
 
 
-$("input.my_place").click(function(e) {
+    $("input.my_place").click(function(e) {
 
-	console.log( $(this).val() )
+    	console.log( $(this).val() )
 
-	if ($(this).val()==0) {
-		$(".stol_div").show()
-		$(".hotel_number_div").hide()
-		$(".contact_adr").hide()
-	}
-	if ($(this).val()==1) {
-		$(".stol_div").hide()
-		$(".hotel_number_div").show()
-		$(".contact_adr").hide()
+    	if ($(this).val()==0) {
+    		$(".stol_div").show()
+        $(".stol_div").addClass('animated bounceInLeft')
 
-	}
-	if ($(this).val()==2) {
-		$(".stol_div").hide()
-		$(".hotel_number_div").hide()
-		$(".contact_adr").show()
-	}
+        // $(".hotel_number_div").addClass('animated bounceOutRight')
+    		$(".hotel_number_div").hide()
+        // $(".contact_adr").addClass('animated bounceOutRight')
+    		$(".contact_adr").hide()
 
-    // class will be removed if checked="checked"
-    // otherwise will be added
-    $(this).toggleClass("terms_error", !this.checked);
-}).change(); // set initial state
+    	}
+    	if ($(this).val()==1) {
+    		$(".hotel_number_div").show()
+        $(".hotel_number_div").addClass('animated bounceInLeft')
+
+        // $(".stol_div").addClass('animated bounceOutRight')
+    		$(".stol_div").hide()
+        // $(".contact_adr").addClass('animated bounceOutRight')
+    		$(".contact_adr").hide()
+
+    	}
+    	if ($(this).val()==2) {
+    		$(".contact_adr").show()
+        $(".contact_adr").addClass('animated bounceInLeft')
+
+        // $(".stol_div").addClass('animated bounceOutRight')
+    		$(".stol_div").hide()
+        // $(".hotel_number_div").addClass('animated bounceOutRight')
+    		$(".hotel_number_div").hide()
+    	}
+
+        // class will be removed if checked="checked"
+        // otherwise will be added
+        $(this).toggleClass("terms_error", !this.checked);
+    }).change(); // set initial state
 
 
   </script>
