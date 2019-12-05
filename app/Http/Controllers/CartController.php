@@ -291,8 +291,8 @@ EOT;
                 // перебор пользователей
                 foreach ($subscribe_users as $key2 ) {
                     // если пользователь подписан получать заказы
-                    // if ($key2['subscribe']==1) {
-                    if (false) {
+                    if ($key2['subscribe']==1) {
+                    // if (false) {
 
                         // $from = env('MAIL_USERNAME', 'mltefive@gmail.com');
                         $to = $key2['email'];
