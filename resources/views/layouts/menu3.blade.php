@@ -145,7 +145,7 @@
 
             @media (max-width: 479px) {
                 h2 {
-                    font-size: 3em !important;
+                    font-size: 2em !important;
                 }
                 .cart_id {
                     font-size: 12px;
@@ -206,7 +206,7 @@
 {{--  --}}
 
     {{-- <body class="home page-template-default page page-id-609 full-width header_full_width header-top header_bgline header_opacity pagetitle_hide breadcrumbs_hide footer_fixed wpb-js-composer js-comp-ver-5.5.4 vc_responsive slider_first_row" style=""> --}}
-    <body class="home page-template-default page page-id-609 full-width header_full_width header-top header_bgline header_opacity pagetitle_hide breadcrumbs_hide footer_fixed wpb-js-composer js-comp-ver-5.5.4 vc_responsive" style="margin-left: 0px;margin-right: 0px;">
+    <body class="home page-template-default page page-id-609 full-width header_full_width header-top header_bgline header_opacity pagetitle_hide breadcrumbs_hide footer_fixed wpb-js-composer js-comp-ver-5.5.4 vc_responsive" style="margin-left: 0px;margin-right: 0px; margin-bottom: 0px; word-break: break-word;">
         <div id="page-wrap">
             <header class="clearfix full_width header-top header_type2" 
             >
@@ -241,7 +241,7 @@
                                 margin: 6px 0 6px 0px;
                               }    
                             </style>
-                            <a class="menu_creative_btn2" href="/cart/" style="float: right; color: white; z-index: 99;">
+                            <a class="menu_creative_btn2" href="/cart/" style="float: right; color: white; z-index: 99; position: relative; left: 20px; top: 9px;">
                                 <i class="fa fa-2x fa-shopping-cart"></i>
                                 <span id="qty_badge" class="badge badge-notify" style="font-size:10px;" data-cart_id={{ $cart->id }}></span>
                             </a>
@@ -314,7 +314,7 @@
                         </a>
                     </div>
 
-                         <a class="menu_creative_btn2" href="/cart/" style="float: right; color: white; z-index: 99; margin-right: 1em;">
+                         <a class="menu_creative_btn2" href="/cart/" style="float: right; color: white; z-index: 99; position: relative; top: 5px;">
                             <i class="fa fa-2x fa-shopping-cart"></i>
                             <span id="qty_badge2" class="badge badge-notify" style="font-size:10px;" data-cart_id={{ $cart->id }}></span>
                         </a>
@@ -356,7 +356,7 @@
             @yield('content')
 
             @include('menu3.footer_contact')
-            
+
         </div>
 
 

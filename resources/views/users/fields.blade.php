@@ -14,15 +14,17 @@
 <!-- Email Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('role_type', 'Роль:') !!}
-    {{-- {!! Form::text('email', null, ['class' => 'form-control']) !!} --}}
+    {{-- {!! var_dump($role_types) !!} --}}
+    {{-- {!! $role_types[$user->role_type] !!} --}}
+    {{-- {!! Form::text('role_type', null, ['class' => 'form-control']) !!} --}}
     {!! Form::select('role_type', $role_types, null, ['class' => 'form-control', 'required' => 'required']) !!}
 </div>
 
 <div class="form-group col-sm-6">
     {!! Form::label('subscribe', 'Получать уведомление о новом заказе:') !!}
     <label class="checkbox-inline form-control" style="    text-align: center;">
-        {{-- {!! Form::hidden('subscribe', 0) !!} --}}
-        {!! Form::checkbox('subscribe', '1', null) !!}
+        {!! Form::hidden('subscribe', 0) !!}
+        {!! Form::checkbox('subscribe', 1, null) !!}
     </label>
 </div>
 <!-- Email Field -->
@@ -45,21 +47,26 @@
         {{-- @if (isset($user->password)) --}}
     @if (isset($user->password))
         {{-- @if ( $user->password == '') --}}
+        Пароль нельзя увидеть, только изменить
         {{-- {!! Form::text('password', null, ['class' => 'form-control']) !!} --}}
         {!! Form::password('password', ['class' => 'form-control']) !!}
     @else
-        {{-- Пароль нельзя увидеть, только изменить --}}
         {{-- {!! Form::text('password', null, ['class' => 'form-control']) !!} --}}
         {!! Form::password('password', ['class' => 'form-control']) !!}
     @endif 
     {{-- @endif --}}
 </div>
-<div class="form-group col-sm-4 set_pass">
-    {!! Form::label('password_confirmation', 'Пароль подтверждение:') !!}
-    {{-- , 'required' => 'required' --}}
-    {{-- {!! Form::text('password_confirmation', null, ['class' => 'form-control']) !!} --}}
-    {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
-</div>
+
+@if (isset($user->password))
+@else
+@endif 
+    <div class="form-group col-sm-4 set_pass">
+        {!! Form::label('password_confirmation', 'Пароль подтверждение:') !!}
+        {{-- , 'required' => 'required' --}}
+        {{-- {!! Form::text('password_confirmation', null, ['class' => 'form-control']) !!} --}}
+        {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
+    </div>
+
 
 
 

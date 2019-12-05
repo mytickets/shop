@@ -90,7 +90,7 @@
                                 <div class="row gutters-sm">
                                         @foreach ( \App\Models\Product::where('cat_id', "=", $cat->ident)->get() as $product)
                                           @if ( $product->menu == 1)
-                                    <div class="col-lg-4 col-6">
+                                    <div class="col-lg-4 col-12">
 
 
                                             <!-- Menu Item -->

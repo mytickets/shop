@@ -63,6 +63,7 @@
 <div class="form-group">
     {!! Form::label('parent_id', __('Parent Id').':' ) !!}
     {!! $cat->parent_id !!}
+    
 </div>
 
 

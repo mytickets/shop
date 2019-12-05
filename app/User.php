@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 // laravel-permission
-use Spatie\Permission\Traits\HasRoles;
+// use Spatie\Permission\Traits\HasRoles;
 
 
 /**
@@ -39,7 +39,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
     // laravel-permission
-    use HasRoles;
+    // use HasRoles;
     use Notifiable;
 
     public $table = 'users';
@@ -52,7 +52,6 @@ class User extends Authenticatable
     public static $rules = [
         
     ];
-
     
 
     /**

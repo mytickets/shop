@@ -2,8 +2,17 @@
 <div class="container">
 
     
-                            <div class="animated bounceInRight vc_row wpb_row vc_row-fluid vc_custom_1539210243857 ult-vc-hide-row vc_row-has-fill" data-rtl="false" data-row-effect-mobile-disable="true" data-img-parallax-mobile-disable="true" style="position: relative;">
-                                <div class="upb_row_bg vcpb-vz-jquery" data-upb_br_animation="" data-parallax_sense="50" data-bg-override="full" data-bg-animation="left-animation" data-bg-animation-type="h" data-animation-repeat="repeat" style="background-size: cover; background-repeat: no-repeat; background-color: rgba(0, 0, 0, 0); background-image: url(&quot;http://benedicta.evatheme.com/demo3/wp-content/uploads/2018/10/slider-bg1.jpg&quot;); background-attachment: scroll; min-width: 1310px; left: -55px; width: 1310px; background-position: 50% -473px;"></div>
+                            <div class="vc_row wpb_row vc_row-fluid vc_custom_1539210243857 ult-vc-hide-row vc_row-has-fill" data-rtl="false" data-row-effect-mobile-disable="true" data-img-parallax-mobile-disable="true" style="position: relative;">
+                                <div class="upb_row_bg vcpb-vz-jquery" data-upb_br_animation="" data-parallax_sense="50" data-bg-override="full" data-bg-animation="left-animation" data-bg-animation-type="h" data-animation-repeat="repeat" style="
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url(/slider-bg1.jpg);
+    background-attachment: scroll;
+    min-width: 1310px;
+    left: -96.6667px;"></div
+
+
+                                    >
                                 <div class="wpb_column vc_column_container vc_col-sm-4">
                                     <div class="vc_column-inner">
                                         <div class="wpb_wrapper">
@@ -57,7 +66,7 @@
                                                 <div class="uvc-sub-heading ult-responsive" data-ultimate-target=".uvc-heading.ultimate-heading-21415d99d51fe9a71 .uvc-sub-heading " data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:16px;&quot;,&quot;line-height&quot;:&quot;desktop:26px;&quot;}" style="font-family:'Roboto';font-weight:normal;color:#ffffff;">
                                                     <span id="result_box" class="short_text" lang="en"><span class="">Следите за нами<br> в социальных сетях.</span></span>
                                                     <p></p>
-                                                    <h6><span style="color: #ffffff;"><a style="color: #ffffff;" href="#">VK</a></span><br> <a href="#"><span style="color: #ffffff;">Facebook</span></a></h6>
+                                                    <h6><span style="color: #ffffff;"><a style="color: #ffffff;" href="#">VK</a></span><br> <a href="#"><span style="color: #ffffff;">Fb</span></a></h6>
                                                     <p></p>
                                                 </div>
                                             </div>

@@ -141,10 +141,10 @@ class UserController extends AppBaseController
      */
     public function update($id, UpdateUserRequest $request)
     {
-        $input = $request->all();
         $user = $this->userRepository->find($id);
 
-        // dd($input['set_pass']);
+        $input = $request->all();
+        // dd($input);
 
         if (empty($user)) {
             Flash::error('User объект не найден');
@@ -152,31 +152,24 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        if (isset($input['set_pass']) ) {
-            
-            if ($input['set_pass']==1) {
+        // $u = User::find($id);
 
+        if (isset($input['set_pass']) ) {
+            if ($input['set_pass']==1) {
                 $input['password'] = Hash::make($input['password']);
                 $input['password_confirmation'] = Hash::make($input['password_confirmation']);
-                //$user = $this->userRepository->create($input);
-                $user = $this->userRepository->update($input, $id);
-            } else {
-
-                $u = User::find($id);
-                $input['password'] = $u->password;
-                $input['password_confirmation'] = $u->password;
-                $user = $this->userRepository->update($input, $id);
-
-                //$user = $this->userRepository->update($input, $id);
-                //$user = $this->userRepository->find($input);
-                //$input['password'] = $user;
-                //unset();
-                //unset($input['password_confirmation']);
             }
+        } else {
+            $input['password'] = $user->password;
+            $input['password_confirmation'] = $user->password;
+            //$user = $this->userRepository->update($input, $id);
+            //$user = $this->userRepository->find($input);
+            //$input['password'] = $user;
+            //unset();
+            //unset($input['password_confirmation']);
         }
 
-
-
+        $user = $this->userRepository->update($input, $id);
         // $user = $this->userRepository->update($request->all(), $id);
 
         Flash::success('User обновлено успешно.');
