@@ -137,12 +137,12 @@
               </div>
 
 
-            @include('menu3.footer_contact')
 
             </div>
          </div>
       </div>
    </div>
+            
       
 @endsection
 

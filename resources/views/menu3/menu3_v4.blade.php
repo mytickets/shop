@@ -128,7 +128,8 @@
 
                      {{-- {{ $cats[0]->name }} --}}
 
-                  @include('menu3.footer_contact')
+                  
+
 
                   </div>
                </div>

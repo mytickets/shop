@@ -133,7 +133,8 @@
                     
                     <hr>
                     {{-- @include('about_brands') --}}
-                    @include('menu3.footer_contact')
+                    
+
 
                 </div>
 

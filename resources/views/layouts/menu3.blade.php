@@ -139,7 +139,7 @@
 
             @media (max-width: 767px) {
                 h2 {
-                    font-size: 5em !important;
+                    font-size: 3.4em !important;
                 }
             }
 
@@ -354,45 +354,9 @@
 
 
             @yield('content')
-            {{-- page-content --}}
 
-            {{-- footer --}}
-            {{-- 82px --}}
-            {{-- <footer class="full_width with_backtotop  fixed" style="height: 6em;"> --}}
-            <footer class="full_width with_backtotop " style="margin-top: -2em; display: none;">
-                <div id="footer_bottom">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6 copyright_wrap">
-                                <div class="copyright">
-                                    Разработка 2019 <a href="">Alex&Co</a>
-                                    . Все права соблюденены.
-                                </div>
-                            </div>
-                            <div class="col-sm-6 social_links_wrap text-right">
-                                <a class="social_link facebook" href="/demo3/#" target="_blank">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                                {{-- <a class="social_link twitter" href="/demo3/#" target="_blank">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                                <a class="social_link google-plus" href="/demo3/#" target="_blank">
-                                    <i class="fa fa-google-plus"></i>
-                                </a> --}}
-                                <a class="social_link instagram" href="/demo3/#" target="_blank">
-                                    <i class="fa fa-instagram"></i>
-                                </a>
-                                {{-- <a class="social_link behance" href="/demo3/#" target="_blank">
-                                    <i class="fa fa-behance"></i>
-                                </a> --}}
-                                <a id="footer-backtop" href="javascript:void(0);" style="display: block;">
-                                    <i></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            @include('menu3.footer_contact')
+            
         </div>
 
 

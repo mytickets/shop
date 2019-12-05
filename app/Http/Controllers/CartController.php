@@ -304,7 +304,7 @@ EOT;
                         // отправляем заказ на почту
                         Mail::send(['text'=>'order_email'], $data, function($message) use ($contactEmail, $contactName) {
                                 $message->to($contactEmail, $contactName)->subject('Заказ');
-                                $message->from(env('MAIL_USERNAME', 'mltefive@gmail.com'),'Сайт');
+                                $message->from(env('MAIL_USERNAME', 'zakaz@restoran-nadezhda.com'),'Сайт');
                             });
 
 
@@ -315,7 +315,7 @@ EOT;
 
                             Mail::send(['text'=>'order_email'], $data2, function($message) use ($contactEmail, $contactName) {
                                     $message->to($contactEmail, 'Гость')->subject('Заказ');
-                                    $message->from(env('MAIL_USERNAME', 'mltefive@gmail.com'),'Сайт');
+                                    $message->from(env('MAIL_USERNAME', 'zakaz@restoran-nadezhda.com'),'Сайт');
                                 });
                         } // if (isset($input['contact_email'])) {
 

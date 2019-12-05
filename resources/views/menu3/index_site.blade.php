@@ -138,7 +138,8 @@
 
 
                             @include('menu3.index_why')
-                            @include('menu3.footer_contact')
+                            
+
                             
                         </div>
                     </div>
