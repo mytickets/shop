@@ -233,13 +233,15 @@ class CartController extends AppBaseController
                     $contact_email = 'нет';
                 }
 
-                if (isset($input['order_date'])) {
+                // if (isset($input['order_date'])) {
+                if(!empty($input['order_date'])) {
                     $order_date = $input['order_date'];
                 } else {
                     $order_date = 'сегодня';
                 }
 
-                if (isset($input['order_time'])) {
+                // if (isset($input['order_time'])) {
+                if(!empty($input['order_time'])) {
                     $order_time = $input['order_time'];
                 } else {
                     $order_time = 'сейчас';
@@ -249,13 +251,11 @@ class CartController extends AppBaseController
                 $this_pay_type  = $this->pay_types[$input['pay_type']];
 
 $comment = <<<EOT
-Новый заказ
-
+Тип доставки: $this_pay_place
+Тип оплаты: $this_pay_type
 Телефон: $contact_number
 Email: $contact_email
-Место: $this_pay_place
-Номер места/номера или адрес заказа: $pay_adr
-Тип оплаты: $this_pay_type
+Адрес заказа или Номер места/номера: $pay_adr
 
 На дату: $order_date
 На время: $order_time

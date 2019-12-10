@@ -16,6 +16,7 @@ use Illuminate\Http\UploadedFile;
 // controller.stub
 
 use Illuminate\Support\Facades\Redirect;
+use Mail;
 
 use App\Models\Order;
 
@@ -164,6 +165,22 @@ class OrderController extends AppBaseController
         }
 
         $input = $request->all();
+
+
+
+        // если установлен contact_email
+        if (isset($input['user_id']) && $input['user_id']!=0) {
+            $user = \App\Models\User::find($input['user_id']);
+
+            $data2 = array('order' => $order);
+            $contactEmail=$user->email;
+            $contactName=$user->name;
+            Mail::send(['text'=>'order_email'], $data2, function($message) use ($contactEmail, $contactName) {
+                    $message->to($contactEmail, $contactName)->subject('Заказ');
+                    $message->from(env('MAIL_USERNAME', 'zakaz@restoran-nadezhda.com'),'Сайт');
+                });
+        } // if (isset($input['contact_email'])) {
+
         // if ($request->hasFile('image')) {
         //     $path = $request->file('image')->store('public/orders');
         //     $publicPath = \Storage::url( $path );
