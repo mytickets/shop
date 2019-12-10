@@ -15,9 +15,9 @@ class CreateMetatextsTable extends Migration
     {
         Schema::create('metatexts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code_name');
-            $table->longText('code_text');
-            $table->boolean('draft');
+            $table->string('code_name')->nullable();
+            $table->longText('code_text')->nullable();
+            $table->boolean('draft')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

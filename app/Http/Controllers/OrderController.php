@@ -15,6 +15,8 @@ use Illuminate\Http\File;
 use Illuminate\Http\UploadedFile;
 // controller.stub
 
+use Illuminate\Support\Facades\Redirect;
+
 use App\Models\Order;
 
 class OrderController extends AppBaseController
@@ -110,6 +112,7 @@ class OrderController extends AppBaseController
 
         return view('orders.show')
                 ->with('order', $order)
+                ->with('cats', \App\Models\Cat::where('parent_id',0)->get() )
                 ->with('status', $this->status)
                 ->with('pay_types', $this->pay_types)
                 ->with('pay_places', $this->pay_places);
@@ -230,7 +233,8 @@ class OrderController extends AppBaseController
     public function remove_items($id)
     {
         $order = Order::find($id);
-        return $order->remove_items();
+        $order->remove_items();
+        return Redirect::back();
     }
 
     public function check($id, Request $request)

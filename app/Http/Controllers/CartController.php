@@ -15,6 +15,8 @@ use Illuminate\Http\File;
 use Illuminate\Http\UploadedFile;
 // controller.stub
 
+use Illuminate\Support\Facades\Redirect;
+
 use App\Models\Cart;
 use Mail;
 
@@ -195,7 +197,7 @@ class CartController extends AppBaseController
     public function remove_items($id)
     {
         $cart = Cart::find($id);
-        return $cart->remove_items();
+        $cart->remove_items();
     }
 
 

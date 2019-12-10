@@ -5,21 +5,21 @@
 </div>
 
 <!-- Pay Type Field -->
-{{-- <div class="form-group col-sm-6"> --}}
-    {{-- {!! Form::label('pay_type', __('Pay Type')) !!} --}}
-    {{-- {!!  Form::select('pay_type', $pay_types, null, ['class' => 'form-control']) !!} --}}
+<div class="form-group col-sm-4">
+    {!! Form::label('pay_type', __('Pay Type')) !!}
+    {!!  Form::select('pay_type', $pay_types, null, ['class' => 'form-control']) !!}
     {{-- {!! Form::text('pay_type', null, ['class' => 'form-control', 'disabled'=>'']) !!} --}}
-{{-- </div> --}}
+</div>
 
 <!-- Pay Place Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-4">
     {!! Form::label('pay_place', __('Pay Place')) !!}
     {{-- {!! Form::text('pay_place', null, ['class' => 'form-control', 'disabled'=>'']) !!} --}}
     {!!  Form::select('pay_place', $pay_places, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Status Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-4">
     {!! Form::label('status', __('Status')) !!}
     {{-- {!! Form::text('status', null, ['class' => 'form-control']) !!} --}}
     {!!  Form::select('status', $status, null, ['class' => 'form-control']) !!}
@@ -45,6 +45,12 @@
     {!! Form::text('pay_contact', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Status Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('user_id', 'Ответственный') !!}
+    {{-- {!!  Form::select('user_id', $users, null, ['class' => 'form-control']) !!} --}}
+    {!!  Form::select('user_id', App\Models\User::all()->pluck('name', 'id')->prepend('Нет ответственного', '0'), null, ['class' => 'form-control']) !!}
+</div>
 
 
 <!-- Comment Field -->

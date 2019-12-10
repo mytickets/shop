@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSubscribeToUsersTable extends Migration
+class AddUserIdToOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class AddSubscribeToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->boolean('subscribe')->nullable()->default(false);
+        Schema::table('orders', function (Blueprint $table) {
+            $table->bigInteger('user_id')->nullable();
         });
     }
-
-
 
     /**
      * Reverse the migrations.
@@ -28,8 +25,6 @@ class AddSubscribeToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('orders');
     }
 }

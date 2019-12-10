@@ -1,6 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
+
+  <div class="modal fade" id="modal-default" style="display: none;">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span></button>
+            
+            <h4 class="modal-title">Выбрать продукт(ы) <span id="title_ident"></span> </h4>
+            <span style="float: left;"><button type="button" class="btn btn-default pull-left" data-dismiss="modal">Закрыть</button></span>
+            <span style="float: right;"><button id="update" type="button" class="btn btn-primary pull-right" >Обновить</button></span>
+          </div>
+          <div class="modal-body" id="modal-body" style="    text-align: left;">
+              @include('orders.recursive_tree')
+          </div>
+          <div class="modal-footer">
+            <span style="float: left;"><button type="button" class="btn btn-default pull-left" data-dismiss="modal">Закрыть</button></span>
+            <span style="float: right;"><button id="update" type="button" class="btn btn-primary pull-right" >Обновить</button></span>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+
     <section class="content-header">
         <h1>
             <b>Изменить:</b> Заказ
@@ -36,9 +61,6 @@
                       <div class="panel-body">
 
                         @if (count($order->line_items) > 0)
-
-
-
                             <div class="box-body table-responsive no-padding">
 
                               <table class="table table-hover">
@@ -89,10 +111,9 @@
                                     <td>
                                       <span class="span1">
                                         <a href="#" class="deleteProduct" data-id="{!! $line->id !!}" style="color: red;">X</a>
-                                        {!! Form::open(['route' => ['lineItems.destroy', $line->id], 'method' => 'delete']) !!}
-                                        {{-- {!! Form::button('X', ['type' => 'submit', 'class' => 'destroy_button', 'style'=>'background-color: white;    color: red;', 'onclick' => "return confirm('Вы уверены?')"]) !!} --}}
-                                        {!! Form::button('X', ['type' => 'submit', 'class' => 'destroy_button', 'style'=>'background-color: white;    color: red;']) !!}
-                                        {!! Form::close() !!}
+                                        {{-- {!! Form::open(['route' => ['lineItems.destroy', $line->id], 'method' => 'delete']) !!} --}}
+                                        {{-- {!! Form::button('X', ['type' => 'submit', 'class' => 'destroy_button', 'style'=>'background-color: white;    color: red;']) !!} --}}
+                                        {{-- {!! Form::close() !!} --}}
                                       </span>
                                     </td>
 
@@ -100,181 +121,71 @@
                                   @endforeach
                                 </tbody>
                               </table>
-                            
+
                             </div>
-
-                          @foreach ( $order->line_items as $line)
-{{-- 
-                            <div class="row">
-
-
-                              <div class="col-xs-2">
-                                <img class="img-responsive" style="max-width: 4em !important;" src="{{ $line->product->image ?? "http://placehold.it/100x70" }}">
-                              </div>
-
-                              <div class="col-xs-5">
-                                <h4 class="product-name">
-
-                                  <a href="/products/{{ $line->product->ident }}">
-                                      <strong>{{ $line->product->name ?? "Название" }}</strong>
-                                  </a>
-
-                                </h4>
-
-                                  @if (mb_strlen($line->product->desc)>140)
-                                    {{ mb_substr($line->product->desc, 0, 140,'UTF-8') }}...
-                                  @else
-                                    {{ $line->product->desc }}
-                                  @endif
-
-
-                              </div>
-
-
-                              <div class="col-xs-5" style="text-align: left;">
-                                <div class="col-xs-12" data-order_id="{{ $order->id }}" id="order_id">
-
-                                  <span>{{ $line->product->price_amount ?? "" }} X</span>
-
-                                  <span class="btn-number" style="    cursor: pointer; min-width: 1em; color: red; border: 1px solid grey; padding: 2px;" data-type="minus" >-</span>
-                                  <input type="text" min="1" max="1000" class="input-number form-control input-sm one_line one_line_in" value="{{ $line->qty ?? "" }}" data-line_id="{{ $line->id }}">
-
-                                  <span class="btn-number" style="    cursor: pointer; min-width: 1em; color: green; border: 1px solid grey; padding: 2px;" data-type="plus" >+</span>
-
-                                  <span class="one_line">={{ $line->qty*$line->product->price_amount }}</span>
-
-                                  <span class="span1">
-                                    {!! Form::open(['route' => ['lineItems.destroy', $line->id], 'method' => 'delete']) !!}
-                                    {!! Form::button('X', ['type' => 'submit', 'class' => 'destroy_button', 'style'=>'background-color: white;    color: red;', 'onclick' => "return confirm('Вы уверены?')"]) !!}
-                                    {!! Form::close() !!}
-                                  </span>
-                                </div>
-
-                              </div>
-                            </div>
-                            <hr> --}}
-
-                            
-
-                          @endforeach
+                        @else
+                          <div class="text-center">
+                            <h5>нет позиций</h5>
+                          </div>
+                        @endif
 
                           <div class="panel-footer">
                             <div class="row text-center">
                               <div class="col-xs-12">
-                                <span class="text-left">
-                                  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                                <span class="pull-left">
+                                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                                     Добавить
                                   </button>
                                 </span>
-
-
-                                <div class="modal fade" id="modal-default" style="display: none;">
-                                    <div class="modal-dialog modal-lg">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span></button>
-                                          
-                                          <h4 class="modal-title">Выбрать продукт(ы) <span id="title_ident"></span> </h4>
-                                          <span style="float: left;"><button type="button" class="btn btn-default pull-left" data-dismiss="modal">Закрыть</button></span>
-                                          <span style="float: right;"><button id="update" type="button" class="btn btn-primary pull-right" >Обновить</button></span>
-                                        </div>
-                                        <div class="modal-body" id="modal-body" style="    text-align: left;">
-                                          {{-- <p>Список продуктов</p> --}}
-                                          {{-- <table class="table" id="table"></table> --}}
-                                          {{-- TODO CATS PRODUCTS --}}
-                                            {{-- @include('orders.tree') --}}
-                                            @include('orders.recursive_tree')
-
-                                        </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Закрыть</button>
-                                          {{-- <button type="button" class="btn btn-primary">Добавить</button> --}}
-                                        </div>
-                                      </div>
-                                      <!-- /.modal-content -->
-                                    </div>
-                                    <!-- /.modal-dialog -->
-                                  </div>
-
+                                @if (count($order->line_items) > 0)
+                                <span class="pull-left" style="margin-left: 1em;">
+                                  <a href="/orders/{{$order->id}}/clear" class="btn btn-danger" role="button">
+                                    Очистить заказ
+                                  </a>
+                                </span>
+                                @endif
                                 <h4 class="text-right">Итого <strong id="cart_total">{{ $order->total() }}</strong></h4>
                               </div>
-                              {{-- <div class="col-xs-3"> --}}
-                                {{-- <button type="button" class="btn btn-success btn-block" onclick="alert('print');">                                  Счет</button> --}}
-                                {{-- <a href="/carts/{{$order->id}}/clear" class="btn btn-danger btn-block" >
-                                  Очистить
-                                </a> --}}
-                              {{-- </div> --}}
                             </div>
                           </div>
-
-                        @endif
 
                       </div>
 
 
                       <script type="text/javascript">
+                        $('#modal-default').on('shown.bs.modal', function (e) {
+                          // do something...
+                          console.log('modal')
+                        })
 
+                        $(document).ready(function(){
 
-$('#modal-default').on('shown.bs.modal', function (e) {
-  // do something...
-  console.log('modal')
+                            // update
+                            $("#update").click(function(e){
+                              location.reload();
+                            });
 
+                            $(".deleteProduct").click(function(e){
+                              tt=this
+                              var id = $(this).data('id')
+                              var token = $("meta[name='csrf-token']").attr("content");
+                              console.log(id)
+                              $.ajax(
+                                {
+                                  url: "/lineItems/"+id+"/del",
+                                  type: 'GET',
+                                  data: {
+                                      "id": id,
+                                      "_token": token,
+                                  },
+                                  success: function (res){
+                                      console.log(res);
+                                      $(tt).parent().parent().parent().remove()
+                                  }
+                                })
+                             });
+                        });
 
-
-})                        
-  $(document).ready(function(){
-
-// update
-    $("#update").click(function(e){
-      // =location
-      location.reload();
-
-    });
-
-  $(".deleteProduct").click(function(e){
-    tt=this
-    var id = $(this).data('id')
-    var token = $("meta[name='csrf-token']").attr("content");
-    console.log(id)
-    $.ajax(
-      {
-        url: "/lineItems/"+id+"/del",
-        type: 'GET',
-        data: {
-            "id": id,
-            "_token": token,
-        },
-        success: function (res){
-            console.log(res);
-            $(tt).parent().parent().parent().remove()
-        }
-      })
-   });
-
-
-  });
-
-    // $.ajax({
-    //      url: '/api/products',
-    //      // url: 'https://examples.wenzhixin.net.cn/examples/bootstrap_table/data?search=&sort=&order=asc&offset=0&limit=10',
-
-    //      // dataType: 'json',
-    //      success: function(data) {
-
-    //         // console.log(data)
-    //         // table_data1 = data
-    //         // console.log(table_data1['data'])
-
-    //         // $("#modal-body").html() = data
-    //          // $('#clienti').bootstrapTable({
-    //          //    data: data
-    //          // });
-    //      },
-    //      error: function(e) {
-    //          console.log(e.responseText);
-    //      }
-    //   });
                         $('span.btn-number').click(function(e){
                             type      = $(this).attr('data-type');
                             console.log(type)
@@ -381,7 +292,6 @@ $('#modal-default').on('shown.bs.modal', function (e) {
                             }
                         });
 
-                        // jQuery('.panel-body').mousedown(function(e){ e.preventDefault(); });
                       </script>
 
              </div>

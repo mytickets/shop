@@ -21,9 +21,6 @@ class Order extends Model
 {
 
     public $table = 'orders';
-    
-
-
 
     public $fillable = [
         'pay_type',
@@ -32,7 +29,8 @@ class Order extends Model
         'pay_contact',
         'pay_discount',
         'status',
-        'comment'
+        'comment',
+        'user_id'
     ];
 
     /**
@@ -46,7 +44,8 @@ class Order extends Model
         'pay_place' => 'string',
         'pay_contact' => 'string',
         'pay_discount' => 'float',
-        'status' => 'string'
+        'status' => 'string',
+        'user_id' => 'integer'
     ];
 
     /**
@@ -66,15 +65,10 @@ class Order extends Model
 
     public function total()
     {
-        // $this->line_items
         $total_price = 0;
         foreach ($this->line_items as $key => $value) {
             $total_price = $total_price + $value->product->price_amount*$value->qty;
-            // echo $total_price."<br>";
-        // dd($total_price);
-        // dd($total_price);
         }
-
         return $total_price;
     }
 
@@ -85,7 +79,6 @@ class Order extends Model
         foreach ($this->line_items as $key => $value) {
             $value->delete();
         }
-        return 'ok';
     }
 
 
