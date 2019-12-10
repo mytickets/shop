@@ -1,3 +1,6 @@
+$booking = Booking::where('id', '=', $id)->first();
+
+
 
 https://habr.com/ru/post/354036/
 https://magora-systems.ru/how-to-create-a-software-requirement-specification/

@@ -312,6 +312,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('cats_tree', 'CatController@cats_tree');
     Route::get('products_enable', 'ProductController@products_enable');
 
+    Route::get('carts_destroy_all', 'CartController@destroy_all');
 });
 //  !!! END AUTH !!!
 
@@ -340,6 +341,9 @@ Route::get('/product/{ident}/to_cart/{qty}', 'ProductController@to_cart');
 
 
     Route::get('/cats/{ident}/check_menu', 'CatController@check_menu');
+    Route::get('/cats/{ident}/cats_products', 'CatController@cats_products');
+    
+    
     Route::get('/products/{ident}/check_menu', 'ProductController@check_menu');
     Route::get('/products/{ident}/check_menu2', 'ProductController@check_menu2');
 
@@ -348,18 +352,22 @@ Route::get('/product/{ident}/to_cart/{qty}', 'ProductController@to_cart');
     Route::get('/carts/{id}/clear', 'CartController@remove_items');
     Route::get('/carts/{id}/checkout', 'CartController@checkout');
 
-    Route::get('carts_destroy_all', 'CartController@destroy_all');
-
 
     Route::get('/orders/{id}/total', 'OrderController@total');
     Route::get('/orders/{id}/total_qty', 'OrderController@total_qty');
     Route::get('/orders/{id}/clear', 'OrderController@remove_items');
     Route::get('/orders/{id}/checkout', 'OrderController@checkout');
+    Route::get('/orders/{id}/add_product_item/{product_id}', 'OrderController@add_product_item');
+
     
     Route::get('orders_destroy_all', 'OrderController@destroy_all');
     
 
     Route::resource('lineItems',            'LineItemController');
+    
+    Route::get('/lineItems/{id}/del', 'LineItemController@del');
+    // Route::delete('lineItems/{id}', 'LineItemController@destroy')->name('lineItems.destroy');
+
     Route::get('/lineItems_destroy_all',    'LineItemController@destroy_all');
     Route::get('/qty_minus/{id}',           'LineItemController@qty_minus');
     Route::get('/qty_plus/{id}',            'LineItemController@qty_plus');
@@ -387,9 +395,6 @@ Route::get('/', function () {
 Route::get('/contact', function () {
     return view('menu3.contact1');
 });
-
-
-
 
 
 Route::get('/reservation', function () {

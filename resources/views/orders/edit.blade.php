@@ -6,7 +6,7 @@
             <b>Изменить:</b> Заказ
         </h1>
    </section>
-   <div class="content">
+   <div class="content" data-order_id="{{ $order->id }}" id="order_id">
        @include('adminlte-templates::common.errors')
 
        <div class="box box-primary">
@@ -20,22 +20,15 @@
                         font-size: 1em;
                         padding: 0;
                         margin: 0px -1px;
-                        height: 36px;                                        
+                        height: 24px;
                         }
-                        .one_line {
-                        display: inline-block !important;
+                        .one_line, .span1 {
+                          display: inline-block !important;
                         }
-
-                        h7, h6 {
-                        width: 4em;
-                        display: inline-block;
-
-                        }
-                        h7 {
-                        text-align: right;
-                        }
-                        h6 {
-                        text-align: left;
+                        .destroy_button {
+                          padding: 1px;
+                          border: 1px solid grey;
+                          line-height: 13px;
                         }
                       </style>
 
@@ -44,9 +37,76 @@
 
                         @if (count($order->line_items) > 0)
 
-                          @foreach ( $order->line_items as $line)
 
+
+                            <div class="box-body table-responsive no-padding">
+
+                              <table class="table table-hover">
+                                <thead>
+                                  <th>
+                                    id
+                                  </th>
+                                  <th>
+                                    Фото
+                                  </th>
+                                  <th>
+                                    Наименование
+                                  </th>
+                                  <th>
+                                    Кол-во
+                                  </th>
+                                  <th>Цена</th>
+                                  <th>
+                                    Сумма
+                                  </th>
+                                  <th>
+                                    Действия
+                                  </th>
+                                </thead>
+                                <tbody>
+                                  @foreach ( $order->line_items as $line)
+                                  <tr>
+                                    <td>
+                                      {{ $line->product->id }}
+                                    </td>
+                                    <td>
+                                      <img class="img-responsive" style="max-width: 4em !important;" src="{{ $line->product->image ?? "http://placehold.it/100x70" }}">
+                                    </td>
+                                    <td>{{ $line->product->name }}</td>
+                                    <td>{{ $line->product->price_amount }}</td>
+                                    <td>
+                                      {{-- {{ $line->qty }} --}}
+                                      <span class="btn-number" style="    cursor: pointer; min-width: 1em; color: red; border: 1px solid grey; padding: 2px;" data-type="minus" >-</span>
+                                      <input type="text" min="1" max="1000" class="input-number form-control input-sm one_line one_line_in" value="{{ $line->qty ?? "" }}" data-line_id="{{ $line->id }}">
+
+                                      <span class="btn-number" style="    cursor: pointer; min-width: 1em; color: green; border: 1px solid grey; padding: 2px;" data-type="plus" >+</span>
+
+                                    </td>
+                                    <td>
+                                      {{-- {{ $line->qty*$line->product->price_amount }} --}}
+                                      <span class="one_line">{{ $line->qty*$line->product->price_amount }}</span>
+                                    </td>
+                                    <td>
+                                      <span class="span1">
+                                        <a href="#" class="deleteProduct" data-id="{!! $line->id !!}" style="color: red;">X</a>
+                                        {!! Form::open(['route' => ['lineItems.destroy', $line->id], 'method' => 'delete']) !!}
+                                        {{-- {!! Form::button('X', ['type' => 'submit', 'class' => 'destroy_button', 'style'=>'background-color: white;    color: red;', 'onclick' => "return confirm('Вы уверены?')"]) !!} --}}
+                                        {!! Form::button('X', ['type' => 'submit', 'class' => 'destroy_button', 'style'=>'background-color: white;    color: red;']) !!}
+                                        {!! Form::close() !!}
+                                      </span>
+                                    </td>
+
+                                  </tr>
+                                  @endforeach
+                                </tbody>
+                              </table>
+                            
+                            </div>
+
+                          @foreach ( $order->line_items as $line)
+{{-- 
                             <div class="row">
+
 
                               <div class="col-xs-2">
                                 <img class="img-responsive" style="max-width: 4em !important;" src="{{ $line->product->image ?? "http://placehold.it/100x70" }}">
@@ -72,32 +132,71 @@
 
 
                               <div class="col-xs-5" style="text-align: left;">
-                                <div class="col-xs-10" data-order_id="{{ $order->id }}" id="order_id">
+                                <div class="col-xs-12" data-order_id="{{ $order->id }}" id="order_id">
 
-                                  <h7>{{ $line->product->price_amount ?? "" }} X</h7>
+                                  <span>{{ $line->product->price_amount ?? "" }} X</span>
 
-                                  <span class="btn-number" style="    cursor: pointer; min-width: 1em; color: red; border: 1px solid grey; padding: 6px 9px;" data-type="minus" >-</span>
+                                  <span class="btn-number" style="    cursor: pointer; min-width: 1em; color: red; border: 1px solid grey; padding: 2px;" data-type="minus" >-</span>
                                   <input type="text" min="1" max="1000" class="input-number form-control input-sm one_line one_line_in" value="{{ $line->qty ?? "" }}" data-line_id="{{ $line->id }}">
 
-                                  <span class="btn-number" style="    cursor: pointer; min-width: 1em; color: green; border: 1px solid grey; padding: 6px;" data-type="plus" >+</span>
+                                  <span class="btn-number" style="    cursor: pointer; min-width: 1em; color: green; border: 1px solid grey; padding: 2px;" data-type="plus" >+</span>
 
-                                  <h6 class="one_line">={{ $line->qty*$line->product->price_amount }}</h6>
-                                </div>
-                                <div class="col-xs-2">
+                                  <span class="one_line">={{ $line->qty*$line->product->price_amount }}</span>
 
-                                  {!! Form::open(['route' => ['lineItems.destroy', $line->id], 'method' => 'delete']) !!}
-                                  {!! Form::button('X', ['type' => 'submit', 'class' => 'destroy_button btn-sm', 'style'=>'background-color: white;    color: red;', 'onclick' => "return confirm('Вы уверены?')"]) !!}
-                                  {!! Form::close() !!}
+                                  <span class="span1">
+                                    {!! Form::open(['route' => ['lineItems.destroy', $line->id], 'method' => 'delete']) !!}
+                                    {!! Form::button('X', ['type' => 'submit', 'class' => 'destroy_button', 'style'=>'background-color: white;    color: red;', 'onclick' => "return confirm('Вы уверены?')"]) !!}
+                                    {!! Form::close() !!}
+                                  </span>
                                 </div>
+
                               </div>
                             </div>
-                            <hr>
+                            <hr> --}}
+
+                            
 
                           @endforeach
 
                           <div class="panel-footer">
                             <div class="row text-center">
                               <div class="col-xs-12">
+                                <span class="text-left">
+                                  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                                    Добавить
+                                  </button>
+                                </span>
+
+
+                                <div class="modal fade" id="modal-default" style="display: none;">
+                                    <div class="modal-dialog modal-lg">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span></button>
+                                          
+                                          <h4 class="modal-title">Выбрать продукт(ы) <span id="title_ident"></span> </h4>
+                                          <span style="float: left;"><button type="button" class="btn btn-default pull-left" data-dismiss="modal">Закрыть</button></span>
+                                          <span style="float: right;"><button id="update" type="button" class="btn btn-primary pull-right" >Обновить</button></span>
+                                        </div>
+                                        <div class="modal-body" id="modal-body" style="    text-align: left;">
+                                          {{-- <p>Список продуктов</p> --}}
+                                          {{-- <table class="table" id="table"></table> --}}
+                                          {{-- TODO CATS PRODUCTS --}}
+                                            {{-- @include('orders.tree') --}}
+                                            @include('orders.recursive_tree')
+
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Закрыть</button>
+                                          {{-- <button type="button" class="btn btn-primary">Добавить</button> --}}
+                                        </div>
+                                      </div>
+                                      <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                  </div>
+
                                 <h4 class="text-right">Итого <strong id="cart_total">{{ $order->total() }}</strong></h4>
                               </div>
                               {{-- <div class="col-xs-3"> --}}
@@ -113,7 +212,69 @@
 
                       </div>
 
+
                       <script type="text/javascript">
+
+
+$('#modal-default').on('shown.bs.modal', function (e) {
+  // do something...
+  console.log('modal')
+
+
+
+})                        
+  $(document).ready(function(){
+
+// update
+    $("#update").click(function(e){
+      // =location
+      location.reload();
+
+    });
+
+  $(".deleteProduct").click(function(e){
+    tt=this
+    var id = $(this).data('id')
+    var token = $("meta[name='csrf-token']").attr("content");
+    console.log(id)
+    $.ajax(
+      {
+        url: "/lineItems/"+id+"/del",
+        type: 'GET',
+        data: {
+            "id": id,
+            "_token": token,
+        },
+        success: function (res){
+            console.log(res);
+            $(tt).parent().parent().parent().remove()
+        }
+      })
+   });
+
+
+  });
+
+    // $.ajax({
+    //      url: '/api/products',
+    //      // url: 'https://examples.wenzhixin.net.cn/examples/bootstrap_table/data?search=&sort=&order=asc&offset=0&limit=10',
+
+    //      // dataType: 'json',
+    //      success: function(data) {
+
+    //         // console.log(data)
+    //         // table_data1 = data
+    //         // console.log(table_data1['data'])
+
+    //         // $("#modal-body").html() = data
+    //          // $('#clienti').bootstrapTable({
+    //          //    data: data
+    //          // });
+    //      },
+    //      error: function(e) {
+    //          console.log(e.responseText);
+    //      }
+    //   });
                         $('span.btn-number').click(function(e){
                             type      = $(this).attr('data-type');
                             console.log(type)
@@ -121,8 +282,8 @@
                             // TODO выбрать КНОПКИ только свой ряд +
                             var input = $(this).parent().find('input');
                             var line_id = $(this).parent().find('input').data('line_id');
-                            var total = $(this).parent().find('h6');
-                            cart_id = $('#order_id').data('order_id')
+                            var total = $(this).parent().parent().find('span.one_line');
+                            order_id = $('#order_id').data('order_id')
 
                             var currentVal = parseInt(input.val());
                             console.log(currentVal)
@@ -140,7 +301,7 @@
                                             success: function(result) {
 
                                               $.ajax({
-                                                  url: '/orders/'+cart_id+'/total',
+                                                  url: '/orders/'+order_id+'/total',
                                                   type: 'GET',
                                                   success: function(result) {
                                                       $('#cart_total').text(result)
@@ -148,7 +309,7 @@
                                               });
                                                 
                                               $.ajax({
-                                                  url: '/orders/'+cart_id+'/total_qty',
+                                                  url: '/orders/'+order_id+'/total_qty',
                                                   type: 'GET',
                                                   success: function(result) {
                                                     $('#qty_badge').text(result)
@@ -160,7 +321,7 @@
                                                   url: '/lineItems/total/'+line_id,
                                                   type: 'GET',  // user.destroy
                                                   success: function(result) {
-                                                      total.text('='+result)
+                                                      total.text(result)
                                                   }
                                               });
 
@@ -184,7 +345,7 @@
                                             success: function(result) {
 
                                               $.ajax({
-                                                  url: '/orders/'+cart_id+'/total',
+                                                  url: '/orders/'+order_id+'/total',
                                                   type: 'GET',
                                                   success: function(result) {
                                                       $('#cart_total').text(result)
@@ -192,7 +353,7 @@
                                               });
                                                 
                                               $.ajax({
-                                                  url: '/orders/'+cart_id+'/total_qty',
+                                                  url: '/orders/'+order_id+'/total_qty',
                                                   type: 'GET',
                                                   success: function(result) {
                                                     $('#qty_badge').text(result)
@@ -204,7 +365,7 @@
                                                   url: '/lineItems/total/'+line_id,
                                                   type: 'GET',  // user.destroy
                                                   success: function(result) {
-                                                      total.text('='+result)
+                                                      total.text(result)
                                                   }
                                               });
 
@@ -220,7 +381,7 @@
                             }
                         });
 
-                        jQuery('.panel-body').mousedown(function(e){ e.preventDefault(); });
+                        // jQuery('.panel-body').mousedown(function(e){ e.preventDefault(); });
                       </script>
 
              </div>

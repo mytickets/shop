@@ -164,7 +164,7 @@ class LineItemController extends AppBaseController
         $lineItem = $this->lineItemRepository->find($id);
 
         if (empty($lineItem)) {
-            Flash::error('Line Item объект не найден');
+            Flash::error('Объект Позиция не найден');
             return redirect(route('lineItems.index'));
         }
 
@@ -172,14 +172,12 @@ class LineItemController extends AppBaseController
 
         $this->lineItemRepository->delete($id);
 
-        Flash::success('Line Item объект успешно удалён.');
+        Flash::success('Объект Позиция успешно удалён.');
 
         // return redirect(route('lineItems.index'));
         // return redirect('/cart');
         // return Redirect::back()->withErrors(['success', 'успешно']);
         return Redirect::back();
-
-
     }
 
     public function destroy_all()
@@ -209,6 +207,31 @@ class LineItemController extends AppBaseController
         return $lineItem->total();
     }
 
+
+    public function del($id)
+    {
+        $lineItem = $this->lineItemRepository->find($id);
+
+        if (empty($lineItem)) {
+            Flash::error('Объект Позиция не найден');
+            // return redirect(route('lineItems.index'));
+            return Redirect::back();
+        }
+
+        // TODO Удаляем файл
+
+        $this->lineItemRepository->delete($id);
+
+        return response()->json([
+            'success' => 'Record deleted successfully!'
+        ]);
+        // Flash::success('Объект Позиция успешно удалён.');
+
+        // return redirect(route('lineItems.index'));
+        // return redirect('/cart');
+        // return Redirect::back()->withErrors(['success', 'успешно']);
+        // return Redirect::back();
+    }
 
 
 }

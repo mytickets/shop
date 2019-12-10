@@ -135,6 +135,7 @@ class OrderController extends AppBaseController
 
         return view('orders.edit')
                 ->with('order', $order)
+                ->with('cats', \App\Models\Cat::where('parent_id',0)->get() )
                 ->with('status', $this->status)
                 ->with('pay_types', $this->pay_types)
                 ->with('pay_places', $this->pay_places);
@@ -202,7 +203,8 @@ class OrderController extends AppBaseController
 
         Flash::success('Order объект успешно удалён.');
 
-        return redirect(route('orders.index'));
+        // return redirect(route('orders.index'));
+        return Redirect::back();
     }
 
 
@@ -271,5 +273,15 @@ class OrderController extends AppBaseController
 
     }
 
+    public function add_product_item($id, $product_id, Request $request)
+    {
+        // $input = $request->all();
+        $order = \App\Models\Order::find( $id );
+        // создаем позиции для Заказа order_id
+        \App\Models\LineItem::create(['order_id'=>$order->id, 'product_id'=>$product_id, 'qty'=>1]);
+        return 'ok';
+    }
+
+// 
 
 }

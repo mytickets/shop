@@ -196,6 +196,12 @@ class CatController extends AppBaseController
         return view('cats.tree')->with('cats', \App\Models\Cat::where('parent_id',0)->get() );
     }
 
+    public function cats_products($ident)
+    {
+        return \App\Models\Cat::find($ident)->products;
+        // view('cats.cats_products')->with('cats_products', \App\Models\Cat::find($ident)->products);
+    }
+
 
 
 }

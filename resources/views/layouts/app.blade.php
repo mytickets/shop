@@ -44,6 +44,11 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/locale/bootstrap-table-ru-RU.min.js"></script>
+
+
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 
@@ -58,6 +63,29 @@
   label.checkbox-inline {
     border: none;
   }
+
+
+            @media (max-width: 1199px) {
+            }
+
+            @media (max-width: 991px) {
+            }
+
+            @media (max-width: 767px) {
+                .one_line_in {
+                    width: 1em !important;
+                    font-size: 1em;
+                    height: 24px !important;
+                }
+            }
+
+            @media (max-width: 479px) {
+                .one_line_in {
+                    width: 1em !important;
+                    font-size: 1em;
+                    height: 24px !important;
+                }
+            }
 </style>
 
 </head>

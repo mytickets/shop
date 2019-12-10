@@ -68,11 +68,6 @@ class CartController extends AppBaseController
     public function store(CreateCartRequest $request)
     {
         $input = $request->all();
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('public/carts');
-            $publicPath = \Storage::url( $path );
-            $input['image'] = $publicPath;
-        }
 
         $cart = $this->cartRepository->create($input);
 
@@ -143,11 +138,6 @@ class CartController extends AppBaseController
         }
 
         $input = $request->all();
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('public/carts');
-            $publicPath = \Storage::url( $path );
-            $input['image'] = $publicPath;
-        }
 
         $cart = $this->cartRepository->update($input, $id);
 
@@ -173,12 +163,6 @@ class CartController extends AppBaseController
             Flash::error('Корзина объект не найден');
 
             return redirect(route('carts.index'));
-        }
-
-        // TODO Удаляем файл
-        if ( file_exists( getcwd().$cart['image']) ) {
-            # code..
-            // unlink( getcwd().$cart['image'] );
         }
 
         $this->cartRepository->delete($id);
