@@ -23,7 +23,8 @@ class OrderRepository extends BaseRepository
         'pay_contact',
         'pay_discount',
         'status',
-        'comment'
+        'comment',
+        'user_id'
     ];
 
     /**

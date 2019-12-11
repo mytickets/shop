@@ -17,6 +17,7 @@ use Illuminate\Http\UploadedFile;
 
 use Illuminate\Support\Facades\Redirect;
 use Mail;
+use Auth;
 
 use App\Models\Order;
 
@@ -46,7 +47,17 @@ class OrderController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $orders = $this->orderRepository->paginate(10);
+        // $orders = $this->orderRepository->paginate(10);
+
+        if (Auth::check()){
+            // если Крурьер
+            if (Auth::user()->role_type==4) {
+                $orders = \App\Models\Order::where('user_id', Auth::user()->id )->get();
+            } else {
+                $orders = $this->orderRepository->paginate(10);
+            }
+        }
+
         return view('orders.index')
             ->with('orders', $orders)
             ->with('status', $this->status)
@@ -64,6 +75,7 @@ class OrderController extends AppBaseController
     public function create()
     {
         return view('orders.create')
+            ->with('cats', \App\Models\Cat::where('parent_id',0)->get() )
             ->with('status', $this->status)
             ->with('pay_types', $this->pay_types)
             ->with('pay_places', $this->pay_places);
@@ -167,25 +179,27 @@ class OrderController extends AppBaseController
         $input = $request->all();
 
 
+        if (isset($input['send_email']) && $input['send_email']==1) {
 
-        // если установлен contact_email
-        if (isset($input['user_id']) && $input['user_id']!=0) {
-            $user = \App\Models\User::find($input['user_id']);
+            // dd($input['send_email']);
 
-            $data2 = array('order' => $order);
-            $contactEmail=$user->email;
-            $contactName=$user->name;
-            Mail::send(['text'=>'order_email'], $data2, function($message) use ($contactEmail, $contactName) {
-                    $message->to($contactEmail, $contactName)->subject('Заказ');
-                    $message->from(env('MAIL_USERNAME', 'zakaz@restoran-nadezhda.com'),'Сайт');
-                });
-        } // if (isset($input['contact_email'])) {
+            if (isset($input['user_id']) && $input['user_id']!=0) {
+                $user = \App\Models\User::find($input['user_id']);
+
+                $data2 = array('order' => $order);
+                $contactEmail=$user->email;
+                $contactName=$user->name;
+                Mail::send(['text'=>'order_email'], $data2, function($message) use ($contactEmail, $contactName) {
+                        $message->to($contactEmail, $contactName)->subject('Заказ');
+                        $message->from(env('MAIL_USERNAME', 'zakaz@restoran-nadezhda.com'),'Сайт');
+                    });
+            }
 
         // if ($request->hasFile('image')) {
         //     $path = $request->file('image')->store('public/orders');
         //     $publicPath = \Storage::url( $path );
         //     $input['image'] = $publicPath;
-        // }
+        }
 
         $order = $this->orderRepository->update($input, $id);
 

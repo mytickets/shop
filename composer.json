@@ -21,6 +21,7 @@
         "laravel/telescope": "^2.1",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^6.0",
+        "phpoffice/phpword": "^0.17.0",
         "prettus/l5-repository": "^2.6",
         "protoqol/prequel": "v1.22.1",
         "pusher/pusher-php-server": "~4.0",

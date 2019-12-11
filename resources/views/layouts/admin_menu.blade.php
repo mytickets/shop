@@ -1,11 +1,14 @@
 
         <li class="header">Навигация</li>
 {{-- http://127.0.0.1:8000/manager --}}
-        <li class="{{ Request::is('manager') ? 'active' : '' }}">
-          <a href="/manager">
-            <i class="fa fa-circle-o text-success"></i> Менджер
-          </a>
-        </li>
+        @if (Auth::user()->role_type!=4)
+            <li class="{{ Request::is('manager') ? 'active' : '' }}">
+              <a href="/manager">
+                <i class="fa fa-circle-o text-success"></i> Менджер
+              </a>
+            </li>
+        @endif
+
         @include('layouts.admin_menu_tables')
 
 

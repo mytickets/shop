@@ -60,14 +60,6 @@
                 @if ($order->status==4)
                         <span class="badge label label-success">{!! $status[$order->status] !!}</span>
                 @endif
-{{-- 
-<span class="label label-default">Default Label</span>
-<span class="label label-primary">Primary Label</span>
-<span class="label label-success">Success Label</span>
-<span class="label label-info">Info Label</span>
-<span class="label label-warning">Warning Label</span>
-<span class="label label-danger">Danger Label</span>
---}}
 
             </td>
             {{-- <td>{!! $order->comment !!}</td> --}}

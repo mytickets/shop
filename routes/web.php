@@ -424,7 +424,7 @@ Route::get('/admin2_mindmap', function () {
 
 // php artisan route:list
 
-
+Route::get('generate-docx', 'HomeController@generateDocx');
 
 
 

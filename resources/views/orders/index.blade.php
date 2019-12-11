@@ -22,7 +22,7 @@
         </div>
         <div class="text-center">
         
-        @include('adminlte-templates::common.paginate', ['records' => $orders])
+        {{-- @include('adminlte-templates::common.paginate', ['records' => $orders]) --}}
 
         </div>
     </div>

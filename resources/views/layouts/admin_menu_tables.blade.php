@@ -1,18 +1,28 @@
 
+@if (Auth::user()->role_type<3)
+    <li class="{{ Request::is('cats*') ? 'active' : '' }}">
+        <a href="{!! route('cats.index') !!}"><i class="fa fa-book"></i><span>Категории</span></a>
+    </li>
 
-<li class="{{ Request::is('cats*') ? 'active' : '' }}">
-    <a href="{!! route('cats.index') !!}"><i class="fa fa-book"></i><span>Категории</span></a>
-</li>
+
+    <li class="{{ Request::is('products*') ? 'active' : '' }}">
+        <a href="{!! route('products.index') !!}"><i class="fa fa-credit-card" aria-hidden="true"></i></i><span>Продукты</span></a>
+    </li>
+
+    <li class="{{ Request::is('orders*') ? 'active' : '' }}">
+        <a href="{!! route('orders.index') !!}"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+    <span>Заказы</span></a>
+    </li>
+@endif
+
+@if (Auth::user()->role_type==4)
+    <li class="{{ Request::is('orders*') ? 'active' : '' }}">
+        <a href="{!! route('orders.index') !!}"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+    <span>Заказы</span></a>
+    </li>
+@endif
 
 
-<li class="{{ Request::is('products*') ? 'active' : '' }}">
-    <a href="{!! route('products.index') !!}"><i class="fa fa-credit-card" aria-hidden="true"></i></i><span>Продукты</span></a>
-</li>
-
-<li class="{{ Request::is('orders*') ? 'active' : '' }}">
-    <a href="{!! route('orders.index') !!}"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-<span>Заказы</span></a>
-</li>
 
 @if (Auth::user()->role_type==0)
 
