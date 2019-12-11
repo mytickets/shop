@@ -319,48 +319,64 @@ class OrderController extends AppBaseController
 
     public function generateDocx($id, Request $request)
     {
-        $phpWord = new \PhpOffice\PhpWord\PhpWord();
-        $phpWord->setDefaultFontName('Times New Roman');
-        $phpWord->setDefaultFontSize(14);
-        $properties = $phpWord->getDocInfo();
-
-        $properties->setCreator('Name PhpWord');
-        $properties->setCompany('Company PhpWord');
-        $properties->setTitle('Title PhpWord');
-        $properties->setDescription('Description PhpWord');
-        $properties->setCategory('My category PhpWord');
-        $properties->setLastModifiedBy('My name PhpWord');
-        $properties->setCreated(mktime(0, 0, 0, 3, 12, 2015));
-        $properties->setModified(mktime(0, 0, 0, 3, 14, 2015));
-        $properties->setSubject('PhpWord subject');
-        $properties->setKeywords('my, key, word');
-
-        // $input = $request->all();
-        $order = \App\Models\Order::find( $id );
-
-        $section = $phpWord->addSection();
-
-        $description = $order->comment;
-
-        $section->addText('Заказ №'.$order->id);
-
-        $section->addImage("http://itsolutionstuff.com/frontTheme/images/logo.png");
-
-        $section->addText($description);
+        // $order = \App\Models\Order::find( $id );
+        // // dd($order->comment);
 
 
-        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+        // $phpWord = new \PhpOffice\PhpWord\PhpWord();
+        // $phpWord->setDefaultFontName('Times New Roman');
+        // $phpWord->setDefaultFontSize(14);
+        // $properties = $phpWord->getDocInfo();
 
-        try {
+        // $properties->setCreator('Name PhpWord');
+        // $properties->setCompany('Company PhpWord');
+        // $properties->setTitle('Title PhpWord');
+        // $properties->setDescription('Description PhpWord');
+        // $properties->setCategory('My category PhpWord');
+        // $properties->setLastModifiedBy('My name PhpWord');
+        // $properties->setCreated(mktime(0, 0, 0, 3, 12, 2015));
+        // $properties->setModified(mktime(0, 0, 0, 3, 14, 2015));
+        // $properties->setSubject('PhpWord subject');
+        // $properties->setKeywords('my, key, word');
 
-            $objWriter->save(storage_path('helloWorld.docx'));
+        // // $input = $request->all();
 
-        } catch (Exception $e) {
+        // $section = $phpWord->addSection();
+        // $section->addText('Заказ №'.$order->id);
 
-        }
+        // $description = $order->comment;
+
+        // $text = $order->comment;
+        // $textlines = explode("\r\n", $text);
+
+        // $textrun = $section->addTextRun();
+        // $textrun->addText(array_shift($textlines));
+        // // $section->addText($description);
+        // foreach($textlines as $line) {
+        //     $textrun->addTextBreak();
+        //     // maybe twice if you want to seperate the text
+        //     // $textrun->addTextBreak(2);
+        //     $textrun->addText($line);
+        // }
+
+        // $textrun->addTextBreak();
+
+        // $section->addImage("http://itsolutionstuff.com/frontTheme/images/logo.png");
 
 
-        return response()->download(storage_path('helloWorld.docx'));
+
+        // $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+
+        // try {
+
+        //     $objWriter->save(storage_path('helloWorld1.docx'));
+
+        // } catch (Exception $e) {
+
+        // }
+
+
+        // return response()->download(storage_path('helloWorld1.docx'));
     }
 
 
