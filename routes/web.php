@@ -313,6 +313,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('products_enable', 'ProductController@products_enable');
 
     Route::get('carts_destroy_all', 'CartController@destroy_all');
+
+    Route::get('/orders/{id}/total', 'OrderController@total');
+    Route::get('/orders/{id}/total_qty', 'OrderController@total_qty');
+    Route::get('/orders/{id}/clear', 'OrderController@remove_items');
+    Route::get('/orders/{id}/checkout', 'OrderController@checkout');
+    Route::get('/orders/{id}/add_product_item/{product_id}', 'OrderController@add_product_item');
+    Route::get('/orders_destroy_all', 'OrderController@destroy_all');
+
+
+    Route::get('/orders/{id}/generateDocx', 'OrderController@generateDocx');
+    
+
 });
 //  !!! END AUTH !!!
 
@@ -353,14 +365,6 @@ Route::get('/product/{ident}/to_cart/{qty}', 'ProductController@to_cart');
     Route::get('/carts/{id}/checkout', 'CartController@checkout');
 
 
-    Route::get('/orders/{id}/total', 'OrderController@total');
-    Route::get('/orders/{id}/total_qty', 'OrderController@total_qty');
-    Route::get('/orders/{id}/clear', 'OrderController@remove_items');
-    Route::get('/orders/{id}/checkout', 'OrderController@checkout');
-    Route::get('/orders/{id}/add_product_item/{product_id}', 'OrderController@add_product_item');
-
-    
-    Route::get('orders_destroy_all', 'OrderController@destroy_all');
     
 
     Route::resource('lineItems',            'LineItemController');

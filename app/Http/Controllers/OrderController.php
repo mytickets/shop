@@ -317,6 +317,53 @@ class OrderController extends AppBaseController
         return 'ok';
     }
 
+    public function generateDocx($id, Request $request)
+    {
+        $phpWord = new \PhpOffice\PhpWord\PhpWord();
+        $phpWord->setDefaultFontName('Times New Roman');
+        $phpWord->setDefaultFontSize(14);
+        $properties = $phpWord->getDocInfo();
+
+        $properties->setCreator('Name PhpWord');
+        $properties->setCompany('Company PhpWord');
+        $properties->setTitle('Title PhpWord');
+        $properties->setDescription('Description PhpWord');
+        $properties->setCategory('My category PhpWord');
+        $properties->setLastModifiedBy('My name PhpWord');
+        $properties->setCreated(mktime(0, 0, 0, 3, 12, 2015));
+        $properties->setModified(mktime(0, 0, 0, 3, 14, 2015));
+        $properties->setSubject('PhpWord subject');
+        $properties->setKeywords('my, key, word');
+
+        // $input = $request->all();
+        $order = \App\Models\Order::find( $id );
+
+        $section = $phpWord->addSection();
+
+        $description = $order->comment;
+
+        $section->addText('Заказ №'.$order->id);
+
+        $section->addImage("http://itsolutionstuff.com/frontTheme/images/logo.png");
+
+        $section->addText($description);
+
+
+        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+
+        try {
+
+            $objWriter->save(storage_path('helloWorld.docx'));
+
+        } catch (Exception $e) {
+
+        }
+
+
+        return response()->download(storage_path('helloWorld.docx'));
+    }
+
+
 // 
 
 }
