@@ -190,8 +190,8 @@ class OrderController extends AppBaseController
                 $contactEmail=$user->email;
                 $contactName=$user->name;
                 Mail::send(['text'=>'order_email'], $data2, function($message) use ($contactEmail, $contactName) {
-                        $message->to($contactEmail, $contactName)->subject('Заказ');
-                        $message->from(env('MAIL_USERNAME', 'zakaz@restoran-nadezhda.com'),'Сайт');
+                        $message->to($contactEmail, $contactName)->subject('Уведомление');
+                        $message->from(env('MAIL_USERNAME', 'zakaz@restoran-nadezhda.com'),'Уведомление Курьеру');
                     });
             }
 
