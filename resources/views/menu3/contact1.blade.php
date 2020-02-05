@@ -4,21 +4,25 @@
 
 
 	<style type="text/css">
-body.page #pagetitle {
-    background-image: url(http://benedicta.evatheme.com/demo3/wp-content/uploads/2018/10/header1.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
-    background-color: #111111;
-    color: #ffffff;
-}		
+		body.page #pagetitle {
+		    background-image: url(http://benedicta.evatheme.com/demo3/wp-content/uploads/2018/10/header1.jpg);
+		    background-repeat: no-repeat;
+		    background-position: center center;
+		    background-size: cover;
+		    -moz-background-size: cover;
+		    -webkit-background-size: cover;
+		    -o-background-size: cover;
+		    -ms-background-size: cover;
+		    background-color: #111111;
+		    color: #ffffff;
+		}		
 	</style>
 
-		<div id="pagetitle" class=" text-center"><div class="container" style="padding-top: 90px;"><p>Полный список категорий</p><h2>МЕНЮ</h2></div></div>
+		<div id="pagetitle" class=" text-center">
+			<div class="container" style="padding-top: 90px;">
+				{{-- <p>Полный список категорий</p><h2>МЕНЮ</h2> --}}
+			</div>
+		</div>
 
 
 <div id="page-content" >
@@ -95,13 +99,17 @@ body.page #pagetitle {
 						</div>
 					</div>
 				</div>
+				<br>
 				<div class="vc_row wpb_row vc_row-fluid vc_custom_1539211168060">
 					<div class="wpb_column vc_column_container vc_col-sm-12">
 						<div class="vc_column-inner">
 							<div class="wpb_wrapper">
 								<div class="wpb_gmaps_widget wpb_content_element">
 									<div class="wpb_wrapper">
-										<div class="wpb_map_wraper"> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6304.829986131271!2d-122.4746968033092!3d37.80374752160443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808586e6302615a1%3A0x86bd130251757c00!2sStorey+Ave%2C+San+Francisco%2C+CA+94129!5e0!3m2!1sen!2sus!4v1435826432051" width="600" height="450" frameborder="0" style="border: 0px; pointer-events: none;" allowfullscreen=""></iframe></div>
+										<div class="wpb_map_wraper">
+											<a class="dg-widget-link" href="http://2gis.ru/nizhnevartovsk/firm/1689378141241955/center/76.61373853683473,60.95156843532976/zoom/16?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=bigMap">Посмотреть на карте Нижневартовска</a><div class="dg-widget-link"><a href="http://2gis.ru/nizhnevartovsk/firm/1689378141241955/photos/1689378141241955/center/76.61373853683473,60.95156843532976/zoom/17?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=photos">Фотографии компании</a></div><div class="dg-widget-link"><a href="http://2gis.ru/nizhnevartovsk/center/76.613735,60.951182/zoom/16/routeTab/rsType/bus/to/76.613735,60.951182╎Надежда, гостиничный комплекс?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=route">Найти проезд до Надежда, гостиничный комплекс</a></div><script charset="utf-8" src="https://widgets.2gis.com/js/DGWidgetLoader.js"></script><script charset="utf-8">new DGWidgetLoader({"width":640,"height":600,"borderColor":"#a3a3a3","pos":{"lat":60.95156843532976,"lon":76.61373853683473,"zoom":16},"opt":{"city":"nizhnevartovsk"},"org":[{"id":"1689378141241955"}]});</script><noscript style="color:#c00;font-size:16px;font-weight:bold;">Виджет карты использует JavaScript. Включите его в настройках вашего браузера.</noscript>
+											{{-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6304.829986131271!2d-122.4746968033092!3d37.80374752160443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808586e6302615a1%3A0x86bd130251757c00!2sStorey+Ave%2C+San+Francisco%2C+CA+94129!5e0!3m2!1sen!2sus!4v1435826432051" width="600" height="450" frameborder="0" style="border: 0px; pointer-events: none;" allowfullscreen=""></iframe> --}}
+										</div>
 									</div>
 								</div>
 							</div>

@@ -41,9 +41,8 @@
                                                     <h2 style="font-family:'Roboto Condensed';font-weight:700;color:#ffffff;margin-bottom:20px;">АДРЕС &amp; ТЕЛЕФОНЫ</h2>
                                                 </div>
                                                 <div class="uvc-sub-heading ult-responsive" data-ultimate-target=".uvc-heading.ultimate-heading-20775d99d51fe9401 .uvc-sub-heading " data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:16px;&quot;,&quot;line-height&quot;:&quot;desktop:26px;&quot;}" style="font-family:'Roboto';font-weight:normal;color:#ffffff;">
-                                                    687000 РФ Екатеренбург<br> ул.Ленина 123
-                                                    <p></p>
-                                                    <p>+7 924 654 5553<br> +7 914 654 5553</p>
+                                                    г. Нижневартовск, ул. Северная, 39 <br> ул.Ленина 123
+                                                    <p>+ 7(3466) 47-06-68<br>reniua76@mail.ru</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -66,7 +65,12 @@
                                                 <div class="uvc-sub-heading ult-responsive" data-ultimate-target=".uvc-heading.ultimate-heading-21415d99d51fe9a71 .uvc-sub-heading " data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:16px;&quot;,&quot;line-height&quot;:&quot;desktop:26px;&quot;}" style="font-family:'Roboto';font-weight:normal;color:#ffffff;">
                                                     <span id="result_box" class="short_text" lang="en"><span class="">Следите за нами<br> в социальных сетях.</span></span>
                                                     <p></p>
-                                                    <h6><span style="color: #ffffff;"><a style="color: #ffffff;" href="#">VK</a></span><br> <a href="#"><span style="color: #ffffff;">Fb</span></a></h6>
+                                                    {{-- <h6><span style="color: #ffffff;"><a style="color: #ffffff;" href="#">VK</a></span><br> <a href="#"><span style="color: #ffffff;">Fb</span></a></h6> --}}
+
+                                                    <a class="" href="https://www.instagram.com/_restoran_nadezhda/" target="_blank">
+                                                        <i class="fa fa-2x fa-instagram" style="color:white;"></i>
+                                                    </a>
+
                                                     <p></p>
                                                 </div>
                                             </div>

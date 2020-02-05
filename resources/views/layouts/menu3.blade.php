@@ -273,21 +273,10 @@
                                     </ul>
                                     <div class="menu_creative_bottom">
                                         <div class="social_links_wrap">
-                                            <a class="social_link facebook" href="/demo3/#" target="_blank">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                            <a class="social_link twitter" href="/demo3/#" target="_blank">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                            <a class="social_link google-plus" href="/demo3/#" target="_blank">
-                                                <i class="fa fa-google-plus"></i>
-                                            </a>
-                                            <a class="social_link instagram" href="/demo3/#" target="_blank">
+                                            <a class="social_link instagram" href="https://www.instagram.com/_restoran_nadezhda/" target="_blank">
                                                 <i class="fa fa-instagram"></i>
                                             </a>
-                                            <a class="social_link behance" href="/login" target="_blank">
-                                                <i class="fa fa-behance"></i>
-                                            </a>
+
                                             <a class="social_link behance" href="/login" target="_blank">
                                                 {{-- <i class="fa fa-behance"></i> --}}
                                                 <i class="fa fa-user-o" aria-hidden="true"></i>

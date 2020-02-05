@@ -26,7 +26,7 @@
                                                             <span class="uvc-headings-line" style="border-style: solid; border-bottom-width: 2px; border-color: rgb(166, 157, 109); width: 20px; float: left;"></span>
                                                         </div>
                                                         <div class="uvc-sub-heading ult-responsive" style="margin-bottom: 1em; font-family:&#39;Roboto&#39;;font-weight:normal;font-style:normal;color:#111111;">
-                                                        В нашем ресторане Вы окунетесь в изысканый мир кулинарных продуктов. Мы работаем каждый день с 11:00 до 01:00 ночи. Дискотека, караоке и живая музыка каждый вечер.
+В нашем ресторане Вы окунетесь в изысканный мир кулинарных продуктов. Мы работаем для Вас каждый день с 07:00 до 02:00 ночи. Наш ресторан угощает гостей блюдами на любой вкус! Вы можете заказать в нашем ресторане любой праздник- отметить день рождения, корпоратив, свадьбу, банкет, новогоднее мероприятие. Мы сделаем все возможное, чтобы Ваш праздник надолго остался в памяти.
                                                         {{-- {!! App\Models\Metatext::find(3)->code_text !!} --}}
                                                         </div>
 
@@ -62,7 +62,7 @@
                                                         <div class="wpb_wrapper">
                                                             <div id="ultimate-heading-1935d9243f029c78" class="uvc-heading ult-adjust-bottom-margin ultimate-heading-1935d9243f029c78 uvc-4898 " data-hspacer="no_spacer" data-halign="left" style="text-align:left">
                                                                 <div class="uvc-heading-spacer no_spacer" style="top"></div>
-                                                                <div class="uvc-sub-heading ult-responsive" data-ultimate-target=".uvc-heading.ultimate-heading-1935d9243f029c78 .uvc-sub-heading " data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:18px;&quot;,&quot;line-height&quot;:&quot;desktop:32px;&quot;}" style="font-family:&#39;Roboto&#39;;font-weight:normal;color:rgba(255,255,255,0.7);">утонченный строгий дизайн заведения подойдет для любых мероприятий</div>
+                                                                <div class="uvc-sub-heading ult-responsive" data-ultimate-target=".uvc-heading.ultimate-heading-1935d9243f029c78 .uvc-sub-heading " data-responsive-json-new="{&quot;font-size&quot;:&quot;desktop:18px;&quot;,&quot;line-height&quot;:&quot;desktop:32px;&quot;}" style="font-family:&#39;Roboto&#39;;font-weight:normal;color:rgba(255,255,255,0.7);">Роскошный интерьер нашего ресторана создает комфортную, торжественную и в то же время доверительную атмосферу любого мероприятия</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -125,7 +125,7 @@
                                                     <div class=" ubtn-ctn-right ">
                                                         <a href="/menu/" class="ubtn ult-adjust-bottom-margin ult-responsive ubtn-normal ubtn-no-hover-bg  none  ubtn-right   tooltip-5d9243f02ccb8" data-hover="" data-border-color="" data-bg="#111111" data-hover-bg="" data-border-hover="" data-shadow-hover="" data-shadow-click="none" data-shadow="" data-shd-shadow="" data-ultimate-target="#ubtn-9235" data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}" style="font-weight:normal;border:none;background: #111111;color: #ffffff;">
                                                             <span class="ubtn-hover" style="background-color:"></span>
-                                                            <span class="ubtn-data ubtn-text ">МЕНЮ</span>
+                                                            <span class="ubtn-data ubtn-text ">Перейти</span>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -137,7 +137,7 @@
 
 
 
-                            @include('menu3.index_why')
+                            {{-- @include('menu3.index_why') --}}
                             
 
                             

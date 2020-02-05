@@ -48,7 +48,7 @@
 
   <div id="pagetitle" class=" text-center">
          <div class="container" style="padding-top: 90px;">
-            <p>Полный список категорий</p>
+            {{-- <p>Полный список категорий</p> --}}
             <h2>МЕНЮ</h2>
          </div>
   </div>
